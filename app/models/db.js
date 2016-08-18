@@ -92,18 +92,46 @@ var imageCommentSchema =   new Schema({
   commenter_id:    {type:userSchema,required:true},
   comment:         {type:String,required:true},
   timestamp:       {type:Date, default:Date.now},
-  //[one_ups]
+  one_ups:         [oneUpSchema],
   deleted:         {type:Boolean,default:0}
 });
 
 var imageSchema   =   new Schema({
   caption:      {type:String,required:false},
   image_url:    {type:mongoose.SchemaTypes.Url,required:true},
-  comments: [imageCommentSchema],
+  comments:     [imageCommentSchema],
   timestamp:    {type:Date, default:Date.now},
-  //[one_ups]
+  one_ups:      [oneUpSchema],
   deleted:      {type:Boolean, default:0}
 });
+
+/*****************************************
+*       Game related schemas below
+******************************************/
+
+var platformSchema = new Schema({
+  name:           {type:String, required:true},
+  image_url:    {type:mongoose.SchemaTypes.Url,required:true} //logo
+});
+
+var gameSchema    = new Schema({
+  name:           {type:String,required:true},
+  release_date:   {type:Date,required:false},
+  descrption:     {type:String,required:false},
+  image_url:    {type:mongoose.SchemaTypes.Url,required:true}, //box art
+  logo:         [platformSchema]
+});
+
+var gameOwnersSchema= new Schema({
+  user_id:    {type:userSchema,required:true},
+  game_id:    [gameSchema]
+});
+
+
+/*****************************************
+*      message related schemas below below
+******************************************/
+
 
 
 /*****************************************
