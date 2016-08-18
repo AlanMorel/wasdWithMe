@@ -26,10 +26,51 @@ var userSchema = new Schema({
   deleted:    {type:Boolean, default:0}
 });
 
+var countrySchema   =   new Schema({
+  name: {type:String, required:true},
+  flag: {type:String, required:true}
+});
+
+var stateSchema   =   new Schema({
+  country_id: {type:countrySchema, required:true},
+  name: {type:String, required:true},
+});
+
+var citySchema   =   new Schema({
+  state_id: {type:stateSchema, required:true},
+  name: {type:String, required:true},
+});
+
+var steamSchema   =   new Schema({
+  user_id: {type:userSchema, required:true},
+  steam_key: {type:String, required:true},
+});
+
+var xboxSchema   =   new Schema({
+  user_id: {type:userSchema, required:true},
+  xbox_key: {type:String, required:true},
+});
+
+var psnSchema   =   new Schema({
+  user_id: {type:userSchema, required:true},
+  psn_key: {type:String, required:true},
+});
 
 
 //creates model for schema
-var User      =   mongoose.model('User',userSchema);
+var User      =     mongoose.model('User',userSchema);
+var Country   =     mongoose.model('Country',countrySchema);
+var State     =     mongoose.model('State',stateSchema);
+var City      =     mongoose.model('City',citySchema);
+var Steam     =     mongoose.model('Steam',steamSchema);
+var Xbox      =     mongoose.model('Xbox',xboxSchema);
+var Psn       =     mongoose.model('Psn',psnSchema);
 
 //makes schema available for node applications
-module.exports=   User;
+module.exports=       User;
+module.exports=       Country;
+module.exports=       State;
+module.exports=       City;
+module.exports=       Steam;
+module.exports=       Xbox;
+module.exports=       Psn;
