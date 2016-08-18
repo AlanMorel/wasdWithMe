@@ -1,4 +1,5 @@
 var mongoose    = require('mongoose');
+require('mongoose-type-url'); //introduces url as type
 var Schema      = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -26,6 +27,10 @@ var userSchema = new Schema({
   deleted:    {type:Boolean, default:0}
 });
 
+/*****************************************
+*       Geolocation schemas below
+******************************************/
+
 var countrySchema   =   new Schema({
   name: {type:String, required:true},
   flag: {type:String, required:true}
@@ -40,6 +45,10 @@ var citySchema   =   new Schema({
   state_id: {type:stateSchema, required:true},
   name: {type:String, required:true},
 });
+
+/*****************************************
+*       Game accounts schema below
+******************************************/
 
 var steamSchema   =   new Schema({
   user_id: {type:userSchema, required:true},
@@ -56,6 +65,29 @@ var psnSchema   =   new Schema({
   psn_key: {type:String, required:true},
 });
 
+var twitchSchema   =   new Schema({
+  user_id: {type:userSchema, required:true},
+  twitch_key: {type:String, required:true},
+});
+
+
+/*****************************************
+*       Miscellaneous schemas below
+******************************************/
+
+var imageSchema   =   new Schema({
+  caption:      {type:String,required:false},
+  image_url:    {type:mongoose.SchemaTypes.Url,required:true},
+  //[comments]
+  timestamp:    {type:Date, default:Date.now},
+  //[one_ups]
+  deleted:      {type:Boolean, default:0}
+});
+
+
+/*****************************************
+*      Models and exports below
+******************************************/
 
 //creates model for schema
 var User      =     mongoose.model('User',userSchema);
@@ -65,6 +97,8 @@ var City      =     mongoose.model('City',citySchema);
 var Steam     =     mongoose.model('Steam',steamSchema);
 var Xbox      =     mongoose.model('Xbox',xboxSchema);
 var Psn       =     mongoose.model('Psn',psnSchema);
+var Twitch    =     mongoose.model('Twitch',twitchSchema);
+var Image     =     mongoose.model('Image',imageSchema);
 
 //makes schema available for node applications
 module.exports=       User;
@@ -74,3 +108,5 @@ module.exports=       City;
 module.exports=       Steam;
 module.exports=       Xbox;
 module.exports=       Psn;
+module.exports=       Twitch;
+module.exports=       Image;
