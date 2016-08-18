@@ -132,7 +132,20 @@ var gameOwnersSchema= new Schema({
 *      message related schemas below below
 ******************************************/
 
+var messageSchema   = new Schema({
+  sender_id:      {type:userSchema,required:true},
+  recipient_id:   {type:userSchema,required:true},
+  message:        {type:String,required:true},
+  timestamp:      {type:Date,default:Date.now},
+  read_status:    {type:Boolean,default:0}, //0=unread, 1=read
+  deleted:        {type:Boolean,default:0}, //0=undeleted,1=deleted
+});
 
+var blockedScema    = new Schema({
+  blocked_id:      {type:userSchema,required:true},
+  blocker_id:   {type:userSchema,required:true},
+  timestamp:      {type:Date,default:Date.now},
+});
 
 /*****************************************
 *      Models and exports below
@@ -151,6 +164,11 @@ var Image     =     mongoose.model('Image',imageSchema);
 var ImageComment=   mongoose.model('ImageComment',imageCommentSchema);
 var OneUpType=      mongoose.model('OneUpType',oneUpTypesSchema);
 var OneUp=          mongoose.model('OneUp',oneUpSchema);
+var Platform=       mongoose.model('Platform',platformSchema);
+var Game=           mongoose.model('Game',gameSchema);
+var GameOwners=     mongoose.model('GameOweners',gameOwnersSchema);
+var Message=        mongoose.model('Message',messageSchema);
+var Blocked=        mongoose.model('Blocked',blockedScema);
 
 //makes schema available for node applications
 module.exports=       User;
@@ -165,3 +183,8 @@ module.exports=       Image;
 module.exports=       ImageComment;
 module.exports=       OneUpType;
 module.exports=       OneUp;
+module.exports=       Platform;
+module.exports=       Game;
+module.exports=       GameOwners;
+module.exports=       Message;
+module.exports=       Blocked;
