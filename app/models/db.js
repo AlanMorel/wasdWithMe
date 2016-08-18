@@ -9,6 +9,7 @@ var userSchema = new Schema({
   first_name: {type:String, required:true},
   last_name:  {type:String, required:true},
   gender:     {type:Boolean, required:true}, //edit
+  age:        {type:Number, min:13, required:true},
   birth_date: {type:Date, required:true},
   country:    {type:String, required:true}, //edit
   state:      {type:String, required:true}, //edit
@@ -75,10 +76,30 @@ var twitchSchema   =   new Schema({
 *       Miscellaneous schemas below
 ******************************************/
 
+var oneUpTypesSchema       =   new Schema({
+  oneup_type:       {type:Number,required:true},
+  name:             {type:String,required:true}
+});
+
+var oneUpSchema           =   new Schema({
+  user_id:          {type:userSchema,required:true},
+  oneup_type:       {type:oneUpTypesSchema,required:true},
+  type_id:          {type:Number,required:true}, //profile,image,comment,etc
+  timestamp:        {type:Date,default:Date.now}
+});
+
+var imageCommentSchema =   new Schema({
+  commenter_id:    {type:userSchema,required:true},
+  comment:         {type:String,required:true},
+  timestamp:       {type:Date, default:Date.now},
+  //[one_ups]
+  deleted:         {type:Boolean,default:0}
+});
+
 var imageSchema   =   new Schema({
   caption:      {type:String,required:false},
   image_url:    {type:mongoose.SchemaTypes.Url,required:true},
-  //[comments]
+  comments: [imageCommentSchema],
   timestamp:    {type:Date, default:Date.now},
   //[one_ups]
   deleted:      {type:Boolean, default:0}
@@ -99,6 +120,9 @@ var Xbox      =     mongoose.model('Xbox',xboxSchema);
 var Psn       =     mongoose.model('Psn',psnSchema);
 var Twitch    =     mongoose.model('Twitch',twitchSchema);
 var Image     =     mongoose.model('Image',imageSchema);
+var ImageComment=   mongoose.model('ImageComment',imageCommentSchema);
+var OneUpType=      mongoose.model('OneUpType',oneUpTypesSchema);
+var OneUp=          mongoose.model('OneUp',oneUpSchema);
 
 //makes schema available for node applications
 module.exports=       User;
@@ -110,3 +134,6 @@ module.exports=       Xbox;
 module.exports=       Psn;
 module.exports=       Twitch;
 module.exports=       Image;
+module.exports=       ImageComment;
+module.exports=       OneUpType;
+module.exports=       OneUp;
