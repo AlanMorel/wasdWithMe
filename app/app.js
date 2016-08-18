@@ -12,7 +12,7 @@ var users =       require('./routes/users');
 var mongoose =    require('mongoose');
 mongoose.connect('mongodb://localhost/app');
 
-var db            =     require('./db.js');
+var db            =     require('./models/db.js');
 
 var app = express();
 

@@ -23,7 +23,7 @@ var userSchema = new Schema({
   twitch_acc: {type:String, required:false}, //edit
   coins:      {type:Number, default:0},
   timestamp:  {type:Date, default:Date.now},
-  deleted:    (type:Boolean, default:0}
+  deleted:    {type:Boolean, default:0}
 });
 
 
