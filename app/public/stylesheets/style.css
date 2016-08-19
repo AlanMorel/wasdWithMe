@@ -52,21 +52,66 @@ img.couple{
   padding-top: 20px;
 }
 
-.right h1{
+.right h1, .left h1{
   text-align: center;
   color: white;
   font-size: 3.0vw;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 100;
-  margin-bottom: 1.75em;
 }
 
-.right h2{
+.right h2, .left h2{
   text-align: center;
   color: white;
-  font-size: 1.5vw;
+  font-size: 1.25vw;
   padding-left: 15%;
   padding-right: 15%;
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: lighter;
+  padding-bottom: 4%;
+}
+
+.promo2 {
+  width: 100%;
+  display: inline-block;
+  background-color: #282828;
+}
+
+.promo2 .left{
+  width: 50%;
+  float: left;
+  display: inline-block;
+  color: #FFFFFF;
+  text-align: center;
+}
+.promo2 .right{
+  width: 50%;
+  display: inline-block;
+  height: 100%;
+}
+
+.button {
+  font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 1px;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  /* font-size: 20px; */
+  color: #000000;
+  background: #FFFFFF;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border-radius: 4px;
+  font-weight: lighter;
+  padding: 2% 6%;
+  text-decoration: none;
+  font-size: 1.5vw;
+}
+
+.button:hover {
+  background: #6441a4;
+  cursor: pointer;
+  color: #FFFFFF;
+  border: 1px solid #412969;
 }
