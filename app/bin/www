@@ -88,3 +88,6 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+var url = "http://localhost:3000/";
+console.log("Click here " + url + " to go to the homepage.");

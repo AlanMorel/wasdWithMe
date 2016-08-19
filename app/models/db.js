@@ -9,23 +9,23 @@ var userSchema = new Schema({
   username:    {type:String,  required:true, unique:true},
   password:    {type:String,  required:true},
   email:       {type:String,  required:true, unique:true},
-  first_name:  {type:String,  required:true},
-  last_name:   {type:String,  required:true},
   gender:      {type:Boolean, required:true}, //edit
-  age:         {type:Number,  min:13,        required:true},
-  birth_date:  {type:Date,    required:true},
+  birthday:    {type:Date,    required:true},
   country:     {type:String,  required:true}, //edit
   state:       {type:String,  required:true}, //edit
   city:        {type:String,  required:true}, //edit
-  one_ups:     {type:Number,  default:0}, //edit
+
+  first_name:  {type:String,  required:false},
+  last_name:   {type:String,  required:false},
   bio:         {type:String,  required:false},
-  top_games:   {type:String,  required:true}, //edit
+  top_games:   {type:String,  required:false}, //edit
   profile_pic: {type:String,  required:false}, //edit
+  one_ups:     {type:Number,  default:0}, //edit
   //[images]:  {type:String,  required:false},
-  steam_acc:   {type:String,  required:false}, //edit
-  xb_acc:      {type:String,  required:false}, //edit
-  ps_acc:      {type:String,  required:false}, //edit
-  twitch_acc:  {type:String,  required:false}, //edit
+  steam:       {type:String,  required:false}, //edit
+  xbox:        {type:String,  required:false}, //edit
+  playstation: {type:String,  required:false}, //edit
+  twitch:      {type:String,  required:false}, //edit
   coins:       {type:Number,  default:0},
   timestamp:   {type:Date,    default:Date.now},
   deleted:     {type:Boolean, default:0}

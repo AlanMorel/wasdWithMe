@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-var mongoose = require('mongoose'),
-      Schema = mongoose.Schema,
-passportLocalMongoose = require('passport-local-mongoose');
-
-var passport      =     require('passport');
-var LocalStrategy =     require('passport-local').Strategy;
-var flash         =     require('connect-flash');
+var mongoose                = require('mongoose');
+var Schema = mongoose.Schema;
+var passportLocalMongoose   = require('passport-local-mongoose');
+var passport                = require('passport');
+var LocalStrategy           = require('passport-local').Strategy;
+var flash                   = require('connect-flash');
 //var db = require('db.js');
 
 /* GET users listing. */

@@ -3,9 +3,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', {
-        title: 'wasdWithMe - Connect with gamers.',
-        layout: 'primary'
+    res.render('signup', {
+        title: 'wasdWithMe - Sign up!',
+        layout: 'secondary'
     });
 });
 
