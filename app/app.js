@@ -12,7 +12,11 @@ var users =       require('./routes/users');
 var mongoose =    require('mongoose');
 mongoose.connect('mongodb://localhost/app');
 
-var db            =     require('./models/db.js');
+//other libary includes
+var passport=     require('passport');
+var session=      require('express-session');
+var db=           require('./models/db.js');
+var flash=        require('connect-flash');
 
 var app = express();
 
@@ -30,6 +34,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+//Passport information below
+app.use(session({secret:'ihazasecret1337'})); //configure secret session later
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash()); //use flash msgs stored in sessiion
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
