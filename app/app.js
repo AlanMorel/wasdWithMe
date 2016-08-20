@@ -9,16 +9,18 @@ var session      = require('express-session');
 var db           = require('./models/db.js');
 var flash        = require('connect-flash');
 var mongoose     = require('mongoose');
+var hbs          = require('hbs');
 //Pages
-var homepage     = require('./routes/index');
+var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
 var users        = require('./routes/users');
 
 var app = express();
 
-//View engine
+//View engine (hbs)
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

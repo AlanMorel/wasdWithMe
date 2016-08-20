@@ -4,7 +4,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('signup', {
         title: 'wasdWithMe - Sign up!',
-        layout: 'secondary'
+        layout: 'secondary',
+        css: 'signup'
     });
 });
 

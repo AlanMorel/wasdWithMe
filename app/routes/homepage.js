@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('index', {
+    res.render('homepage', {
         title: 'wasdWithMe - Connect with gamers.',
-        layout: 'primary'
+        layout: 'primary',
+        css: 'homepage'
     });
 });
 

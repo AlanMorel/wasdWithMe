@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-var mongoose                = require('mongoose');
+var passportLocal = require('passport-local-mongoose');
+var passport      = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var flash         = require('connect-flash');
+var mongoose      = require('mongoose');
 var Schema = mongoose.Schema;
-
-var passportLocalMongoose   = require('passport-local-mongoose');
-var passport                = require('passport');
-var LocalStrategy           = require('passport-local').Strategy;
-var flash                   = require('connect-flash');
 //var db = require('db.js');
 
 /* GET users listing. */
@@ -35,7 +34,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/signup',function(req,res){
-  res.render('signup.hbs', {
+  res.render('header.hbs', {
       message: req.flash('Signup')
   });
 });
