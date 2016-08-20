@@ -1,27 +1,22 @@
-var express =      require('express');
-var path =         require('path');
-var favicon =      require('serve-favicon');
-var logger =       require('morgan');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser =   require('body-parser');
-
-var routes =       require('./routes/index');
-var signup =       require('./routes/signup');
-var users =        require('./routes/users');
-
-//mongoose database connect
-var mongoose =     require('mongoose');
-mongoose.connect('mongodb://localhost/app');
-
-//Other libraries
-var passport =    require('passport');
-var session =     require('express-session');
-var db =          require('./models/db.js');
-var flash =       require('connect-flash');
+var bodyParser   = require('body-parser');
+var passport     = require('passport');
+var session      = require('express-session');
+var db           = require('./models/db.js');
+var flash        = require('connect-flash');
+var mongoose     = require('mongoose');
+//Pages
+var homepage     = require('./routes/index');
+var signUp       = require('./routes/signup');
+var users        = require('./routes/users');
 
 var app = express();
 
-// view engine setup
+//View engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
@@ -32,17 +27,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/signup', signup);
-app.use('/users', users);
-
-//Passport information
+//Passport
 app.use(session({
   secret: 'ihazasecret1337'}
-)); //configure secret session later
+));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash()); //use flash messages stored in session
+
+//Flash
+app.use(flash());
+
+//MongoDB
+mongoose.connect('mongodb://localhost/app');
+
+//Routes
+app.use('/', homepage);
+app.use('/signup', signUp);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

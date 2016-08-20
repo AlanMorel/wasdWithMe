@@ -14,7 +14,6 @@ var userSchema = new Schema({
   country:     {type:String,  required:true}, //edit
   state:       {type:String,  required:true}, //edit
   city:        {type:String,  required:true}, //edit
-
   first_name:  {type:String,  required:false},
   last_name:   {type:String,  required:false},
   bio:         {type:String,  required:false},
