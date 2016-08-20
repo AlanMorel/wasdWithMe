@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
-var mongooseTypeUrl = require('mongoose-type-url');
+var typeUrl  = require('mongoose-type-url');
 
 var Schema = mongoose.Schema;
-
 var url = mongoose.SchemaTypes.Url;
 
 var userSchema = new Schema({

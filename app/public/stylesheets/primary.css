@@ -18,13 +18,13 @@ a {
 
 .header{
   width: 100%;
-  height: 5vw;
+  height: 6vw;
   background-color: #FFFFFF;
+  padding: 0.5vw;
 }
 
 .logo {
-  height: 4vw;
-  margin: 0.5vw;
+  height: 100%;
 }
 
 img.couple{
@@ -95,7 +95,6 @@ img.couple{
   letter-spacing: 1px;
   border: 1px solid #cccccc;
   cursor: pointer;
-  /* font-size: 20px; */
   color: #000000;
   background: #FFFFFF;
   -webkit-transition: all 0.1s ease-in-out;

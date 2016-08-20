@@ -19,7 +19,15 @@ router.post('/', function(req, res){
     var state    = req.body.state;
     var city     = req.body.city;
 
-    console.log("username: " + username + " password: "+ password + " email: " + email + " gender: " + gender + " birthday: " + birthday + " country: " + country + " state: " + state + " city: " + city);
+    console.log("username: " + username
+        + " password: "+ password
+        + " email: " + email
+        + " gender: " + gender
+        + " birthday: " + birthday
+        + " country: " + country
+        + " state: " + state
+        + " city: " + city);
+
     res.end("Sign up successful!");
 });
 
