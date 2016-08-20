@@ -37,9 +37,12 @@ app.use('/signup', signup);
 app.use('/users', users);
 
 //Passport information
-app.use(session({secret: 'ihazasecret1337'})); //configure secret session later
+app.use(session({
+  secret: 'ihazasecret1337'}
+)); //configure secret session later
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash()); //use flash messages stored in session
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
