@@ -14,7 +14,7 @@ var hbs          = require('hbs');
 //Pages
 var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
-var login       = require('./routes/login');
+var login        = require('./routes/login');
 var users        = require('./routes/users');
 
 var app = express();
