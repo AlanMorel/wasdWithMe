@@ -10,28 +10,43 @@ var db           = require('./models/db.js');
 var flash        = require('connect-flash');
 var mongoose     = require('mongoose');
 var hbs          = require('hbs');
+
 //Pages
 var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
+var login       = require('./routes/login');
 var users        = require('./routes/users');
 
 var app = express();
 
-//View engine (hbs)
+//Express
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
+
+//Handlebars
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerHelper('mobile', function() {
+  return "900px"; //maximum size for mobile css
+});
+hbs.registerHelper('desktop', function() {
+  return "901px"; //minimum size for desktop css
+});
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//BodyParser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+//CookieParser
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 //Passport
 app.use(session({
-  secret: 'ihazasecret1337'}
+  secret: 'passport_secret'}
 ));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -45,19 +60,17 @@ mongoose.connect('mongodb://localhost/app');
 //Routes
 app.use('/', homepage);
 app.use('/signup', signUp);
+app.use('/login', login);
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+//404 error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
+//Development error handler
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -68,8 +81,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+//Production error handler
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {

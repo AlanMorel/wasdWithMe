@@ -17,10 +17,10 @@ a {
 }
 
 .header{
-  width: 100%;
   height: 6vw;
   background-color: #FFFFFF;
-  padding: 0.5vw;
+  margin: 0.5vw;
+  margin-right: 0;
 }
 
 .logo {
