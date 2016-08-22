@@ -20,14 +20,22 @@ wasdWithMe uses a number of open source projects to work properly:
 * [MongoDB] - document-oriented database
 * [jQuery] - client-sided form validatation
 
-### Installation
+## Requirements
 
-wasdWithMe requires [Node.js](https://nodejs.org/) v4+ to run.
+- [Node v4+ and npm](http://nodejs.org/)
+- [Express v4+] (https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/): Make sure you have your own local or remote MongoDB database URI configured in `app.js`
+
+### Installation
 
 ```sh
 $ git clone https://github.com/AlanMorel/wasdWithMe wasdWithMe
 $ cd wasdWithMe
+$ npm install
+$ npm start
 ```
+
+View in browser at `http://localhost:3000`
 
 ## License
 
