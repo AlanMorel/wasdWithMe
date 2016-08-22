@@ -8,7 +8,7 @@
 - [ ] add more sections to homepage
 - [ ] create profile page after database is set up and working
 - [ ] populate static data schemas
-- [ ] allow for manual game additionals
+- [ ] allow for manual game additions
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] search for other users
 - [ ] add messaging other users

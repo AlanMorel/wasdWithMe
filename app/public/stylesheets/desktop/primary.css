@@ -5,7 +5,9 @@
 
 html,body {
   height:100%;
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #FFFFFF;
 }
 
 body {
@@ -17,10 +19,10 @@ a {
 }
 
 .header{
-  height: 6vw;
-  background-color: #FFFFFF;
-  margin: 0.5vw;
-  margin-right: 0;
+  height: 5vw;
+  background-color: #6441A5;
+  padding: 1vw;
+  padding-right: 2vw;
 }
 
 .logo {
@@ -37,7 +39,7 @@ img.couple{
 .promo {
   width: 100%;
   display: inline-block;
-  background-color: #6441A5;
+  background-color: #282828;
 }
 
 .promo .left{
@@ -74,7 +76,8 @@ img.couple{
 .promo2 {
   width: 100%;
   display: inline-block;
-  background-color: #282828;
+  background-color: #6441A5;
+  /* overflow: hidden; */
 }
 
 .promo2 .left{
@@ -109,8 +112,47 @@ img.couple{
 }
 
 .button:hover {
-  background: #6441a4;
+  background: #282828;
   cursor: pointer;
   color: #FFFFFF;
-  border: 1px solid #412969;
+  border: 1px solid #111111;
+}
+
+.header-text {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  text-align: right;
+  font-size: 1vw;
+}
+
+.header-top{
+  font-family: 'Roboto', sans-serif;
+  margin: auto;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding-bottom: 1vw;
+  padding-top: 0.5vw;
+}
+
+.tagline {
+  height: 11vw;
+  line-height: 5vw;
+  width: 100%;
+  background-color: #282828;
+  text-align: center;
+  font-weight: lighter;
+  font-size: 1.5vw;
+}
+
+.logos img {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 100%;
+  max-height: 64px;
+}
+
+.logos {
+  height: 5vw;
 }
