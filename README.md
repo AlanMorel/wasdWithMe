@@ -40,6 +40,7 @@ $ cd wasdWithMe
 $ npm install
 ```
 
+Edit `config.js` to your liking
 
 ```sh
 $ npm start
