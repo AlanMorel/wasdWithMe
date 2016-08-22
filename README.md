@@ -11,29 +11,37 @@ You can also:
   - Deck out your profile with your achievements
   - Connect your Twitch account to tell your inner circle when you are live
 
-### Technologies
+### Dependencies
 
-wasdWithMe uses a number of open source projects to work properly:
+wasdWithMe uses a number of open-source projects to work properly:
 
-* [node.js] - event-driven, non-blocking I/O for the backend
-* [Express] - fast node.js network app framework
-* [MongoDB] - document-oriented database
-* [jQuery] - client-sided form validation
-* [stylus] - Node.js css framework
+* [Node.js](http://nodejs.org/) - event-driven, non-blocking I/O for the backend
+* [Express](https://expressjs.com/) - fast node.js network app framework
+* [MongoDB](https://www.mongodb.com/) - document-oriented database
+* [jQuery](https://jquery.com/) - client-side JavaScript
+* [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
+* [bCrypt](https://www.npmjs.com/package/bcrypt-nodejs) - password hashing function
+* [Handlebars](http://handlebarsjs.com/) - html view engine
+* [Passport](http://passportjs.org/) - node.js authentication
 
 ## Requirements
 
-- [Node v4+ and npm](http://nodejs.org/)
-- [Express v4+] (https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/): Make sure you have your own local or remote MongoDB database URI configured in `app.js`
-- [stylus] (http://stylus-lang.com/)
+- [Node and npm](http://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/)
 
 ### Installation
+
+Clone this repository, then install the node packages
 
 ```sh
 $ git clone https://github.com/AlanMorel/wasdWithMe wasdWithMe
 $ cd wasdWithMe
 $ npm install
+```
+
+
+```sh
 $ npm start
 ```
 
