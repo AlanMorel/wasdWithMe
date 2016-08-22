@@ -5,7 +5,7 @@
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure
 - [ ] add passport and authentication to sign up and log in pages
-- [ ] add more sections to homepage
+- [ ] add live profiles to homepage
 - [ ] create profile page after database is set up and working
 - [ ] populate static data schemas
 - [ ] allow for manual game additions

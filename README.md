@@ -25,11 +25,10 @@ wasdWithMe uses a number of open source projects to work properly:
 wasdWithMe requires [Node.js](https://nodejs.org/) v4+ to run.
 
 ```sh
-$ git clone [git-repo-url] wasdWithMe
+$ git clone https://github.com/AlanMorel/wasdWithMe wasdWithMe
 $ cd wasdWithMe
 ```
 
-License
-----
+## License
 
-MIT
+wasdWithMe is licensed under the [MIT license](LICENSE).
