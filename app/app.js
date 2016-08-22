@@ -10,6 +10,7 @@ var db           = require('./models/db.js');
 var flash        = require('connect-flash');
 var mongoose     = require('mongoose');
 var hbs          = require('hbs');
+var stylus       = require('express-stylus');
 
 //Pages
 var homepage     = require('./routes/homepage');
@@ -19,21 +20,17 @@ var users        = require('./routes/users');
 
 var app = express();
 
+var publicDirectory = path.join(__dirname, 'public');
+
 //Express
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(publicDirectory, 'favicon.ico')));
+app.use(express.static(publicDirectory));
 app.use(logger('dev'));
 
 //Handlebars
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials');
-hbs.registerHelper('mobile', function() {
-  return "900px"; //maximum size for mobile css
-});
-hbs.registerHelper('desktop', function() {
-  return "901px"; //minimum size for desktop css
-});
+hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
 //BodyParser
 app.use(bodyParser.json());
@@ -46,7 +43,10 @@ app.use(cookieParser());
 
 //Passport
 app.use(session({
-  secret: 'passport_secret'}
+  secret: 'passport_secret',
+  resave: true,
+  saveUninitialized: true
+  }
 ));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -56,6 +56,11 @@ app.use(flash());
 
 //MongoDB
 mongoose.connect('mongodb://localhost/app');
+
+//Stylus
+app.use(stylus({
+  src: path.join(publicDirectory, "stylesheets")
+}));
 
 //Routes
 app.use('/', homepage);

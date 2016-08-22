@@ -15,16 +15,18 @@ You can also:
 
 wasdWithMe uses a number of open source projects to work properly:
 
-* [node.js] - evented I/O for the backend
+* [node.js] - event-driven, non-blocking I/O for the backend
 * [Express] - fast node.js network app framework
 * [MongoDB] - document-oriented database
-* [jQuery] - client-sided form validatation
+* [jQuery] - client-sided form validation
+* [stylus] - Node.js css framework
 
 ## Requirements
 
 - [Node v4+ and npm](http://nodejs.org/)
 - [Express v4+] (https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/): Make sure you have your own local or remote MongoDB database URI configured in `app.js`
+- [stylus] (http://stylus-lang.com/)
 
 ### Installation
 
