@@ -1,4 +1,5 @@
 var express      = require('express');
+var config       = require('./config');
 var path         = require('path');
 var favicon      = require('serve-favicon');
 var logger       = require('morgan');
@@ -6,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var passport     = require('passport');
 var session      = require('express-session');
-var db           = require('./models/db.js');
 var flash        = require('connect-flash');
 var mongoose     = require('mongoose');
 var hbs          = require('hbs');
@@ -31,6 +31,9 @@ app.use(logger('dev'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
+hbs.registerHelper('config',function(variable) {
+  return config[variable];
+});
 
 //BodyParser
 app.use(bodyParser.json());
@@ -43,7 +46,7 @@ app.use(cookieParser());
 
 //Passport
 app.use(session({
-  secret: 'passport_secret',
+  secret: config.passportSecret,
   resave: true,
   saveUninitialized: true
   }
@@ -55,7 +58,7 @@ app.use(passport.session());
 app.use(flash());
 
 //MongoDB
-mongoose.connect('mongodb://localhost/app');
+mongoose.connect(config.mongooseUri);
 
 //Stylus
 app.use(stylus({
