@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
+  console.log("here");
     res.render('signup', {
         title: 'wasdWithMe - Sign up!',
         layout: 'secondary',
@@ -18,6 +19,8 @@ router.post('/', function(req, res){
     var country  = req.body.country;
     var state    = req.body.state;
     var city     = req.body.city;
+
+
 
     console.log("username: " + username
         + " password: "+ password
