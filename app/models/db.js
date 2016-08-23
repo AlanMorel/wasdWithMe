@@ -152,7 +152,7 @@ var blockedSchema = new Schema({
 ******************************************/
 
 //creates model for schema
-var User        = mongoose.model('User',        userSchema);
+// var User        = mongoose.model('User',        userSchema);
 var Country     = mongoose.model('Country',     countrySchema);
 var State       = mongoose.model('State',       stateSchema);
 var City        = mongoose.model('City',        citySchema);
@@ -171,7 +171,7 @@ var Message     = mongoose.model('Message',     messageSchema);
 var Blocked     = mongoose.model('Blocked',     blockedSchema);
 
 //makes schema available for node applications
-module.exports = User;
+// module.exports = User;
 module.exports = Country;
 module.exports = State;
 module.exports = City;

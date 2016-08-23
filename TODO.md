@@ -1,6 +1,10 @@
 # Todo
 - [ ] configure heroku environment
 - [ ] add passport
+- [ ] set size for username/password
+- [ ] sanitize input for username/password
+- [ ] fix plaintext password
+- [ ] fix user schema, merge steam,xbox,psn to an accounts schema
 - [ ] change userSchema to reflect new values of other tables
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure
