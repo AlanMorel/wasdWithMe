@@ -31,9 +31,6 @@ router.post('/', function(req, res) {
     var state    = req.body.state;
     var city     = req.body.city;
 
-<<<<<<< HEAD
-
-
     console.log("username: " + username
         + " password: "+ password
         + " email: " + email
@@ -42,7 +39,7 @@ router.post('/', function(req, res) {
         + " country: " + country
         + " state: " + state
         + " city: " + city);
-=======
+
     var user = new User({
         username : username,
         password : password,
@@ -53,7 +50,6 @@ router.post('/', function(req, res) {
         state : state,
         city : city
     });
->>>>>>> origin/master
 
     User.register(user, password, function(err, user) {
         if (err) {
