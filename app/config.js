@@ -14,7 +14,6 @@ config.jQueryUrl = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.mi
 config.passportSecret = 'passport_secret';
 
 //MongoDB
-config.database = './models/db.js';
 config.mongooseUri = 'mongodb://localhost/app';
 
 module.exports = config;

@@ -5,10 +5,11 @@ var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
-var passport     = require('passport');
 var session      = require('express-session');
 var flash        = require('connect-flash');
 var mongoose     = require('mongoose');
+var passport     = require('passport');
+var Strategy     = require('passport-local').Strategy;
 var hbs          = require('hbs');
 var stylus       = require('express-stylus');
 
@@ -20,11 +21,11 @@ var users        = require('./routes/users');
 
 var app = express();
 
-var publicDirectory = path.join(__dirname, 'public');
+var public = path.join(__dirname, 'public');
 
 //Express
-app.use(favicon(path.join(publicDirectory, 'favicon.ico')));
-app.use(express.static(publicDirectory));
+app.use(favicon(path.join(public, 'favicon.ico')));
+app.use(express.static(public));
 app.use(logger('dev'));
 
 //Handlebars
@@ -47,12 +48,17 @@ app.use(cookieParser());
 //Passport
 app.use(session({
   secret: config.passportSecret,
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false,
   }
 ));
 app.use(passport.initialize());
 app.use(passport.session());
+
+var User = require('./models/user');
+passport.use(new Strategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //Flash
 app.use(flash());
@@ -62,7 +68,7 @@ mongoose.connect(config.mongooseUri);
 
 //Stylus
 app.use(stylus({
-  src: path.join(publicDirectory, "stylesheets")
+  src: path.join(public, "stylesheets")
 }));
 
 //Routes

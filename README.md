@@ -1,6 +1,6 @@
 # wasdWithMe
 
-wasdWithMe is the online destination to meet and play with gamers.
+**wasdWithMe** is the online destination to meet and play with gamers.
 
   - Discover and connect with gamers
   - Set up and gaming sessions
@@ -11,15 +11,15 @@ You can also:
   - Deck out your profile with your achievements
   - Connect your Twitch account to tell your inner circle when you are live
 
-### Requirements
+## Requirements
 
 - [Node.js](http://nodejs.org/) - event-driven, non-blocking I/O for the backend
 - [npm](https://www.npmjs.com/) - node package manager
 - [MongoDB](https://www.mongodb.com/) - document-oriented database
 
-### Dependencies
+## Dependencies
 
-wasdWithMe uses a number of packages to work properly:
+**wasdWithMe** uses a number of packages to work properly:
 
 * [bCrypt](https://www.npmjs.com/package/bcrypt-nodejs) - password hashing function
 * [body-parser](https://www.npmjs.com/package/body-parser) - node.js body parsing middleware
@@ -38,13 +38,13 @@ wasdWithMe uses a number of packages to work properly:
 * [serve-favicon](https://www.npmjs.com/package/serve-favicon) - favicon serving middleware
 * [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
 
-### Other Technologies
+## Other Technologies
 
 * [jQuery](https://jquery.com/) - client-side JavaScript (CDN provided by [Google](https://developers.google.com/speed/libraries/))
 
-### Installation
+## Installation
 
-Clone this repository, then install the node packages
+After you have installed node.js, npm and mongodb, clone this repository, then install the node packages
 
 ```sh
 $ git clone https://github.com/AlanMorel/wasdWithMe wasdWithMe
@@ -60,6 +60,6 @@ $ npm start
 
 View in browser at `http://localhost:3000`
 
-### License
+## License
 
-wasdWithMe is licensed under the [MIT license](LICENSE).
+**wasdWithMe** is licensed under the [MIT license](LICENSE).
