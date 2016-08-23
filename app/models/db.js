@@ -7,6 +7,7 @@ var url = mongoose.SchemaTypes.Url;
 var userSchema = new Schema({
   username:    {type:String,  required:true, unique:true},
   password:    {type:String,  required:true},
+  salt:        {type:String,  required:true},
   email:       {type:String,  required:true, unique:true},
   gender:      {type:Boolean, required:true}, //edit
   birthday:    {type:Date,    required:true},
@@ -151,7 +152,7 @@ var blockedSchema = new Schema({
 ******************************************/
 
 //creates model for schema
-var User        = mongoose.model('User',        userSchema);
+// var User        = mongoose.model('User',        userSchema);
 var Country     = mongoose.model('Country',     countrySchema);
 var State       = mongoose.model('State',       stateSchema);
 var City        = mongoose.model('City',        citySchema);
@@ -170,7 +171,7 @@ var Message     = mongoose.model('Message',     messageSchema);
 var Blocked     = mongoose.model('Blocked',     blockedSchema);
 
 //makes schema available for node applications
-module.exports = User;
+// module.exports = User;
 module.exports = Country;
 module.exports = State;
 module.exports = City;

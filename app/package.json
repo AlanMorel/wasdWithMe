@@ -1,6 +1,11 @@
 {
-  "name": "app",
+  "name": "wasdWithMe",
   "version": "0.0.0",
+  "author": "Alan Morel <alanmorel.com>",
+  "contributors": [
+    "Alan Morel <alan.morel@nyu.edu> (http://alanmorel.com)"
+  ],
+  "description": "wasdWithMe is the online destination to meet and play with gamers.",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -13,6 +18,7 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "express-session": "^1.14.0",
+    "express-stylus": "^0.1.0",
     "hbs": "~3.1.0",
     "mongoose": "^4.5.9",
     "mongoose-type-url": "^1.0.2",
@@ -21,5 +27,10 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlanMorel/wasdWithMe"
+  },
+  "license": "MIT"
 }

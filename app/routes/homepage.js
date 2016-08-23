@@ -5,7 +5,8 @@ router.get('/', function(req, res, next) {
     res.render('homepage', {
         title: 'wasdWithMe - Connect with gamers.',
         layout: 'primary',
-        css: 'homepage'
+        css: 'homepage',
+        user : req.user
     });
 });
 

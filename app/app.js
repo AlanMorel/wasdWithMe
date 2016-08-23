@@ -1,63 +1,90 @@
 var express      = require('express');
+var config       = require('./config');
 var path         = require('path');
 var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
-var passport     = require('passport');
 var session      = require('express-session');
-var db           = require('./models/db.js');
 var flash        = require('connect-flash');
 var mongoose     = require('mongoose');
+var passport     = require('passport');
+var Strategy     = require('passport-local').Strategy;
 var hbs          = require('hbs');
+var stylus       = require('express-stylus');
+
 //Pages
 var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
+var login        = require('./routes/login');
 var users        = require('./routes/users');
 
 var app = express();
 
-//View engine (hbs)
+var public = path.join(__dirname, 'public');
+
+//Express
+app.use(favicon(path.join(public, 'favicon.ico')));
+app.use(express.static(public));
+app.use(logger('dev'));
+
+//Handlebars
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
+hbs.registerHelper('config',function(variable) {
+  return config[variable];
+});
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//BodyParser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+//CookieParser
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 //Passport
 app.use(session({
-  secret: 'ihazasecret1337'}
+  secret: config.passportSecret,
+  resave: false,
+  saveUninitialized: false,
+  }
 ));
 app.use(passport.initialize());
 app.use(passport.session());
+
+var User = require('./models/user');
+passport.use(new Strategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //Flash
 app.use(flash());
 
 //MongoDB
-mongoose.connect('mongodb://localhost/app');
+mongoose.connect(config.mongooseUri);
+
+//Stylus
+app.use(stylus({
+  src: path.join(public, "stylesheets")
+}));
 
 //Routes
 app.use('/', homepage);
 app.use('/signup', signUp);
+app.use('/login', login);
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+//404 error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
+//Development error handler
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -68,8 +95,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+//Production error handler
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
