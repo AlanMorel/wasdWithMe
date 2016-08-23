@@ -12,6 +12,14 @@ router.get('/', function(req, res, next) {
     });
 });
 
+var authenticationOptions = {
+    successRedirect : '/',
+    failureRedirect : '/signup',
+    failureFlash : true
+};
+
+var authentication = passport.authenticate('local', authenticationOptions);
+
 router.post('/', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
@@ -35,15 +43,11 @@ router.post('/', function(req, res) {
 
     User.register(user, password, function(err, user) {
         if (err) {
-           //do something to handle error
+            //handle error
             console.log("registering error occurred");
             return;
         }
-        passport.authenticate('local', {
-            successRedirect : '/',
-            failureRedirect : '/signup',
-            failureFlash : true
-        })(req, res, function () {
+        authentication(req, res, function () {
             console.log("Authenticated successfully");
             res.redirect('/');
         });
