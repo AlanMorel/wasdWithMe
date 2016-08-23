@@ -11,24 +11,36 @@ You can also:
   - Deck out your profile with your achievements
   - Connect your Twitch account to tell your inner circle when you are live
 
+### Requirements
+
+- [Node.js](http://nodejs.org/) - event-driven, non-blocking I/O for the backend
+- [npm](https://www.npmjs.com/) - node package manager
+- [MongoDB](https://www.mongodb.com/) - document-oriented database
+
 ### Dependencies
 
-wasdWithMe uses a number of open-source projects to work properly:
+wasdWithMe uses a number of packages to work properly:
 
-* [Node.js](http://nodejs.org/) - event-driven, non-blocking I/O for the backend
-* [Express](https://expressjs.com/) - fast node.js network app framework
-* [MongoDB](https://www.mongodb.com/) - document-oriented database
-* [jQuery](https://jquery.com/) - client-side JavaScript
-* [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
 * [bCrypt](https://www.npmjs.com/package/bcrypt-nodejs) - password hashing function
+* [body-parser](https://www.npmjs.com/package/body-parser) - node.js body parsing middleware
+* [connect-flash](https://github.com/jaredhanson/connect-flash) - flash message middleware
+* [cookie-parser](https://www.npmjs.com/package/cookie-parser) - cookie parsing with signatures
+* [express-debug](https://www.npmjs.com/package/express-debug) - debug toolbar middleware
+* [Express](https://expressjs.com/) - fast node.js network app framework
+* [express-session](https://www.npmjs.com/package/express-session) - session middleware
 * [Handlebars](http://handlebarsjs.com/) - html view engine
+* [Mongoose](http://mongoosejs.com/) - mongodb object modeling for node.js
+* [mongoose-type-url](https://www.npmjs.com/package/mongoose-type-url) - url field-type for mongoose schemas
+* [morgan](https://www.npmjs.com/package/morgan) - http request logger middleware
 * [Passport](http://passportjs.org/) - node.js authentication
+* [passport-local](https://www.npmjs.com/package/passport-local) - local authentication strategy
+* [passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose) - simplifies building username and password login with Passport
+* [serve-favicon](https://www.npmjs.com/package/serve-favicon) - favicon serving middleware
+* [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
 
-## Requirements
+### Other Technologies
 
-- [Node and npm](http://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/)
+* [jQuery](https://jquery.com/) - client-side JavaScript (CDN provided by [Google](https://developers.google.com/speed/libraries/))
 
 ### Installation
 
@@ -40,7 +52,7 @@ $ cd wasdWithMe
 $ npm install
 ```
 
-Edit `config.js` to your liking
+Edit `config.js` to your liking, then start the app
 
 ```sh
 $ npm start
@@ -48,6 +60,6 @@ $ npm start
 
 View in browser at `http://localhost:3000`
 
-## License
+### License
 
 wasdWithMe is licensed under the [MIT license](LICENSE).
