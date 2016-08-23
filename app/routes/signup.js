@@ -5,6 +5,7 @@ var passport = require('passport');
 var User = require('../models/user');
 
 router.get('/', function(req, res, next) {
+  console.log("here");
     res.render('signup', {
         title: 'wasdWithMe - Sign up!',
         layout: 'secondary',
@@ -30,6 +31,18 @@ router.post('/', function(req, res) {
     var state    = req.body.state;
     var city     = req.body.city;
 
+<<<<<<< HEAD
+
+
+    console.log("username: " + username
+        + " password: "+ password
+        + " email: " + email
+        + " gender: " + gender
+        + " birthday: " + birthday
+        + " country: " + country
+        + " state: " + state
+        + " city: " + city);
+=======
     var user = new User({
         username : username,
         password : password,
@@ -40,6 +53,7 @@ router.post('/', function(req, res) {
         state : state,
         city : city
     });
+>>>>>>> origin/master
 
     User.register(user, password, function(err, user) {
         if (err) {
