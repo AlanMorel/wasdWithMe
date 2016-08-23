@@ -11,17 +11,19 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/', passport.authenticate('local', {
-        successRedirect : '/',
-        failureRedirect : '/login',
-        failureFlash : true
-    }), function(req, res) {
+var authenticationOptions = {
+    successRedirect : '/',
+    failureRedirect : '/login',
+    failureFlash : true
+};
+
+var authentication = passport.authenticate('local', authenticationOptions);
+
+router.post('/', authentication, function(req, res) {
         var username = req.body.username;
         var password = req.body.password;
 
-        console.log("User logged in: "
-            + "username: " + username
-            + " password: "+ password);
+        console.log("User logged in:" + " username: " + username + " password: "+ password);
 
         res.redirect('/');
     }

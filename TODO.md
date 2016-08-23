@@ -1,4 +1,9 @@
-# Todo
+# Alan's Todo
+- [ ] add live profiles to homepage
+- [ ] add link to logged in user's own profile
+- [ ] create profile page after database is set up and working
+
+# Edgar's Todo
 - [ ] configure heroku environment
 - [ ] add passport
 - [ ] set size for username/password
@@ -9,10 +14,13 @@
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure
 - [ ] add passport and authentication to sign up and log in pages
-- [ ] add live profiles to homepage
-- [ ] add link to logged in user's own profile
-- [ ] create profile page after database is set up and working
 - [ ] populate static data schemas
+
+# Anteneh's Todo
+- [ ] client-side form validation
+- [ ] adding html attributes to input tags
+
+# General Todo
 - [ ] allow for manual game additions
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] search for other users

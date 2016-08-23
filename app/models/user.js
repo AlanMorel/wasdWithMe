@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
-var User = new Schema({
+var User = new mongoose.Schema({
     username:    {type:String,  required:true, unique:true},
     password:    {type:String,  required:true},
     salt:        {type:String,  required:true},
@@ -15,6 +14,7 @@ var User = new Schema({
     city:        {type:String,  required:true},
     first_name:  {type:String,  required:false},
     last_name:   {type:String,  required:false},
+    //[profile]: bio, top_games, profile_pic, one_ups, images
     bio:         {type:String,  required:false},
     top_games:   {type:String,  required:false},
     profile_pic: {type:String,  required:false},
