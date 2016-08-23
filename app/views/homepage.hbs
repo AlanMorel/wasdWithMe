@@ -1,11 +1,21 @@
 <div class="header">
     <a href="/">
-        <img src="images/alternativelogo2.png" class="logo">
+        <img src="images/logo.png" class="logo">
     </a>
     <div class="header-text">
-        <div class="header-top">Hello, Guest</div>
+        <div class="header-top">
+            {{#if user}}
+                Hello, {{user.username}}
+            {{else}}
+                Hello, Guest
+            {{/if}}
+        </div>
         <div class="header-bottom">
-            <a href="/login">Log In</a>
+            {{#if user}}
+                <a href="/login">Log Out</a>
+            {{else}}
+                <a href="/login">Log In</a>
+            {{/if}}
         </div>
     </div>
 </div>

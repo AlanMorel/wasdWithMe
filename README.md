@@ -8,7 +8,7 @@
 
 You can also:
   - Import your game library by connecting your Steam, Xbox Live and Playstation Network account
-  - Deck out your profile with your achievements
+  - Deck out your profile with achievements
   - Connect your Twitch account to tell your inner circle when you are live
 
 ## Requirements
@@ -44,10 +44,15 @@ You can also:
 
 ## Installation
 
-After you have installed node.js, npm and mongodb, clone this repository, then install the node packages
+Install node.js, npm, and mongodb, then clone this repository
 
 ```sh
 $ git clone https://github.com/AlanMorel/wasdWithMe wasdWithMe
+```
+
+Install the node packages
+
+```sh
 $ cd wasdWithMe
 $ npm install
 ```
