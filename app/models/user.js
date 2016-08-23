@@ -2,17 +2,17 @@ var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
 
 var User = new mongoose.Schema({
-    username:    {type:String,  required:true, unique:true}, //1 to 32 min max
+    username:    {type:String,  required:true, unique:true}, //3 min 32 max
     password:    {type:String,  required:true}, //8 to 32 min max
     salt:        {type:String,  required:true},
-    email:       {type:String,  required:true, unique:true}, //min 3 to 64 max
+    email:       {type:String,  required:true, unique:true}, //3 min 64 max
     gender:      {type:Number, required:true},
     birthday:    {type:Date,    required:true},
     //location: country, state, city
     country:     {type:String,  required:true},
     state:       {type:String,  required:true},
     city:        {type:String,  required:true},
-    first_name:  {type:String,  required:false},//max 32
+    first_name:  {type:String,  required:false}, //max 32
     last_name:   {type:String,  required:false}, //max 32
     //[profile]: bio, top_games, profile_pic, one_ups, images
     bio:         {type:String,  required:false}, //max 500
@@ -20,7 +20,6 @@ var User = new mongoose.Schema({
     profile_pic: {type:String,  required:false},
     one_ups:     {type:Number,  default:0},
     //[images]:  {type:String,  required:false},
-    //account steam, xbox, playstation, twitch etc
     steam:       {type:String,  required:false},
     xbox:        {type:String,  required:false},
     playstation: {type:String,  required:false},
