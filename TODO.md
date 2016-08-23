@@ -10,6 +10,7 @@
 - [ ] sanitize input for username/password
 - [ ] fix plaintext password
 - [ ] fix user schema, merge steam,xbox,psn to an accounts schema
+- [ ] add url slugs for mongoose 
 - [ ] change userSchema to reflect new values of other tables
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure
