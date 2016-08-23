@@ -9,6 +9,7 @@ var User = new Schema({
     email:       {type:String,  required:true, unique:true},
     gender:      {type:Boolean, required:true},
     birthday:    {type:Date,    required:true},
+    //location: country, state, city
     country:     {type:String,  required:true},
     state:       {type:String,  required:true},
     city:        {type:String,  required:true},
@@ -19,6 +20,7 @@ var User = new Schema({
     profile_pic: {type:String,  required:false},
     one_ups:     {type:Number,  default:0},
     //[images]:  {type:String,  required:false},
+    //account steam, xbox, playstation, twitch etc
     steam:       {type:String,  required:false},
     xbox:        {type:String,  required:false},
     playstation: {type:String,  required:false},
