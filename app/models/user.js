@@ -20,7 +20,7 @@ var oneUps = [{
 var comments = [{
   commenter:    {type:String, required:true}, //username of commenter
   content:      {type: String, required:true},
-  timestamp:    {type:Date, default:Date.now},
+  created:      {type:Date, default:Date.now},
   one_ups:      {type: oneUps},
   deleted:      {type: Boolean}
 }];
