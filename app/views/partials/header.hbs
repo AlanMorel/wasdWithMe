@@ -21,3 +21,6 @@
 
 <script src="{{config "jQueryUrl"}}"></script>
 
+{{#each (config "fonts")}}
+<link href="https://fonts.googleapis.com/css?family={{this}}" rel="stylesheet">
+{{/each}}

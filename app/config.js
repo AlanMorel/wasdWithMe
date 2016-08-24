@@ -10,6 +10,9 @@ config.keywords = "wasdWithMe, gaming";
 //jQuery
 config.jQueryUrl = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js";
 
+//Google Fonts
+config.fonts = ['Open+Sans:300,400', 'Source+Sans+Pro:300,400', 'Roboto:300,400', 'Raleway:300,400,500'];
+
 //Passport
 config.passportSecret = 'passport_secret';
 

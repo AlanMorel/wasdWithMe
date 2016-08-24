@@ -3,10 +3,33 @@
   <head>
     <title>{{title}}</title>
       {{>header}}
+
       <link rel="stylesheet" href="/stylesheets/{{file}}.css" />
+
       <script src="/javascript/{{file}}.js"></script>
   </head>
   <body>
+  <div class="header">
+      <a href="/">
+          <img src="/images/logo.png" class="logo">
+      </a>
+      <div class="header-text">
+          <div class="header-top">
+              {{#if user}}
+                  Hello, {{user.username}}
+              {{else}}
+                  Hello, Guest
+              {{/if}}
+          </div>
+          <div class="header-bottom">
+              {{#if user}}
+                  <a href="/logout">Log Out</a>
+              {{else}}
+                  <a href="/login">Log In</a>
+              {{/if}}
+          </div>
+      </div>
+  </div>
     {{{body}}}
   </body>
 </html>
