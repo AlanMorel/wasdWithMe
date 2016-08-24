@@ -16,7 +16,7 @@ var User = new mongoose.Schema({
     last_name:   {type:String,  required:false}, //max 32
     //[profile]: bio, top_games, profile_pic, one_ups, images
     bio:         {type:String,  required:false}, //max 500
-    top_games:   {type:String,  required:false},//max 5 array of ids 
+    top_games:   {type:String,  required:false},//max 5 array of ids
     profile_pic: {type:String,  required:false},
     one_ups:     {type:Number,  default:0},
     //[images]:  {type:String,  required:false},
