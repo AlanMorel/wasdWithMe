@@ -12,17 +12,25 @@ var url = mongoose.SchemaTypes.Url;
 // };
 
 var oneUps = [{
-  // oneUpper_id: {type:mongoose.Types.ObjectId()},
-  oneUpper: {type:String,required:true}, //username of oneUpper opposed to object id
-  created: {type:Date, default:Date.now}
+    // oneUpper_id: {type:mongoose.Types.ObjectId()},
+    oneUpper: {type:String,required:true}, //username of oneUpper opposed to object id
+    created: {type:Date, default:Date.now}
 }];
 
 var comments = [{
+<<<<<<< HEAD
   commenter:    {type:String, required:true}, //username of commenter
   content:      {type: String, required:true},
   created:      {type:Date, default:Date.now},
   one_ups:      {type: oneUps},
   deleted:      {type: Boolean}
+=======
+    commenter:    {type:String, required:true}, //username of commenter
+    content:      {type: String, required:true},
+    timestamp:    {type:Date, default:Date.now},
+    one_ups:      {type: oneUps},
+    deleted:      {type: Boolean}
+>>>>>>> 612a852cc622c6e2cdba96a015a18666a3e0e29a
 }];
 
 var User = new mongoose.Schema({
@@ -81,38 +89,38 @@ var User = new mongoose.Schema({
         type: oneUps,
     },
     bio: {
-          type: String,
-          maxlength: config.bioMaxLength
-      },
+        type: String,
+        maxlength: config.bioMaxLength
+    },
     images: [{
-          //url of image
-          url:{
+        //url of image
+        url:{
             type:       url,
             required:   true
-          },
-          //one_ups on image
-          one_ups:{
+        },
+        //one_ups on image
+        one_ups:{
             type:       oneUps
-          },
-          //comments on image
-          imageComments:{
+        },
+        //comments on image
+        imageComments:{
             comment:    {type: comments},
             one_ups:    {type: oneUps}
-          }
-      }],
+        }
+    }],
 
     accounts:{
         steam: {
-          type: String
+            type: String
         },
         xbox: {
-          type: String
+            type: String
         },
         playstation: {
-          type: String
+            type: String
         },
         twitch: {
-          type: String
+            type: String
         },
     },
 
@@ -136,12 +144,21 @@ function arrayLimit(val) {
 }
 //options for passport-local
 var passportOptions = {
+<<<<<<< HEAD
   interval:           200,
   usernameUnique:     true,
   limitAttempts:      true,
   maxAttempts:        16,
   lastLoginField:     'last_login',
   usernameLowerCase:  true
+=======
+    interval:         200,
+    usernameUnique:   true,
+    limitAttempts:    true,
+    maxAttempts:      16,
+    lastLoginField:   'last_login',
+    usernameLowerCase:true
+>>>>>>> 612a852cc622c6e2cdba96a015a18666a3e0e29a
 };
 
 User.plugin(passportPlugin,passportOptions);

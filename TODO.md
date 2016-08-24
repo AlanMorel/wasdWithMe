@@ -25,8 +25,6 @@
 
 # General Todo
 - [ ] allow for manual game additions
-- [ ] clean up package.json (remove bcrypt)
-- [ ] create conversion for birthdate
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] search for other users
 - [ ] add messaging other users
