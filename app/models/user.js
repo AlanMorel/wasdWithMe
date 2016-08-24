@@ -1,30 +1,39 @@
 var mongoose = require('mongoose');
 var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
-var typeUrl  = require('mongoose-type-url');
-var Schema = mongoose.Schema;
 var url = mongoose.SchemaTypes.Url;
-// var URLSlugs=require('mongoose-url-slugs');
-
-// var oneUp = {
-//   oneUpper_id: {type:mongoose.ObjectId},
-//   created: {type:Date, default:Date.now}
-// };
 
 var oneUps = [{
-    // oneUpper_id: {type:mongoose.Types.ObjectId()},
-    oneUpper: {type:String,required:true}, //username of oneUpper opposed to object id
-    created: {type:Date, default:Date.now}
+    oneUpper: {
+        type: String,
+        required: true
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    }
 }];
 
 var comments = [{
-
-    commenter:    {type:String, required:true}, //username of commenter
-    content:      {type: String, required:true},
-    timestamp:    {type:Date, default:Date.now},
-    one_ups:      {type: oneUps},
-    deleted:      {type: Boolean}
-
+    author: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    one_ups: {
+        type: oneUps
+    },
+    deleted: {
+        type: Boolean,
+        default: 0
+    }
 }];
 
 var User = new mongoose.Schema({
@@ -87,23 +96,18 @@ var User = new mongoose.Schema({
         maxlength: config.bioMaxLength
     },
     images: [{
-        //url of image
-        url:{
-            type:       url,
-            required:   true
+        url: {
+            type: url,
+            required: true
         },
-        //one_ups on image
-        one_ups:{
-            type:       oneUps
+        one_ups: {
+            type: oneUps
         },
-        //comments on image
-        imageComments:{
-            comment:    {type: comments},
-            one_ups:    {type: oneUps}
-        }
+        comments: {
+            type: comments
+        },
     }],
-
-    accounts:{
+    accounts: {
         steam: {
             type: String
         },
@@ -117,7 +121,6 @@ var User = new mongoose.Schema({
             type: String
         },
     },
-
     coins: {
         type: Number,
         default: 0
@@ -130,7 +133,6 @@ var User = new mongoose.Schema({
         type: Boolean,
         default: 0
     }
-
 });
 
 function arrayLimit(val) {
@@ -138,15 +140,14 @@ function arrayLimit(val) {
 }
 //options for passport-local
 var passportOptions = {
-    interval:         200,
-    usernameUnique:   true,
-    limitAttempts:    true,
-    maxAttempts:      16,
-    lastLoginField:   'last_login',
-    usernameLowerCase:true
+    interval: 1000,
+    usernameUnique: true,
+    limitAttempts: true,
+    maxAttempts: 16,
+    lastLoginField: 'last_login',
+    usernameLowerCase: true
 };
 
-User.plugin(passportPlugin,passportOptions);
-// User.plugin(URLSlugs('username',{field: 'slug'}));
+User.plugin(passportPlugin, passportOptions);
 
 module.exports = mongoose.model('User', User);
