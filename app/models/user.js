@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
-var URLSlugs=require('mongoose-url-slugs');
+// var URLSlugs=require('mongoose-url-slugs');
 
 // var oneUp = {
 //   oneUpper_id: {type:ObjectID},
@@ -105,6 +105,6 @@ function arrayLimit(val) {
 }
 
 User.plugin(passportPlugin);
-User.plugin(URLSlugs('username',{field: 'slug'}));
+// User.plugin(URLSlugs('username',{field: 'slug'}));
 
 module.exports = mongoose.model('User', User);
