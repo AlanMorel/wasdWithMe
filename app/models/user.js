@@ -1,6 +1,12 @@
 var mongoose = require('mongoose');
-var plugin = require('passport-local-mongoose');
+var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
+var URLSlugs=require('mongoose-url-slugs');
+
+// var oneUp = {
+//   oneUpper_id: {type:ObjectID},
+//   created: {type:Dat, default:Date.now}
+// }
 
 var User = new mongoose.Schema({
     username: {
@@ -10,12 +16,6 @@ var User = new mongoose.Schema({
         maxlength: config.usernameMaxLength,
         unique: true
     },
-    // password: {
-    //     type: String,
-    //     required: true,
-    //     minlength: config.passwordMinLength,
-    //     maxlength: config.passwordMaxLength
-    // },
     email: {
         type: String,
         required: true,
@@ -89,7 +89,7 @@ var User = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    timestamp: {
+    created_at: {
         type: Date,
         default: Date.now
     },
@@ -104,6 +104,7 @@ function arrayLimit(val) {
     return val.length <= config.topGamesLength;
 }
 
-User.plugin(plugin);
+User.plugin(passportPlugin);
+User.plugin(URLSlugs('username',{field: 'slug'}));
 
 module.exports = mongoose.model('User', User);

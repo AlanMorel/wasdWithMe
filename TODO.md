@@ -5,7 +5,12 @@
 - [ ] basic mobile css support
 
 # Edgar's Todo
-- [ ] fix passport
+- [X] fix passport
+- [ ] images merge to user.js table, and nested schema, array of nested comments in addition to this
+- [ ] array one up comments 
+- [ ] fix age problem
+- [ ] case insensitive users since /users/SharpAceX will not work.
+- [ ] force user names to only contain alphanumeric, numbers, and underscore
 - [ ] sanitize input for form data
 - [ ] fix plaintext password issue
 - [ ] fix user schema, merge steam, xbox, psn to an accounts schema
@@ -21,6 +26,7 @@
 
 # General Todo
 - [ ] allow for manual game additions
+- [ ] create conversion for birthdate
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] search for other users
 - [ ] add messaging other users
