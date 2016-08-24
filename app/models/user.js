@@ -3,7 +3,6 @@ var plugin = require('passport-local-mongoose');
 var config = require('../config');
 
 var User = new mongoose.Schema({
-
     username: {
         type: String,
         required: true,
@@ -39,15 +38,15 @@ var User = new mongoose.Schema({
     location: {
         country: {
             type: String,
-            required: true
+            required: false
         },
         state: {
             type: String,
-            required: true
+            required: false
         },
         city: {
             type: String,
-            required: true
+            required: false
         },
     },
     first_name: {
