@@ -3,7 +3,6 @@
 - [ ] add link to logged in user's own profile once logged in
 - [ ] create profile page after database is set up and working
 - [ ] basic mobile css support
-- [ ] log out page
 - [ ] give each page their own js file
 
 # Edgar's Todo

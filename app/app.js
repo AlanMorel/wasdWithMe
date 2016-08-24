@@ -17,6 +17,7 @@ var stylus       = require('express-stylus');
 var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
+var logout       = require('./routes/logout');
 var users        = require('./routes/users');
 
 var app = express();
@@ -63,6 +64,13 @@ passport.deserializeUser(User.deserializeUser());
 //Flash
 app.use(flash());
 
+//Routes
+app.use('/', homepage);
+app.use('/signup', signUp);
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/users', users);
+
 //MongoDB
 mongoose.connect(config.mongooseUri);
 
@@ -70,12 +78,6 @@ mongoose.connect(config.mongooseUri);
 app.use(stylus({
   src: path.join(public, "stylesheets")
 }));
-
-//Routes
-app.use('/', homepage);
-app.use('/signup', signUp);
-app.use('/login', login);
-app.use('/users', users);
 
 //404 error handler
 app.use(function(req, res, next) {
