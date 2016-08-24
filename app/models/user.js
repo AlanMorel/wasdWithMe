@@ -48,7 +48,6 @@ var User = new mongoose.Schema({
             type: String,
             required: true
         },
-        required: true
     },
     first_name: {
         type: String,

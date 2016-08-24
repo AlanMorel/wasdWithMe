@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     res.render('login', {
         title: 'wasdWithMe - Log in!',
         layout: 'secondary',
-        css: 'login'
+        file: 'login'
     });
 });
 
