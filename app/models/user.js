@@ -136,12 +136,12 @@ function arrayLimit(val) {
 }
 //options for passport-local
 var passportOptions = {
-  interval:         200,
-  usernameUnique:   true,
-  limitAttempts:    true,
-  maxAttempts:      16,
-  lastLoginField:   'last_login',
-  usernameLowerCase:true
+  interval:           200,
+  usernameUnique:     true,
+  limitAttempts:      true,
+  maxAttempts:        16,
+  lastLoginField:     'last_login',
+  usernameLowerCase:  true
 };
 
 User.plugin(passportPlugin,passportOptions);

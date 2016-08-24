@@ -4,31 +4,6 @@ var typeUrl  = require('mongoose-type-url');
 var Schema = mongoose.Schema;
 var url = mongoose.SchemaTypes.Url;
 
-var userSchema = new Schema({
-  username:    {type:String,  required:true, unique:true},
-  password:    {type:String,  required:true},
-  salt:        {type:String,  required:true},
-  email:       {type:String,  required:true, unique:true},
-  gender:      {type:Boolean, required:true}, //edit
-  birthday:    {type:Date,    required:true},
-  country:     {type:String,  required:true}, //edit
-  state:       {type:String,  required:true}, //edit
-  city:        {type:String,  required:true}, //edit
-  first_name:  {type:String,  required:false},
-  last_name:   {type:String,  required:false},
-  bio:         {type:String,  required:false},
-  top_games:   {type:String,  required:false}, //edit
-  profile_pic: {type:String,  required:false}, //edit
-  one_ups:     {type:Number,  default:0}, //edit
-  //[images]:  {type:String,  required:false},
-  steam:       {type:String,  required:false}, //edit
-  xbox:        {type:String,  required:false}, //edit
-  playstation: {type:String,  required:false}, //edit
-  twitch:      {type:String,  required:false}, //edit
-  coins:       {type:Number,  default:0},
-  timestamp:   {type:Date,    default:Date.now},
-  deleted:     {type:Boolean, default:0}
-});
 
 /*****************************************
 *       Location schemas below
@@ -152,7 +127,6 @@ var blockedSchema = new Schema({
 ******************************************/
 
 //creates model for schema
-// var User        = mongoose.model('User',        userSchema);
 var Country     = mongoose.model('Country',     countrySchema);
 var State       = mongoose.model('State',       stateSchema);
 var City        = mongoose.model('City',        citySchema);
@@ -171,7 +145,7 @@ var Message     = mongoose.model('Message',     messageSchema);
 var Blocked     = mongoose.model('Blocked',     blockedSchema);
 
 //makes schema available for node applications
-// module.exports = User;
+
 module.exports = Country;
 module.exports = State;
 module.exports = City;
