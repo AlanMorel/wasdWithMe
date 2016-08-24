@@ -18,6 +18,7 @@ var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
 var logout       = require('./routes/logout');
+var user         = require('./routes/user');
 var users        = require('./routes/users');
 
 var app = express();
@@ -69,6 +70,7 @@ app.use('/', homepage);
 app.use('/signup', signUp);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/user', user);
 app.use('/users', users);
 
 //MongoDB

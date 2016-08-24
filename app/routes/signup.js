@@ -46,14 +46,17 @@ router.post('/', function(req, res) {
         email : email,
         gender : gender,
         birthday : birthday,
-        country : country,
-        state : state,
-        city : city
+        location: {
+            country : country,
+            state : state,
+            city : city
+        },
     });
 
     User.register(user, password, function(err, user) {
         if (err) {
             //handle error
+            console.log(err);
             console.log("registering error occurred");
             return;
         }

@@ -18,7 +18,7 @@ var User = new mongoose.Schema({
     },
     salt: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,

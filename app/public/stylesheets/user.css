@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,300,700");
+html,
+body {
+  height: 100%;
+  font: 16px 'Open Sans', Helvetica, Arial, sans-serif;
+}
+body {
+  margin: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+html {
+  color: #fff;
+}
+.header {
+  height: 5vw;
+  background-color: #6441a5;
+  padding: 1vw;
+  padding-right: 2vw;
+}
+.logo {
+  height: 100%;
+}
+.button {
+  font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 1px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  color: #000;
+  background: #fff;
+  border-radius: 4px;
+  font-weight: lighter;
+  padding: 2% 6%;
+  text-decoration: none;
+  font-size: 1.5vw;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+.button:hover {
+  background: #282828;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #111;
+}
+.header-text {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  text-align: right;
+  font-size: 1vw;
+}
+.header-top {
+  font-family: 'Roboto', sans-serif;
+  margin: auto;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding-bottom: 1vw;
+  padding-top: 0.5vw;
+}
+.message {
+  color: #000;
+  padding-top: 40px;
+  text-align: center;
+}
