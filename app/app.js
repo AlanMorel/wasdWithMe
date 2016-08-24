@@ -12,6 +12,7 @@ var passport     = require('passport');
 var Strategy     = require('passport-local').Strategy;
 var hbs          = require('hbs');
 var stylus       = require('express-stylus');
+var User         = require('./models/user');
 
 //Pages
 var homepage     = require('./routes/homepage');
@@ -57,7 +58,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-var User = require('./models/user');
 passport.use(new Strategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -83,9 +83,13 @@ app.use(stylus({
 
 //404 error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  res.status(404);
+  res.render('404', {
+    title: 'wasdWithMe - Page cannot be found!',
+    layout: 'primary',
+    file: '404',
+    user : req.user
+  });
 });
 
 //Development error handler
