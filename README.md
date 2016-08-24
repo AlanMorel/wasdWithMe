@@ -40,6 +40,7 @@ You can also:
 ## Other Technologies
 
 * [jQuery](https://jquery.com/) - client-side JavaScript (CDN provided by [Google](https://developers.google.com/speed/libraries/))
+* [Google Fonts](https://fonts.google.com/) - source of all our fonts
 
 ## Installation
 
