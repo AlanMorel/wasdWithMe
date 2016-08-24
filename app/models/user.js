@@ -4,7 +4,7 @@ var config = require('../config');
 var typeUrl  = require('mongoose-type-url');
 var Schema = mongoose.Schema;
 var url = mongoose.SchemaTypes.Url;
-// var URLSlugs=require('mongoose-url-slugs');
+var URLSlugs=require('mongoose-url-slugs');
 
 // var oneUp = {
 //   oneUpper_id: {type:mongoose.ObjectId},
@@ -18,8 +18,16 @@ var oneUps = [{
 }];
 
 var User = new mongoose.Schema({
+    display_name: {
+        type: String,
+        required: true,
+        minlength: config.usernameMinLength,
+        maxlength: config.usernameMaxLength,
+        unique: true
+    },
     username: {
         type: String,
+        lowercase: true,
         required: true,
         minlength: config.usernameMinLength,
         maxlength: config.usernameMaxLength,
@@ -33,7 +41,7 @@ var User = new mongoose.Schema({
         unique: true
     },
     gender: {
-        type: Number,
+        type: Number, //0 = male, 1= female, 2 = other
         required: true
     },
     birthday: {
@@ -67,7 +75,8 @@ var User = new mongoose.Schema({
         validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
     }],
     profile_pic: {
-        type: String
+        type: url,
+        required: false
     },
     one_ups: {
         type: oneUps,
@@ -131,6 +140,6 @@ var passportOptions = {
 };
 
 User.plugin(passportPlugin,passportOptions);
-// User.plugin(URLSlugs('username',{field: 'slug'}));
+User.plugin(URLSlugs('username',{field: 'slug'}));
 
 module.exports = mongoose.model('User', User);
