@@ -3,12 +3,12 @@
 **wasdWithMe** is the online destination to meet and play with gamers.
 
   - Discover and connect with gamers
-  - Set up and gaming sessions
+  - Set up gaming sessions
   - Browse other gamers' libraries
 
 You can also:
   - Import your game library by connecting your Steam, Xbox Live and Playstation Network account
-  - Deck out your profile with achievements
+  - Deck out your profile with your games, achievements and game clips
   - Connect your Twitch account to tell your inner circle when you are live
 
 ## Requirements
@@ -19,7 +19,7 @@ You can also:
 
 ## Dependencies
 
-**wasdWithMe** uses a number of packages to work properly:
+**wasdWithMe** uses a number of dependencies to work properly:
 
 * [bCrypt](https://www.npmjs.com/package/bcrypt-nodejs) - password hashing function
 * [body-parser](https://www.npmjs.com/package/body-parser) - node.js body parsing middleware
@@ -50,7 +50,7 @@ Install node.js, npm, and mongodb, then clone this repository
 $ git clone https://github.com/AlanMorel/wasdWithMe wasdWithMe
 ```
 
-Install the node packages
+Install the node dependencies
 
 ```sh
 $ cd wasdWithMe

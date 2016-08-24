@@ -1,25 +1,24 @@
 # Alan's Todo
 - [ ] add live profiles to homepage
-- [ ] add link to logged in user's own profile
+- [ ] add link to logged in user's own profile once logged in
 - [ ] create profile page after database is set up and working
+- [ ] basic mobile css support
+- [ ] give each page their own js file
 
 # Edgar's Todo
-- [ ] configure heroku environment
-- [ ] add passport
-- [ ] set size for username/password
-- [ ] sanitize input for username/password
-- [ ] fix plaintext password
-- [ ] fix user schema, merge steam,xbox,psn to an accounts schema
-- [ ] add url slugs for mongoose 
-- [ ] change userSchema to reflect new values of other tables
+- [ ] fix passport
+- [ ] sanitize input for form data
+- [ ] fix plaintext password issue
+- [ ] fix user schema, merge steam, xbox, psn to an accounts schema
+- [ ] add url slugs for mongoose
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure
-- [ ] add passport and authentication to sign up and log in pages
-- [ ] populate static data schemas
+- [ ] configure heroku environment
 
 # Anteneh's Todo
-- [ ] client-side form validation
+- [ ] client-side form validation to register and sign in pages
 - [ ] adding html attributes to input tags
+- [ ] populate static data schemas
 
 # General Todo
 - [ ] allow for manual game additions

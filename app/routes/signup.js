@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     res.render('signup', {
         title: 'wasdWithMe - Sign up!',
         layout: 'secondary',
-        css: 'signup'
+        file: 'signup'
     });
 });
 
