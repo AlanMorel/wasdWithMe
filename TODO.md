@@ -8,12 +8,10 @@
 
 # Edgar's Todo
 - [X] fix passport
-- [ ] set passport-local-mongoose options parameters (attempts:16, time really high,lastLogin, delete username )
-- [ ] images merge to user.js table, and nested schema, array of nested comments in addition to this
-- [ ] array one up comments
+- [X] set passport-local-mongoose options parameters (attempts:16, time really high,lastLogin, delete username )
+- [X] images merge to user.js table, and nested schema, array of nested comments in addition to this
+- [X] array one up comments
 - [X] fix age problem
-- [ ] force user names to only contain alphanumeric, numbers, and underscore
-- [ ] sanitize input for form data
 - [X] fix plaintext password issue
 - [X] add url slugs for mongoose, games
 - [ ] add credentials file for passport secret key
@@ -33,3 +31,5 @@
 - [ ] search for other users
 - [ ] add messaging other users
 - [ ] add blocking other users
+- [ ] force user names to only contain alphanumeric, numbers, and underscore
+- [ ] sanitize input for form data
