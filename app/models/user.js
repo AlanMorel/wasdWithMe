@@ -10,16 +10,12 @@ var User = new mongoose.Schema({
         maxlength: config.usernameMaxLength,
         unique: true
     },
-    password: {
-        type: String,
-        required: true,
-        minlength: config.passwordMinLength,
-        maxlength: config.passwordMaxLength
-    },
-    salt: {
-        type: String,
-        required: false
-    },
+    // password: {
+    //     type: String,
+    //     required: true,
+    //     minlength: config.passwordMinLength,
+    //     maxlength: config.passwordMaxLength
+    // },
     email: {
         type: String,
         required: true,
