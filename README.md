@@ -21,7 +21,6 @@ You can also:
 
 **wasdWithMe** uses a number of dependencies to work properly:
 
-* [bCrypt](https://www.npmjs.com/package/bcrypt-nodejs) - password hashing function
 * [body-parser](https://www.npmjs.com/package/body-parser) - node.js body parsing middleware
 * [connect-flash](https://github.com/jaredhanson/connect-flash) - flash message middleware
 * [cookie-parser](https://www.npmjs.com/package/cookie-parser) - cookie parsing with signatures

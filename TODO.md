@@ -26,7 +26,6 @@
 
 # General Todo
 - [ ] allow for manual game additions
-- [ ] create conversion for birthdate
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] search for other users
 - [ ] add messaging other users
