@@ -3,18 +3,19 @@
 - [ ] add link to logged in user's own profile once logged in
 - [ ] create profile page after database is set up and working
 - [ ] basic mobile css support
+- [ ] case insensitive users since /users/SharpAceX will not work.
+- [ ] create 404 error page.
 
 # Edgar's Todo
 - [X] fix passport
+- [ ] set passport-local-mongoose options parameters (attempts:16, time really high,lastLogin, delete username )
 - [ ] images merge to user.js table, and nested schema, array of nested comments in addition to this
-- [ ] array one up comments 
-- [ ] fix age problem
-- [ ] case insensitive users since /users/SharpAceX will not work.
+- [ ] array one up comments
+- [X] fix age problem
 - [ ] force user names to only contain alphanumeric, numbers, and underscore
 - [ ] sanitize input for form data
-- [ ] fix plaintext password issue
-- [ ] fix user schema, merge steam, xbox, psn to an accounts schema
-- [ ] add url slugs for mongoose
+- [X] fix plaintext password issue
+- [X] add url slugs for mongoose, games
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure
 - [ ] configure heroku environment
