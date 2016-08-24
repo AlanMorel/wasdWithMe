@@ -4,10 +4,11 @@
 - [ ] create profile page after database is set up and working
 - [ ] basic mobile css support
 - [ ] case insensitive users since /users/SharpAceX will not work.
-- [ ] create 404 error page. 
+- [ ] create 404 error page.
 
 # Edgar's Todo
 - [X] fix passport
+- [ ] set passport-local-mongoose options parameters (attempts:16, time really high,lastLogin, delete username )
 - [ ] images merge to user.js table, and nested schema, array of nested comments in addition to this
 - [ ] array one up comments
 - [X] fix age problem

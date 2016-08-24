@@ -1,12 +1,21 @@
 var mongoose = require('mongoose');
 var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
+var typeUrl  = require('mongoose-type-url');
+var Schema = mongoose.Schema;
+var url = mongoose.SchemaTypes.Url;
 // var URLSlugs=require('mongoose-url-slugs');
 
 // var oneUp = {
-//   oneUpper_id: {type:ObjectID},
-//   created: {type:Dat, default:Date.now}
-// }
+//   oneUpper_id: {type:mongoose.ObjectId},
+//   created: {type:Date, default:Date.now}
+// };
+
+var oneUps = [{
+  //oneUpper_id: {type:mongoose.ObjectI},
+  oneUpper: {type:String,required:true}, //username of oneUpper opposed to object id
+  created: {type:Date, default:Date.now}
+}];
 
 var User = new mongoose.Schema({
     username: {
@@ -53,38 +62,47 @@ var User = new mongoose.Schema({
         type: String,
         maxlength: config.nameMaxLength
     },
+    top_games: [{
+        type: String,
+        validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
+    }],
+    profile_pic: {
+        type: String
+    },
+    one_ups: {
+        type: oneUps,
+    },
     profile: {
         bio: {
             type: String,
             maxlength: config.bioMaxLength
         },
-        top_games: [{
-            type: String,
-            validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
-        }],
-        profile_pic: {
-            type: String
-        },
-        one_ups: {
-            type: Number,
-            default: 0
-        },
         images: [{
-            type: String
+            url:{
+              type:url,
+              required:true
+            },
+            one_ups:{
+              type: oneUps
+            }
         }],
     },
-    steam: {
-        type: String
+
+    accounts:{
+        steam: {
+          type: String
+        },
+        xbox: {
+          type: String
+        },
+        playstation: {
+          type: String
+        },
+        twitch: {
+          type: String
+        },
     },
-    xbox: {
-        type: String
-    },
-    playstation: {
-        type: String
-    },
-    twitch: {
-        type: String
-    },
+
     coins: {
         type: Number,
         default: 0
@@ -103,8 +121,16 @@ var User = new mongoose.Schema({
 function arrayLimit(val) {
     return val.length <= config.topGamesLength;
 }
+//options for passport-local
+var passportOptions = {
+  interval:         200,
+  usernameUnique:   true,
+  limitAttempts:    true,
+  maxAttempts:      16,
+  lastLoginField: 'last_login'
+};
 
-User.plugin(passportPlugin);
+User.plugin(passportPlugin,passportOptions);
 // User.plugin(URLSlugs('username',{field: 'slug'}));
 
 module.exports = mongoose.model('User', User);
