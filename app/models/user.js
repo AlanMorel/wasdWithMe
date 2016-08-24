@@ -1,15 +1,32 @@
 var mongoose = require('mongoose');
 var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
-var URLSlugs=require('mongoose-url-slugs');
+var typeUrl  = require('mongoose-type-url');
+var Schema = mongoose.Schema;
+var url = mongoose.SchemaTypes.Url;
+// var URLSlugs=require('mongoose-url-slugs');
 
 // var oneUp = {
-//   oneUpper_id: {type:ObjectID},
-//   created: {type:Dat, default:Date.now}
-// }
+//   oneUpper_id: {type:mongoose.ObjectId},
+//   created: {type:Date, default:Date.now}
+// };
+
+var oneUps = [{
+    // oneUpper_id: {type:mongoose.Types.ObjectId()},
+    oneUpper: {type:String,required:true}, //username of oneUpper opposed to object id
+    created: {type:Date, default:Date.now}
+}];
+
+var comments = [{
+    commenter:    {type:String, required:true}, //username of commenter
+    content:      {type: String, required:true},
+    timestamp:    {type:Date, default:Date.now},
+    one_ups:      {type: oneUps},
+    deleted:      {type: Boolean}
+}];
 
 var User = new mongoose.Schema({
-    username: {
+    display_name: {
         type: String,
         required: true,
         minlength: config.usernameMinLength,
@@ -24,7 +41,7 @@ var User = new mongoose.Schema({
         unique: true
     },
     gender: {
-        type: Number,
+        type: Number, //0 = male, 1= female, 2 = other
         required: true
     },
     birthday: {
@@ -34,15 +51,15 @@ var User = new mongoose.Schema({
     location: {
         country: {
             type: String,
-            required: false
+            required: true
         },
         state: {
             type: String,
-            required: false
+            required: true
         },
         city: {
             type: String,
-            required: false
+            required: true
         },
     },
     first_name: {
@@ -53,38 +70,52 @@ var User = new mongoose.Schema({
         type: String,
         maxlength: config.nameMaxLength
     },
-    profile: {
-        bio: {
-            type: String,
-            maxlength: config.bioMaxLength
+    top_games: [{
+        type: String,
+        validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
+    }],
+    profile_pic: {
+        type: url
+    },
+    one_ups: {
+        type: oneUps,
+    },
+    bio: {
+        type: String,
+        maxlength: config.bioMaxLength
+    },
+    images: [{
+        //url of image
+        url:{
+            type:       url,
+            required:   true
         },
-        top_games: [{
-            type: String,
-            validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
-        }],
-        profile_pic: {
+        //one_ups on image
+        one_ups:{
+            type:       oneUps
+        },
+        //comments on image
+        imageComments:{
+            comment:    {type: comments},
+            one_ups:    {type: oneUps}
+        }
+    }],
+
+    accounts:{
+        steam: {
             type: String
         },
-        one_ups: {
-            type: Number,
-            default: 0
-        },
-        images: [{
+        xbox: {
             type: String
-        }],
+        },
+        playstation: {
+            type: String
+        },
+        twitch: {
+            type: String
+        },
     },
-    steam: {
-        type: String
-    },
-    xbox: {
-        type: String
-    },
-    playstation: {
-        type: String
-    },
-    twitch: {
-        type: String
-    },
+
     coins: {
         type: Number,
         default: 0
@@ -103,8 +134,17 @@ var User = new mongoose.Schema({
 function arrayLimit(val) {
     return val.length <= config.topGamesLength;
 }
+//options for passport-local
+var passportOptions = {
+    interval:         200,
+    usernameUnique:   true,
+    limitAttempts:    true,
+    maxAttempts:      16,
+    lastLoginField:   'last_login',
+    usernameLowerCase:true
+};
 
-User.plugin(passportPlugin);
-User.plugin(URLSlugs('username',{field: 'slug'}));
+User.plugin(passportPlugin,passportOptions);
+// User.plugin(URLSlugs('username',{field: 'slug'}));
 
 module.exports = mongoose.model('User', User);
