@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
+require('mongoose-type-url');
 var url = mongoose.SchemaTypes.Url;
 
 var oneUps = [{
