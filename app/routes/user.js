@@ -1,26 +1,48 @@
 var express = require('express');
 var router = express.Router();
 
-var passport = require('passport');
+var User = require('../models/user');
 
 router.get('/:username', function(req, res, next) {
-    res.render('user', {
-        title: 'wasdWithMe - ' + req.params.username,
-        layout: 'primary',
-        file: 'user',
-        user : req.user,
-        message: "Accessing " + req.params.username + "'s profile."
+    var username = req.params.username;
+    var usernameSlug = username; //slug it here
+
+    User.findOne({ 'display_name': usernameSlug }, function (err, owner) {
+        if (err || !owner){
+            userNotFound(res, req.user, username);
+            return;
+        }
+        console.log(owner);
+        res.render('user', {
+            title: 'wasdWithMe - ' + username,
+            layout: 'primary',
+            file: 'user',
+            user : req.user,
+            owner: owner,
+            message: "Accessing " + username + "'s profile."
+        });
     });
 });
 
+function userNotFound(res, user, username){
+    res.status(404);
+    res.render('404', {
+        title: 'wasdWithMe - User not found!',
+        layout: 'primary',
+        file: '404',
+        user: user,
+        message: username + " not found!"
+    });
+}
+
 //You should not be able to access /user/ directly
 router.get('/', function(req, res, next) {
-    res.render('user', {
+    res.render('404', {
         title: 'wasdWithMe - Error!',
         layout: 'primary',
-        file: 'user',
+        file: '404',
         user : req.user,
-        message: 'Error, can\'t access this page' //temporary
+        message: 'Error, can\'t access this page.'
     });
 });
 

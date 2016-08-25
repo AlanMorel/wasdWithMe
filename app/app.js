@@ -85,10 +85,11 @@ app.use(stylus({
 app.use(function(req, res, next) {
   res.status(404);
   res.render('404', {
-    title: 'wasdWithMe - Page cannot be found!',
+    title: 'wasdWithMe - Page not found!',
     layout: 'primary',
     file: '404',
-    user : req.user
+    user : req.user,
+    message: "Page not found!"
   });
 });
 
