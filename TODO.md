@@ -1,11 +1,11 @@
 # Alan's Todo
 - [X] fetch google fonts via link tags
 - [X] create custom 404 error page
+- [X] start on footer
 - [ ] add live profiles to homepage
 - [ ] add link to logged in user's own profile once logged in
 - [ ] create profile page after database is set up and working
 - [ ] basic mobile css support
-- [ ] create footer
 - [ ] create global function to slug a person's username
 
 # Edgar's Todo

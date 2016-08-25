@@ -29,26 +29,26 @@ img.couple{
   width: 50%;
   display: inline-block;
   height: 100%;
-  padding-top: 20px;
 }
 
 .right h1, .left h1{
   text-align: center;
-  color: white;
-  font-size: 3.0vw;
+  color: #fff;
+  font-size: 3vw;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 100;
+  margin:0;
+  line-height: 9vw;
 }
 
 .right h2, .left h2{
   text-align: center;
-  color: white;
+  color: #fff;
   font-size: 1.25vw;
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 75px;
+  padding-right: 75px;
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;
-  padding-bottom: 4%;
 }
 
 .promo2 {
@@ -71,13 +71,13 @@ img.couple{
 }
   
 .tagline {
-  height: 11vw;
-  line-height: 5vw;
+  height: 200px;
+  line-height: 100px;
   width: 100%;
   background-color: wasdWithMeGray;
   text-align: center;
   font-weight: lighter;
-  font-size: 1.5vw;
+  font-size: 24px;
 }
 
 .logos img {
@@ -88,10 +88,59 @@ img.couple{
 }
 
 .logos {
-  height: 5vw;
+  height: 75px;
 }
 
 .live-profiles {
   width: 100%;
-  height: 10vw;
+  height: 200px;
+}
+
+.sign-up-button{
+  padding-top: 2vw;
+}
+
+@media only screen and (max-width: 950px) {
+  body {
+    background-color: lightblue;
+  }
+  .promo .left, .promo .right, .promo2 .left, .promo2 .right{
+    width:100%;
+  }
+  .promo .right, .promo2 .left{
+    padding-bottom: 20px;
+  }
+
+  .right h1, .left h1{
+    font-size: 6vw;
+    line-height: 15vw;
+  }
+
+  .right h2, .left h2{
+    font-size: 2.5vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .sign-up-button{
+    padding-bottom: 5vw;
+    padding-top: 5vw;
+  }
+
+  .button{
+    font-size: 4vw;
+    padding: 3vw 10vw;
+  }
+
+  .tagline{
+    font-size: 4vw;
+  }
+  .logos{
+      img {
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 12vw;
+    }
+    height:15vw;
+  }
 }
