@@ -64,6 +64,9 @@ html {
   font-size: 20px;
   margin-top: 10px;
 }
+.header-bottom a {
+  margin-left: 16px;
+}
 footer {
   height: 225px;
   width: 100%;

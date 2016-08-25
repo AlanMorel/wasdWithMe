@@ -41,7 +41,8 @@ router.post('/', function(req, res) {
         + " city: " + city);
 
     var user = new User({
-        username : username,
+        username: username,
+        display_name : username,
         password : password,
         email : email,
         gender : gender,

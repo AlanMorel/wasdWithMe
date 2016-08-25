@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
         title: 'wasdWithMe - Connect with gamers.',
         layout: 'primary',
         file: 'homepage',
-        user: req.use,
+        user: req.user,
         live_profile_users: getUsers()
     });
 });

@@ -5,7 +5,7 @@
 - [X] mobile css for homepage
 - [X] javascript now loaded after DOM loads
 - [X] add live profiles to homepage
-- [ ] add link to logged in user's own profile once logged in
+- [X] add link to logged in user's own profile once logged in
 - [ ] create profile page after database is set up and working
 - [ ] create global function to slug a person's username
 

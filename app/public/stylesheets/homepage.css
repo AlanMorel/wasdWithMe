@@ -64,6 +64,9 @@ html {
   font-size: 20px;
   margin-top: 10px;
 }
+.header-bottom a {
+  margin-left: 16px;
+}
 footer {
   height: 225px;
   width: 100%;
@@ -165,11 +168,15 @@ img.couple {
 }
 .live-profiles {
   width: 100%;
-  height: 200px;
+  height: 325px;
   color: #000;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 25px;
   text-align: center;
+}
+.live-profiles-header {
+  line-height: 50px;
+  font-size: 24px;
+  padding-bottom: 25px;
 }
 .live-profile {
   width: 150px;
