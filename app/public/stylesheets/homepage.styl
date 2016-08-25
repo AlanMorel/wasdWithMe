@@ -1,40 +1,42 @@
 @import "primary.styl"
 
-html, body {
-  height: 100%;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  color: #FFFFFF;
-}
-
-img.couple {
-  max-width: 100%;
-  max-height: 100%;
+.promo, .promo2 {
   display: inline-block;
-  vertical-align: middle;
+  text-align: center;
+  width: 100%;
 }
 
 .promo {
-  width: 100%;
-  display: inline-block;
   background-color: wasdWithMeGray;
 }
 
-.promo .left {
+.promo2 {
+  background-color: wasdWithMePurple;
+}
+
+
+.promo .left, .promo .right, .promo2 .left, .promo2 .right{
   width: 50%;
+}
+
+.promo .left {
   float: left;
-  display: inline-block;
 }
 
 .promo .right {
-  width: 50%;
   display: inline-block;
-  height: 100%;
 }
 
+.promo2 .left {
+  float: left;
+}
+
+.promo2 .right {
+  display: inline-block;
+}
+
+
 .right h1, .left h1 {
-  text-align: center;
-  color: #fff;
   font-size: 3vw;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 100;
@@ -43,8 +45,6 @@ img.couple {
 }
 
 .right h2, .left h2 {
-  text-align: center;
-  color: #fff;
   font-size: 1.25vw;
   padding-left: 75px;
   padding-right: 75px;
@@ -52,27 +52,12 @@ img.couple {
   font-weight: lighter;
 }
 
-.promo2 {
-  width: 100%;
-  display: inline-block;
-  background-color: wasdWithMePurple;
-}
-
-.promo2 .left {
-  width: 50%;
-  float: left;
-  display: inline-block;
-  color: #FFFFFF;
-  text-align: center;
-}
-
-.promo2 .right {
-  width: 50%;
-  display: inline-block;
+img.couple {
+  max-width: 100%;
+  vertical-align: middle;
 }
 
 .tagline {
-  width: 100%;
   background-color: wasdWithMeGray;
   text-align: center;
 }
@@ -94,10 +79,6 @@ img.couple {
   margin-right: 20px;
   height: 100%;
   max-height: 64px;
-}
-
-.logos {
-  height: 75px;
 }
 
 .live-profiles {
@@ -186,7 +167,7 @@ img.couple {
     font-size: 4vw;
   }
 
-  .tagline-footer{
+  .tagline-footer {
     font-size: 2.5vw;
     line-height: 10vw;
     padding-left: 2vw;
@@ -194,25 +175,22 @@ img.couple {
     padding-bottom: 2vw;
   }
 
-  .logos {
-    img {
-      margin-left: 10px;
-      margin-right: 10px;
-      height: 12vw;
-    }
-    height: 15vw;
+  .logos img {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 12vw;
   }
 
-  .live-profiles{
+  .live-profiles {
     display: table;
     padding-bottom: 25px;
   }
 
-  .live-profiles-header{
+  .live-profiles-header {
     font-size: 22px;
   }
 
-  .live-profile{
+  .live-profile {
     margin-bottom: 20px;
   }
 }

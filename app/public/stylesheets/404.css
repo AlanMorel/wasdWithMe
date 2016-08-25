@@ -1,7 +1,7 @@
 html,
 body {
-  height: 100%;
-  font: 16px 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
 }
 body {
   margin: 0;
@@ -69,7 +69,6 @@ html {
 }
 footer {
   height: 225px;
-  width: 100%;
   background-color: #282828;
 }
 footer .top {
