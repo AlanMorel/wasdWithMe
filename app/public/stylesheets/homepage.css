@@ -171,9 +171,6 @@ img.couple {
   padding-top: 2vw;
 }
 @media only screen and (max-width: 950px) {
-  body {
-    background-color: #add8e6;
-  }
   .promo .left,
   .promo .right,
   .promo2 .left,
