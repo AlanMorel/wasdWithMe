@@ -28,4 +28,14 @@
         <a href="https://www.twitch.tv/" target="_blank"><img src="/images/twitch.png"></a>
     </div>
 </div>
-<div class="live-profiles"></div>
+<div class="live-profiles">
+    {{#each live_profile_users}}
+        <div class="live-profile">
+            <img src="{{this.profile_pic}}" class="live-profile-pic">
+            <a href="/user/{{this.username}}">
+                <div class="live-profile-username">{{this.username}}</div>
+            </a>
+            <div class="live-profile-oneUps">{{this.oneUps}} 1UPs</div>
+        </div>
+    {{/each}}
+</div>
