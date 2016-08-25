@@ -5,9 +5,9 @@ var User = require('../models/user');
 
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
-    var usernameSlug = username; //slug it here
+    var usernameSlug = username.toLowerCase(); //properly slug it
 
-    User.findOne({ 'display_name': usernameSlug }, function (err, owner) {
+    User.findByUsername(usernameSlug, true, function(err, owner) {
         if (err || !owner){
             userNotFound(res, req.user, username);
             return;
@@ -18,8 +18,7 @@ router.get('/:username', function(req, res, next) {
             layout: 'primary',
             file: 'user',
             user : req.user,
-            owner: owner,
-            message: "Accessing " + username + "'s profile."
+            owner: owner
         });
     });
 });

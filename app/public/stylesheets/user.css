@@ -13,7 +13,7 @@ a {
 html {
   color: #fff;
 }
-.header {
+.wasd-header {
   height: 75px;
   background-color: #6441a5;
   padding: 15px;
@@ -44,7 +44,7 @@ html {
   color: #fff;
   border: 1px solid #111;
 }
-.header-text {
+.wasd-text {
   display: inline-block;
   float: right;
   height: 100%;
@@ -52,7 +52,7 @@ html {
   font-size: 1vw;
   margin-top: 6px;
 }
-.header-top {
+.wasd-top {
   font-family: 'Roboto', sans-serif;
   margin: auto;
   text-align: right;
@@ -60,11 +60,11 @@ html {
   letter-spacing: 1.5px;
   font-size: 16px;
 }
-.header-bottom {
+.wasd-bottom {
   font-size: 20px;
   margin-top: 12px;
 }
-.header-bottom a {
+.wasd-bottom a {
   margin-left: 16px;
 }
 footer {
@@ -82,8 +82,36 @@ footer .bottom {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 }
-.message {
-  color: #000;
-  padding-top: 40px;
-  text-align: center;
+body {
+  background-color: #fff;
+}
+.profile {
+  color: #282828;
+  width: 800px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #eee;
+}
+.profile img {
+  max-width: 128px;
+  max-height: 128px;
+}
+.pic {
+  display: inline-block;
+}
+.info {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+}
+.username {
+  display: inline;
+  vertical-align: top;
+  font-size: 48px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+.extra-info {
+  line-height: 40px;
 }

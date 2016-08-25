@@ -7,19 +7,19 @@
       <link rel="stylesheet" href="/stylesheets/{{file}}.css" />
   </head>
   <body>
-  <div class="header">
+  <div class="wasd-header">
       <a href="/">
           <img src="/images/logo.png" class="logo">
       </a>
-      <div class="header-text">
-          <div class="header-top">
+      <div class="wasd-text">
+          <div class="wasd-top">
           {{#if user}}
               Hello, {{user.username}}
           {{else}}
               Hello, Guest
           {{/if}}
           </div>
-          <div class="header-bottom">
+          <div class="wasd-bottom">
           {{#if user}}
               <a href="/user/{{user.display_name}}">Profile</a>
               <a href="/logout">Log Out</a>

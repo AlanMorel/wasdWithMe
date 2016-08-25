@@ -13,7 +13,7 @@ a {
 html {
   color: #fff;
 }
-.header {
+.wasd-header {
   height: 75px;
   background-color: #6441a5;
   padding: 15px;
@@ -44,7 +44,7 @@ html {
   color: #fff;
   border: 1px solid #111;
 }
-.header-text {
+.wasd-text {
   display: inline-block;
   float: right;
   height: 100%;
@@ -52,7 +52,7 @@ html {
   font-size: 1vw;
   margin-top: 6px;
 }
-.header-top {
+.wasd-top {
   font-family: 'Roboto', sans-serif;
   margin: auto;
   text-align: right;
@@ -60,11 +60,11 @@ html {
   letter-spacing: 1.5px;
   font-size: 16px;
 }
-.header-bottom {
+.wasd-bottom {
   font-size: 20px;
   margin-top: 12px;
 }
-.header-bottom a {
+.wasd-bottom a {
   margin-left: 16px;
 }
 footer {
