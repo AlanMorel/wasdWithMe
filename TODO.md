@@ -6,6 +6,7 @@
 - [X] javascript now loaded after DOM loads
 - [X] add live profiles to homepage
 - [X] add link to logged in user's own profile once logged in
+- [ ] hook up database data instead of static users for live profiles
 - [ ] create profile page after database is set up and working
 - [ ] create global function to slug a person's username
 

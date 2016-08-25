@@ -20,14 +20,14 @@ config.passportSecret = 'passport_secret';
 config.mongooseUri = 'mongodb://localhost/app';
 
 //User Schema
-config.usernameMinLength = 3;
-config.usernameMaxLength = 32;
+config.usernameMinLength = 4;
+config.usernameMaxLength = 16;
 
 config.passwordMinLength = 8;
 config.passwordMaxLength = 32;
 
-config.emailMinLength = 3;
-config.emailMaxLength = 64;
+config.emailMinLength = 4;
+config.emailMaxLength = 32;
 
 config.nameMaxLength = 32;
 
