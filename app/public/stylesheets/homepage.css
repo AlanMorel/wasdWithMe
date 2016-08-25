@@ -157,6 +157,7 @@ img.couple {
   height: 325px;
   color: #000;
   padding-top: 25px;
+  padding-bottom: 25px;
   text-align: center;
 }
 .live-profiles-header {
@@ -168,9 +169,8 @@ img.couple {
   width: 150px;
   display: inline-block;
   border-radius: 8px;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   padding-top: 24px;
-  padding-bottom: 24px;
   margin-left: 15px;
   margin-right: 15px;
 }
@@ -180,14 +180,41 @@ img.couple {
 .live-profile a:hover {
   color: #ff8c00;
 }
+.live-profile:hover {
+  border: 1px solid #aaa;
+}
 .live-profile-username {
   font-weight: 300;
   font-size: 20px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  padding: 6px 0px 6px 0px;
+  background-color: #f7f7f7;
+}
+.live-profile-platforms {
+  background-color: #282828;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.live-profile-platform {
+  height: 16px;
+  margin-left: 6px;
+  margin-right: 6px;
 }
 .live-profile-oneUps {
-  font-size: 14px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.one-ups-label {
+  font-size: 10px;
+  border-radius: 6px;
+  border: 1px solid #008629;
+  padding: 2px 4px 2px 4px;
+  vertical-align: middle;
+  color: #008629;
+  background-color: #edfff3;
 }
 .sign-up-button {
   padding-top: 2vw;

@@ -36,7 +36,7 @@ function getLiveProfileUsers() {
         profile_pic: "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png2/64/-profile-filled.png",
         username: "Anteneh",
         oneUps: 64,
-        platforms: ["Steam", "Playstation", "Twitch"]
+        platforms: ["Steam", "Playstation"]
     }];
     return liveProfileUsers;
 }

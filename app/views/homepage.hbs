@@ -41,11 +41,16 @@
     <div class="live-profiles-header">See who has already joined!</div>
     {{#each live_profile_users}}
         <div class="live-profile">
-            <img src="{{this.profile_pic}}" class="live-profile-pic">
-            <a href="/user/{{this.username}}">
-                <div class="live-profile-username">{{this.username}}</div>
+            <img src="{{profile_pic}}" class="live-profile-pic">
+            <a href="/user/{{username}}">
+                <div class="live-profile-username">{{username}}</div>
             </a>
-            <div class="live-profile-oneUps">{{this.oneUps}} 1UPs</div>
+            <div class="live-profile-oneUps">{{oneUps}} <span class="one-ups-label">1UPs</span></div>
+            <div class="live-profile-platforms">
+            {{#each platforms}}
+                <img class="live-profile-platform" src="/images/{{this}}.png">
+            {{/each}}
+            </div>
         </div>
     {{/each}}
 </div>
