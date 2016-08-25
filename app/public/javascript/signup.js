@@ -1,103 +1,64 @@
-function stop() {
+function stop(e) {
 
-var gender = "";
+    var forward = true;
+    var gen = $("[name=gender] option").filter(":selected").val();
+    var country = $("[name=country] option").filter(":selected").text();
+    var state = $("[name=state] option").filter(":selected").text();
+    var city = $("[name=city] option").filter(":selected").text();
 
-    if( $('[name="username"]').length <= 0 || $('[name="username"]').length >= 33 ||
-     ($('[name="password"]').length <= 7 || $('[name="password"]').length >= 33) ||
-      $('[name="email"]').length <=2 || $('[name="email"]').length >=64) {
-        $("#feedback").html("Please fill in all required information!");
-      //username 1-32
-      //password 8-32
-      //email a@a.a (3) - 64
+    if( $('[name="username"]').val() === "") {
+      $("#username_feedback").html("Please fill in an username");
+      forward=false;
+    } else if ($('[name="username"]').val().length >= 33) {
+      $("#username_feedback").html("Username exceeds maximum number of characters");
+      forward=false;
+    } else {
+      $("#username_feedback").html("");
+    }
 
-        return false;
-      } else {
-        $("#feedback").html("");
-      }
+    if($('[name="password"]').val().length <= 7) {
+      $("#password_feedback").html("Password must be longer than 7 characters");
+      forward=false;
+    } else if ($('[name="password"]').val().length >= 33) {
+      $("#password_feedback").html("Password must be shorter than 33 characters");
+      forward=false;
+    } else {
+      $("#password_feedback").html("");
+    }
 
+    if ($('[name="email"]').val().length <=2 || $('[name="email"]').val().length >=64) {
+      $("#email_feedback").html("Please enter a valid email");
+      forward=false;
+    } else {
+      $("#email_feedback").html("");
 
-
-        var country = "";
-        var state = "";
-        var city = "";
-
-        $("[name=gender] option").each(function() {
-          if ($(this.is(":selected"))) {
-            //set to option
-            gender = this.is(":selected");
-          }
-        });
-
-
-        // regular expression to match required date format
-        re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
-
-        if(form.startdate.value !== '') {
-         if(regs === form.startdate.value.match(re)) {
-           // day value between 1 and 31
-           if(regs[1] < 1 || regs[1] > 31) {
-             alert("Invalid value for day: " + regs[1]);
-             form.startdate.focus();
-             return false;
-           }
-           // month value between 1 and 12
-           if(regs[2] < 1 || regs[2] > 12) {
-             alert("Invalid value for month: " + regs[2]);
-             form.startdate.focus();
-             return false;
-           }
-           // year value between 1902 and 2016
-           if(regs[3] < 1902 || regs[3] > (new Date()).getFullYear()) {
-             alert("Invalid value for year: " + regs[3] + " - must be between 1902 and " + (new Date()).getFullYear());
-             form.startdate.focus();
-             return false;
-           }
-         } else {
-           alert("Invalid date format: " + form.startdate.value);
-           form.startdate.focus();
-           return false;
-         }
-        }
+    }
 
 
-        $("[name=country] option").each(function() {
-         if ($(this.is(":selected"))) {
-           //set to option
-           country = this.is(":selected");
-         }
-        });
+    var date = $('[name="date_of_birth"]').val().split('-');
 
-        $("[name=state] option").each(function() {
-        if ($(this.is(":selected"))) {
-          //set to option
-          state = this.is(":selected");
-        }
-        });
+    //Rearrange date order!
+    var day = date[2];
+    var month = date[1];
+    var year = date[0];
 
 
-        $("[name=city] option").each(function() {
-         if ($(this.is(":selected"))) {
-           //set to option
-           city = this.is(":selected");
-         }
-        });
-
-        if (gender==="" || country==="" || state==="" ||
-         city==="" ) {
-         $("#feedback").html("Please fill in all required information!");
-         window.history.back();
-         return false;
-        }
-
-        $("#feedback").html("");
-
-        return true;
-      }
+    if (day > 31 || day <= 0 || month > 12 ||
+      month <= 0 || year <=1900 || year >= 2016) {
+      $("#date_feedback").html("Please enter a valid date");
+      forward=false;
+    } else {
+      $("#date_feedback").html("");
+    }
 
 
+    if(forward===false) {
+      $("#total_feedback").html("Please fill in all required information!");
+      forward = true;
+      e.preventDefault();
+    } else {
+      $("#total_feedback").html("");
+      return true;
+    }
 
-//name 1-32
-//username 1-32
-//password 8-32
-//email a@a.a (3) - 64
-//   alert('f');
+}
