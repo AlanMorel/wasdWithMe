@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
         file: 'signup',
         error:err
     });
-    //reset session so no longer persists 
+    //reset session so no longer persists
     req.session.msg = undefined;
 });
 
@@ -45,6 +45,8 @@ router.post('/', function(req, res, done) {
         + " state: " + state
         + " city: " + city);
 
+
+
     var user = new User({
         username: username,
         display_name : username,
@@ -59,19 +61,16 @@ router.post('/', function(req, res, done) {
         },
     });
 
+    if(checkAccount(username,password,email,req)==false) return res.redirect('/signup');
+
     User.register(user, password, function(err, user) {
         if (err) {
             //handle error
             console.log(err);
             console.log("registering error occurred");
-            //res.redirect('signup/');
-            req.session.msg = err;
+            req.session.msg = err.message;
             return res.redirect('/signup');
             //return done(err);
-            //return done(err);
-            //return done(null,false ,{message: 'error occured'});
-            //return res.render('signup',{error:err});
-
         }
         authentication(req, res, function () {
             console.log("Authenticated successfully");
@@ -79,5 +78,36 @@ router.post('/', function(req, res, done) {
         });
     });
 });
+
+function checkAccount(username, password, email,req){
+
+  if(username === ''){
+    req.session.msg = "No username inputted";
+    return false;
+  }
+  //check username first
+  if(!usernameIsValid(username)){
+    req.session.msg = "Only alphanumreical, numerical,dashes and underscores allowed in username";
+    return false;
+  }
+
+  if(username.length < 3 || username.length > 32){
+    req.session.msg = "Username must be between 3 characters to 32";
+    return false;
+  }
+
+  if(password.length < 8 || password.length > 32 ){
+    console.log("Error: Password length not within limit");
+    req.session.msg = "Password length not valid";
+    return false;
+  }
+  return true;
+}
+/*
+  Regex operation ensures first character is an alphanumeric
+*/
+function usernameIsValid(username){
+  return /^[a-zA-z][0-9a-zA-Z_-]+$/.test(username);
+}
 
 module.exports = router;
