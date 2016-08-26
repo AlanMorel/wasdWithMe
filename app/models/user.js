@@ -92,6 +92,10 @@ var User = new mongoose.Schema({
     one_ups: {
         type: oneUps,
     },
+    one_up_count: {
+        type: Number,
+        default: 0
+    },
     bio: {
         type: String,
         maxlength: config.bioMaxLength

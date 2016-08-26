@@ -42,21 +42,25 @@ router.post('/', function(req, res) {
         + " state: " + state
         + " city: " + city);
 
+    var oneUps = getRandomOneUps(100);
+    var oneUpCount = oneUps.length;
+
     var user = new User({
         username: username,
-        display_name : displayName,
-        password : password,
-        email : email,
-        gender : gender,
-        birthday : birthday,
+        display_name: displayName,
+        password: password,
+        email: email,
+        gender: gender,
+        birthday: birthday,
         location: {
             country : country,
             state : state,
             city : city
         },
-        //Randomly give newly registered users 1-1000 one ups and 1-10 coins for testing purposes
-        one_ups: getRandomOneUps(),
-        coins: Math.floor(Math.random() * 10) + 1
+        //Randomly give newly registered users 1-100 one ups and 1-10 coins for testing purposes
+        one_ups: oneUps,
+        one_up_count: oneUpCount,
+        coins: getRandomCoins(10)
     });
 
     User.register(user, password, function(err, user) {
@@ -73,16 +77,20 @@ router.post('/', function(req, res) {
     });
 });
 
-function getRandomOneUps(){
-    var oneUps = [];
-    var oneUp = {
+function getRandomOneUps(number){
+    var oneUppers = [];
+    var oneUpper = {
         oneUpper: "Testing"
     };
-    var oneUpsRandom = Math.floor(Math.random() * 100) + 1;
+    var oneUpsRandom = Math.floor(Math.random() * number) + 1;
     for (var i = 0; i < oneUpsRandom; i++) {
-        oneUps.push(oneUp);
+        oneUppers.push(oneUpper);
     }
-    return oneUps;
+    return oneUppers;
+}
+
+function getRandomCoins(number){
+    return Math.floor(Math.random() * number) + 1
 }
 
 module.exports = router;

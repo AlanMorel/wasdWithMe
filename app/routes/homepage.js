@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+var User = require('../models/user');
+
 router.get('/', function(req, res, next) {
+    getLiveProfileUsersFromDatabase(); //for testing
     res.render('homepage', {
         title: 'wasdWithMe - Connect with gamers.',
         layout: 'primary',
@@ -10,6 +13,12 @@ router.get('/', function(req, res, next) {
         live_profile_users: getLiveProfileUsers()
     });
 });
+
+function getLiveProfileUsersFromDatabase(){
+    User.find().sort({'one_up_count': -1}).limit(5).exec(function(err, users) {
+        console.log(users);
+    });
+}
 
 function getLiveProfileUsers() {
     var liveProfileUsers = [{
