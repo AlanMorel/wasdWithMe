@@ -31,6 +31,8 @@ app.use(favicon(path.join(public, 'favicon.ico')));
 app.use(express.static(public));
 app.use(logger('dev'));
 
+
+
 //Handlebars
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -55,6 +57,10 @@ app.use(session({
   saveUninitialized: false,
   }
 ));
+
+//Flash
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -62,8 +68,7 @@ passport.use(new Strategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//Flash
-app.use(flash());
+
 
 //Routes
 app.use('/', homepage);
