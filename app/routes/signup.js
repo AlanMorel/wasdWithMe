@@ -2,17 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 var passport = require('passport');
-var User = require('../models/user');
+var User     = require('../models/user');
+var config   = require('../config');
 
 router.get('/', function (req, res, next) {
-    //create error message to propagate through page, uses cookies
-    var err = req.session.msg;
-    console.log("here");
     res.render('signup', {
         title: 'wasdWithMe - Sign up!',
         layout: 'secondary',
         file: 'signup',
-        error: err
+        error: req.session.msg
     });
     //reset session so no longer persists
     req.session.msg = undefined;
@@ -25,7 +23,6 @@ var authenticationOptions = {
 };
 
 var authentication = passport.authenticate('local', authenticationOptions);
-
 
 router.post('/', function (req, res) {
     var displayName = req.body.username;
@@ -48,6 +45,10 @@ router.post('/', function (req, res) {
         + " state: " + state
         + " city: " + city);
 
+    if (checkAccount(username, password, email, req)) {
+        return res.redirect('/signup');
+    }
+
     var oneUps = getRandomOneUps(100);
     var oneUpCount = oneUps.length;
 
@@ -69,10 +70,6 @@ router.post('/', function (req, res) {
         coins: getRandomCoins(10)
     });
 
-    if (checkAccount(username, password, email, req)) {
-        return res.redirect('/signup');
-    }
-
     User.register(user, password, function (err, user) {
         if (err) {
             //handle error
@@ -80,7 +77,6 @@ router.post('/', function (req, res) {
             console.log("registering error occurred");
             req.session.msg = err.message;
             return res.redirect('/signup');
-            //return done(err);
         }
         authentication(req, res, function () {
             console.log("Authenticated successfully");
@@ -89,6 +85,27 @@ router.post('/', function (req, res) {
     });
 });
 
+function getRandomOneUps(number) {
+    var oneUps = [];
+    var oneUp = {
+        oneUpper: "Testing"
+    };
+    var oneUpsRandom = Math.floor(Math.random() * number) + 1;
+    for (var i = 0; i < oneUpsRandom; i++) {
+        oneUps.push(oneUp);
+    }
+    return oneUps;
+}
+
+function getRandomCoins(number) {
+    return Math.floor(Math.random() * number) + 1
+}
+
+//Every function below this comment belongs in separate validation.js file
+
+//checkAccount should instead return string with error
+//no error returns empty string
+//if checkAccount, then set it
 function checkAccount(username, password, email, req) {
 
     if (username === '') {
@@ -97,23 +114,23 @@ function checkAccount(username, password, email, req) {
     }
     //check username first
     if (!usernameIsValid(username)) {
-        req.session.msg = "Only alphanumreical, numerical,dashes and underscores allowed in username";
+        req.session.msg = "Only alphanumerical, numerical, dashes and underscores allowed in username";
         return false;
     }
 
-    if (username.length < 3 || username.length > 32) {
-        req.session.msg = "Username must be between 3 characters to 32";
+    if (username.length < config.usernameMinLength || username.length > config.usernameMaxLength) {
+        req.session.msg = "Username must be between " + config.usernameMinLength+ " and " + config.usernameMaxLength + " characters in length";
         return false;
     }
 
     //check password field valid next
     if (password === '') {
-        req.session.msg = "Password field is left blank";
+        req.session.msg = "You must input a password";
         return false;
     }
 
-    if (password.length < 8 || password.length > 32) {
-        req.session.msg = "Password length not valid";
+    if (password.length < config.passwordMinLength || password.length > config.passwordMaxLength) {
+        req.session.msg = "Passwords must be between " + config.passwordMinLength + " and " + config.passwordMaxLength + " characters in length";
         return false;
     }
 
@@ -139,22 +156,6 @@ function usernameIsValid(username) {
 
 function emailIsValid(email) {
     return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/.test(email);
-}
-
-function getRandomOneUps(number) {
-    var oneUps = [];
-    var oneUp = {
-        oneUpper: "Testing"
-    };
-    var oneUpsRandom = Math.floor(Math.random() * number) + 1;
-    for (var i = 0; i < oneUpsRandom; i++) {
-        oneUps.push(oneUp);
-    }
-    return oneUps;
-}
-
-function getRandomCoins(number) {
-    return Math.floor(Math.random() * number) + 1
 }
 
 module.exports = router;
