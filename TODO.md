@@ -21,6 +21,7 @@
 - [X] fix age problem
 - [X] fix plaintext password issue
 - [X] add url slugs for mongoose, games
+- [ ] validation doesn't seem to catch an empty email
 - [ ] validation is missing email length
 - [ ] password needs regex validation as well, should probably not allow users to use spaces in their passwords, but this is open to discussion
 - [ ] move validation to a separate js file, then call the methods from that
