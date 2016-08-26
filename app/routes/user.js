@@ -8,20 +8,36 @@ router.get('/:username', function(req, res, next) {
     var usernameSlug = username.toLowerCase(); //properly slug it
 
     User.findByUsername(usernameSlug, true, function(err, owner) {
+
         if (err || !owner){
             userNotFound(res, req.user, username);
             return;
         }
-        console.log(owner);
+
+        console.log(owner); //debug purposes
+
         res.render('user', {
             title: 'wasdWithMe - ' + username,
             layout: 'primary',
             file: 'user',
             user : req.user,
-            owner: owner
+            age: getAge(owner.birthday),
+            owner: owner,
+            is_owner: isOwner(req.user, owner)
         });
     });
 });
+
+function isOwner(user, owner){
+    return user && user.username === owner.username;
+}
+
+function getAge(birthday){
+    var difference = new Date() - new Date(birthday);
+    var year = 1000 * 60 * 60 * 24 * 365;
+    var age = Math.floor(difference / year);
+    return age;
+}
 
 function userNotFound(res, user, username){
     res.status(404);
