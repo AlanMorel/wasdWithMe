@@ -31,6 +31,8 @@ config.emailMaxLength = 32;
 
 config.nameMaxLength = 32;
 
+config.taglineMaxLength = 50;
+
 config.bioMaxLength = 500;
 
 config.topGamesLength = 5;

@@ -96,6 +96,10 @@ var User = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    tagline: {
+        type: String,
+        maxlength: config.taglineMaxLength
+    },
     bio: {
         type: String,
         maxlength: config.bioMaxLength

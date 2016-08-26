@@ -129,3 +129,20 @@ body {
 .extra-info {
   line-height: 40px;
 }
+.message-button {
+  float: right;
+  width: 100px;
+  border-radius: 8px;
+  border: 1px solid #00881d;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: #27ae60;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+.message-button:hover {
+  background-color: #2ecc71;
+}
