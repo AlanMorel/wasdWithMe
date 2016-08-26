@@ -43,3 +43,4 @@
 - [ ] add messaging other users
 - [ ] add blocking other users
 - [ ] sanitize input for form data
+- [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html

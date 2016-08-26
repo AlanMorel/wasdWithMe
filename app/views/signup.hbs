@@ -3,6 +3,7 @@
 </a>
 <div class="title">Sign up for your account!</div>
 <div class="container">
+
     <form method="post" action="/signup">
         <div>
             <label>Username:</label>
@@ -47,7 +48,7 @@
                 <option value="ny">New York</option>
             </select>
         </div>
-        <p id="feedback"></p>
+        <p id="feedback">   {{#if error}} {{error.message}} {{/if}}</p>
         <div class="action-button">
             <input type="submit" value="Sign Up" class="button" onsubmit="alert('f');">
         </div>

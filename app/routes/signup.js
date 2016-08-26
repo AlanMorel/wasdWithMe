@@ -5,12 +5,17 @@ var passport = require('passport');
 var User = require('../models/user');
 
 router.get('/', function(req, res, next) {
+  //create error message to propogate through page, uses cookies
+  var err = req.session.msg;
   console.log("here");
     res.render('signup', {
         title: 'wasdWithMe - Sign up!',
         layout: 'secondary',
-        file: 'signup'
+        file: 'signup',
+        error:err
     });
+    //reset session so no longer persists 
+    req.session.msg = undefined;
 });
 
 var authenticationOptions = {
@@ -21,7 +26,7 @@ var authenticationOptions = {
 
 var authentication = passport.authenticate('local', authenticationOptions);
 
-router.post('/', function(req, res) {
+router.post('/', function(req, res, done) {
     var username = req.body.username;
     var password = req.body.password;
     var email    = req.body.email;
@@ -59,11 +64,18 @@ router.post('/', function(req, res) {
             //handle error
             console.log(err);
             console.log("registering error occurred");
-            return;
+            //res.redirect('signup/');
+            req.session.msg = err;
+            return res.redirect('/signup');
+            //return done(err);
+            //return done(err);
+            //return done(null,false ,{message: 'error occured'});
+            //return res.render('signup',{error:err});
+
         }
         authentication(req, res, function () {
             console.log("Authenticated successfully");
-            res.redirect('/');
+            return res.redirect('/');
         });
     });
 });
