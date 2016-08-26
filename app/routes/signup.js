@@ -45,7 +45,7 @@ router.post('/', function (req, res) {
         + " state: " + state
         + " city: " + city);
 
-    if (!checkAccount(username, password, email, req)) {
+    if (!checkAccount(displayName, password, email, req)) {
         return res.redirect('/signup');
     }
 

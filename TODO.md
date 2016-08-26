@@ -8,10 +8,13 @@
 - [X] add link to logged in user's own profile once logged in
 - [X] retrieve user profile from database via /user/username
 - [X] begin work on profile pages
+- [X] hook up database data instead of static users for live profiles
+- [X] create profile page after database is set up and working
+- [ ] continue to populate profile page and improve visuals
+- [ ] "messsage" button when user is not on own page
+- [ ] "Game library" section
+- [ ] profile change info page or on same page when user is on own page
 - [ ] add proper mobile.css to signup/register pages
-- [ ] hook up database data instead of static users for live profiles
-- [ ] create profile page after database is set up and working
-- [ ] create global function to slug a person's username
 
 # Edgar's Todo
 - [X] fix passport
@@ -21,15 +24,16 @@
 - [X] fix age problem
 - [X] fix plaintext password issue
 - [X] add url slugs for mongoose, games
-- [ ] validation doesn't seem to catch an empty email
 - [ ] validation is missing email length
 - [ ] password needs regex validation as well, should probably not allow users to use spaces in their passwords, but this is open to discussion
 - [ ] move validation to a separate js file, then call the methods from that
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure
-- [ ] test all passport functionality, connect server-side error messages to client-side
+- [ ] test all passport functionality, connect server-side error messages to client-side, test that it all works
+- [ ] create global function to slug a person's username, include error messages if not sluggable
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [ ] configure heroku environment
+- [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 
 # Anteneh's Todo
 - [ ] client-side form validation to register and sign in pages
@@ -47,4 +51,3 @@
 - [ ] add messaging other users
 - [ ] add blocking other users
 - [ ] sanitize input for form data
-- [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html

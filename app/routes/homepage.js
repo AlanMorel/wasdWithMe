@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     }
 
     User.find().sort({'one_up_count': -1}).limit(5).exec(function (err, users) {
-        users = addPlatforms(users);
+        users = addStaticInfo(users);
         res.render('homepage', {
             title: 'wasdWithMe - Connect with gamers.',
             layout: 'primary',
@@ -40,7 +40,7 @@ function loadPresetUsers(req, res) {
         display_name: "Anteneh",
         one_up_count: 64,
     }];
-    users = addPlatforms(users);
+    users = addStaticInfo(users);
     res.render('homepage', {
         title: 'wasdWithMe - Connect with gamers.',
         layout: 'primary',
@@ -50,13 +50,12 @@ function loadPresetUsers(req, res) {
     });
 }
 
-function addPlatforms(users) {
+function addStaticInfo(users) {
     var allPlatforms = ["Steam", "Xbox", "Playstation", "Twitch"];
     for (var i = 0; i < users.length; i++) {
         //I won't even bother commenting this mess, it is only temporary
-        users[i].platforms = allPlatforms.sort(function () {
-            return 0.5 - Math.random()
-        }).slice(0, Math.floor(Math.random() * allPlatforms.length) + 1);
+        users[i].platforms = allPlatforms.sort(function () {return 0.5 - Math.random()}).slice(0, Math.floor(Math.random() * allPlatforms.length) + 1);
+        users[i].profile_pic = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png2/64/-profile-filled.png";
     }
     return users;
 }
