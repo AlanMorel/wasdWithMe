@@ -96,11 +96,28 @@ function checkAccount(username, password, email,req){
     return false;
   }
 
+  //check password field valid next
+  if(password === ''){
+    req.session.msg = "Password field is left blank";
+    return false;
+  }
+
   if(password.length < 8 || password.length > 32 ){
-    console.log("Error: Password length not within limit");
     req.session.msg = "Password length not valid";
     return false;
   }
+
+  //check email field if valid
+  if(email === ''){
+    req.session.msg = "Email address not entered";
+    return false;
+  }
+
+  if(!emailIsValid(email)){
+    req.session.msg = "Email address entered not valid";
+    return false;
+  }
+
   return true;
 }
 /*
@@ -108,6 +125,10 @@ function checkAccount(username, password, email,req){
 */
 function usernameIsValid(username){
   return /^[a-zA-z][0-9a-zA-Z_-]+$/.test(username);
+}
+
+function emailIsValid(email){
+  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/.test(email);
 }
 
 module.exports = router;
