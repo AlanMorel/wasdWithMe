@@ -26,8 +26,10 @@ var authenticationOptions = {
 
 var authentication = passport.authenticate('local', authenticationOptions);
 
-router.post('/', function(req, res, done) {
-    var username = req.body.username;
+
+router.post('/', function(req, res) {
+    var displayName = req.body.username;
+    var username = displayName.toLowerCase(); //properly slug this
     var password = req.body.password;
     var email    = req.body.email;
     var gender   = req.body.gender;
@@ -37,6 +39,7 @@ router.post('/', function(req, res, done) {
     var city     = req.body.city;
 
     console.log("username: " + username
+        + " display: " + displayName
         + " password: "+ password
         + " email: " + email
         + " gender: " + gender
@@ -49,7 +52,7 @@ router.post('/', function(req, res, done) {
 
     var user = new User({
         username: username,
-        display_name : username,
+        display_name : displayName,
         password : password,
         email : email,
         gender : gender,
@@ -59,6 +62,9 @@ router.post('/', function(req, res, done) {
             state : state,
             city : city
         },
+        //Randomly give newly registered users 1-1000 one ups and 1-10 coins for testing purposes
+        one_ups: getRandomOneUps(),
+        coins: Math.floor(Math.random() * 10) + 1
     });
 
     if(checkAccount(username,password,email,req)==false) return res.redirect('/signup');
@@ -78,6 +84,7 @@ router.post('/', function(req, res, done) {
         });
     });
 });
+
 
 function checkAccount(username, password, email,req){
 
@@ -129,6 +136,17 @@ function usernameIsValid(username){
 
 function emailIsValid(email){
   return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/.test(email);
+
+function getRandomOneUps(){
+    var oneUps = [];
+    var oneUp = {
+        oneUpper: "Testing"
+    };
+    var oneUpsRandom = Math.floor(Math.random() * 100) + 1;
+    for (var i = 0; i < oneUpsRandom; i++) {
+        oneUps.push(oneUp);
+    }
+    return oneUps;
 }
 
 module.exports = router;
