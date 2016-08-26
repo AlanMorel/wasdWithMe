@@ -101,22 +101,28 @@ body {
 }
 .profile {
   color: #000;
-  background-color: #fff;
   width: 800px;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  overflow: hidden;
 }
 .profile img {
   max-width: 128px;
   max-height: 128px;
   vertical-align: bottom;
 }
+.header {
+  overflow: hidden;
+  margin-bottom: 25px;
+}
 .pic {
   display: inline-block;
+}
+.header,
+.about {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
 }
 .info {
   display: inline-block;
@@ -151,5 +157,12 @@ body {
   background-color: #2ecc71;
 }
 .tagline {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.about {
+  padding-left: 20px;
+}
+.about-header {
   font-size: 20px;
 }

@@ -20,6 +20,12 @@ config.passportSecret = 'passport_secret';
 config.mongooseUri = 'mongodb://localhost/app';
 
 //User Schema
+config.gender = {
+    0: "Male",
+    1: "Female",
+    2: "Other"
+}
+
 config.usernameMinLength = 4;
 config.usernameMaxLength = 16;
 

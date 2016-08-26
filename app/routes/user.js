@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var User = require('../models/user');
+var User   = require('../models/user');
+var config = require('../config');
 
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
@@ -14,7 +15,7 @@ router.get('/:username', function(req, res, next) {
             return;
         }
 
-        owner.tagline = "Hello!";
+        owner.tagline = "Hello, this is an example tagline! How are you?";
 
         console.log(owner); //debug purposes
 
@@ -23,8 +24,9 @@ router.get('/:username', function(req, res, next) {
             layout: 'primary',
             file: 'user',
             user : req.user,
-            age: getAge(owner.birthday),
             owner: owner,
+            gender: config.gender(owner.gender),
+            age: getAge(owner.birthday),
             is_owner: isOwner(req.user, owner)
         });
     });

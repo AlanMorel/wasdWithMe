@@ -6,14 +6,10 @@ body {
 
 .profile {
   color: black;
-  background-color: white;
   width: 800px;
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 50px
-  border-radius: 8px;
-  border: 1px solid #dddddd;
-  overflow: hidden;
+  margin-bottom: 50px;
 
   img {
     max-width: 128px;
@@ -23,12 +19,20 @@ body {
 }
 
 .header {
-
+  overflow: hidden;
+  margin-bottom: 25px;
 }
 
 .pic {
   display: inline-block;
 }
+
+  .header, .about{
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    background-color: white;
+
+  }
 
 .info {
   display: inline-block;
@@ -68,5 +72,14 @@ body {
   }
 
 .tagline {
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+  .about{
+    padding-left: 20px;
+  }
+
+.about-header {
   font-size: 20px;
 }
