@@ -25,7 +25,7 @@ router.get('/:username', function(req, res, next) {
             file: 'user',
             user : req.user,
             owner: owner,
-            gender: config.gender(owner.gender),
+            gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
             is_owner: isOwner(req.user, owner)
         });
