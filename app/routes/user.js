@@ -14,6 +14,8 @@ router.get('/:username', function(req, res, next) {
             return;
         }
 
+        owner.tagline = "Hello!";
+
         console.log(owner); //debug purposes
 
         res.render('user', {

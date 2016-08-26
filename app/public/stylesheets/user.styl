@@ -1,20 +1,24 @@
 @import "primary.styl"
 
 body {
-  background-color: white;
+  background-color: #e9ebee;
 }
 
 .profile {
-  color: wasdWithMeGray;
+  color: black;
+  background-color: white;
   width: 800px;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 50px
-  background-color: #eee;
+  border-radius: 8px;
+  border: 1px solid #dddddd;
+  overflow: hidden;
 
   img {
     max-width: 128px;
     max-height: 128px;
+    vertical-align: bottom;
   }
 }
 
@@ -35,7 +39,7 @@ body {
 .username {
   display: inline;
   vertical-align: top;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: lighter;
   letter-spacing: 2px;
 }
@@ -52,8 +56,8 @@ body {
   text-align: center;
   line-height: 40px;
   color: #fff;
-  margin-top: 20px;
-  margin-right: 20px;
+  margin-top: 16px;
+  margin-right: 16px;
   background-color: #27ae60;
   cursor:pointer;
   font-family: 'Roboto', sans-serif;
@@ -62,3 +66,7 @@ body {
   .message-button:hover{
     background-color: #2ecc71
   }
+
+.tagline {
+  font-size: 20px;
+}
