@@ -82,6 +82,20 @@ footer .bottom {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 }
+@media only screen and (max-width: 600px) {
+  .wasd-header {
+    height: 50px;
+  }
+  .wasd-top {
+    font-size: 14px;
+  }
+  .wasd-text {
+    margin-top: 0;
+  }
+  .wasd-bottom {
+    font-size: 18px;
+  }
+}
 .promo,
 .promo2 {
   display: inline-block;
@@ -157,8 +171,8 @@ img.couple {
   width: 100%;
   height: 325px;
   color: #000;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 30px;
+  padding-bottom: 50px;
   text-align: center;
 }
 .live-profiles-header {
@@ -270,7 +284,7 @@ img.couple {
     padding-bottom: 25px;
   }
   .live-profiles-header {
-    font-size: 22px;
+    font-size: 20px;
   }
   .live-profile {
     margin-bottom: 20px;

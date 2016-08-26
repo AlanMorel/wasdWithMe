@@ -82,6 +82,20 @@ footer .bottom {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 }
+@media only screen and (max-width: 600px) {
+  .wasd-header {
+    height: 50px;
+  }
+  .wasd-top {
+    font-size: 14px;
+  }
+  .wasd-text {
+    margin-top: 0;
+  }
+  .wasd-bottom {
+    font-size: 18px;
+  }
+}
 .message {
   color: #000;
   padding-top: 40px;
