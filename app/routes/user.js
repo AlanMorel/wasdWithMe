@@ -15,8 +15,7 @@ router.get('/:username', function(req, res, next) {
             return;
         }
 
-        owner.tagline = "Hello, this is an example tagline! How are you?";
-
+        addTemporaryInfo(owner);
         console.log(owner); //debug purposes
 
         res.render('user', {
@@ -31,6 +30,15 @@ router.get('/:username', function(req, res, next) {
         });
     });
 });
+
+//add temporary info to profile owners for testing purposes
+function addTemporaryInfo(owner){
+    owner.tagline = "Hello, this is an example tagline! How are you?";
+    owner.first_name = "Alan";
+    owner.last_name = "Morel";
+    //randomly generated bio courtesy of http://www.generatorland.com/glgenerator.aspx?id=124&rlx=y
+    owner.bio = "Spent the 80's getting my feet wet with childrens books in Africa. Spent 2001-2004 supervising the production of pond scum in Orlando, FL. At the moment I'm marketing puppets in Ocean City, NJ. Spent college summers donating mosquito repellent in Pensacola, FL. Have some experience exporting human growth hormone for the government. Spent college summers buying and selling rocking horses in the aftermarket."
+}
 
 function isOwner(user, owner){
     return user && user.username === owner.username;
