@@ -19,7 +19,7 @@ router.get('/:username', function(req, res, next) {
         console.log(owner); //debug purposes
 
         res.render('user', {
-            title: 'wasdWithMe - ' + username,
+            title: 'wasdWithMe - ' + owner.display_name,
             layout: 'primary',
             file: 'user',
             user : req.user,
