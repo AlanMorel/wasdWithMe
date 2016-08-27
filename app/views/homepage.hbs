@@ -1,27 +1,6 @@
-<div class="header">
-    <a href="/">
-        <img src="images/logo.png" class="logo">
-    </a>
-    <div class="header-text">
-        <div class="header-top">
-            {{#if user}}
-                Hello, {{user.username}}
-            {{else}}
-                Hello, Guest
-            {{/if}}
-        </div>
-        <div class="header-bottom">
-            {{#if user}}
-                <a href="/login">Log Out</a>
-            {{else}}
-                <a href="/login">Log In</a>
-            {{/if}}
-        </div>
-    </div>
-</div>
 <div class="promo">
     <div class="left">
-        <img src="images/couple.png" class="couple">
+        <img src="/images/couple.png" class="couple">
     </div>
     <div class="right">
         <h1>Connect with gamers.</h1>
@@ -29,22 +8,49 @@
     </div>
 </div>
 <div class="promo2">
+    <div class="right">
+        <img src="/images/group.png" class="couple">
+    </div>
     <div class="left">
         <h1>Seize the moment.</h1>
         <h2>Don't miss out on all the fun. Sign up to get in on the action!</h2>
-        <a class="button" href="/signup">Sign Up!</a>
-    </div>
-    <div class="right">
-        <img src="images/group.png" class="couple">
+        <div class="sign-up-button">
+            <a class="button" href="/signup">Sign Up!</a>
+        </div>
     </div>
 </div>
 <div class="tagline">
-    If you're a gamer, welcome home.
+    <div class="tagline-header">If you're a gamer, welcome home.</div>
     <div class="logos">
-        <a href="http://store.steampowered.com/" target="_blank"><img src="images/steam.png"></a>
-        <a href="http://www.xbox.com/" target="_blank"><img src="images/xbox.png"></a>
-        <a href="https://www.playstation.com" target="_blank"><img src="images/playstation.png"></a>
-        <a href="https://www.twitch.tv/" target="_blank"><img src="images/twitch.png"></a>
+        <a href="http://store.steampowered.com/" target="_blank">
+            <img src="/images/steam.png">
+        </a>
+        <a href="http://www.xbox.com/" target="_blank">
+            <img src="/images/xbox.png">
+        </a>
+        <a href="https://www.playstation.com" target="_blank">
+            <img src="/images/playstation.png">
+        </a>
+        <a href="https://www.twitch.tv/" target="_blank">
+            <img src="/images/twitch.png">
+        </a>
     </div>
+    <div class="tagline-footer">Connect your Steam, Xbox, PSN and Twitch accounts for added functionality!</div>
 </div>
-<div class="live-profiles"></div>
+<div class="live-profiles">
+    <div class="live-profiles-header">See who has already joined!</div>
+    {{#each live_profile_users}}
+        <div class="live-profile">
+            <img src="{{profile_pic}}" class="live-profile-pic">
+            <a href="/user/{{display_name}}">
+                <div class="live-profile-username">{{display_name}}</div>
+            </a>
+            <div class="live-profile-oneUps">{{one_up_count}} <span class="one-ups-label">1UPs</span></div>
+            <div class="live-profile-platforms">
+            {{#each platforms}}
+                <img class="live-profile-platform" src="/images/{{this}}.png">
+            {{/each}}
+            </div>
+        </div>
+    {{/each}}
+</div>

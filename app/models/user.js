@@ -1,24 +1,49 @@
 var mongoose = require('mongoose');
-var plugin = require('passport-local-mongoose');
+var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
+require('mongoose-type-url');
+var url = mongoose.SchemaTypes.Url;
+
+var oneUps = [{
+    oneUpper: {
+        type: String,
+        required: true
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    }
+}];
+
+var comments = [{
+    author: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    one_ups: {
+        type: oneUps
+    },
+    deleted: {
+        type: Boolean,
+        default: 0
+    }
+}];
 
 var User = new mongoose.Schema({
-    username: {
+    display_name: {
         type: String,
         required: true,
         minlength: config.usernameMinLength,
         maxlength: config.usernameMaxLength,
         unique: true
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: config.passwordMinLength,
-        maxlength: config.passwordMaxLength
-    },
-    salt: {
-        type: String,
-        required: true
     },
     email: {
         type: String,
@@ -28,7 +53,7 @@ var User = new mongoose.Schema({
         unique: true
     },
     gender: {
-        type: Number,
+        type: Number, //0 = male, 1= female, 2 = other
         required: true
     },
     birthday: {
@@ -57,43 +82,59 @@ var User = new mongoose.Schema({
         type: String,
         maxlength: config.nameMaxLength
     },
-    profile: {
-        bio: {
-            type: String,
-            maxlength: config.bioMaxLength
-        },
-        top_games: [{
-            type: String,
-            validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
-        }],
-        profile_pic: {
-            type: String
+    top_games: [{
+        type: String,
+        validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
+    }],
+    profile_pic: {
+        type: url
+    },
+    one_ups: {
+        type: oneUps,
+    },
+    one_up_count: {
+        type: Number,
+        default: 0
+    },
+    tagline: {
+        type: String,
+        maxlength: config.taglineMaxLength
+    },
+    bio: {
+        type: String,
+        maxlength: config.bioMaxLength
+    },
+    images: [{
+        url: {
+            type: url,
+            required: true
         },
         one_ups: {
-            type: Number,
-            default: 0
+            type: oneUps
         },
-        images: [{
+        comments: {
+            type: comments
+        },
+    }],
+    accounts: {
+        steam: {
             type: String
-        }],
-    },
-    steam: {
-        type: String
-    },
-    xbox: {
-        type: String
-    },
-    playstation: {
-        type: String
-    },
-    twitch: {
-        type: String
+        },
+        xbox: {
+            type: String
+        },
+        playstation: {
+            type: String
+        },
+        twitch: {
+            type: String
+        },
     },
     coins: {
         type: Number,
         default: 0
     },
-    timestamp: {
+    created_at: {
         type: Date,
         default: Date.now
     },
@@ -106,7 +147,16 @@ var User = new mongoose.Schema({
 function arrayLimit(val) {
     return val.length <= config.topGamesLength;
 }
+//options for passport-local
+var passportOptions = {
+    interval: 1000,
+    usernameUnique: true,
+    limitAttempts: true,
+    maxAttempts: 16,
+    lastLoginField: 'last_login',
+    usernameLowerCase: true
+};
 
-User.plugin(plugin);
+User.plugin(passportPlugin, passportOptions);
 
 module.exports = mongoose.model('User', User);

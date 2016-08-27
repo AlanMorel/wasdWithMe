@@ -1,3 +1,6 @@
+#configs
+configs/heroku.js
+
 # Logs
 logs
 *.log

@@ -1,48 +1,49 @@
-@import "master.styl"
-
-html {
-  color: white;
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
 }
-
+body {
+  margin: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+html {
+  color: #fff;
+}
 .wasd-header {
   height: 75px;
-  background-color: wasdWithMePurple;
+  background-color: #6441a5;
   padding: 15px;
 }
-
 .logo {
   height: 100%;
 }
-
-transition(transition) {
-  -moz-transition: transition;
-  -o-transition: transition;
-  -webkit-transition: transition;
-  transition: transition;
-}
-
 .button {
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 1px;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   cursor: pointer;
-  color: #000000;
-  background: #FFFFFF;
+  color: #000;
+  background: #fff;
   border-radius: 4px;
   font-weight: lighter;
   padding: 2% 6%;
   text-decoration: none;
   font-size: 1.5vw;
-  transition(all 0.1s ease-in-out);
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
-
 .button:hover {
   background: #282828;
   cursor: pointer;
-  color: #FFFFFF;
-  border: 1px solid #111111;
+  color: #fff;
+  border: 1px solid #111;
 }
-
 .wasd-text {
   display: inline-block;
   float: right;
@@ -51,7 +52,6 @@ transition(transition) {
   font-size: 1vw;
   margin-top: 6px;
 }
-
 .wasd-top {
   font-family: 'Roboto', sans-serif;
   margin: auto;
@@ -60,46 +60,44 @@ transition(transition) {
   letter-spacing: 1.5px;
   font-size: 16px;
 }
-
 .wasd-bottom {
   font-size: 20px;
   margin-top: 12px;
-  a {
-    margin-left: 16px;
-  }
 }
-
+.wasd-bottom a {
+  margin-left: 16px;
+}
 footer {
   height: 225px;
-  background-color: wasdWithMeGray;
-
-  .top {
-    height: 150px;
-  }
-  .bottom {
-    background-color: rgba(0, 0, 0, 0.25);
-    height: 75px;
-    text-align: center;
-    line-height: 75px;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-  }
+  background-color: #282828;
 }
-
+footer .top {
+  height: 150px;
+}
+footer .bottom {
+  background-color: rgba(0,0,0,0.25);
+  height: 75px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
 @media only screen and (max-width: 600px) {
   .wasd-header {
     height: 50px;
   }
-
   .wasd-top {
     font-size: 14px;
   }
-
   .wasd-text {
     margin-top: 0;
   }
-
   .wasd-bottom {
     font-size: 18px;
   }
+}
+.message {
+  color: #000;
+  padding-top: 40px;
+  text-align: center;
 }

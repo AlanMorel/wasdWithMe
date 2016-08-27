@@ -12,11 +12,14 @@ var passport     = require('passport');
 var Strategy     = require('passport-local').Strategy;
 var hbs          = require('hbs');
 var stylus       = require('express-stylus');
+var User         = require('./models/user');
 
 //Pages
 var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
+var logout       = require('./routes/logout');
+var user         = require('./routes/user');
 var users        = require('./routes/users');
 
 var app = express();
@@ -27,6 +30,8 @@ var public = path.join(__dirname, 'public');
 app.use(favicon(path.join(public, 'favicon.ico')));
 app.use(express.static(public));
 app.use(logger('dev'));
+
+
 
 //Handlebars
 app.set('views', path.join(__dirname, 'views'));
@@ -52,16 +57,26 @@ app.use(session({
   saveUninitialized: false,
   }
 ));
+
+//Flash
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-var User = require('./models/user');
 passport.use(new Strategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//Flash
-app.use(flash());
+
+
+//Routes
+app.use('/', homepage);
+app.use('/signup', signUp);
+app.use('/login', login);
+app.use('/logout', logout);
+app.use('/user', user);
+app.use('/users', users);
 
 //MongoDB
 mongoose.connect(config.mongooseUri);
@@ -71,17 +86,16 @@ app.use(stylus({
   src: path.join(public, "stylesheets")
 }));
 
-//Routes
-app.use('/', homepage);
-app.use('/signup', signUp);
-app.use('/login', login);
-app.use('/users', users);
-
 //404 error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  res.status(404);
+  res.render('404', {
+    title: 'wasdWithMe - Page not found!',
+    layout: 'primary',
+    file: '404',
+    user : req.user,
+    message: "Page not found!"
+  });
 });
 
 //Development error handler

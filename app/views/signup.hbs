@@ -1,8 +1,9 @@
 <a href="/">
-    <img src="images/logo.png"/>
+    <img src="/images/logo.png"/>
 </a>
 <div class="title">Sign up for your account!</div>
 <div class="container">
+
     <form method="post" action="/signup">
         <div>
             <label>Username:</label>
@@ -51,7 +52,11 @@
                 <option value="ny">New York</option>
             </select>
         </div>
+<<<<<<< HEAD
         <p id="total_feedback"></p>
+=======
+        <p id="feedback">   {{#if error}} {{error}} {{/if}}</p>
+>>>>>>> origin/master
         <div class="action-button">
             <input type="submit" value="Sign Up" class="button" onclick="stop()">
         </div>

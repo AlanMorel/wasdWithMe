@@ -3,10 +3,39 @@
   <head>
     <title>{{title}}</title>
       {{>header}}
-      <link rel="stylesheet" href="stylesheets/{{file}}.css" />
-      <script src="javascript/{{file}}.js"></script>
+
+      <link rel="stylesheet" href="/stylesheets/{{file}}.css" />
   </head>
   <body>
+  <div class="wasd-header">
+      <a href="/">
+          <img src="/images/logo.png" class="logo">
+      </a>
+      <div class="wasd-text">
+          <div class="wasd-top">
+          {{#if user}}
+              Hello, {{user.username}}
+          {{else}}
+              Hello, Guest
+          {{/if}}
+          </div>
+          <div class="wasd-bottom">
+          {{#if user}}
+              <a href="/user/{{user.display_name}}">Profile</a>
+              <a href="/logout">Log Out</a>
+          {{else}}
+              <a href="/login">Log In</a>
+          {{/if}}
+          </div>
+      </div>
+  </div>
     {{{body}}}
+  <footer>
+      <div class="top"></div>
+      <div class="bottom">
+          Copyright © 2016 wasdWithMe. All rights reserved.
+      </div>
+  </footer>
   </body>
+  <script src="/javascript/{{file}}.js"></script>
 </html>
