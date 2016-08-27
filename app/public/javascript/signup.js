@@ -54,7 +54,6 @@ function stop(e) {
 
     if(forward===false) {
       $("#total_feedback").html("Please fill in all required information!");
-      forward = true;
       e.preventDefault();
     } else {
       $("#total_feedback").html("");
