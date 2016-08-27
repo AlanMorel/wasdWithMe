@@ -90,6 +90,10 @@ footer .bottom {
   vertical-align: middle;
   color: #008629;
   background-color: #edfff3;
+  cursor: pointer;
+}
+.one-ups-label:hover {
+  background-color: #cfffd4;
 }
 @media only screen and (max-width: 600px) {
   .wasd-header {
