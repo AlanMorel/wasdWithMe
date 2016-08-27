@@ -82,6 +82,15 @@ footer .bottom {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 }
+.one-ups-label {
+  font-size: 10px;
+  border-radius: 6px;
+  border: 1px solid #008629;
+  padding: 2px 4px 2px 4px;
+  vertical-align: middle;
+  color: #008629;
+  background-color: #edfff3;
+}
 @media only screen and (max-width: 600px) {
   .wasd-header {
     height: 50px;
@@ -139,8 +148,17 @@ body {
 .extra-info {
   line-height: 40px;
 }
-.message-button {
+.right-side {
   float: right;
+  display: inline-block;
+}
+.profile-one-ups {
+  text-align: right;
+  margin-right: 16px;
+  margin-top: 8px;
+  font-size: 18px;
+}
+.message-button {
   width: 100px;
   border-radius: 4px;
   border: 1px solid #00881d;
