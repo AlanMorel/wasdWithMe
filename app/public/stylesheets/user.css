@@ -186,8 +186,8 @@ body {
   padding-bottom: 10px;
 }
 .about div {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 .about-header {
   font-size: 20px;
@@ -206,6 +206,7 @@ body {
 }
 .bio {
   font-size: 14px;
+  line-height: 150%;
 }
 .status {
   display: inline-block;
