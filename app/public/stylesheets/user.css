@@ -132,7 +132,7 @@ body {
 }
 .header,
 .about,
-.top-games {
+.fav-games {
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
@@ -188,7 +188,7 @@ body {
   padding-bottom: 10px;
 }
 .about div,
-.top-games div {
+.fav-games div {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -199,7 +199,7 @@ img.coin {
   padding-right: 8px;
 }
 .about-header,
-.top-games-header {
+.fav-games-header {
   font-size: 20px;
   line-height: 40px;
   border-bottom-style: solid;
@@ -212,7 +212,7 @@ img.coin {
   margin-bottom: 16px;
 }
 .about,
-.top-games {
+.fav-games {
   padding-bottom: 20px;
 }
 .name {
@@ -244,11 +244,12 @@ img.coin {
   text-align: center;
 }
 .game-title {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: lighter;
 }
 img.boxart {
   max-width: 120px;
-  border: 1px solid #fff;
+  border: 1px solid #ddd;
 }
 img.boxart:hover {
   border: 1px solid #6441a5;

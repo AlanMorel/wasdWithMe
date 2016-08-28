@@ -41,18 +41,18 @@ function addTemporaryInfo(owner){
     //randomly generated bio courtesy of http://www.generatorland.com/glgenerator.aspx?id=124&rlx=y
     owner.bio = "Spent the 80's getting my feet wet with childrens books in Africa. Spent 2001-2004 supervising the production of pond scum in Orlando, FL. At the moment I'm marketing puppets in Ocean City, NJ. Spent college summers donating mosquito repellent in Pensacola, FL. Have some experience exporting human growth hormone for the government. Spent college summers buying and selling rocking horses in the aftermarket."
     owner.online_status = "online"; //"offline" to test offline status
-    owner.top_games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight"];
+    owner.fav_games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight"];
 }
 
 function getGames(owner){
     var games = [];
 
-    for (var i = 0; i < owner.top_games.length; i++) {
-        var name = owner.top_games[i];
+    for (var i = 0; i < owner.fav_games.length; i++) {
+        var name = owner.fav_games[i];
         var boxart = name.replace(/ /g, '%20');
         var slug = name.replace(/ /g, '');
         var game = {
-            name: owner.top_games[i],
+            name: owner.fav_games[i],
             boxart: boxart,
             slug: slug
         };

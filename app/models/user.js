@@ -100,7 +100,7 @@ var User = new mongoose.Schema({
         type: String,
         maxlength: config.bioMaxLength
     },
-    top_games: [{
+    fav_games: [{
         type: String,
         validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
     }],
