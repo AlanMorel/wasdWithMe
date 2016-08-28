@@ -30,8 +30,10 @@
         <div class="top-games-header">Top Games</div>
         <div class="games">
             {{#each games}}
-                <div class="game-title">{{name}}</div>
-                <img src="{{boxart}}" class="boxart">
+                <div class="game">
+                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-136x190.jpg" class="boxart">
+                    <div class="game-title">{{name}}</div>
+                </div>
             {{/each}}
         </div>
     </div>
