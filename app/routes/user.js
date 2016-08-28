@@ -48,10 +48,13 @@ function getGames(owner){
     var games = [];
 
     for (var i = 0; i < owner.top_games.length; i++) {
-        var boxart = owner.top_games[i].replace(/ /g, '%20')
+        var name = owner.top_games[i];
+        var boxart = name.replace(/ /g, '%20');
+        var slug = name.replace(/ /g, '');
         var game = {
             name: owner.top_games[i],
-            boxart: boxart
+            boxart: boxart,
+            slug: slug
         };
         games.push(game);
     }
