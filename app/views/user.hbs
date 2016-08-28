@@ -29,14 +29,14 @@
     <div class="fav-games">
         <div class="fav-games-header">Favorite Games</div>
         <div class="games">
-            {{#each games}}
-                <div class="game">
-                    <a href="/game/{{slug}}">
-                        <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-136x190.jpg" class="boxart">
-                    </a>
-                    <div class="game-title">{{name}}</div>
-                </div>
-            {{/each}}
+        {{#each games}}
+            <div class="game">
+                <a href="/game/{{slug}}">
+                    <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-136x190.jpg" class="boxart">
+                </a>
+                <div class="game-title">{{name}}</div>
+            </div>
+        {{/each}}
         </div>
     </div>
 </div>
