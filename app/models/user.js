@@ -74,6 +74,9 @@ var User = new mongoose.Schema({
             required: true
         },
     },
+    profile_pic: {
+        type: url
+    },
     first_name: {
         type: String,
         maxlength: config.nameMaxLength
@@ -82,12 +85,9 @@ var User = new mongoose.Schema({
         type: String,
         maxlength: config.nameMaxLength
     },
-    top_games: [{
+    tagline: {
         type: String,
-        validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
-    }],
-    profile_pic: {
-        type: url
+        maxlength: config.taglineMaxLength
     },
     one_ups: {
         type: oneUps,
@@ -96,14 +96,14 @@ var User = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    tagline: {
-        type: String,
-        maxlength: config.taglineMaxLength
-    },
     bio: {
         type: String,
         maxlength: config.bioMaxLength
     },
+    top_games: [{
+        type: String,
+        validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
+    }],
     images: [{
         url: {
             type: url,
