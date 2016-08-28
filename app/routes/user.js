@@ -17,6 +17,7 @@ router.get('/:username', function(req, res, next) {
 
         addTemporaryInfo(owner);
         console.log(owner); //debug purposes
+        console.log(getGames(owner)); //debug purposes
 
         res.render('user', {
             title: 'wasdWithMe - ' + owner.display_name,
@@ -26,6 +27,7 @@ router.get('/:username', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
+            games: getGames(owner),
             is_owner: isOwner(req.user, owner)
         });
     });
@@ -39,7 +41,22 @@ function addTemporaryInfo(owner){
     //randomly generated bio courtesy of http://www.generatorland.com/glgenerator.aspx?id=124&rlx=y
     owner.bio = "Spent the 80's getting my feet wet with childrens books in Africa. Spent 2001-2004 supervising the production of pond scum in Orlando, FL. At the moment I'm marketing puppets in Ocean City, NJ. Spent college summers donating mosquito repellent in Pensacola, FL. Have some experience exporting human growth hormone for the government. Spent college summers buying and selling rocking horses in the aftermarket."
     owner.online_status = "online"; //"offline" to test offline status
-    owner.top_games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight"]
+    owner.top_games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight"];
+}
+
+function getGames(owner){
+    var games = [];
+
+    for (var i = 0; i < owner.top_games.length; i++) {
+        var boxart = owner.top_games[i].replace(/ /g, '%20')
+        var game = {
+            name: owner.top_games[i],
+            boxart: boxart
+        };
+        games.push(game);
+    }
+
+    return games;
 }
 
 function isOwner(user, owner){

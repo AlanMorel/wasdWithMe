@@ -8,7 +8,8 @@
             <div class="extra-info">
                 <span class="age">{{age}}</span>
                 &bull;
-                <span class="location">{{owner.location.city}}, {{owner.location.state}}, {{owner.location.country}}</span>
+                <span class="location">{{owner.location.city}}, {{owner.location.state}}
+                    , {{owner.location.country}}</span>
                 &bull;
                 <span class="gender">{{gender}}</span>
             </div>
@@ -27,5 +28,11 @@
     </div>
     <div class="top-games">
         <div class="top-games-header">Top Games</div>
+        <div class="games">
+            {{#each games}}
+                <div class="game-title">{{name}}</div>
+                <img src="{{boxart}}" class="boxart">
+            {{/each}}
+        </div>
     </div>
 </div>
