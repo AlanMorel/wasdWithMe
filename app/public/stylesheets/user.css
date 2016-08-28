@@ -126,16 +126,17 @@ body {
 }
 .header {
   overflow: hidden;
-  margin-bottom: 25px;
 }
 .pic {
   display: inline-block;
 }
 .header,
-.about {
+.about,
+.top-games {
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
+  margin-bottom: 25px;
 }
 .info {
   display: inline-block;
@@ -186,7 +187,8 @@ body {
 .bio {
   padding-bottom: 10px;
 }
-.about div {
+.about div,
+.top-games div {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -196,7 +198,8 @@ img.coin {
   padding-left: 8px;
   padding-right: 8px;
 }
-.about-header {
+.about-header,
+.top-games-header {
   font-size: 20px;
   line-height: 40px;
   border-bottom-style: solid;
