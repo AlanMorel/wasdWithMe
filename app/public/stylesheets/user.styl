@@ -89,7 +89,7 @@ body {
   padding-bottom: 10px;
 }
 
-.about div, .fav-games div {
+.about div, .fav-games div, .platform div {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -101,7 +101,7 @@ img.coin {
   padding-right: 8px;
 }
 
-.about-header, .fav-games-header {
+.about-header, .fav-games-header, .platform .header {
   font-size: 20px;
   line-height: 40px;
   border-bottom-style: solid;
@@ -139,9 +139,9 @@ img.coin {
   box-shadow: 0 0 0 2.5px #00d280;
 }
 
- .offline{
-   box-shadow: 0 0 0 2.5px #FF0000;
- }
+.offline{
+  box-shadow: 0 0 0 2.5px #FF0000;
+}
 
 .games div{
   padding:0;
@@ -162,7 +162,32 @@ img.boxart {
   border: 1px solid #ddd;
 }
 
-  img.boxart:hover{
-    border: 1px solid wasdWithMePurple;
-    box-shadow: 0 0 25px wasdWithMePurple;
-  }
+img.boxart:hover{
+  border: 1px solid wasdWithMePurple;
+  box-shadow: 0 0 25px wasdWithMePurple;
+}
+
+.platform{
+
+}
+
+
+.steam .header{
+  background: #171a21;
+  color: white;
+}
+
+.xbox .header {
+  background: #107c10;
+  color: white;
+}
+
+.playstation .header {
+  background: #003791;
+  color: white;
+}
+
+.twitch .header {
+  background: #6441A5;
+  color: white;
+}

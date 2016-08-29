@@ -188,7 +188,8 @@ body {
   padding-bottom: 10px;
 }
 .about div,
-.fav-games div {
+.fav-games div,
+.platform div {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -199,7 +200,8 @@ img.coin {
   padding-right: 8px;
 }
 .about-header,
-.fav-games-header {
+.fav-games-header,
+.platform .header {
   font-size: 20px;
   line-height: 40px;
   border-bottom-style: solid;
@@ -253,4 +255,20 @@ img.boxart {
 img.boxart:hover {
   border: 1px solid #6441a5;
   box-shadow: 0 0 25px #6441a5;
+}
+.steam .header {
+  background: #171a21;
+  color: #fff;
+}
+.xbox .header {
+  background: #107c10;
+  color: #fff;
+}
+.playstation .header {
+  background: #003791;
+  color: #fff;
+}
+.twitch .header {
+  background: #6441a5;
+  color: #fff;
 }
