@@ -17,7 +17,6 @@ router.get('/:username', function(req, res, next) {
 
         addTemporaryInfo(owner);
         console.log(owner); //debug purposes
-        console.log(getGames(owner)); //debug purposes
 
         res.render('user', {
             title: 'wasdWithMe - ' + owner.display_name,
