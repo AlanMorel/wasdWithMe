@@ -132,7 +132,8 @@ body {
 }
 .header,
 .about,
-.fav-games {
+.fav-games,
+.platform {
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
@@ -212,6 +213,8 @@ img.coin {
   border-top-right-radius: 8px;
   padding-bottom: 0;
   margin-bottom: 16px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .about,
 .fav-games {
@@ -256,19 +259,35 @@ img.boxart:hover {
   border: 1px solid #6441a5;
   box-shadow: 0 0 25px #6441a5;
 }
+.steam {
+  background: #c9c9c8;
+}
 .steam .header {
   background: #171a21;
+  border-color: #171a21;
   color: #fff;
+}
+.xbox {
+  background: #baccb6;
 }
 .xbox .header {
   background: #107c10;
+  border-color: #107c10;
   color: #fff;
+}
+.playstation {
+  background: #afb9cc;
 }
 .playstation .header {
   background: #003791;
+  border-color: #003791;
   color: #fff;
+}
+.twitch {
+  background: #c2b0cc;
 }
 .twitch .header {
   background: #6441a5;
+  border-color: #6441a5;
   color: #fff;
 }
