@@ -55,7 +55,7 @@ function getGames(owner, games_list){
 
     for (var i = 0; i < games_list.length; i++) {
         var name = games_list[i];
-        var boxart = escape(name);
+        var boxart = encodeURI(name);
         var slug = name.replace(/ /g, '');
         var game = {
             name: games_list[i],
