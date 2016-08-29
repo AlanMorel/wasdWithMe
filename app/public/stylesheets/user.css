@@ -260,7 +260,7 @@ img.boxart:hover {
   box-shadow: 0 0 25px #6441a5;
 }
 .steam {
-  background: #c9c9c8;
+  background: #fffffe;
 }
 .steam .header {
   background: #171a21;
@@ -268,7 +268,7 @@ img.boxart:hover {
   color: #fff;
 }
 .xbox {
-  background: #baccb6;
+  background: #f3ffed;
 }
 .xbox .header {
   background: #107c10;
@@ -276,7 +276,7 @@ img.boxart:hover {
   color: #fff;
 }
 .playstation {
-  background: #afb9cc;
+  background: #edf4ff;
 }
 .playstation .header {
   background: #003791;
@@ -284,7 +284,7 @@ img.boxart:hover {
   color: #fff;
 }
 .twitch {
-  background: #c2b0cc;
+  background: #f9ebff;
 }
 .twitch .header {
   background: #6441a5;

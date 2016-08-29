@@ -41,6 +41,11 @@ function addTemporaryInfo(owner){
     owner.bio = "Spent the 80's getting my feet wet with childrens books in Africa. Spent 2001-2004 supervising the production of pond scum in Orlando, FL. At the moment I'm marketing puppets in Ocean City, NJ. Spent college summers donating mosquito repellent in Pensacola, FL. Have some experience exporting human growth hormone for the government. Spent college summers buying and selling rocking horses in the aftermarket."
     owner.online_status = "online"; //"offline" to test offline status
     owner.fav_games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight"];
+
+    owner.accounts.steam.steam_id = "SharpAceX";
+    owner.accounts.xbox.gamertag = "SharpAceX";
+    owner.accounts.playstation.psn_id = "SharpAceX";
+    owner.accounts.twitch.username = "SharpAceX";
 }
 
 function getGames(owner){

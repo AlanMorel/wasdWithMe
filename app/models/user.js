@@ -122,7 +122,7 @@ var User = new mongoose.Schema({
             },
         },
         xbox: {
-            gamer_tag: {
+            gamertag: {
                 type: String,
             },
         },
