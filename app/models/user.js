@@ -90,7 +90,7 @@ var User = new mongoose.Schema({
         maxlength: config.taglineMaxLength
     },
     one_ups: {
-        type: oneUps,
+        type: oneUps
     },
     one_up_count: {
         type: Number,
@@ -101,8 +101,7 @@ var User = new mongoose.Schema({
         maxlength: config.bioMaxLength
     },
     fav_games: [{
-        type: String,
-        validate: [arrayLimit, '{PATH} exceeds the limit of ' + config.topGamesLength]
+        type: String
     }],
     images: [{
         url: {
@@ -118,16 +117,24 @@ var User = new mongoose.Schema({
     }],
     accounts: {
         steam: {
-            type: String
+            steam_id: {
+                type: String,
+            },
         },
         xbox: {
-            type: String
+            gamer_tag: {
+                type: String,
+            },
         },
         playstation: {
-            type: String
+            psn_id: {
+                type: String,
+            },
         },
         twitch: {
-            type: String
+            username: {
+                type: String,
+            },
         },
     },
     coins: {
@@ -144,9 +151,6 @@ var User = new mongoose.Schema({
     }
 });
 
-function arrayLimit(val) {
-    return val.length <= config.topGamesLength;
-}
 //options for passport-local
 var passportOptions = {
     interval: 1000,

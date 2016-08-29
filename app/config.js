@@ -41,7 +41,7 @@ config.taglineMaxLength = 50;
 
 config.bioMaxLength = 500;
 
-config.topGamesLength = 5;
+config.favGamesLength = 5;
 
 //Platform-specific
 config.steamNameMinLength = 0;
