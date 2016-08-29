@@ -26,7 +26,7 @@ body {
   display: inline-block;
 }
 
-.header, .about, .fav-games, .platform {
+.header, .about, .fav-games, .platform, .all-games {
   border-radius: 8px;
   border: 1px solid #dddddd;
   background-color: white;
@@ -89,7 +89,7 @@ body {
   padding-bottom: 10px;
 }
 
-.about div, .fav-games div, .platform div {
+.about div, .fav-games div, .platform div, .all-games div {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -101,7 +101,7 @@ img.coin {
   padding-right: 8px;
 }
 
-.about-header, .fav-games-header, .platform .header {
+.about-header, .fav-games-header, .platform .header, .all-games-header {
   font-size: 20px;
   line-height: 40px;
   border-bottom-style: solid;
@@ -110,14 +110,14 @@ img.coin {
   background-color: #f3f3f3;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  padding-bottom:0;
+  padding-bottom: 0;
   margin-bottom: 16px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.about, .fav-games{
-  padding-bottom:20px;
+.about, .fav-games, .all-games {
+  padding-bottom: 20px;
 }
 
 .name {
@@ -129,7 +129,7 @@ img.coin {
   line-height: 150%;
 }
 
-.status{
+.status {
   display: inline-block;
   padding: 5px;
   margin-top: 22px;
@@ -137,22 +137,23 @@ img.coin {
   border-radius: 100%;
 }
 
-.online{
+.online {
   box-shadow: 0 0 0 2.5px #00d280;
 }
 
-.offline{
+.offline {
   box-shadow: 0 0 0 2.5px #FF0000;
 }
 
-.games div{
-  padding:0;
+.games div {
+  padding: 0;
 }
 
 .game {
   width: 125px;
-  display: inline-block;
-  text-align:center;
+  display: inline-table;
+  text-align: center;
+  margin-bottom: 14px;
 }
 
 .game-title {
@@ -164,18 +165,19 @@ img.boxart {
   border: 1px solid #ddd;
 }
 
-img.boxart:hover{
+img.boxart:hover {
   border: 1px solid wasdWithMePurple;
   box-shadow: 0 0 25px wasdWithMePurple;
 }
 
-.platform{
+.platform {
 
 }
 
 .steam {
   background: #fffffe;
 }
+
 .steam .header {
   background: #171a21;
   border-color: #171a21;
@@ -185,6 +187,7 @@ img.boxart:hover{
 .xbox {
   background: #f3ffed;
 }
+
 .xbox .header {
   background: #107c10;
   border-color: #107c10;
@@ -194,6 +197,7 @@ img.boxart:hover{
 .playstation {
   background: #edf4ff;
 }
+
 .playstation .header {
   background: #003791;
   border-color: #003791;
@@ -203,6 +207,7 @@ img.boxart:hover{
 .twitch {
   background: #f9ebff;
 }
+
 .twitch .header {
   background: #6441A5;
   border-color: #6441A5;

@@ -133,7 +133,8 @@ body {
 .header,
 .about,
 .fav-games,
-.platform {
+.platform,
+.all-games {
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
@@ -190,7 +191,8 @@ body {
 }
 .about div,
 .fav-games div,
-.platform div {
+.platform div,
+.all-games div {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -202,7 +204,8 @@ img.coin {
 }
 .about-header,
 .fav-games-header,
-.platform .header {
+.platform .header,
+.all-games-header {
   font-size: 20px;
   line-height: 40px;
   border-bottom-style: solid;
@@ -217,7 +220,8 @@ img.coin {
   border-bottom-right-radius: 0;
 }
 .about,
-.fav-games {
+.fav-games,
+.all-games {
   padding-bottom: 20px;
 }
 .name {
@@ -245,8 +249,9 @@ img.coin {
 }
 .game {
   width: 125px;
-  display: inline-block;
+  display: inline-table;
   text-align: center;
+  margin-bottom: 14px;
 }
 .game-title {
   font-size: 13px;

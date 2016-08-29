@@ -18,6 +18,8 @@ router.get('/:username', function(req, res, next) {
         addTemporaryInfo(owner);
         console.log(owner); //debug purposes
 
+        var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
+
         res.render('user', {
             title: 'wasdWithMe - ' + owner.display_name,
             layout: 'primary',
@@ -26,7 +28,8 @@ router.get('/:username', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
-            games: getGames(owner),
+            all_games: getGames(owner, games),
+            fav_games: getGames(owner, games.splice(0, 5)),
             is_owner: isOwner(req.user, owner)
         });
     });
@@ -40,7 +43,6 @@ function addTemporaryInfo(owner){
     //randomly generated bio courtesy of http://www.generatorland.com/glgenerator.aspx?id=124&rlx=y
     owner.bio = "Spent the 80's getting my feet wet with childrens books in Africa. Spent 2001-2004 supervising the production of pond scum in Orlando, FL. At the moment I'm marketing puppets in Ocean City, NJ. Spent college summers donating mosquito repellent in Pensacola, FL. Have some experience exporting human growth hormone for the government. Spent college summers buying and selling rocking horses in the aftermarket."
     owner.online_status = "online"; //"offline" to test offline status
-    owner.fav_games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight"];
 
     owner.accounts.steam.steam_id = "SharpAceX";
     owner.accounts.xbox.gamertag = "SharpAceX";
@@ -48,15 +50,15 @@ function addTemporaryInfo(owner){
     owner.accounts.twitch.username = "SharpAceX";
 }
 
-function getGames(owner){
+function getGames(owner, games_list){
     var games = [];
 
-    for (var i = 0; i < owner.fav_games.length; i++) {
-        var name = owner.fav_games[i];
-        var boxart = name.replace(/ /g, '%20');
+    for (var i = 0; i < games_list.length; i++) {
+        var name = games_list[i];
+        var boxart = escape(name);
         var slug = name.replace(/ /g, '');
         var game = {
-            name: owner.fav_games[i],
+            name: games_list[i],
             boxart: boxart,
             slug: slug
         };
