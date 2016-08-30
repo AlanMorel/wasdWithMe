@@ -15,7 +15,11 @@
             <div class="tagline">{{owner.tagline}}</div>
         </div>
         <div class="right-side">
+            {{#if is_owner}}
+            <div class="edit-profile-button">Edit Profile</div>
+            {{else}}
             <div class="message-button">Message</div>
+            {{/if}}
             <div class="profile-one-ups">{{owner.one_up_count}} <span class="one-ups-label">1UPs</span></div>
             <div class="profile-coins">{{owner.coins}} <img class="coin" src="/images/coin.png"></div>
         </div>
