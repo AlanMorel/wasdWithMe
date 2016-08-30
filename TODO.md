@@ -11,11 +11,11 @@
 - [X] hook up database data instead of static users for live profiles
 - [X] create profile page after database is set up and working
 - [X] age is calculated properly now
-- [ ] continue to populate profile page and improve visuals
+- [X] continue to populate profile page and improve visuals
+- [X] "Game library" section
+- [X] add proper mobile.css to signup/register pages
 - [ ] "message" button when user is not on own page
-- [ ] "Game library" section
 - [ ] profile change info page or on same page when user is on own page
-- [ ] add proper mobile.css to signup/register pages
 
 # Edgar's Todo
 - [X] fix passport

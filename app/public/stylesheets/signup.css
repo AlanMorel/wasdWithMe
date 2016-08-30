@@ -23,10 +23,6 @@ body {
   height: 140px;
   background-color: #fff;
 }
-.logo {
-  height: 100px;
-  margin: 20px 0px 20px 20px;
-}
 .button {
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 1px;
@@ -42,7 +38,7 @@ body {
   font-weight: lighter;
   padding: 2% 6%;
   text-decoration: none;
-  font-size: 1.25vw;
+  font-size: 24px;
 }
 .button:hover {
   background: #6441a4;
@@ -53,42 +49,41 @@ body {
 .container {
   text-align: center;
   margin: auto;
-  min-width: 400px;
-  max-width: 35vw;
+  width: 550px;
   background-color: #fff;
   border-radius: 18px;
-  padding-bottom: 2vw;
+  padding-bottom: 50px;
   margin-bottom: 100px;
   padding-top: 1%;
 }
 img {
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 30px;
 }
 .container div {
   padding-top: 30px;
   text-align: left;
 }
 label {
-  width: 12vw;
-  font-size: 1.2vw;
+  width: 200px;
+  font-size: 20px;
   float: left;
   text-align: right;
   margin-right: 1vw;
 }
 input,
 select {
-  font-size: 1.2vw;
+  font-size: 20px;
 }
 .title {
   color: #fff;
-  padding: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   background: -webkit-linear-gradient(left, rgba(255,0,0,0), #000, rgba(255,0,0,0));
   margin: auto;
-  margin-bottom: 2%;
-  min-width: 400px;
-  max-width: 35vw;
-  font-size: 1vw;
+  margin-bottom: 30px;
+  width: 500px;
+  font-size: 16px;
 }
 input.button {
   margin-top: 20px;
@@ -96,4 +91,28 @@ input.button {
 .container .action-button {
   text-align: center;
   margin-right: 20px;
+}
+@media only screen and (max-width: 600px) {
+  img {
+    height: 150px;
+  }
+  .title {
+    width: 90%;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  label {
+    width: 100%;
+    text-align: left;
+    font-size: 24px;
+  }
+  input,
+  select {
+    width: 100%;
+  }
 }

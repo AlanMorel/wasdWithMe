@@ -1,101 +1,123 @@
 @import "master.styl"
 
 html {
-    background: wasdWithMePurple;
+  background: wasdWithMePurple;
 }
 
 body {
-    text-align: center;
-    margin-top: 4%;
-    color: black;
+  text-align: center;
+  margin-top: 4%;
+  color: black;
 }
 
-.header{
-    width: 100%;
-    height: 140px;
-    background-color: #FFFFFF;
-}
-
-.logo {
-    height: 100px;
-    margin: 20px 0px 20px 20px;
+.header {
+  width: 100%;
+  height: 140px;
+  background-color: #FFFFFF;
 }
 
 .button {
-    font-family: 'Source Sans Pro', sans-serif;
-    letter-spacing: 1px;
-    border: 1px solid #cccccc;
-    cursor: pointer;
-    color: #000000;
-    background: #FFFFFF;
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    -o-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-    border-radius: 4px;
-    font-weight: lighter;
-    padding: 2% 6%;
-    text-decoration: none;
-    font-size: 1.25vw;
+  font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 1px;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  color: #000000;
+  background: #FFFFFF;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border-radius: 4px;
+  font-weight: lighter;
+  padding: 2% 6%;
+  text-decoration: none;
+  font-size: 24px;
 }
 
 .button:hover {
-    background: #6441a4;
-    cursor: pointer;
-    color: #FFFFFF;
-    border: 1px solid #55378c;
+  background: #6441a4;
+  cursor: pointer;
+  color: #FFFFFF;
+  border: 1px solid #55378c;
 }
 
-.container{
-    text-align: center;
-    margin: auto;
-    min-width: 400px;
-    max-width: 35vw;
-    background-color: #FFFFFF;
-    border-radius: 18px;
-    padding-bottom: 2vw;
-    margin-bottom: 100px;
-    padding-top: 1%;
+.container {
+  text-align: center;
+  margin: auto;
+  width: 550px;
+  background-color: #FFFFFF;
+  border-radius: 18px;
+  padding-bottom: 50px;
+  margin-bottom: 100px;
+  padding-top: 1%;
 }
 
 img {
-    text-align: center;
-    margin-bottom: 2%;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .container div {
-    padding-top: 30px;
-    text-align: left;
+  padding-top: 30px;
+  text-align: left;
 }
 
 label {
-    width: 12vw;
-    font-size: 1.2vw;
-    float: left;
-    text-align: right;
-    margin-right: 1vw;
+  width: 200px;
+  font-size: 20px;
+  float: left;
+  text-align: right;
+  margin-right: 1vw;
 }
 
-input, select{
-    font-size: 1.2vw;
+input, select {
+  font-size: 20px;
 }
 
 .title {
-    color: #fff;
-    padding: 16px;
-    background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgb(0, 0, 0) , rgba(255,0,0,0));
-    margin: auto;
-    margin-bottom: 2%;
-    min-width: 400px;
-    max-width: 35vw;
-    font-size: 1vw;
+  color: #fff;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0), rgb(0, 0, 0), rgba(255, 0, 0, 0));
+  margin: auto;
+  margin-bottom: 30px;
+  width: 500px;
+  font-size: 16px;
 }
 
 input.button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .container .action-button {
-    text-align: center;
-    margin-right: 20px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  img {
+    height: 150px;
+  }
+
+  .title {
+    width: 90%;
+  }
+
+  .container {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  label {
+    width: 100%;
+    text-align: left;
+    font-size: 24px;
+  }
+
+  input, select {
+    width: 100%;
+  }
 }
