@@ -92,6 +92,19 @@ router.get('/:username/edit', function(req, res, next) {
     });
 });
 
+router.get('/:username/message', function(req, res, next) {
+    var username = req.params.username;
+    console.log("Trying to message " + username);
+    //Temporary response
+    res.render('404', {
+        title: 'wasdWithMe - Message ' + username,
+        layout: 'primary',
+        file: '404',
+        user: req.user,
+        message: "Messaging " + username
+    });
+});
+
 function userNotFound(res, user, username){
     res.status(404);
     res.render('404', {
