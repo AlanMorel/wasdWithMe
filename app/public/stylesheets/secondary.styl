@@ -6,14 +6,8 @@ html {
 
 body {
   text-align: center;
-  margin-top: 4%;
+  margin-top: 20px;
   color: black;
-}
-
-.header {
-  width: 100%;
-  height: 140px;
-  background-color: #FFFFFF;
 }
 
 .button {
@@ -21,8 +15,7 @@ body {
   letter-spacing: 1px;
   border: 1px solid #cccccc;
   cursor: pointer;
-  color: #000000;
-  background: #FFFFFF;
+  background: white;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
@@ -35,9 +28,8 @@ body {
 }
 
 .button:hover {
-  background: #6441a4;
-  cursor: pointer;
-  color: #FFFFFF;
+  background: wasdWithMePurple;
+  color: white;
   border: 1px solid #55378c;
 }
 
@@ -45,11 +37,10 @@ body {
   text-align: center;
   margin: auto;
   width: 550px;
-  background-color: #FFFFFF;
+  background-color: white;
   border-radius: 18px;
   padding-bottom: 50px;
-  margin-bottom: 100px;
-  padding-top: 1%;
+  margin-bottom: 75px;
 }
 
 img {
@@ -75,7 +66,7 @@ input, select {
 }
 
 .title {
-  color: #fff;
+  color: white;
   padding-top: 16px;
   padding-bottom: 16px;
   background: -webkit-linear-gradient(left, rgba(255, 0, 0, 0), rgb(0, 0, 0), rgba(255, 0, 0, 0));
@@ -85,39 +76,31 @@ input, select {
   font-size: 16px;
 }
 
-input.button {
-  margin-top: 20px;
-}
-
 .container .action-button {
   text-align: center;
-  margin-right: 20px;
 }
 
 @media only screen and (max-width: 600px) {
+
   img {
     height: 150px;
   }
 
-  .title {
-    width: 90%;
+  .title, .container {
+    width: 80%;
   }
 
   .container {
-    width: 80%;
-    margin: auto;
-    margin-bottom: 50px;
     padding-left: 5%;
     padding-right: 5%;
   }
 
   label {
-    width: 100%;
     text-align: left;
     font-size: 24px;
   }
 
-  input, select {
+  input, select, label {
     width: 100%;
   }
 }

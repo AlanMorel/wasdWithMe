@@ -15,20 +15,14 @@ html {
 }
 body {
   text-align: center;
-  margin-top: 4%;
+  margin-top: 20px;
   color: #000;
-}
-.header {
-  width: 100%;
-  height: 140px;
-  background-color: #fff;
 }
 .button {
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 1px;
   border: 1px solid #ccc;
   cursor: pointer;
-  color: #000;
   background: #fff;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
@@ -41,8 +35,7 @@ body {
   font-size: 24px;
 }
 .button:hover {
-  background: #6441a4;
-  cursor: pointer;
+  background: #6441a5;
   color: #fff;
   border: 1px solid #55378c;
 }
@@ -53,8 +46,7 @@ body {
   background-color: #fff;
   border-radius: 18px;
   padding-bottom: 50px;
-  margin-bottom: 100px;
-  padding-top: 1%;
+  margin-bottom: 75px;
 }
 img {
   text-align: center;
@@ -85,34 +77,28 @@ select {
   width: 500px;
   font-size: 16px;
 }
-input.button {
-  margin-top: 20px;
-}
 .container .action-button {
   text-align: center;
-  margin-right: 20px;
 }
 @media only screen and (max-width: 600px) {
   img {
     height: 150px;
   }
-  .title {
-    width: 90%;
-  }
+  .title,
   .container {
     width: 80%;
-    margin: auto;
-    margin-bottom: 50px;
+  }
+  .container {
     padding-left: 5%;
     padding-right: 5%;
   }
   label {
-    width: 100%;
     text-align: left;
     font-size: 24px;
   }
   input,
-  select {
+  select,
+  label {
     width: 100%;
   }
 }
