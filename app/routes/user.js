@@ -79,6 +79,19 @@ function getAge(birthday){
     return age;
 }
 
+router.get('/:username/edit', function(req, res, next) {
+    var username = req.params.username;
+    console.log("Trying to edit " + username + "'s profile.");
+    //Temporary response
+    res.render('404', {
+        title: 'wasdWithMe - Editing ' + username + ' profile!',
+        layout: 'primary',
+        file: '404',
+        user: req.user,
+        message: "Editing " + username + "'s profile!"
+    });
+});
+
 function userNotFound(res, user, username){
     res.status(404);
     res.render('404', {
