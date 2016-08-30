@@ -14,7 +14,11 @@
 - [X] continue to populate profile page and improve visuals
 - [X] "Game library" section
 - [X] add proper mobile.css to signup/register pages
-- [ ] "message" button when user is not on own page
+- [X] "message" button when user is not on own page
+- [ ] work on editing own profile so static temporary data can be removed
+- [ ] work on different homepage when logged in
+- [ ] add search bar to front page (maybe this is where AJAX comes into play aka searching for users, games, etc)
+- [ ] individual games pages by pulling info via API
 - [ ] profile change info page or on same page when user is on own page
 
 # Edgar's Todo
@@ -35,6 +39,8 @@
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [ ] configure heroku environment
 - [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
+- [ ] sanitize input for form data
+- [ ] display error messages on login page just like sign up page
 
 # Anteneh's Todo
 - [ ] client-side form validation to register and sign in pages
@@ -44,11 +50,12 @@
 - [ ] validate that the two passwords are equal
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [ ] leaderboards page
+- [ ] sanitize input for form data
+- [ ] display error messages on login page just like sign up page
 
 # General Todo
 - [ ] allow for manual game additions
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
-- [ ] search for other users
 - [ ] add messaging other users
 - [ ] add blocking other users
-- [ ] sanitize input for form data
+
