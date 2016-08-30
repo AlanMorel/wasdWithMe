@@ -28,8 +28,8 @@ router.get('/:username', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
-            all_games: getGames(owner, games),
-            fav_games: getGames(owner, games.splice(0, 5)),
+            all_games: getGames(games),
+            fav_games: getGames(games.splice(0, 5)),
             is_owner: isOwner(req.user, owner)
         });
     });
@@ -50,13 +50,13 @@ function addTemporaryInfo(owner){
     owner.accounts.twitch.username = "SharpAceX";
 }
 
-function getGames(owner, games_list){
+function getGames(games_list){
     var games = [];
 
     for (var i = 0; i < games_list.length; i++) {
         var name = games_list[i];
         var boxart = encodeURI(name);
-        var slug = name.replace(/ /g, '');
+        var slug = name.replace(/ /g, '').replace(/:/g, '');
         var game = {
             name: games_list[i],
             boxart: boxart,
