@@ -1,3 +1,9 @@
+{{#if user}}
+<div class="search">
+    <input name="search" type="text" placeholder="Search for people or games..." />
+    <img src="/images/search.png">
+</div>
+{{else}}
 <div class="promo">
     <div class="left">
         <img src="/images/couple.png" class="couple">
@@ -54,3 +60,4 @@
         </div>
     {{/each}}
 </div>
+{{/if}}
