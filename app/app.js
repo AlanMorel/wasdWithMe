@@ -20,7 +20,6 @@ var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
 var logout       = require('./routes/logout');
 var user         = require('./routes/user');
-var users        = require('./routes/users');
 
 var app = express();
 
@@ -30,8 +29,6 @@ var public = path.join(__dirname, 'public');
 app.use(favicon(path.join(public, 'favicon.ico')));
 app.use(express.static(public));
 app.use(logger('dev'));
-
-
 
 //Handlebars
 app.set('views', path.join(__dirname, 'views'));
@@ -68,15 +65,12 @@ passport.use(new Strategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
-
 //Routes
 app.use('/', homepage);
 app.use('/signup', signUp);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/user', user);
-app.use('/users', users);
 
 //MongoDB
 mongoose.connect(config.mongooseUri);
