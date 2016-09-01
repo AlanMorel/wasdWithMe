@@ -65,6 +65,9 @@ passport.use(new Strategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//enables case sensitive routing so /user/bob is same as /uSeR/bOB
+app.enable('case sesnsitive routing');
+
 //Routes
 app.use('/', homepage);
 app.use('/signup', signUp);
