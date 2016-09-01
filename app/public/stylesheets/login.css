@@ -18,6 +18,18 @@ body {
   margin-top: 20px;
   color: #000;
 }
+input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #afafaf;
+  padding: 4px;
+}
+input:focus {
+  border-color: #6441a5;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #6441a5;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #6441a5;
+}
 .button {
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 1px;
@@ -65,7 +77,8 @@ label {
 }
 input,
 select {
-  font-size: 20px;
+  font-size: 18px;
+  width: 200px;
 }
 .title {
   color: #fff;
@@ -95,6 +108,7 @@ select {
   label {
     text-align: left;
     font-size: 24px;
+    padding-bottom: 10px;
   }
   input,
   select,

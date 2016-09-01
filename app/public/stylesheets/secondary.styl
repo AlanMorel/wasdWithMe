@@ -10,6 +10,20 @@ body {
   color: black;
 }
 
+input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #afafaf;
+  padding:4px;
+}
+
+input:focus {
+  border-color: wasdWithMePurple;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px wasdWithMePurple;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px wasdWithMePurple;
+}
+
 .button {
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 1px;
@@ -62,7 +76,8 @@ label {
 }
 
 input, select {
-  font-size: 20px;
+  font-size: 18px;
+  width: 200px;
 }
 
 .title {
@@ -98,6 +113,7 @@ input, select {
   label {
     text-align: left;
     font-size: 24px;
+    padding-bottom: 10px;
   }
 
   input, select, label {
