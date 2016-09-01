@@ -87,6 +87,7 @@ console.log("process.env.NODE_ENV="+app.get('env'));
 //MongoDB
 if(app.get('env')==='production'){
   console.log("Connecting to: "+ process.env.MONGODB_URI);
+  console.log("Port="+process.env.PORT );
   //NOTE: You have to run heroku config first to set this environment variable
   //otherwise it defaults to the config file in config.mongooseUri
   mongoose.connect(process.env.MONGODB_URI);
