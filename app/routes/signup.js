@@ -4,16 +4,16 @@ var router = express.Router();
 var passport = require('passport');
 var User     = require('../models/user');
 var config   = require('../config');
+var validation=require('../tools/validation');
+
 
 router.get('/', function (req, res, next) {
     res.render('signup', {
         title: 'wasdWithMe - Sign up!',
         layout: 'secondary',
-        file: 'signup',
-        error: req.session.msg
+        file: 'signup'
     });
-    //reset session so no longer persists
-    req.session.msg = undefined;
+
 });
 
 var authenticationOptions = {
@@ -45,8 +45,15 @@ router.post('/', function (req, res) {
         + " state: " + state
         + " city: " + city);
 
-    if (!checkAccount(displayName, password, email, req)) {
-        return res.redirect('/signup');
+    var err = validation.checkAccount(displayName, password, email)
+    if (err != undefined) {
+          //handle error
+          return res.render('signup', {
+            title: 'wasdWithMe - Sign up!',
+            layout: 'secondary',
+            file: 'signup',
+            error: err
+         });
     }
 
     var oneUps = getRandomOneUps(100);
@@ -75,8 +82,14 @@ router.post('/', function (req, res) {
             //handle error
             console.log(err);
             console.log("registering error occurred");
-            req.session.msg = err.message;
-            return res.redirect('/signup');
+            return res.render('signup', {
+              title: 'wasdWithMe - Sign up!',
+              layout: 'secondary',
+              file: 'signup',
+              error: err.message
+           });
+
+            //return res.redirect('/signup');
         }
         authentication(req, res, function () {
             console.log("Authenticated successfully");
@@ -101,76 +114,5 @@ function getRandomCoins(number) {
     return Math.floor(Math.random() * number) + 1
 }
 
-//Every function below this comment belongs in separate validation.js file
-
-//checkAccount should instead return string with error
-//no error returns empty string
-//if checkAccount, then set it
-function checkAccount(username, password, email, req) {
-
-    if (username === '') {
-        req.session.msg = "No username inputted";
-        return false;
-    }
-    //check username first
-    if (!usernameIsValid(username)) {
-        req.session.msg = "Only alphanumerical, numerical, dashes and underscores allowed in username";
-        return false;
-    }
-
-    if (username.length < config.usernameMinLength || username.length > config.usernameMaxLength) {
-        req.session.msg = "Username must be between " + config.usernameMinLength+ " and " + config.usernameMaxLength + " characters in length";
-        return false;
-    }
-
-    //check password field valid next
-    if (password === '') {
-        req.session.msg = "You must input a password";
-        return false;
-    }
-
-    if (password.length < config.passwordMinLength || password.length > config.passwordMaxLength) {
-        req.session.msg = "Passwords must be between " + config.passwordMinLength + " and " + config.passwordMaxLength + " characters in length";
-        return false;
-    }
-
-    if(!passwordIsValid(password)){
-      req.session.msg = "Password not valid must contain at least one alphanumeric character and one numeric character";
-      return false;
-    }
-
-    //check email field if valid
-    if (email === '') {
-        req.session.msg = "Email address not entered";
-        return false;
-    }
-
-    if(email.length < config.emailMinLength || email.length > config.emailMaxLength){
-      req.session.msg = "Email length not between "+config.emailMinLength+" and "+config.emailMaxLength+" characters";
-      return false;
-    }
-
-    if (!emailIsValid(email)) {
-        req.session.msg = "Email address entered not valid";
-        return false;
-    }
-
-    return true;
-}
-/*
- Regex operation ensures first character is an alphanumeric
- */
-function usernameIsValid(username) {
-    return /^[a-zA-z][0-9a-zA-Z_-]+$/.test(username);
-}
-
-function emailIsValid(email) {
-    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/.test(email);
-}
-
-//requires 1 alphanumeric and 1 numeric
-function passwordIsValid(password){
-  return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
-}
 
 module.exports = router;
