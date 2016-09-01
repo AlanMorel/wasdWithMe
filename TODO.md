@@ -1,6 +1,7 @@
 # Bug List  (oh no!)
 - [ ] when requesting /login : GET /javascript/login.js results in a 404 error, fix either including
-login.js or removing dependency.
+login.js or removing dependency similary requesting / results in GET request /javascript/homepage.js resulting in 404
+- [ ] connect.session() memorystore is not memory, and will not scale past a single process (designed for a product environment as it will leak process.env.NODE_ENC=production)
 
 # Alan's Todo
 - [X] fetch google fonts via link tags

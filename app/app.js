@@ -78,16 +78,26 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/user', user);
 
+//logs out what environment mode you are currently working on
+console.log("process.env.NODE_ENV="+app.get('env'));
+
 //MongoDB
-mongoose.connect(config.mongooseUri);
+if(app.get('env')==='production'){
+  //NOTE: You have to run heroku config first to set this environment variable
+  //otherwise it defaults to the config file in config.mongooseUri
+  mongoose.connect(process.env.MONGODB_URI || config.mongooseUri);
+}
+else{
+  mongoose.connect(config.mongooseUri);
+}
+
 
 //Stylus
 app.use(stylus({
   src: path.join(public, "stylesheets")
 }));
 
-//logs out what environment mode you are currently working on
-console.log("process.env.NODE_ENV="+app.get('env'));
+
 
 //404 error handler
 app.use(function(req, res, next) {
