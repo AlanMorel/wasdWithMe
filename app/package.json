@@ -2,6 +2,9 @@
   "name": "wasdWithMe",
   "version": "0.0.0",
   "author": "Alan Morel <alanmorel.com>",
+  "engines":{
+     "node": "5.0.0"
+   }
   "contributors": [
     "Alan Morel <alan.morel@nyu.edu> (http://alanmorel.com)"
   ],

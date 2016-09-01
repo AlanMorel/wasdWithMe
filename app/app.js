@@ -86,6 +86,9 @@ app.use(stylus({
   src: path.join(public, "stylesheets")
 }));
 
+//logs out what environment mode you are currently working on
+console.log("process.env.NODE_ENV="+app.get('env'));
+
 //404 error handler
 app.use(function(req, res, next) {
   res.status(404);
