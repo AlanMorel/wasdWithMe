@@ -42,7 +42,7 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [ ] test all passport functionality, connect server-side error messages to client-side, test that it all works
 - [ ] create global function to slug a person's username, include error messages if not sluggable
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
-- [ ] configure heroku environment
+- [X] configure heroku environment
 - [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 - [ ] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
