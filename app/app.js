@@ -66,7 +66,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //enables case sensitive routing so /user/bob is same as /uSeR/bOB
-app.enable('case sesnsitive routing');
+app.enable('case sensitive routing');
 
 //Routes
 app.use('/', homepage);
