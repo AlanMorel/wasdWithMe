@@ -24,8 +24,10 @@ var user         = require('./routes/user');
 var app = express();
 
 //set port to use environment variables for heroku
-app.set('port',(process.env.PORT || 3000));
-app.listen(app.get('port'));
+app.set('port',(process.env.PORT || 3000)); //sets port variable
+
+
+
 
 var public = path.join(__dirname, 'public');
 
@@ -87,12 +89,11 @@ console.log("process.env.NODE_ENV="+app.get('env'));
 
 //MongoDB
 if(app.get('env')==='production'){
-  console.log("Connecting to: "+ process.env.MONGODB_URI);
-  console.log("env.PORT="+process.env.PORT +" current port="+app.get('port'));
+  app.listen(app.get('port')); //forces server to listen to that port
   //NOTE: You have to run heroku config first to set this environment variable
   //otherwise it defaults to the config file in config.mongooseUri
   mongoose.connect(process.env.MONGODB_URI);
-  console.log("Connection successful");
+
 }
 else{
   mongoose.connect(config.mongooseUri);
@@ -137,5 +138,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
 
 module.exports = app;
