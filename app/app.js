@@ -68,6 +68,9 @@ passport.deserializeUser(User.deserializeUser());
 //enables case sensitive routing so /user/bob is same as /uSeR/bOB
 app.enable('case sensitive routing');
 
+//disables the header field x-powered-by: Express being sent through the headers
+app.disable('x-powered-by');
+
 //Routes
 app.use('/', homepage);
 app.use('/signup', signUp);
