@@ -25,6 +25,7 @@ var app = express();
 
 //set port to use environment variables for heroku
 app.set('port',(process.env.PORT || 3000));
+app.listen(app.get('port'));
 
 var public = path.join(__dirname, 'public');
 
