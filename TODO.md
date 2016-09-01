@@ -39,9 +39,9 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [X] move validation to a separate js file, then call the methods from that
 - [ ] add credentials file for passport secret key
 - [X] add credentials file for url for db configure
-- [ ] test all passport functionality, connect server-side error messages to client-side, test that it all works
+- [X] test all passport functionality, connect server-side error messages to client-side, test that it all works
 - [ ] create global function to slug a person's username, include error messages if not sluggable
-- [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
+- [X] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [X] configure heroku environment
 - [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 - [ ] sanitize input for form data
