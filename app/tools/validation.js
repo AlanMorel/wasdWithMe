@@ -1,9 +1,7 @@
 var config   = require('../config');
 var exports = module.exports = {};
 
-//checkAccount should instead return string with error
-//no error returns empty string
-//if checkAccount, then set it
+//returns undefined if no error occurs
 exports.checkAccount = function(username, password, email) {
 
     if (username === '') {

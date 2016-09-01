@@ -37,16 +37,16 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [X] validation is missing email length
 - [X] password needs regex validation as well, should probably not allow users to use spaces in their passwords, but this is open to discussion
 - [X] move validation to a separate js file, then call the methods from that
-- [ ] add credentials file for passport secret key
+- [O] add credentials file for passport secret key (change when deployed)
 - [X] add credentials file for url for db configure
 - [X] test all passport functionality, connect server-side error messages to client-side, test that it all works
-- [ ] create global function to slug a person's username, include error messages if not sluggable
+- [X] create global function to slug a person's username, include error messages if not sluggable
 - [X] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [X] configure heroku environment
 - [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
-- [ ] sanitize input for form data
+- [X] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
-- [ ] http://blog.ijasoneverett.com/2013/04/form-validation-in-node-js-with-express-validator/ add validator
+- [O] http://blog.ijasoneverett.com/2013/04/form-validation-in-node-js-with-express-validator/ add validator (opted out)
 
 # Anteneh's Todo
 - [ ] client-side form validation to register and sign in pages
