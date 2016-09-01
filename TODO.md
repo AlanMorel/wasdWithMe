@@ -27,6 +27,10 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [ ] profile change info page or on same page when user is on own page
 
 # Edgar's Todo
+- [ ] if (user.last_activity.minutes < 5) { status = "online"; }
+- [ ] db games game.js  & any additional profile stuff
+- [ ] bio, first name, last name, checks on user profile , tag line
+- [ ] add live link to heroku site in readme between installation and license 
 - [X] fix passport
 - [X] set passport-local-mongoose options parameters (attempts:16, time really high,lastLogin, delete username )
 - [X] images merge to user.js table, and nested schema, array of nested comments in addition to this

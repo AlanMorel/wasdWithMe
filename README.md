@@ -65,6 +65,10 @@ $ npm start
 
 View in browser at `http://localhost:3000`
 
+## Live version
+[Live demo](http://wasdwithme.herokuapp.com/)
+
+
 ## License
 
 **wasdWithMe** is licensed under the [MIT license](LICENSE).
