@@ -20,9 +20,10 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [X] "Game library" section
 - [X] add proper mobile.css to signup/register pages
 - [X] "message" button when user is not on own page
+- [X] add search bar to front page 
 - [ ] work on editing own profile so static temporary data can be removed
 - [ ] work on different homepage when logged in
-- [ ] add search bar to front page (maybe this is where AJAX comes into play aka searching for users, games, etc)
+- [ ] add search bar AJAX for users, games
 - [ ] individual games pages by pulling info via API
 - [ ] profile change info page or on same page when user is on own page
 
@@ -51,6 +52,7 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [X] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
 - [O] http://blog.ijasoneverett.com/2013/04/form-validation-in-node-js-with-express-validator/ add validator (opted out)
+- [ ] ideas for what should go on logged-in homepage would be nice
 
 # Anteneh's Todo
 - [ ] client-side form validation to register and sign in pages

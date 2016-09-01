@@ -65,8 +65,9 @@ $ npm start
 
 View in browser at `http://localhost:3000`
 
-## Live version
-[Live demo](http://wasdwithme.herokuapp.com/)
+## Live Demo
+
+Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/).
 
 
 ## License
