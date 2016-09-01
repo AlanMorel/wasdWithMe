@@ -23,24 +23,22 @@ var user         = require('./routes/user');
 
 var app = express();
 
-//set port to use environment variables for heroku
-app.set('port',(process.env.PORT || 3000)); //sets port variable
-
-
-
-
 var public = path.join(__dirname, 'public');
 
 //Express
 app.use(favicon(path.join(public, 'favicon.ico')));
 app.use(express.static(public));
 app.use(logger('dev'));
+app.set('port',(process.env.PORT || 3000));
+
+app.enable('case sensitive routing');
+app.disable('x-powered-by');
 
 //Handlebars
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
-hbs.registerHelper('config',function(variable) {
+hbs.registerHelper('config', function(variable) {
   return config[variable];
 });
 
@@ -55,10 +53,10 @@ app.use(cookieParser());
 
 //Passport
 app.use(session({
-  secret: config.passportSecret,
-  resave: false,
-  saveUninitialized: false,
-  }
+      secret: config.passportSecret,
+      resave: false,
+      saveUninitialized: false,
+    }
 ));
 
 //Flash
@@ -71,12 +69,6 @@ passport.use(new Strategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//enables case sensitive routing so /user/bob is same as /uSeR/bOB
-app.enable('case sensitive routing');
-
-//disables the header field x-powered-by: Express being sent through the headers
-app.disable('x-powered-by');
-
 //Routes
 app.use('/', homepage);
 app.use('/signup', signUp);
@@ -85,27 +77,22 @@ app.use('/logout', logout);
 app.use('/user', user);
 
 //logs out what environment mode you are currently working on
-console.log("process.env.NODE_ENV="+app.get('env'));
+console.log("process.env.NODE_ENV=" + app.get('env'));
 
 //MongoDB
 if(app.get('env')==='production'){
-  app.listen(app.get('port')); //forces server to listen to that port
+  app.listen(app.get('port'));
   //NOTE: You have to run heroku config first to set this environment variable
   //otherwise it defaults to the config file in config.mongooseUri
   mongoose.connect(process.env.MONGODB_URI);
-
-}
-else{
+} else {
   mongoose.connect(config.mongooseUri);
 }
-
 
 //Stylus
 app.use(stylus({
   src: path.join(public, "stylesheets")
 }));
-
-
 
 //404 error handler
 app.use(function(req, res, next) {
@@ -138,7 +125,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 
 module.exports = app;
