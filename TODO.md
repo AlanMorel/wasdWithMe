@@ -1,3 +1,7 @@
+# Bug List  (oh no!)
+- [ ] when requesting /login : GET /javascript/login.js results in a 404 error, fix either including
+login.js or removing dependency.
+
 # Alan's Todo
 - [X] fetch google fonts via link tags
 - [X] create custom 404 error page
@@ -58,4 +62,3 @@
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] add messaging other users
 - [ ] add blocking other users
-
