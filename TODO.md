@@ -34,8 +34,8 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [X] fix age problem
 - [X] fix plaintext password issue
 - [X] add url slugs for mongoose, games
-- [ ] validation is missing email length
-- [ ] password needs regex validation as well, should probably not allow users to use spaces in their passwords, but this is open to discussion
+- [X] validation is missing email length
+- [X] password needs regex validation as well, should probably not allow users to use spaces in their passwords, but this is open to discussion
 - [ ] move validation to a separate js file, then call the methods from that
 - [ ] add credentials file for passport secret key
 - [ ] add credentials file for url for db configure

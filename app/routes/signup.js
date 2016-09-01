@@ -134,10 +134,20 @@ function checkAccount(username, password, email, req) {
         return false;
     }
 
+    if(!passwordIsValid(password)){
+      req.session.msg = "Password not valid must contain at least one alphanumeric character and one numeric character";
+      return false;
+    }
+
     //check email field if valid
     if (email === '') {
         req.session.msg = "Email address not entered";
         return false;
+    }
+
+    if(email.length < config.emailMinLength || email.length > config.emailMaxLength){
+      req.session.msg = "Email length not between "+config.emailMinLength+" and "+config.emailMaxLength+" characters";
+      return false;
     }
 
     if (!emailIsValid(email)) {
@@ -156,6 +166,11 @@ function usernameIsValid(username) {
 
 function emailIsValid(email) {
     return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/.test(email);
+}
+
+//requires 1 alphanumeric and 1 numeric
+function passwordIsValid(password){
+  return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
 }
 
 module.exports = router;
