@@ -4,7 +4,7 @@ var router = express.Router();
 var passport   = require('passport');
 var User       = require('../models/user');
 var config     = require('../config');
-var validation = require('./validation');
+var validation = require('../utility/validation');
 
 router.get('/', function (req, res, next) {
     res.render('signup', {
