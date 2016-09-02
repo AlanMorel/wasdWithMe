@@ -82,13 +82,33 @@ function getAge(birthday){
 router.get('/:username/edit', function(req, res, next) {
     var username = req.params.username;
     console.log("Trying to edit " + username + "'s profile.");
-    //Temporary response
-    res.render('404', {
-        title: 'wasdWithMe - Editing ' + username + ' profile!',
-        layout: 'primary',
-        file: '404',
-        user: req.user,
-        message: "Editing " + username + "'s profile!"
+
+    var usernameSlug = username.toLowerCase(); //properly slug it
+
+    User.findByUsername(usernameSlug, true, function(err, owner) {
+
+        if (err || !owner){
+            userNotFound(res, req.user, username);
+            return;
+        }
+
+        addTemporaryInfo(owner);
+        console.log(owner); //debug purposes
+
+        var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
+
+        res.render('edit', {
+            title: 'wasdWithMe - ' + owner.display_name,
+            layout: 'primary',
+            file: 'user',
+            user : req.user,
+            owner: owner,
+            gender: config.gender[owner.gender],
+            age: getAge(owner.birthday),
+            all_games: getGames(games),
+            fav_games: getGames(games.splice(0, 5)),
+            is_owner: isOwner(req.user, owner)
+        });
     });
 });
 

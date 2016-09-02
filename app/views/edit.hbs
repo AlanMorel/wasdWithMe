@@ -1,0 +1,69 @@
+<div class="profile">
+    <div class="header">
+        <div class="pic">
+            <img src="/images/placeholder.png">
+        </div>
+        <div class="info">
+            <div class="username">{{owner.display_name}}</div>
+            <div class="extra-info">
+                <span class="age">{{age}}</span>
+                &bull;
+                <span class="location">{{owner.location.city}}, {{owner.location.state}}, {{owner.location.country}}</span>
+                &bull;
+                <span class="gender">{{gender}}</span>
+            </div>
+            <input type="text" class="input-tagline" maxlength="50" value="{{owner.tagline}}">
+        </div>
+    </div>
+    <div class="about">
+        <div class="about-header">About</div>
+        <div class="name">First Name:  <input type="text" class="input-name" value="{{owner.first_name}}"></div>
+        <div class="name">Last Name:  <input type="text" class="input-name" value="{{owner.last_name}}"></div>
+        <textarea class="input-bio" maxlength="500" rows="7">{{owner.bio}}</textarea>
+        <div class="availability-header">Availability</div>
+        <div class="availability"><img src="/images/calendar.png">Weekdays</div>
+        <div class="availability"><img src="/images/clock.png">Nights</div>
+    </div>
+    <div class="fav-games">
+        <div class="fav-games-header">Favorite Games</div>
+        <div class="games">
+            {{#each fav_games}}
+                <div class="game">
+                    <a href="/game/{{slug}}">
+                        <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-136x190.jpg" class="boxart">
+                    </a>
+                    <div class="game-title">{{name}}</div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="platform steam">
+        <div class="header">Steam</div>
+        <div class="name">{{owner.accounts.steam.steam_id}}</div>
+    </div>
+    <div class="platform xbox">
+        <div class="header">Xbox</div>
+        <div class="name">{{owner.accounts.xbox.gamertag}}</div>
+    </div>
+    <div class="platform playstation">
+        <div class="header">PlayStation Network</div>
+        <div class="name">{{owner.accounts.playstation.psn_id}}</div>
+    </div>
+    <div class="platform twitch">
+        <div class="header">Twitch</div>
+        <div class="name">{{owner.accounts.twitch.username}}</div>
+    </div>
+    <div class="all-games">
+        <div class="fav-games-header">Games Library</div>
+        <div class="games">
+            {{#each all_games}}
+                <div class="game">
+                    <a href="/game/{{slug}}">
+                        <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-136x190.jpg" class="boxart">
+                    </a>
+                    <div class="game-title">{{name}}</div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

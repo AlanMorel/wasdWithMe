@@ -318,3 +318,24 @@ img.boxart:hover {
   border-color: #6441a5;
   color: #fff;
 }
+.input-tagline,
+.input-bio,
+.input-name {
+  font-family: 'Open Sans', sans-serif;
+}
+.input-tagline {
+  width: 400px;
+}
+.input-bio {
+  width: 625px;
+  margin-left: 25px;
+  margin-right: 25px;
+  font-size: 14px;
+  resize: none;
+}
+.input-name {
+  font-size: 20px;
+  float: right;
+  width: 300px;
+  margin-right: 190px;
+}

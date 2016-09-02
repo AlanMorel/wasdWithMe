@@ -26,10 +26,6 @@
 - [ ] profile change info page or on same page when user is on own page
 
 # Edgar's Todo
-- [ ] if (user.last_activity.minutes < 5) { status = "online"; }
-- [ ] db games game.js  & any additional profile stuff
-- [ ] bio, first name, last name, checks on user profile , tag line
-- [ ] add live link to heroku site in readme between installation and license 
 - [X] fix passport
 - [X] set passport-local-mongoose options parameters (attempts:16, time really high,lastLogin, delete username )
 - [X] images merge to user.js table, and nested schema, array of nested comments in addition to this
@@ -50,7 +46,11 @@
 - [X] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
 - [O] http://blog.ijasoneverett.com/2013/04/form-validation-in-node-js-with-express-validator/ add validator (opted out)
-- [ ] ideas for what should go on logged-in homepage would be nice
+- [ ] if (user.last_activity.minutes < 5) { status = "online"; }
+- [ ] db games game.js  & any additional profile stuff
+- [ ] bio, first name, last name, checks on user profile , tag line
+- [ ] add live link to heroku site in readme between installation and license
+- [ ] add min/maxLength attributes to ALL input tags where applicable (sign up/login/editting profile)
 - [ ] client-side form validation to register and sign in pages
 - [ ] add html attributes to input tags
 - [ ] add extra field for password confirmation
