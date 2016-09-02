@@ -16,7 +16,7 @@ router.get('/:username', function(req, res, next) {
         }
 
         addTemporaryInfo(owner);
-        console.log(owner); //debug purposes
+        //console.log(owner); //debug purposes
 
         var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
@@ -37,11 +37,6 @@ router.get('/:username', function(req, res, next) {
 
 //add temporary info to profile owners for testing purposes
 function addTemporaryInfo(owner){
-    owner.tagline = "Hello, this is an example tagline! How are you?";
-    owner.first_name = "Alan";
-    owner.last_name = "Morel";
-    //randomly generated bio courtesy of http://www.generatorland.com/glgenerator.aspx?id=124&rlx=y
-    owner.bio = "Spent the 80's getting my feet wet with childrens books in Africa. Spent 2001-2004 supervising the production of pond scum in Orlando, FL. At the moment I'm marketing puppets in Ocean City, NJ. Spent college summers donating mosquito repellent in Pensacola, FL. Have some experience exporting human growth hormone for the government. Spent college summers buying and selling rocking horses in the aftermarket."
     owner.online_status = "online"; //"offline" to test offline status
 
     owner.accounts.steam.steam_id = "SharpAceX";
@@ -110,6 +105,51 @@ router.get('/:username/edit', function(req, res, next) {
             is_owner: isOwner(req.user, owner)
         });
     });
+});
+
+router.post('/:username/edit', function(req, res, next) {
+    var username = req.params.username;
+    var slug = username.toLowerCase(); //properly slug
+
+    var tagline = req.body.tagline;
+
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+
+    var bio = req.body.bio;
+
+    //validate above here, return error if there is one
+
+    //debug
+    console.log("tagline: " + tagline
+    + " firstname: " + firstname
+    + " lastname: " + lastname
+    + " bio" + bio);
+
+    var query = {
+        'username': slug
+    };
+
+    var update = {
+        tagline: tagline,
+        first_name: firstname,
+        last_name: lastname,
+        bio: bio
+    };
+
+    var options = {
+        upsert: true
+    }
+
+    User.findOneAndUpdate(query, update, options, function(err, doc){
+        if (err) {
+            //properly handle error
+            console.log("Error updating user profile.");
+        }
+    });
+
+    console.log("Edited user profile successfully.");
+    res.redirect("/user/" + username);
 });
 
 router.get('/:username/message', function(req, res, next) {
