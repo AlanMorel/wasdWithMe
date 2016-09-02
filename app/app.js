@@ -1,5 +1,4 @@
 var express      = require('express');
-var config       = require('./config');
 var path         = require('path');
 var favicon      = require('serve-favicon');
 var logger       = require('morgan');
@@ -12,9 +11,12 @@ var passport     = require('passport');
 var Strategy     = require('passport-local').Strategy;
 var hbs          = require('hbs');
 var stylus       = require('express-stylus');
-var User         = require('./models/user');
 
-//Pages
+var config       = require('./config');
+
+var User         = require('./models/user');
+var Game         = require('./models/game');
+
 var homepage     = require('./routes/homepage');
 var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
