@@ -1,6 +1,4 @@
 # Bug List  (oh no!)
-- [ ] when requesting /login : GET /javascript/login.js results in a 404 error, fix either including
-login.js or removing dependency similary requesting / results in GET request /javascript/homepage.js resulting in 404
 - [ ] connect.session() memorystore is not memory, and will not scale past a single process (designed for a product environment as it will leak process.env.NODE_ENC=production)
 
 # Alan's Todo
@@ -20,7 +18,7 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [X] "Game library" section
 - [X] add proper mobile.css to signup/register pages
 - [X] "message" button when user is not on own page
-- [X] add search bar to front page 
+- [X] add search bar to front page
 - [ ] work on editing own profile so static temporary data can be removed
 - [ ] work on different homepage when logged in
 - [ ] add search bar AJAX for users, games
@@ -53,15 +51,11 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [ ] display error messages on login page just like sign up page
 - [O] http://blog.ijasoneverett.com/2013/04/form-validation-in-node-js-with-express-validator/ add validator (opted out)
 - [ ] ideas for what should go on logged-in homepage would be nice
-
-# Anteneh's Todo
 - [ ] client-side form validation to register and sign in pages
 - [ ] add html attributes to input tags
-- [ ] populate static data schemas
 - [ ] add extra field for password confirmation
 - [ ] validate that the two passwords are equal
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
-- [ ] leaderboards page
 - [ ] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
 
@@ -70,3 +64,4 @@ login.js or removing dependency similary requesting / results in GET request /ja
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] add messaging other users
 - [ ] add blocking other users
+- [ ] leaderboards page

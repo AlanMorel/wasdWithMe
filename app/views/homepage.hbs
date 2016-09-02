@@ -3,6 +3,44 @@
     <input name="search" type="text" placeholder="Search for people or games..." />
     <img src="/images/search.png">
 </div>
+<div class="trending-games">
+    <div class="trending-games-header">Browse the trending games!</div>
+    <div class="games">
+    {{#each trending_games}}
+        <div class="game">
+            <a href="/game/{{slug}}">
+                <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-272x380.jpg" class="boxart">
+            </a>
+            <div class="game-title">{{name}}</div>
+        </div>
+    {{/each}}
+    {{#each trending_games}}
+        <div class="game">
+            <a href="/game/{{slug}}">
+                <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-272x380.jpg" class="boxart">
+            </a>
+            <div class="game-title">{{name}}</div>
+        </div>
+    {{/each}}
+    </div>
+</div>
+<div class="live-profiles">
+    <div class="live-profiles-header">Connect with these gamers!</div>
+    {{#each live_profile_users}}
+        <div class="live-profile">
+            <img src="{{profile_pic}}" class="live-profile-pic">
+            <a href="/user/{{display_name}}">
+                <div class="live-profile-username">{{display_name}}</div>
+            </a>
+            <div class="live-profile-oneUps">{{one_up_count}} <span class="one-ups-label">1UPs</span></div>
+            <div class="live-profile-platforms">
+                {{#each platforms}}
+                    <img class="live-profile-platform" src="/images/{{this}}.png">
+                {{/each}}
+            </div>
+        </div>
+    {{/each}}
+</div>
 {{else}}
 <div class="promo">
     <div class="left">

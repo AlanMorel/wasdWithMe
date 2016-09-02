@@ -14,8 +14,7 @@
   background-color: wasdWithMePurple;
 }
 
-
-.promo .left, .promo .right, .promo2 .left, .promo2 .right{
+.promo .left, .promo .right, .promo2 .left, .promo2 .right {
   width: 50%;
 }
 
@@ -34,7 +33,6 @@
 .promo2 .right {
   display: inline-block;
 }
-
 
 .right h1, .left h1 {
   font-size: 3vw;
@@ -114,7 +112,7 @@ img.couple {
   }
 }
 
-.live-profile:hover{
+.live-profile:hover {
   border: 1px solid #aaa;
 }
 
@@ -131,7 +129,7 @@ img.couple {
   background-color: #f7f7f7;
 }
 
-.live-profile-platforms{
+.live-profile-platforms {
   background-color: wasdWithMeGray;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -139,7 +137,7 @@ img.couple {
   border-bottom-right-radius: 8px;
 }
 
-.live-profile-platform{
+.live-profile-platform {
   height: 16px;
   margin-left: 6px;
   margin-right: 6px;
@@ -154,26 +152,71 @@ img.couple {
   padding-top: 2vw;
 }
 
-.search{
+.search {
   height: 40px;
   background-color: #53368a;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 4px;
-  input{
+  input {
     width: 350px;
     font-size: 18px;
     height: 24px;
     padding: 4px;
     border-radius: 4px;
     border: none;
-    outline:none;
+    outline: none;
   }
-  img{
+  img {
     max-height: 32px;
     vertical-align: top;
     margin-left: 6px;
   }
+}
+
+.trending-games {
+  background-color: wasdWithMeGray;
+  text-align: center;
+  height: 400px;
+}
+
+.trending-games-header {
+  font-size: 24px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.game-title {
+  font-size: 14px;
+  font-weight: lighter;
+  padding: 8px;
+}
+
+img.boxart {
+  max-width: 150px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+  .game {
+    max-width: 150px;
+  }
+
+.games {
+  display: flex;
+  overflow: hidden;
+  -webkit-animation: bannermove 30s linear infinite;
+  -moz-animation: bannermove 30s linear infinite;
+  -ms-animation: bannermove 30s linear infinite;
+  animation: bannermove 30s linear infinite;
+}
+
+@keyframes bannermove {
+  0%   { margin-left: 0px; }
+  100% { margin-left: -2250px; }
 }
 
 @media only screen and (max-width: 950px) {

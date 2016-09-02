@@ -259,6 +259,43 @@ img.couple {
   vertical-align: top;
   margin-left: 6px;
 }
+.trending-games {
+  background-color: #282828;
+  text-align: center;
+  height: 400px;
+}
+.trending-games-header {
+  font-size: 24px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.game-title {
+  font-size: 14px;
+  font-weight: lighter;
+  padding: 8px;
+}
+img.boxart {
+  max-width: 150px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -moz-transition: all;
+  -o-transition: all;
+  -webkit-transition: all;
+  transition: all;
+}
+.game {
+  max-width: 150px;
+}
+.games {
+  display: flex;
+  overflow: hidden;
+  -webkit-animation: bannermove 30s linear infinite;
+  -moz-animation: bannermove 30s linear infinite;
+  -ms-animation: bannermove 30s linear infinite;
+  animation: bannermove 30s linear infinite;
+}
 @media only screen and (max-width: 950px) {
   .promo .left,
   .promo .right,
@@ -313,5 +350,37 @@ img.couple {
   }
   .live-profile {
     margin-bottom: 20px;
+  }
+}
+@-moz-keyframes bannermove {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -2250px;
+  }
+}
+@-webkit-keyframes bannermove {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -2250px;
+  }
+}
+@-o-keyframes bannermove {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -2250px;
+  }
+}
+@keyframes bannermove {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -2250px;
   }
 }

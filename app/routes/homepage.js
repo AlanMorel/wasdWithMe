@@ -10,6 +10,7 @@ router.get('/', function (req, res, next) {
         loadPresetUsers(req, res);
         return;
     }
+    var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
     User.find().sort({'one_up_count': -1}).limit(5).exec(function (err, users) {
         users = addStaticInfo(users);
@@ -18,10 +19,29 @@ router.get('/', function (req, res, next) {
             layout: 'primary',
             file: 'homepage',
             user: req.user,
+            trending_games: getGames(games),
             live_profile_users: users
         });
     });
 });
+
+function getGames(games_list){
+    var games = [];
+
+    for (var i = 0; i < games_list.length; i++) {
+        var name = games_list[i];
+        var boxart = encodeURI(name);
+        var slug = name.replace(/ /g, '').replace(/:/g, '');
+        var game = {
+            name: games_list[i],
+            boxart: boxart,
+            slug: slug
+        };
+        games.push(game);
+    }
+
+    return games;
+}
 
 function loadPresetUsers(req, res) {
      var users = [{
