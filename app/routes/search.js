@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var User   = require('../models/user');
+var async = require('async');
+var User  = require('../models/user');
+var Game  = require('../models/game');
 
 //You should not be able to access /search directly
 router.get('/', function(req, res, next) {
@@ -20,16 +22,28 @@ router.post('/', function(req, res, next) {
 
     console.log("Search query: " + query);
 
-    var mongooseQuery = {
+    var userQuery = {
         "username": {
             "$regex": query
         }
     };
 
-    User.find(mongooseQuery, function(err,docs) {
-            console.log(docs);
+    var gameQuery = {
+        "game": {
+            "$regex": query
         }
-    );
+    };
+
+    async.parallel({
+        users: function (cb){ User.find(userQuery).exec(cb); },
+        games: function (cb){ Game.find(gameQuery).exec(cb); }
+    }, function(err, result){
+        var users = result.users;
+        var games = result.games;
+        console.log("Users: " + users.length);
+        console.log("Games: " + games.length);
+        callback(err, ret);
+    });
 
     res.render('search', {
         title: 'wasdWithMe - Search Results',

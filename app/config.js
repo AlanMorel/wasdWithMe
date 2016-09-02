@@ -24,7 +24,7 @@ config.gender = {
     0: "Male",
     1: "Female",
     2: "Other"
-}
+};
 
 config.usernameMinLength = 4;
 config.usernameMaxLength = 16;
