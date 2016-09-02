@@ -86,8 +86,6 @@ router.post('/', function (req, res) {
               file: 'signup',
               error: err.message
            });
-
-            //return res.redirect('/signup');
         }
         authentication(req, res, function () {
             console.log("Authenticated successfully");

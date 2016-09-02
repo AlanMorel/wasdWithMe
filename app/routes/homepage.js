@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
             layout: 'primary',
             file: 'homepage',
             user: req.user,
-            trending_games: getGames(games),
+            trending_games: getGames(games).concat(getGames(games)),
             live_profile_users: users
         });
     });

@@ -36,7 +36,7 @@ router.get('/:username', function(req, res, next) {
 
 //add temporary info to profile owners for testing purposes
 function addTemporaryInfo(owner){
-    owner.online_status = "online"; //"offline" to test offline status
+    owner.online_status = "online";
 
     owner.accounts.steam.steam_id = "SharpAceX";
     owner.accounts.xbox.gamertag = "SharpAceX";

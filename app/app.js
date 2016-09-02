@@ -52,6 +52,9 @@ app.use(bodyParser.urlencoded({
 //CookieParser
 app.use(cookieParser());
 
+//Flash
+app.use(flash());
+
 //Passport
 app.use(session({
       secret: config.passportSecret,
@@ -59,9 +62,6 @@ app.use(session({
       saveUninitialized: false,
     }
 ));
-
-//Flash
-app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
