@@ -1,15 +1,15 @@
-var config   = require('../config');
+var config  = require('../config');
 var exports = module.exports = {};
 
 //returns undefined if no error occurs
 exports.checkAccount = function(username, password, email) {
 
     if (username === '') {
-        return "No username inputted";
+        return "Username not entered";
     }
     //check username first
     if (!usernameIsValid(username)) {
-        return "Only alphanumerical, numerical, dashes and underscores allowed in username";
+        return "Usernames may only contain letters, numbers, dashes and underscores";
     }
 
     if (username.length < config.usernameMinLength || username.length > config.usernameMaxLength) {
@@ -26,7 +26,7 @@ exports.checkAccount = function(username, password, email) {
     }
 
     if(!passwordIsValid(password)){
-      return "Password not valid must contain at least one alphanumeric character and one numeric character";
+      return "Your password must contain at least one letter and one number";
     }
 
     //check email field if valid
@@ -35,34 +35,29 @@ exports.checkAccount = function(username, password, email) {
     }
 
     if(email.length < config.emailMinLength || email.length > config.emailMaxLength){
-      return "Email length not between "+config.emailMinLength+" and "+config.emailMaxLength+" characters";
+      return "Email length not between " + config.emailMinLength + " and " + config.emailMaxLength + " characters";
     }
 
     if (!emailIsValid(email)) {
-        return "Email address entered not valid";
+        return "Please provide a valid email address";
     }
 
     return undefined;
 }
 
-
 //slugs title by replacing spaces with dashes, removing all symbols, removes a sequence of dashes,
 //disallows a dash from start or end of slug
 //@return: Returns undefeined if cannot be slugged
 exports.slugTitle = function(title){
-  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '') .replace(/^-+/, '').replace(/-+$/, '')
-  || undefined;
+  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '') .replace(/^-+/, '').replace(/-+$/, '') || undefined;
 }
 
 exports.slugUser = function(username){
   if(usernameIsValid(username)){
     return slugTitle(username);
   }
-  else{
-    return undefined;
-  }
+  return undefined;
 }
-
 
 /*
  Regex operation ensures first character is an alphanumeric

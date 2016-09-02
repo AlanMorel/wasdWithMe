@@ -62,6 +62,7 @@
 - [ ] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
 - [ ] comprehensive logger.js (production-level logging system for catching issues once we're live)
+- [ ] ctrl+f every file for "properly slug", and slug it
 
 # General Todo
 - [ ] allow for manual game additions
