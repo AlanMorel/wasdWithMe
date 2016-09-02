@@ -20,7 +20,7 @@
 - [X] "message" button when user is not on own page
 - [X] add search bar to front page
 - [ ] work on editing own profile so static temporary data can be removed
-- [ ] work on different homepage when logged in
+- [X] work on different homepage when logged in
 - [ ] add search bar AJAX for users, games
 - [ ] individual games pages by pulling info via API
 - [ ] profile change info page or on same page when user is on own page
