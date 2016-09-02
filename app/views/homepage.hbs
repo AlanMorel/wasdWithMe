@@ -1,7 +1,9 @@
 {{#if user}}
 <div class="search">
-    <input name="search" type="text" placeholder="Search for people or games..." />
-    <img src="/images/search.png">
+    <form method="post" action="/search">
+        <input name="query" type="text" placeholder="Search for people or games..." />
+        <input type="image" src="/images/search.png" alt="Submit Form" />
+    </form>
 </div>
 <div class="trending-games">
     <div class="trending-games-header">Explore the trending games!</div>

@@ -20,6 +20,7 @@ var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
 var logout       = require('./routes/logout');
 var user         = require('./routes/user');
+var search       = require('./routes/search');
 
 var app = express();
 
@@ -75,6 +76,7 @@ app.use('/signup', signUp);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/user', user);
+app.use('/search', search);
 
 //logs out what environment mode you are currently working on
 console.log("process.env.NODE_ENV=" + app.get('env'));

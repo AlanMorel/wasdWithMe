@@ -245,7 +245,7 @@ img.couple {
   padding-top: 10px;
   padding-bottom: 4px;
 }
-.search input {
+.search input[type="text"] {
   width: 350px;
   font-size: 18px;
   height: 24px;
@@ -254,8 +254,9 @@ img.couple {
   border: none;
   outline: none;
 }
-.search img {
+.search input[type="image"] {
   max-height: 32px;
+  max-width: 32px;
   vertical-align: top;
   margin-left: 6px;
 }
