@@ -177,46 +177,53 @@ img.couple {
 .trending-games {
   background-color: wasdWithMeGray;
   text-align: center;
-  height: 400px;
+  height: 475px;
 }
 
 .trending-games-header {
   font-size: 24px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 40px;
 }
 
 .game-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: lighter;
   padding: 8px;
 }
 
 img.boxart {
-  max-width: 150px;
+  max-width: 175px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  filter: brightness(.75);
+  -webkit-filter:  brightness(.75);
 }
-
-  .game {
-    max-width: 150px;
+  img.boxart:hover{
+    box-shadow: 0 0 25px white;
+    filter: brightness(1);
+    -webkit-filter:  brightness(1);
   }
+
+.game {
+  max-width: 175px;
+}
 
 .games {
   display: flex;
   overflow: hidden;
-  -webkit-animation: bannermove 30s linear infinite;
-  -moz-animation: bannermove 30s linear infinite;
-  -ms-animation: bannermove 30s linear infinite;
-  animation: bannermove 30s linear infinite;
+  padding-top: 40px;
+  -webkit-animation: bannermove 60s linear infinite;
+  -moz-animation: bannermove 60s linear infinite;
+  -ms-animation: bannermove 60s linear infinite;
+  animation: bannermove 60s linear infinite;
 }
 
 @keyframes bannermove {
   0%   { margin-left: 0px; }
-  100% { margin-left: -2250px; }
+  100% { margin-left: -2625px; }
 }
 
 @media only screen and (max-width: 950px) {

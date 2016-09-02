@@ -262,20 +262,19 @@ img.couple {
 .trending-games {
   background-color: #282828;
   text-align: center;
-  height: 400px;
+  height: 475px;
 }
 .trending-games-header {
   font-size: 24px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 40px;
 }
 .game-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: lighter;
   padding: 8px;
 }
 img.boxart {
-  max-width: 150px;
+  max-width: 175px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -284,17 +283,25 @@ img.boxart {
   -o-transition: all;
   -webkit-transition: all;
   transition: all;
+  filter: brightness(0.75);
+  -webkit-filter: brightness(0.75);
+}
+img.boxart:hover {
+  box-shadow: 0 0 25px #fff;
+  filter: brightness(1);
+  -webkit-filter: brightness(1);
 }
 .game {
-  max-width: 150px;
+  max-width: 175px;
 }
 .games {
   display: flex;
   overflow: hidden;
-  -webkit-animation: bannermove 30s linear infinite;
-  -moz-animation: bannermove 30s linear infinite;
-  -ms-animation: bannermove 30s linear infinite;
-  animation: bannermove 30s linear infinite;
+  padding-top: 40px;
+  -webkit-animation: bannermove 60s linear infinite;
+  -moz-animation: bannermove 60s linear infinite;
+  -ms-animation: bannermove 60s linear infinite;
+  animation: bannermove 60s linear infinite;
 }
 @media only screen and (max-width: 950px) {
   .promo .left,
@@ -357,7 +364,7 @@ img.boxart {
     margin-left: 0px;
   }
   100% {
-    margin-left: -2250px;
+    margin-left: -2625px;
   }
 }
 @-webkit-keyframes bannermove {
@@ -365,7 +372,7 @@ img.boxart {
     margin-left: 0px;
   }
   100% {
-    margin-left: -2250px;
+    margin-left: -2625px;
   }
 }
 @-o-keyframes bannermove {
@@ -373,7 +380,7 @@ img.boxart {
     margin-left: 0px;
   }
   100% {
-    margin-left: -2250px;
+    margin-left: -2625px;
   }
 }
 @keyframes bannermove {
@@ -381,6 +388,6 @@ img.boxart {
     margin-left: 0px;
   }
   100% {
-    margin-left: -2250px;
+    margin-left: -2625px;
   }
 }
