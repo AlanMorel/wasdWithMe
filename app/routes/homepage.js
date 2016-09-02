@@ -4,12 +4,7 @@ var router = express.Router();
 var User = require('../models/user');
 
 router.get('/', function (req, res, next) {
-    var database = true; //true loads users from database, false uses preset users below
 
-    if (!database) {
-        loadPresetUsers(req, res);
-        return;
-    }
     var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
     User.find().sort({'one_up_count': -1}).limit(5).exec(function (err, users) {
@@ -41,33 +36,6 @@ function getGames(games_list){
     }
 
     return games;
-}
-
-function loadPresetUsers(req, res) {
-     var users = [{
-        display_name: "SharpAceX",
-        one_up_count: 186,
-    }, {
-        display_name: "Alan",
-        one_up_count: 153,
-    }, {
-        display_name: "JohnCena",
-        one_up_count: 135,
-    }, {
-        display_name: "Edgar",
-        one_up_count: 89,
-    }, {
-        display_name: "Anteneh",
-        one_up_count: 64,
-    }];
-    users = addStaticInfo(users);
-    res.render('homepage', {
-        title: 'wasdWithMe - Connect with gamers.',
-        layout: 'primary',
-        file: 'homepage',
-        user: req.user,
-        live_profile_users: users
-    });
 }
 
 function addStaticInfo(users) {

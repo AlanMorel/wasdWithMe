@@ -16,7 +16,6 @@ router.get('/:username', function(req, res, next) {
         }
 
         addTemporaryInfo(owner);
-        //console.log(owner); //debug purposes
 
         var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
@@ -76,11 +75,9 @@ function getAge(birthday){
 
 router.get('/:username/edit', function(req, res, next) {
     var username = req.params.username;
-    console.log("Trying to edit " + username + "'s profile.");
+    var slug = username.toLowerCase(); //properly slug it
 
-    var usernameSlug = username.toLowerCase(); //properly slug it
-
-    User.findByUsername(usernameSlug, true, function(err, owner) {
+    User.findByUsername(slug, true, function(err, owner) {
 
         if (err || !owner){
             userNotFound(res, req.user, username);
@@ -88,7 +85,6 @@ router.get('/:username/edit', function(req, res, next) {
         }
 
         addTemporaryInfo(owner);
-        console.log(owner); //debug purposes
 
         var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
@@ -120,7 +116,6 @@ router.post('/:username/edit', function(req, res, next) {
 
     //validate above here, return error if there is one
 
-    //debug
     console.log("tagline: " + tagline
     + " firstname: " + firstname
     + " lastname: " + lastname
@@ -150,19 +145,6 @@ router.post('/:username/edit', function(req, res, next) {
 
     console.log("Edited user profile successfully.");
     res.redirect("/user/" + username);
-});
-
-router.get('/:username/message', function(req, res, next) {
-    var username = req.params.username;
-    console.log("Trying to message " + username);
-    //Temporary response
-    res.render('404', {
-        title: 'wasdWithMe - Message ' + username,
-        layout: 'primary',
-        file: '404',
-        user: req.user,
-        message: "Messaging " + username
-    });
 });
 
 function userNotFound(res, user, username){

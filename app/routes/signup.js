@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var passport = require('passport');
-var User     = require('../models/user');
-var config   = require('../config');
-var validation=require('../tools/validation');
-
+var passport   = require('passport');
+var User       = require('../models/user');
+var config     = require('../config');
+var validation = require('./validation');
 
 router.get('/', function (req, res, next) {
     res.render('signup', {
@@ -13,7 +12,6 @@ router.get('/', function (req, res, next) {
         layout: 'secondary',
         file: 'signup'
     });
-
 });
 
 var authenticationOptions = {
@@ -45,7 +43,7 @@ router.post('/', function (req, res) {
         + " state: " + state
         + " city: " + city);
 
-    var err = validation.checkAccount(displayName, password, email)
+    var err = validation.checkAccount(displayName, password, email);
     if (err != undefined) {
           //handle error
           return res.render('signup', {
@@ -113,6 +111,5 @@ function getRandomOneUps(number) {
 function getRandomCoins(number) {
     return Math.floor(Math.random() * number) + 1
 }
-
 
 module.exports = router;
