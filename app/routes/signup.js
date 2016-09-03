@@ -8,7 +8,7 @@ var validation = require('../utility/validation');
 
 router.get('/', function (req, res, next) {
     res.render('signup', {
-        title: 'wasdWithMe - Sign up!',
+        title: 'Sign Up',
         layout: 'secondary',
         file: 'signup'
     });
@@ -47,7 +47,7 @@ router.post('/', function (req, res) {
     if (err != undefined) {
           //handle error
           return res.render('signup', {
-            title: 'wasdWithMe - Sign up!',
+            title: 'Sign Up',
             layout: 'secondary',
             file: 'signup',
             error: err

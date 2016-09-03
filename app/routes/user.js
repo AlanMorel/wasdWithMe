@@ -20,7 +20,7 @@ router.get('/:username', function(req, res, next) {
         var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
         res.render('user', {
-            title: 'wasdWithMe - ' + owner.display_name,
+            title: owner.display_name,
             layout: 'primary',
             file: 'user',
             user : req.user,
@@ -89,7 +89,7 @@ router.get('/:username/edit', function(req, res, next) {
         var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
         res.render('edit', {
-            title: 'wasdWithMe - ' + owner.display_name,
+            title: owner.display_name,
             layout: 'primary',
             file: 'user',
             user : req.user,
@@ -150,7 +150,7 @@ router.post('/:username/edit', function(req, res, next) {
 function userNotFound(res, user, username){
     res.status(404);
     res.render('404', {
-        title: 'wasdWithMe - User not found!',
+        title: 'User not found!',
         layout: 'primary',
         file: '404',
         user: user,
@@ -161,7 +161,7 @@ function userNotFound(res, user, username){
 //You should not be able to access /user/ directly
 router.get('/', function(req, res, next) {
     res.render('404', {
-        title: 'wasdWithMe - Error!',
+        title: 'Error',
         layout: 'primary',
         file: '404',
         user : req.user,

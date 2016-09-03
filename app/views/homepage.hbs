@@ -5,10 +5,10 @@
         <input type="image" src="/images/search.png" alt="Submit Form" />
     </form>
 </div>
-<div class="trending-games">
-    <div class="trending-games-header">Explore the trending games!</div>
+<div class="popular-games">
+    <div class="popular-games-header">Popular games right now!</div>
     <div class="games">
-    {{#each trending_games}}
+    {{#each popular_games}}
         <div class="game">
             <a href="/game/{{slug}}">
                 <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{boxart}}-272x380.jpg" class="boxart">

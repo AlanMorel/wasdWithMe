@@ -22,6 +22,7 @@
 - [X] work on different homepage when logged in
 - [X] work on editing own profile so static temporary data can be removed
 - [X] profile change info page or on same page when user is on own page
+- [X] change all page titles
 
 - [ ] create search results page
 - [ ] allow for manual game additions
@@ -29,7 +30,6 @@
 - [ ] build individual games pages by pulling info via API
 - [ ] recatcha on sign up page
 - [ ] add mobile to profile and edit pages
-- [ ] change all page titles
 - [ ] rename 404 to error
 
 # Edgar's Todo

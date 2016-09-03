@@ -260,12 +260,12 @@ img.couple {
   vertical-align: top;
   margin-left: 6px;
 }
-.trending-games {
+.popular-games {
   background-color: #282828;
   text-align: center;
   height: 475px;
 }
-.trending-games-header {
+.popular-games-header {
   font-size: 24px;
   padding-top: 40px;
   font-weight: lighter;

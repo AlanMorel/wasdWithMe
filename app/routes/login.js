@@ -5,7 +5,7 @@ var passport = require('passport');
 
 router.get('/', function(req, res, next) {
     res.render('login', {
-        title: 'wasdWithMe - Log in!',
+        title: 'Log in',
         layout: 'secondary',
         file: 'login'
     });

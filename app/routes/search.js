@@ -38,19 +38,24 @@ router.post('/', function(req, res, next) {
         users: function (cb){ User.find(userQuery).exec(cb); },
         games: function (cb){ Game.find(gameQuery).exec(cb); }
     }, function(err, result){
+
+        if (err){
+            //handle this error properly
+        }
+
         var users = result.users;
         var games = result.games;
+
         console.log("Users: " + users.length);
         console.log("Games: " + games.length);
-        callback(err, ret);
-    });
 
-    res.render('search', {
-        title: 'wasdWithMe - Search Results',
-        layout: 'primary',
-        file: 'search',
-        user: req.user,
-        query: query
+        res.render('search', {
+            title: 'Search Results',
+            layout: 'primary',
+            file: 'search',
+            user: req.user,
+            query: query
+        });
     });
 });
 
