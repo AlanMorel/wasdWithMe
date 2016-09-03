@@ -6,10 +6,10 @@
 - [ ] allow for manual game additions
 - [ ] build individual games pages by pulling info via API
 - [ ] add mobile css to profile, edit pages, search results page, live searches
+- [ ] comprehensive logger.js (production-level logging system for catching issues once we're live)
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)
-- [O] http://blog.ijasoneverett.com/2013/04/form-validation-in-node-js-with-express-validator/ add validator (opted out)
 
 - [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 - [ ] display error messages on login page just like sign up page
@@ -24,7 +24,6 @@
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [ ] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
-- [ ] comprehensive logger.js (production-level logging system for catching issues once we're live)
 - [ ] ctrl+f every file for "properly slug", and slug it
 
 # General Todo

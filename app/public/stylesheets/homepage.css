@@ -240,7 +240,7 @@ img.couple {
 }
 .results {
   position: absolute;
-  top: 40px;
+  top: 50px;
   background: #fff;
   color: #000;
   width: 500px;
@@ -248,7 +248,7 @@ img.couple {
   border-radius: 4px;
   visibility: hidden;
   z-index: 1;
-  box-shadow: 0 0 50px #000;
+  box-shadow: 0 0 75px #000;
 }
 .results img {
   max-width: 64px;
@@ -285,8 +285,8 @@ form {
   height: 40px;
   background-color: #53368a;
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 4px;
+  padding-top: 16px;
+  padding-bottom: 10px;
 }
 .search input[type="text"] {
   width: 350px;

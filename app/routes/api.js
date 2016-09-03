@@ -49,7 +49,7 @@ router.get('/', function(req, res, next) {
 
         var game = {
             name: "Shadowverse",
-            description: "Description of Shadowverse goes here",
+            description: "Description of Shadowverse goes here."
         }
 
         games.push(game);
@@ -63,6 +63,8 @@ router.get('/', function(req, res, next) {
             }
             json.push(game);
         }
+
+        json = json.slice(0, 10); //We only want 10 results max
 
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(json));
