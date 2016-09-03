@@ -10,13 +10,9 @@ function showSearchResults(str) {
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200 && request.responseText.length > 0) {
+        if (request.readyState == 4 && request.status == 200 && request.responseText.length > 2) {
             console.log(request.responseText);
             var json = JSON.parse(request.responseText);
-
-            if (json.length < 1){
-                return;
-            }
 
             var html = "";
 

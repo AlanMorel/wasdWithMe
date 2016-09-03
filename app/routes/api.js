@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
 
         var users = result.users;
         var games = result.games;
-
+        
         console.log("Users: " + users.length);
         console.log("Games: " + games.length);
 
@@ -47,12 +47,19 @@ router.get('/', function(req, res, next) {
             json.push(user);
         }
 
+        var game = {
+            name: "Overwatch",
+            description: "Description of Overwatch goes here",
+        }
+
+        games.push(game);
+
         for (var i = 0; i < games.length; i++){
             var game = {
                 type: "game",
-                name: games[i].display_name,
-                image: "/images/placeholder.png",
-                description: "Cool game."
+                name: games[i].name,
+                image: "https://static-cdn.jtvnw.net/ttv-boxart/" + games[i].name + "-136x190.jpg",
+                description: games[i].description
             }
             json.push(game);
         }
