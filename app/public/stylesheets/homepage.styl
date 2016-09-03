@@ -152,6 +152,22 @@ img.couple {
   padding-top: 2vw;
 }
 
+.results {
+  position: absolute;
+  top: 50px;
+  background: #fff;
+  color: #000;
+  width: 360px;
+}
+
+.result {
+  text-align: left;
+}
+
+form {
+  position: relative;
+}
+
 .search {
   height: 40px;
   background-color: #53368a;
@@ -201,13 +217,14 @@ img.boxart {
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
   filter: brightness(.75);
-  -webkit-filter:  brightness(.75);
+  -webkit-filter: brightness(.75);
 }
-  img.boxart:hover{
-    box-shadow: 0 0 25px white;
-    filter: brightness(1);
-    -webkit-filter:  brightness(1);
-  }
+
+img.boxart:hover {
+  box-shadow: 0 0 25px white;
+  filter: brightness(1);
+  -webkit-filter: brightness(1);
+}
 
 .game {
   max-width: 175px;
@@ -224,8 +241,12 @@ img.boxart {
 }
 
 @keyframes bannermove {
-  0%   { margin-left: 0px; }
-  100% { margin-left: -2625px; }
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -2625px;
+  }
 }
 
 @media only screen and (max-width: 950px) {

@@ -238,6 +238,19 @@ img.couple {
 .sign-up-button {
   padding-top: 2vw;
 }
+.results {
+  position: absolute;
+  top: 50px;
+  background: #fff;
+  color: #000;
+  width: 360px;
+}
+.result {
+  text-align: left;
+}
+form {
+  position: relative;
+}
 .search {
   height: 40px;
   background-color: #53368a;

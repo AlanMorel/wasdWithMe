@@ -3,9 +3,15 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
     var query = req.query.q;
-    console.log(query);
-    res.type('text/plain');
-    res.send(query);
+
+    var results = [];
+
+    results.push(query);
+    results.push(query);
+    results.push(query);
+
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(results));
 });
 
 module.exports = router;

@@ -1,8 +1,8 @@
 function showSearchResults(str) {
     var results = document.querySelector(".results");
 
-    if (!str || str.length < 1) {
-        //results.style.visibility = "hidden";
+    if (!str || str.length < 3) {
+        results.innerHTML = "";
         return;
     }
 
@@ -11,14 +11,17 @@ function showSearchResults(str) {
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200 && request.responseText.length > 0) {
             console.log(request.responseText);
-            results.innerHTML = request.responseText;
-            //results.style.visibility = "visible";
-        } else {
-            //results.style.visibility = "hidden";
+            var json = JSON.parse(request.responseText);
+            var html = "";
+
+            for (var i = 0; i < json.length; i++){
+                html += "<div class='result'>" + json[i] + "</div>";
+            }
+
+            results.innerHTML = html;
         }
     };
 
     request.open("GET", "/api?q=" + str, true);
     request.send();
-    //results.style.visibility = "visible";
 }
