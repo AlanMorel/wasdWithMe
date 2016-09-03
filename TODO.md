@@ -23,12 +23,13 @@
 - [X] work on editing own profile so static temporary data can be removed
 - [X] profile change info page or on same page when user is on own page
 - [X] change all page titles
+- [X] add search bar AJAX for users, games
+- [X] create search results page
 
-- [ ] create search results page
+- [ ] build out search results page
 - [ ] allow for manual game additions
-- [ ] add search bar AJAX for users, games
 - [ ] build individual games pages by pulling info via API
-- [ ] add mobile css to profile and edit pages
+- [ ] add mobile css to profile, edit pages, search results page, live searches
 
 # Edgar's Todo
 - [X] fix passport

@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
 
         var users = result.users;
         var games = result.games;
-        
+
         console.log("Users: " + users.length);
         console.log("Games: " + games.length);
 
@@ -48,8 +48,8 @@ router.get('/', function(req, res, next) {
         }
 
         var game = {
-            name: "Overwatch",
-            description: "Description of Overwatch goes here",
+            name: "Shadowverse",
+            description: "Description of Shadowverse goes here",
         }
 
         games.push(game);
