@@ -18,8 +18,8 @@ var User         = require('./models/user');
 var Game         = require('./models/game');
 var GameOwner    = require('./models/gameowner');
 
-
 var homepage     = require('./routes/homepage');
+var api          = require('./routes/api');
 var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
 var logout       = require('./routes/logout');
@@ -76,6 +76,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //Routes
 app.use('/', homepage);
+app.use('/api', api);
 app.use('/signup', signUp);
 app.use('/login', login);
 app.use('/logout', logout);

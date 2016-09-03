@@ -1,10 +1,11 @@
-{{#if user}}
 <div class="search">
     <form method="post" action="/search">
-        <input name="query" type="text" placeholder="Search for people or games..." />
+        <input name="query" type="text" onkeyup="showSearchResults(this.value)" placeholder="Search for people or games..." />
         <input type="image" src="/images/search.png" alt="Submit Form" />
+        <span class="results"></span>
     </form>
 </div>
+{{#if user}}
 <div class="popular-games">
     <div class="popular-games-header">Popular games right now!</div>
     <div class="games">

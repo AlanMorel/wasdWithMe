@@ -28,9 +28,7 @@
 - [ ] allow for manual game additions
 - [ ] add search bar AJAX for users, games
 - [ ] build individual games pages by pulling info via API
-- [ ] recatcha on sign up page
-- [ ] add mobile to profile and edit pages
-- [ ] rename 404 to error
+- [ ] add mobile css to profile and edit pages
 
 # Edgar's Todo
 - [X] fix passport
@@ -75,3 +73,5 @@
 - [ ] add messaging other users
 - [ ] add blocking other users
 - [ ] leaderboards page
+- [ ] recatcha on sign up page
+- [ ] google analytics
