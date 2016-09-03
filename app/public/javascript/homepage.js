@@ -1,7 +1,7 @@
-function showSearchResults(str) {
+function showSearchResults(query) {
     var results = document.querySelector(".results");
 
-    if (!str || str.length < 3) {
+    if (!query || query.length < 3) {
         results.innerHTML = "";
         results.style.visibility = "hidden";
         return;
@@ -11,9 +11,7 @@ function showSearchResults(str) {
 
     request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200 && request.responseText.length > 2) {
-            console.log(request.responseText);
             var json = JSON.parse(request.responseText);
-
             var html = "";
 
             for (var i = 0; i < json.length; i++){
@@ -34,6 +32,6 @@ function showSearchResults(str) {
         }
     };
 
-    request.open("GET", "/api?q=" + str, true);
+    request.open("GET", "/api?q=" + query, true);
     request.send();
 }
