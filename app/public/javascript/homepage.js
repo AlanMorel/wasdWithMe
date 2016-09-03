@@ -3,6 +3,7 @@ function showSearchResults(str) {
 
     if (!str || str.length < 3) {
         results.innerHTML = "";
+        results.style.visibility = "hidden";
         return;
     }
 
@@ -15,10 +16,19 @@ function showSearchResults(str) {
             var html = "";
 
             for (var i = 0; i < json.length; i++){
-                html += "<div class='result'>" + json[i] + "</div>";
+                var result = json[i]
+                html += "<div class='result'>";
+                html += "<img src='" + result.image + "'/>";
+                html += "<div class='info'><div class='name'>" + result.name + "</div>";
+                html += "<div class='description'>" + result.description + "</div>";
+                html += "</div></div>";
             }
 
             results.innerHTML = html;
+            results.style.visibility = "visible";
+        } else {
+            results.innerHTML = "";
+            results.style.visibility = "hidden";
         }
     };
 
