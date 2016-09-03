@@ -39,15 +39,17 @@ router.get('/', function(req, res, next) {
 
         for (var i = 0; i < users.length; i++){
             var user = {
+                type: "user",
                 name: users[i].display_name,
                 image: "/images/placeholder.png",
-                description: users[i].tagline
+                description: users[i].tagline === undefined ? "" : users[i].tagline
             }
             json.push(user);
         }
 
         for (var i = 0; i < games.length; i++){
             var game = {
+                type: "game",
                 name: games[i].display_name,
                 image: "/images/placeholder.png",
                 description: "Cool game."

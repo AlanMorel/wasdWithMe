@@ -13,15 +13,21 @@ function showSearchResults(str) {
         if (request.readyState == 4 && request.status == 200 && request.responseText.length > 0) {
             console.log(request.responseText);
             var json = JSON.parse(request.responseText);
+
+            if (json.length < 1){
+                return;
+            }
+
             var html = "";
 
             for (var i = 0; i < json.length; i++){
-                var result = json[i]
+                var result = json[i];
+                html += "<a href='/" + result.type + "/" + result.name + "'>";
                 html += "<div class='result'>";
                 html += "<img src='" + result.image + "'/>";
                 html += "<div class='info'><div class='name'>" + result.name + "</div>";
                 html += "<div class='description'>" + result.description + "</div>";
-                html += "</div></div>";
+                html += "</div></div></a>";
             }
 
             results.innerHTML = html;
