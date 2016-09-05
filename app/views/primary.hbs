@@ -30,6 +30,13 @@
           </div>
       </div>
   </div>
+  <div class="search">
+      <form method="post" action="/search">
+          <span class="results-box"></span>
+          <input name="query" type="text" autocomplete="off" onkeyup="showSearchResults(this.value)" placeholder="Search for people or games..." />
+          <input type="image" src="/images/search.png" alt="Submit Form" />
+      </form>
+  </div>
     {{{body}}}
   <footer>
       <div class="top"></div>
@@ -37,4 +44,5 @@
   </footer>
   </body>
   <script src="/javascript/{{file}}.js"></script>
+  <script src="/javascript/primary.js"></script>
 </html>

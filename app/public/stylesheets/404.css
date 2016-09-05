@@ -67,6 +67,71 @@ html {
 .wasd-bottom a {
   margin-left: 16px;
 }
+form {
+  position: relative;
+}
+.search {
+  height: 40px;
+  background-color: #53368a;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 10px;
+}
+.search input[type="text"] {
+  width: 350px;
+  font-size: 18px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+.search input[type="image"] {
+  max-height: 32px;
+  max-width: 32px;
+  vertical-align: top;
+  margin-left: 6px;
+}
+.search .results-box {
+  position: absolute;
+  top: 50px;
+  background: #fff;
+  color: #000;
+  width: 500px;
+  padding: 2px 6px 2px 6px;
+  border-radius: 4px;
+  visibility: hidden;
+  z-index: 1;
+  box-shadow: 0 0 75px #000;
+}
+.search .results-box img {
+  max-width: 64px;
+  vertical-align: middle;
+}
+.search .result {
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  cursor: pointer;
+  color: #000;
+}
+.search .result:hover {
+  background-color: #6441a5;
+  color: #fff;
+}
+.search .info {
+  float: right;
+  width: 425px;
+}
+.search .info .name {
+  font-size: 18px;
+}
+.search .info .description {
+  font-size: 14px;
+  display: inline-block;
+}
 footer {
   height: 225px;
   background-color: #282828;

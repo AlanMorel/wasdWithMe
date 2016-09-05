@@ -1,5 +1,5 @@
 function showSearchResults(query) {
-    var results = document.querySelector(".results");
+    var results = document.querySelector(".results-box");
 
     if (!query || query.length < 3) {
         results.innerHTML = "";

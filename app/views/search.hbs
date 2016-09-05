@@ -1,3 +1,14 @@
 <div class="query">Showing results for '{{query}}'</div>
-<div class="results">
+<div class="search-results">
+{{#each results}}
+    <a href='/{{type}}/{{name}}'>
+        <div class="search-result">
+            <img src="{{image}}"/>
+            <div class="search-info">
+                <div class="search-name">{{name}}</div>
+                <div class="search-description">{{description}}</div>
+            </div>
+        </div>
+    </a>
+{{/each}}
 </div>

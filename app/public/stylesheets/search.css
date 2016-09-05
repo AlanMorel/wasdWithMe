@@ -67,6 +67,71 @@ html {
 .wasd-bottom a {
   margin-left: 16px;
 }
+form {
+  position: relative;
+}
+.search {
+  height: 40px;
+  background-color: #53368a;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 10px;
+}
+.search input[type="text"] {
+  width: 350px;
+  font-size: 18px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+.search input[type="image"] {
+  max-height: 32px;
+  max-width: 32px;
+  vertical-align: top;
+  margin-left: 6px;
+}
+.search .results-box {
+  position: absolute;
+  top: 50px;
+  background: #fff;
+  color: #000;
+  width: 500px;
+  padding: 2px 6px 2px 6px;
+  border-radius: 4px;
+  visibility: hidden;
+  z-index: 1;
+  box-shadow: 0 0 75px #000;
+}
+.search .results-box img {
+  max-width: 64px;
+  vertical-align: middle;
+}
+.search .result {
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  cursor: pointer;
+  color: #000;
+}
+.search .result:hover {
+  background-color: #6441a5;
+  color: #fff;
+}
+.search .info {
+  float: right;
+  width: 425px;
+}
+.search .info .name {
+  font-size: 18px;
+}
+.search .info .description {
+  font-size: 14px;
+  display: inline-block;
+}
 footer {
   height: 225px;
   background-color: #282828;
@@ -115,19 +180,54 @@ body {
 .query {
   color: #000;
   text-align: left;
-  width: 800px;
-  margin: 20px auto 20px auto;
+  width: 700px;
+  margin: 32px auto 32px auto;
   font-size: 24px;
 }
-.results {
+.search-results {
   color: #000;
   text-align: left;
-  width: 800px;
+  width: 700px;
   margin: auto;
   font-size: 24px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 75px;
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
+  padding: 10px 14px 10px 14px;
+}
+.search-results a {
+  color: #000;
+}
+.search-results a:hover {
+  color: #fff;
+}
+.search-results img {
+  max-width: 128px;
+  vertical-align: middle;
+}
+.search-result {
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  cursor: pointer;
+  color: #000;
+}
+.search-result:hover {
+  background-color: #6441a5;
+  color: #fff;
+}
+.search-info {
+  float: right;
+  width: 550px;
+}
+.search-info .search-name {
+  font-size: 28px;
+}
+.search-info .search-description {
+  font-size: 18px;
+  display: inline-block;
 }
