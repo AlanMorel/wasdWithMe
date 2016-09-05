@@ -1,9 +1,11 @@
-# Bug List  (oh no!)
-- [ ] connect.session() memorystore is not memory, and will not scale past a single process (designed for a product environment as it will leak process.env.NODE_ENC=production)
-
 # Alan's Todo
-- [ ] build out search results page
+- [X] build out search results page
+- [ ] clean up search results page
+- [ ] convert search page to GET request instead of POST
+- [ ] add availability to user model
+- [ ] add availability to edit profile capabilities
 - [ ] allow for manual game additions
+- [ ] build a fetch if not in db, put in db once fetched system
 - [ ] build individual games pages by pulling info via API
 - [ ] add mobile css to profile, edit pages, search results page, live searches
 - [ ] comprehensive logger.js (production-level logging system for catching issues once we're live)
@@ -27,6 +29,7 @@
 - [ ] ctrl+f every file for "properly slug", and slug it
 
 # General Todo
+- [ ] connect.session() memorystore is not memory, and will not scale past a single process (designed for a product environment as it will leak process.env.NODE_ENC=production)
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] add messaging other users
 - [ ] add blocking other users

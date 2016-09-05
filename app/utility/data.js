@@ -33,34 +33,31 @@ exports.search = function(query, limit, req, res, ret){
         var users = result.users;
         var games = result.games;
 
-        console.log("Users: " + users.length);
-        console.log("Games: " + games.length);
+        console.log("Users: " + users.length + " Games: " + games.length);
 
         for (var i = 0; i < users.length; i++){
-            var user = {
-                type: "user",
-                name: users[i].display_name,
-                image: "/images/placeholder.png",
-                description: users[i].tagline === undefined ? "" : users[i].tagline
-            }
-            results.push(user);
+            addToResults(results,
+                "user",
+                users[i].display_name,
+                "/images/placeholder.png",
+                users[i].tagline === undefined ? "" : users[i].tagline
+            );
         }
 
-        var game = {
-            name: "Shadowverse",
-            description: "Description of Shadowverse goes here."
-        }
-
-        games.push(game);
+        addToResults(results,
+            "game",
+            "Shadowverse",
+            "https://static-cdn.jtvnw.net/ttv-boxart/Shadowverse-136x190.jpg",
+            "Description of Shadowverse goes here."
+        );
 
         for (var i = 0; i < games.length; i++){
-            var game = {
-                type: "game",
-                name: games[i].name,
-                image: "https://static-cdn.jtvnw.net/ttv-boxart/" + games[i].name + "-136x190.jpg",
-                description: games[i].description
-            }
-            results.push(game);
+            addToResults(results,
+                "game",
+                games[i].name,
+                "https://static-cdn.jtvnw.net/ttv-boxart/" + games[i].name + "-136x190.jpg",
+                games[i].description
+            );
         }
 
         results = results.slice(0, limit);
@@ -68,3 +65,14 @@ exports.search = function(query, limit, req, res, ret){
         ret(req, res, query, results);
     });
 };
+
+function addToResults(results, type, name, image, description){
+    var item = {
+        type: type,
+        name: name,
+        image: image,
+        description: description
+    };
+    results.push(item);
+    return results;
+}
