@@ -204,7 +204,7 @@ body {
   color: #fff;
 }
 .search-results img {
-  max-width: 128px;
+  max-width: 100px;
   vertical-align: middle;
 }
 .search-result {
@@ -222,12 +222,12 @@ body {
 }
 .search-info {
   float: right;
-  width: 550px;
+  width: 575px;
 }
 .search-info .search-name {
-  font-size: 28px;
+  font-size: 26px;
 }
 .search-info .search-description {
-  font-size: 18px;
+  font-size: 16px;
   display: inline-block;
 }

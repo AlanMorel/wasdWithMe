@@ -1,7 +1,7 @@
 # Alan's Todo
 - [X] build out search results page
-- [ ] clean up search results page
-- [ ] convert search page to GET request instead of POST
+- [X] convert search page to GET request instead of POST
+- [X] clean up search results page
 - [ ] add availability to user model
 - [ ] add availability to edit profile capabilities
 - [ ] allow for manual game additions
@@ -9,6 +9,7 @@
 - [ ] build individual games pages by pulling info via API
 - [ ] add mobile css to profile, edit pages, search results page, live searches
 - [ ] comprehensive logger.js (production-level logging system for catching issues once we're live)
+- [ ] add pagination to search results when the database gets big enough
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)
