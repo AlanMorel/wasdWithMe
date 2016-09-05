@@ -83,9 +83,6 @@ app.use('/logout', logout);
 app.use('/user', user);
 app.use('/search', search);
 
-//logs out what environment mode you are currently working on
-console.log("process.env.NODE_ENV=" + app.get('env'));
-
 //MongoDB
 if(app.get('env')==='production'){
   app.listen(app.get('port'));

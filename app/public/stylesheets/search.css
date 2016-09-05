@@ -109,7 +109,25 @@ footer .bottom {
     font-size: 18px;
   }
 }
+body {
+  background-color: #e9ebee;
+}
 .query {
   color: #000;
-  text-align: center;
+  text-align: left;
+  width: 800px;
+  margin: 20px auto 20px auto;
+  font-size: 24px;
+}
+.results {
+  color: #000;
+  text-align: left;
+  width: 800px;
+  margin: auto;
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
 }
