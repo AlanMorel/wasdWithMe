@@ -68,7 +68,9 @@ transition(transition) {
     margin-left: 16px;
   }
 }
-
+.name {
+  font-size: 18px;
+}
 
 form {
   position: relative;
@@ -95,23 +97,6 @@ form {
     vertical-align: top;
     margin-left: 6px;
   }
-  .results-box {
-    position: absolute;
-    top: 50px;
-    background: #fff;
-    color: #000;
-    width: 500px;
-    padding: 2px 6px 2px 6px;
-    border-radius: 4px;
-    visibility: hidden;
-    z-index: 1;
-    box-shadow: 0 0 75px black;
-    img {
-      max-width: 64px;
-      vertical-align: middle;
-    }
-  }
-
   .result {
     text-align: left;
     display: inline-block;
@@ -126,17 +111,32 @@ form {
     background-color: wasdWithMePurple;
     color: white;
   }
+}
 
-  .info {
-    float: right;
-    width: 425px;
-    .name {
-      font-size: 18px;
-    }
-    .description {
-      font-size: 14px;
-      display: inline-block;
-    }
+.info {
+  float: right;
+  width: 425px;
+}
+
+.description {
+  font-size: 14px;
+  display: inline-block;
+}
+
+.results-box {
+  position: absolute;
+  top: 50px;
+  background: #fff;
+  color: #000;
+  width: 500px;
+  padding: 2px 6px 2px 6px;
+  border-radius: 4px;
+  visibility: hidden;
+  z-index: 1;
+  box-shadow: 0 0 75px black;
+  img {
+    max-width: 64px;
+    vertical-align: middle;
   }
 }
 
@@ -172,7 +172,7 @@ footer {
   background-color: #cfffd4;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
   .wasd-header {
     height: 50px;
   }
@@ -192,5 +192,23 @@ footer {
   .search input[type="text"] {
     width: 70vw;
     font-size: 16px;
+  }
+
+  .results-box{
+    width: 94vw;
+    left: 1vw;
+  }
+  .results-box img {
+    max-width: 15vw;
+    vertical-align: middle;
+  }
+  .info{
+    width: 77vw;
+  }
+  .name{
+    font-size: 4vw;
+  }
+  .description{
+    font-size: 3vw;
   }
 }

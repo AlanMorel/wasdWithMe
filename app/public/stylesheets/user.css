@@ -67,6 +67,9 @@ html {
 .wasd-bottom a {
   margin-left: 16px;
 }
+.name {
+  font-size: 18px;
+}
 form {
   position: relative;
 }
@@ -92,22 +95,6 @@ form {
   vertical-align: top;
   margin-left: 6px;
 }
-.search .results-box {
-  position: absolute;
-  top: 50px;
-  background: #fff;
-  color: #000;
-  width: 500px;
-  padding: 2px 6px 2px 6px;
-  border-radius: 4px;
-  visibility: hidden;
-  z-index: 1;
-  box-shadow: 0 0 75px #000;
-}
-.search .results-box img {
-  max-width: 64px;
-  vertical-align: middle;
-}
 .search .result {
   text-align: left;
   display: inline-block;
@@ -121,16 +108,29 @@ form {
   background-color: #6441a5;
   color: #fff;
 }
-.search .info {
+.info {
   float: right;
   width: 425px;
 }
-.search .info .name {
-  font-size: 18px;
-}
-.search .info .description {
+.description {
   font-size: 14px;
   display: inline-block;
+}
+.results-box {
+  position: absolute;
+  top: 50px;
+  background: #fff;
+  color: #000;
+  width: 500px;
+  padding: 2px 6px 2px 6px;
+  border-radius: 4px;
+  visibility: hidden;
+  z-index: 1;
+  box-shadow: 0 0 75px #000;
+}
+.results-box img {
+  max-width: 64px;
+  vertical-align: middle;
 }
 footer {
   height: 225px;
@@ -160,7 +160,7 @@ footer .bottom {
 .one-ups-label:hover {
   background-color: #cfffd4;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
   .wasd-header {
     height: 50px;
   }
@@ -176,6 +176,23 @@ footer .bottom {
   .search input[type="text"] {
     width: 70vw;
     font-size: 16px;
+  }
+  .results-box {
+    width: 94vw;
+    left: 1vw;
+  }
+  .results-box img {
+    max-width: 15vw;
+    vertical-align: middle;
+  }
+  .info {
+    width: 77vw;
+  }
+  .name {
+    font-size: 4vw;
+  }
+  .description {
+    font-size: 3vw;
   }
 }
 body {
@@ -272,7 +289,7 @@ body {
 .tagline {
   font-size: 18px;
 }
-.name,
+.user-name,
 .bio {
   padding-bottom: 10px;
 }
@@ -311,7 +328,7 @@ img.coin {
 .all-games {
   padding-bottom: 20px;
 }
-.name {
+.user-name {
   font-size: 26px;
 }
 .bio {
