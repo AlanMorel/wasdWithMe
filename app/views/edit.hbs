@@ -4,13 +4,12 @@
             <div class="pic">
                 <img src="/images/placeholder.png">
             </div>
-            <div class="info">
+            <div class="user-info">
                 <div class="username">{{owner.display_name}}</div>
                 <div class="extra-info">
                     <span class="age">{{age}}</span>
                     &bull;
-                    <span class="location">{{owner.location.city}}, {{owner.location.state}}
-                        , {{owner.location.country}}</span>
+                    <span class="location">{{owner.location.city}}, {{owner.location.state}}, {{owner.location.country}}</span>
                     &bull;
                     <span class="gender">{{gender}}</span>
                 </div>
@@ -28,8 +27,16 @@
             <div class="name">Last Name: <input name="lastname" type="text" class="input-name" value="{{owner.last_name}}"></div>
             <textarea name="bio" class="input-bio" maxlength="500" rows="7">{{owner.bio}}</textarea>
             <div class="availability-header">Availability</div>
-            <div class="availability"><img src="/images/calendar.png">Weekdays</div>
-            <div class="availability"><img src="/images/clock.png">Nights</div>
+            <div class="availability-type">Weekdays</div>
+            <div class="checkbox"><input type="checkbox" name="weekdaysmorning"{{#if owner.availability.weekdays.morning}}checked{{/if}}> Morning</div>
+            <div class="checkbox"><input type="checkbox" name="weekdaysday"{{#if owner.availability.weekdays.day}}checked{{/if}}> Day</div>
+            <div class="checkbox"><input type="checkbox" name="weekdaysnight"{{#if owner.availability.weekdays.night}}checked{{/if}}> Night</div>
+            <div class="checkbox"><input type="checkbox" name="weekdaysnever"{{#if owner.availability.weekdays.never}}checked{{/if}}> Never</div>
+            <div class="availability-type">Weekends</div>
+            <div class="checkbox"><input type="checkbox" name="weekendsmorning"{{#if owner.availability.weekends.morning}}checked{{/if}}> Morning</div>
+            <div class="checkbox"><input type="checkbox" name="weekendsday"{{#if owner.availability.weekends.day}}checked{{/if}}> Day</div>
+            <div class="checkbox"><input type="checkbox" name="weekendsnight"{{#if owner.availability.weekends.night}}checked{{/if}}> Night</div>
+            <div class="checkbox"><input type="checkbox" name="weekendsnever"{{#if owner.availability.weekends.never}}checked{{/if}}> Never</div>
         </div>
         <div class="fav-games">
             <div class="fav-games-header">Favorite Games</div>

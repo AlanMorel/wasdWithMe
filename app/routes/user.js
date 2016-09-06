@@ -114,6 +114,27 @@ router.post('/:username/edit', function(req, res, next) {
 
     var bio = req.body.bio;
 
+    var weekdays = {
+        morning: req.body.weekdaysmorning !== undefined,
+        day: req.body.weekdaysday !== undefined,
+        night: req.body.weekdaysnight !== undefined,
+        never: req.body.weekdaysnever !== undefined
+    };
+
+    var weekends = {
+        morning: req.body.weekendsmorning !== undefined,
+        day: req.body.weekendsday !== undefined,
+        night: req.body.weekendsnight !== undefined,
+        never: req.body.weekendsnever !== undefined
+    };
+
+    var availability = {
+        weekdays: weekdays,
+        weekends: weekends
+    };
+
+    console.log(availability);
+
     //validate above here, return error if there is one
 
     console.log("tagline: " + tagline
@@ -129,12 +150,13 @@ router.post('/:username/edit', function(req, res, next) {
         tagline: tagline,
         first_name: firstname,
         last_name: lastname,
-        bio: bio
+        bio: bio,
+        availability: availability
     };
 
     var options = {
         upsert: true
-    }
+    };
 
     User.findOneAndUpdate(query, update, options, function(err, doc){
         if (err) {

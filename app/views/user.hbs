@@ -32,9 +32,37 @@
         <div class="about-header">About</div>
         <div class="name">{{owner.first_name}} {{owner.last_name}}</div>
         <div class="bio">{{owner.bio}}</div>
-        <div class="availability-header">Availability</div>
-        <div class="availability"><img src="/images/calendar.png">Weekdays</div>
-        <div class="availability"><img src="/images/clock.png">Nights</div>
+        <div class="availability-header"><img src="/images/calendar.png">Availability</div>
+        <div class="availability-type">Weekdays</div>
+        <ul>
+        {{#if owner.availability.weekdays.morning}}
+            <li>Morning</li>
+        {{/if}}
+        {{#if owner.availability.weekdays.day}}
+            <li>Day</li>
+        {{/if}}
+        {{#if owner.availability.weekdays.night}}
+            <li>Night</li>
+        {{/if}}
+        {{#if owner.availability.weekdays.never}}
+            <li>Never</li>
+        {{/if}}
+        </ul>
+        <div class="availability-type">Weekends</div>
+        <ul>
+        {{#if owner.availability.weekends.morning}}
+            <li>Morning</li>
+        {{/if}}
+        {{#if owner.availability.weekends.day}}
+            <li>Day</li>
+        {{/if}}
+        {{#if owner.availability.weekends.night}}
+            <li>Night</li>
+        {{/if}}
+        {{#if owner.availability.weekends.never}}
+            <li>Never</li>
+        {{/if}}
+        </ul>
     </div>
     <div class="fav-games">
         <div class="fav-games-header">Favorite Games</div>

@@ -350,6 +350,10 @@ img.boxart:hover {
 .availability-header {
   font-size: 20px;
 }
+.availability-header img {
+  max-height: 16px;
+  margin-right: 5px;
+}
 .availability {
   font-size: 16px;
   margin-top: 8px;
@@ -358,6 +362,20 @@ img.boxart:hover {
   max-height: 20px;
   vertical-align: bottom;
   margin-right: 10px;
+}
+.availability div {
+  font-weight: lighter;
+}
+.availability-type {
+  font-weight: normal;
+}
+.checkbox,
+li {
+  font-weight: lighter;
+  font-size: 16px;
+}
+ul {
+  margin-top: 0;
 }
 .steam {
   background: #fffffe;

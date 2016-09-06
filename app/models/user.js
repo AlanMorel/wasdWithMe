@@ -15,6 +15,21 @@ var oneUps = [{
     }
 }];
 
+var availabilityTimes = {
+    morning: {
+        type: Boolean
+    },
+    day: {
+        type: Boolean
+    },
+    night: {
+        type: Boolean
+    },
+    never: {
+        type: Boolean
+    }
+};
+
 var comments = [{
     author: {
         type: String,
@@ -99,6 +114,14 @@ var User = new mongoose.Schema({
     bio: {
         type: String,
         maxlength: config.bioMaxLength
+    },
+    availability:{
+        weekdays: {
+            type: availabilityTimes
+        },
+        weekends: {
+            type: availabilityTimes
+        }
     },
     fav_games: [{
         type: String
