@@ -173,6 +173,10 @@ footer .bottom {
   .wasd-bottom {
     font-size: 18px;
   }
+  .search input[type="text"] {
+    width: 70vw;
+    font-size: 16px;
+  }
 }
 .promo,
 .promo2 {

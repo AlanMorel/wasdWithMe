@@ -211,9 +211,9 @@ img.boxart:hover {
     font-weight: lighter;
   }
 }
-  .availability-type{
-      font-weight: normal;
-  }
+.availability-type{
+  font-weight: normal;
+}
 
 .checkbox, li{
   font-weight: lighter;
@@ -292,4 +292,89 @@ ul {
   font-size: 18px;
   margin-right: 100%;
   margin-bottom: 20px;
+}
+
+.button{
+  width:300px;
+  height: 75px;
+  font-size: 28px;
+}
+
+@media only screen and (max-width: 700px) {
+  .profile{
+    width: 95%;
+    padding: 0 1vw 0 1vw;
+  }
+
+  .header img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: bottom;
+  }
+  .pic{
+    text-align: center;
+    width: 100%;
+  }
+
+  .username, .tagline, .extra-info{
+    padding-top:10px;
+  }
+  .username {
+    font-size: 10vw;
+  }
+  .user-info{
+    display: block;
+    vertical-align: top;
+    margin: auto;
+    text-align: center;
+  }
+  .extra-info{
+    font-size: 5vw;
+  }
+  .tagline{
+    font-size: 3.5vw;
+  }
+
+  .right-side{
+    float: left;
+    width: 100%;
+    text-align:center;
+  }
+  .profile-one-ups, .profile-coins {
+    text-align:center;
+    margin-top:15px;
+    margin-bottom:15px;
+  }
+  .message-button, .discard-button{
+    margin: auto;
+    margin-top:25px;
+    margin-bottom: 10px
+  }
+  .status {
+    margin-top: 10px;
+  }
+  .input-name{
+    width: 100%;
+    float: initial;
+  }
+  .input-game{
+    width: 100%;
+  }
+  .input-bio{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 85%;
+    margin-left: 24px;
+  }
+  .input-tagline{
+    margin-top: 20px;
+    font-size: 3vw;
+    margin-left: 0vw;
+    width: 85vw;
+  }
+  .button{
+    width:100%;
+    height: 15vw;
+    font-size: 5vw;
+  }
 }

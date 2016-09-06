@@ -4,6 +4,7 @@
 - [X] clean up search results page
 - [X] add availability to user model
 - [X] add availability to edit profile capabilities
+- [X] add basic mobile CSS to profiles
 - [ ] allow for manual game additions
 - [ ] build a fetch if not in db, put in db once fetched system
 - [ ] build individual games pages by pulling info via API
