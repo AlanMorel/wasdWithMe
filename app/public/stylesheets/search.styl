@@ -57,8 +57,35 @@ body {
   .search-name {
     font-size: 26px;
   }
-  .search-description {
-    font-size: 16px;
-    display: inline-block;
+}
+.search-description {
+  font-size: 16px;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 750px) {
+  .search-results{
+    width: 96%;
+    padding:0;
+    margin-left: 2%;
+    img{
+      max-width: 20vw;
+    }
+  }
+  .search-info{
+    width: 75%;
+  }
+
+  .search-info .search-name {
+    font-size: 5vw;
+  }
+
+  .search-description{
+    font-size: 3vw;
+  }
+
+  .query{
+    font-size: 4vw;
+    margin-left: 2%;
   }
 }
