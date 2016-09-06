@@ -6,6 +6,10 @@ var Game  = require('../models/game');
 
 exports.search = function(query, limit, req, res, ret){
 
+    if (query.length < 1){
+        ret(req, res, query, null);
+    }
+
     var userQuery = {
         "username": {
             "$regex": query
@@ -61,6 +65,10 @@ exports.search = function(query, limit, req, res, ret){
         }
 
         results = results.slice(0, limit);
+
+        if (results.length < 1){
+            ret(req, res, query, null);
+        }
 
         ret(req, res, query, results);
     });
