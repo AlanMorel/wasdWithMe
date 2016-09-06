@@ -8,6 +8,7 @@ exports.search = function(query, limit, req, res, ret){
 
     if (query.length < 1){
         ret(req, res, query, null);
+        return;
     }
 
     var userQuery = {
@@ -68,6 +69,7 @@ exports.search = function(query, limit, req, res, ret){
 
         if (results.length < 1){
             ret(req, res, query, null);
+            return;
         }
 
         ret(req, res, query, results);
