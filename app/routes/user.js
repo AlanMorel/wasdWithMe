@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var User      = require('../models/user');
-var config    = require('../config');
+var User   = require('../models/user');
+var config = require('../config');
+
+//var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
@@ -16,8 +18,6 @@ router.get('/:username', function(req, res, next) {
         }
 
         addTemporaryInfo(owner);
-
-        var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
         res.render('user', {
             title: owner.display_name,
@@ -58,7 +58,6 @@ function getGames(games_list){
         };
         games.push(game);
     }
-
     return games;
 }
 
@@ -85,8 +84,6 @@ router.get('/:username/edit', function(req, res, next) {
         }
 
         addTemporaryInfo(owner);
-
-        var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
         res.render('edit', {
             title: owner.display_name,

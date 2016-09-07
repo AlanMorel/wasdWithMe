@@ -8,10 +8,10 @@
 - [X] add mobile css to search results page
 - [X] add mobile css to live searches
 - [X] add failed/empty search results page
-- [ ] allow for manual game additions
+- [X] allow for manual game additions
 - [ ] build a fetch if not in db, put in db once fetched system
 - [ ] build individual games pages by pulling info via API
-- [ ] implement search filters system
+- [ ] implement search filters
 - [ ] comprehensive logger.js (production-level logging system for catching issues once we're live)
 - [ ] add pagination to search results when the database gets big enough
 
