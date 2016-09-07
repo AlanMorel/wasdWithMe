@@ -31,6 +31,8 @@ exports.search = function(query, limit, req, res, ret){
         if (err){
             //handle this error properly
             console.log(err);
+            res.redirect("/");
+            return;
         }
 
         var results = [];

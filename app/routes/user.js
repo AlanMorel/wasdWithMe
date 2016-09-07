@@ -132,13 +132,14 @@ router.post('/:username/edit', function(req, res, next) {
         weekends: weekends
     };
 
-    //validate above here, return error if there is one
+    //validate data here, return error if there is one
 
     console.log("tagline: " + tagline
     + " firstname: " + firstname
     + " lastname: " + lastname
     + " bio" + bio
-    + "games: " + games);
+    + "games: " + games
+    );
 
     var query = {
         'username': slug
@@ -161,6 +162,8 @@ router.post('/:username/edit', function(req, res, next) {
         if (err) {
             //properly handle error
             console.log("Error updating user profile.");
+            res.redirect("/");
+            return;
         }
     });
 
@@ -181,13 +184,7 @@ function userNotFound(res, user, username){
 
 //You should not be able to access /user/ directly
 router.get('/', function(req, res, next) {
-    res.render('404', {
-        title: 'Error',
-        layout: 'primary',
-        file: '404',
-        user : req.user,
-        message: 'Error, can\'t access this page.'
-    });
+    return res.redirect("/");
 });
 
 module.exports = router;

@@ -7,7 +7,11 @@ router.get('/', function (req, res, next) {
 
     var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 
-    User.find().sort({'one_up_count': -1}).limit(5).exec(function (err, users) {
+    var query = {
+        'one_up_count': -1
+    };
+
+    User.find().sort(query).limit(5).exec(function (err, users) {
         users = addStaticInfo(users);
         res.render('homepage', {
             title: 'wasdWithMe - Connect with gamers.',

@@ -19,14 +19,6 @@ var authenticationOptions = {
 
 var authentication = passport.authenticate('local', authenticationOptions);
 
-router.post('/', authentication, function(req, res) {
-        var username = req.body.username;
-        var password = req.body.password;
-
-        console.log("User logged in:" + " username: " + username + " password: "+ password);
-
-        res.redirect('/');
-    }
-);
+router.post('/', authentication, function(req, res) {});
 
 module.exports = router;

@@ -43,15 +43,17 @@ router.post('/', function (req, res) {
         + " state: " + state
         + " city: " + city);
 
-    var err = validation.checkAccount(displayName, password, email);
-    if (err != undefined) {
-          //handle error
-          return res.render('signup', {
+    var error = validation.checkAccount(displayName, password, email);
+
+    if (error != undefined) {
+        //properly handle error
+        res.render('signup', {
             title: 'Sign Up',
             layout: 'secondary',
             file: 'signup',
-            error: err
+            error: error
          });
+        return;
     }
 
     var oneUps = getRandomOneUps(100);
@@ -77,15 +79,15 @@ router.post('/', function (req, res) {
 
     User.register(user, password, function (err, user) {
         if (err) {
-            //handle error
+            //properly handle error
             console.log(err);
-            console.log("registering error occurred");
-            return res.render('signup', {
+            res.render('signup', {
               title: 'wasdWithMe - Sign up!',
               layout: 'secondary',
               file: 'signup',
               error: err.message
-           });
+            });
+            return;
         }
         authentication(req, res, function () {
             console.log("Authenticated successfully");
