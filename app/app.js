@@ -16,7 +16,6 @@ var config       = require('./config');
 
 var User         = require('./models/user');
 var Game         = require('./models/game');
-var GameOwner    = require('./models/gameowner');
 
 var homepage     = require('./routes/homepage');
 var api          = require('./routes/api');

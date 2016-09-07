@@ -12,7 +12,10 @@ var Game = new mongoose.Schema({
     },
     release_date: {
         type: Date
-    }
+    },
+    owners: [{
+        type: String
+    }]
 });
 
 module.exports = mongoose.model('Game', Game);

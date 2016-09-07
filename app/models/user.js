@@ -160,6 +160,9 @@ var User = new mongoose.Schema({
             },
         },
     },
+    games: [{
+       type: String,
+    }],
     coins: {
         type: Number,
         default: 0

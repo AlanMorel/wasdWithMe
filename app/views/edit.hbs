@@ -64,10 +64,12 @@
         </div>
         <div class="all-games">
             <div class="fav-games-header">Games Library</div>
-            <div class="games">
+            <div class="games-list">
                 {{#each all_games}}
-                    <input type="text" class="input-game" value="{{name}}">
+                    <input type="text" name="games" class="input-game" value="{{name}}">
                 {{/each}}
+            </div>
+            <div><button type="button" class="button add-another" onclick="addAnother()">Add another</button>
             </div>
         </div>
         <input type="submit" value="Save Changes" class="button">

@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var User   = require('../models/user');
-var config = require('../config');
+var User      = require('../models/user');
+var config    = require('../config');
 
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
@@ -27,8 +27,8 @@ router.get('/:username', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
-            all_games: getGames(games),
-            fav_games: getGames(games.splice(0, 5)),
+            all_games: getGames(owner.games),
+            fav_games: getGames(owner.games.splice(0, 5)),
             is_owner: isOwner(req.user, owner)
         });
     });
@@ -96,8 +96,8 @@ router.get('/:username/edit', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
-            all_games: getGames(games),
-            fav_games: getGames(games.splice(0, 5)),
+            all_games: getGames(owner.games),
+            fav_games: getGames(owner.games.splice(0, 5)),
             is_owner: isOwner(req.user, owner)
         });
     });
@@ -113,6 +113,8 @@ router.post('/:username/edit', function(req, res, next) {
     var lastname = req.body.lastname;
 
     var bio = req.body.bio;
+
+    var games = req.body.games;
 
     var weekdays = {
         morning: req.body.weekdaysmorning !== undefined,
@@ -133,14 +135,13 @@ router.post('/:username/edit', function(req, res, next) {
         weekends: weekends
     };
 
-    console.log(availability);
-
     //validate above here, return error if there is one
 
     console.log("tagline: " + tagline
     + " firstname: " + firstname
     + " lastname: " + lastname
-    + " bio" + bio);
+    + " bio" + bio
+    + "games: " + games);
 
     var query = {
         'username': slug
@@ -151,7 +152,8 @@ router.post('/:username/edit', function(req, res, next) {
         first_name: firstname,
         last_name: lastname,
         bio: bio,
-        availability: availability
+        availability: availability,
+        games: games
     };
 
     var options = {
