@@ -14,6 +14,8 @@ exports.search = function(query, limit, req, res, ret){
         return;
     }
 
+    query = query.toLowerCase();
+
     var userQuery = {
         "username": {
             "$regex": query

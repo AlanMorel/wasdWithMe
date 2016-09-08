@@ -11,6 +11,7 @@
 - [X] allow for manual game additions
 - [X] logger.js (production-level logging system for catching issues once we're live)
 - [X] build a fetch if not in db, put in db once fetched system
+- [ ] convert description trimming to CSS
 - [ ] build individual games pages by pulling info via API
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough
