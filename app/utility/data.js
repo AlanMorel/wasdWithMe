@@ -51,7 +51,7 @@ exports.search = function(query, limit, req, res, ret){
                 "user",
                 users[i].display_name,
                 "/images/placeholder.png",
-                getDescription(users[i].bio, 500)
+                getDescription(users[i].bio)
             );
         }
 
@@ -60,7 +60,7 @@ exports.search = function(query, limit, req, res, ret){
                 "game",
                 games[i].display_name,
                 games[i].boxart,
-                getDescription(games[i].description, 300)
+                getDescription(games[i].description)
             );
         }
 
@@ -104,7 +104,7 @@ function callApi(req, res, query, ret){
                     "game",
                     game.name,
                     getBoxArt(game),
-                    'summary' in game ? getDescription(game.summary, 300) : ""
+                    'summary' in game ? getDescription(game.summary) : ""
                 );
                 addToDatabase(game);
             });
@@ -113,14 +113,11 @@ function callApi(req, res, query, ret){
         });
 }
 
-function getDescription(description, limit){
+function getDescription(description){
     if (description === undefined){
         return "";
     }
-    if (description.length < limit){
-        return description;
-    }
-    return description.substring(0, limit) + "...";
+    return description;
 }
 
 function getBoxArt(game){
@@ -134,13 +131,12 @@ function getBoxArt(game){
 function addToDatabase(game){
     var new_game = {
         id: game.id,
-        name: game.name.toLowerCase(),
+        name: getCleanedGameName(game),
         display_name: game.name,
         description: 'summary' in game ? game.summary : "",
         release_date: getReleaseDate(game),
         boxart: getBoxArt(game)
     }
-    console.log("Trying to add " + game.name + ".");
     Game.update(
         {id: game.id},
         {$setOnInsert: new_game},
@@ -153,6 +149,13 @@ function addToDatabase(game){
             console.log("Added " + game.name + " successfully.");
         }
     );
+}
+
+function getCleanedGameName(game){
+    var name = game.name;
+    name = name.toLowerCase();
+    name = name.replace('é', 'e');
+    return name;
 }
 
 function getReleaseDate(game){

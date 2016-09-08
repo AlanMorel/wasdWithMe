@@ -112,11 +112,13 @@ form {
 .info {
   float: right;
   width: 380px;
-  padding: 0 4px 8px 0;
+  padding-right: 10px;
 }
 .description {
-  font-size: 12px;
+  font-size: 13px;
   display: inline-block;
+  max-height: 90px;
+  overflow: hidden;
 }
 .results-box {
   position: absolute;

@@ -112,11 +112,13 @@ form {
 .info {
   float: right;
   width: 380px;
-  padding: 0 4px 8px 0;
+  padding-right: 10px;
 }
 .description {
-  font-size: 12px;
+  font-size: 13px;
   display: inline-block;
+  max-height: 90px;
+  overflow: hidden;
 }
 .results-box {
   position: absolute;
@@ -245,14 +247,18 @@ body {
 }
 .search-info {
   float: right;
-  width: 550px;
+  width: 540px;
+  overflow: hidden;
+  height: 165px;
+  padding-right: 10px;
+  margin-bottom: 10px;
 }
 .search-info .search-name {
   font-size: 22px;
   padding-bottom: 8px;
 }
 .search-description {
-  font-size: 14px;
+  font-size: 13px;
   display: inline-block;
 }
 @media only screen and (max-width: 750px) {
