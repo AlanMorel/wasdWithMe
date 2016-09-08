@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+var Logger = require('../utility/logger');
 var User = require('../models/user');
 
 router.get('/', function (req, res, next) {
@@ -12,6 +13,11 @@ router.get('/', function (req, res, next) {
     };
 
     User.find().sort(query).limit(5).exec(function (err, users) {
+        if (err){
+            Logger.log("Searching for live user profiles failed.", err);
+            //Properly handle this edge case
+            return;
+        }
         users = addStaticInfo(users);
         res.render('homepage', {
             title: 'wasdWithMe - Connect with gamers.',

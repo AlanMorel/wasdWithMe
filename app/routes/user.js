@@ -3,8 +3,7 @@ var router = express.Router();
 
 var User   = require('../models/user');
 var config = require('../config');
-
-//var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
+var Logger = require('../utility/logger');
 
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
@@ -160,8 +159,7 @@ router.post('/:username/edit', function(req, res, next) {
 
     User.findOneAndUpdate(query, update, options, function(err, doc){
         if (err) {
-            //properly handle error
-            console.log("Error updating user profile.");
+            Logger.log("Updating user profile failed.", err);
             res.redirect("/");
             return;
         }

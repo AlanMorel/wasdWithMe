@@ -1,8 +1,9 @@
 var exports = module.exports = {};
 
-var async = require('async');
-var User  = require('../models/user');
-var Game  = require('../models/game');
+var async  = require('async');
+var Logger = require('../utility/logger');
+var User   = require('../models/user');
+var Game   = require('../models/game');
 
 exports.search = function(query, limit, req, res, ret){
 
@@ -29,8 +30,7 @@ exports.search = function(query, limit, req, res, ret){
     }, function(err, result){
 
         if (err){
-            //handle this error properly
-            console.log(err);
+            Logger.log("Querying database during search failed.", err);
             res.redirect("/");
             return;
         }

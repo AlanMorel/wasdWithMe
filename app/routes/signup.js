@@ -4,7 +4,8 @@ var router = express.Router();
 var passport   = require('passport');
 var User       = require('../models/user');
 var config     = require('../config');
-var validation = require('../utility/validation');
+var Validation = require('../utility/validation');
+var Logger     = require('../utility/logger');
 
 router.get('/', function (req, res, next) {
     res.render('signup', {
@@ -43,10 +44,9 @@ router.post('/', function (req, res) {
         + " state: " + state
         + " city: " + city);
 
-    var error = validation.checkAccount(displayName, password, email);
+    var error = Validation.checkAccount(displayName, password, email);
 
     if (error != undefined) {
-        //properly handle error
         res.render('signup', {
             title: 'Sign Up',
             layout: 'secondary',
@@ -79,8 +79,7 @@ router.post('/', function (req, res) {
 
     User.register(user, password, function (err, user) {
         if (err) {
-            //properly handle error
-            console.log(err);
+            Logger.log("Registering user failed.", err);
             res.render('signup', {
               title: 'wasdWithMe - Sign up!',
               layout: 'secondary',
