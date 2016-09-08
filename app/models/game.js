@@ -1,10 +1,13 @@
 var mongoose = require('mongoose');
 
 var Game = new mongoose.Schema({
-    game_id:{
+    id:{
         type: Number,
     },
     name: {
+        type: String
+    },
+    display_name: {
         type: String
     },
     description: {
@@ -12,6 +15,9 @@ var Game = new mongoose.Schema({
     },
     release_date: {
         type: Date
+    },
+    boxart: {
+        type: String
     },
     owners: [{
         type: String
