@@ -26,15 +26,6 @@ exports.search = function(query, limit, req, res, ret){
         }
     };
 
-    unirest.get(config.base_url + "?fields=name%2Csummary%2Crelease_dates&limit=10&offset=0&order=release_dates.date%3Adesc&search=" + query)
-        .header("X-Mashape-Key", config.api_key)
-        .header("Accept", "application/json")
-        .end(function (result) {
-            console.log("START API");
-            console.log(result.status, result.headers, result.body);
-            console.log("END API");
-        });
-
     async.parallel({
         users: function (cb){ User.find(userQuery).exec(cb); },
         games: function (cb){ Game.find(gameQuery).exec(cb); }
@@ -62,32 +53,61 @@ exports.search = function(query, limit, req, res, ret){
             );
         }
 
-        addToResults(results,
-            "game",
-            "Shadowverse",
-            "https://static-cdn.jtvnw.net/ttv-boxart/Shadowverse-136x190.jpg",
-            "Description of Shadowverse goes here."
-        );
-
         for (var i = 0; i < games.length; i++){
             addToResults(results,
                 "game",
                 games[i].name,
-                "https://static-cdn.jtvnw.net/ttv-boxart/" + games[i].name + "-136x190.jpg",
+                "https://static-cdn.jtvnw.net/ttv-boxart/" + encodeURI(games[i].name) + "-136x190.jpg",
                 games[i].description
             );
         }
 
-        results = results.slice(0, limit);
-
         if (results.length < 1){
-            ret(req, res, query, null);
+            callApi(req, res, query, ret);
             return;
         }
+
+        results = results.slice(0, limit);
 
         ret(req, res, query, results);
     });
 };
+
+function callApi(req, res, query, ret){
+
+    var api = {
+        fields: "?fields=" + encodeURI("name,summary,release_dates"),
+        limit:  "&limit="  + 10,
+        offset: "&offset=" + 0,
+        order:  "&order="  + encodeURI("release_dates.date:desc"),
+        query:  "&search=" + query
+    };
+
+    var request = config.api_url + api.fields  + api.limit + api.offset + api.order + api.query;
+
+    unirest.get(request)
+        .header("X-Mashape-Key", config.api_key)
+        .header("Accept", "application/json")
+        .end(function (result) {
+
+            var results = [];
+
+            if (result.status != 200){
+                return results;
+            }
+
+            result.body.forEach(function(game){
+                addToResults(results,
+                    "game",
+                    game.name,
+                    "https://static-cdn.jtvnw.net/ttv-boxart/" + encodeURI(game.name) + "-136x190.jpg",
+                    game.summary
+                );
+            });
+            console.log(results);
+            ret(req, res, query, results);
+        });
+}
 
 function addToResults(results, type, name, image, description){
     var item = {
