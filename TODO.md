@@ -10,7 +10,7 @@
 - [X] add failed/empty search results page
 - [X] allow for manual game additions
 - [X] logger.js (production-level logging system for catching issues once we're live)
-- [ ] build a fetch if not in db, put in db once fetched system
+- [X] build a fetch if not in db, put in db once fetched system
 - [ ] build individual games pages by pulling info via API
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough

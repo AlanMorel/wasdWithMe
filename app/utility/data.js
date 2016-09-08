@@ -90,14 +90,14 @@ function callApi(req, res, query, ret){
         .header("Accept", "application/json")
         .end(function (result) {
 
-            var results = [];
-
             if (result.status != 200){
-                return results;
+                ret(req, res, query, null);
+                return;
             }
 
+            var results = [];
+
             result.body.forEach(function(game){
-                console.log(game);
                 addToResults(results,
                     "game",
                     game.name,
@@ -111,15 +111,15 @@ function callApi(req, res, query, ret){
 }
 
 function getDescription(description){
-    if (description.length < 256){
+    if (description.length < 300){
         return description;
     }
-    return description.substring(0, 256) + "...";
+    return description.substring(0, 300) + "...";
 }
 
 function getBoxArt(game){
-    var size = "cover_big";
     if ('cover' in game){
+        var size = "cover_big";
         return "https://res.cloudinary.com/igdb/image/upload/t_" + size + "/" + game.cover.cloudinary_id + ".jpg";
     }
     return "https://static-cdn.jtvnw.net/ttv-static/404_boxart-136x190.jpg";

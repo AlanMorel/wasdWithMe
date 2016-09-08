@@ -234,11 +234,10 @@ body {
   text-align: left;
   display: inline-block;
   width: 100%;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin-bottom: 6px;
+  margin-top: 6px;
   cursor: pointer;
   color: #000;
-  padding-bottom: 12px;
 }
 .search-result:hover {
   background-color: #6441a5;
@@ -249,11 +248,11 @@ body {
   width: 550px;
 }
 .search-info .search-name {
-  font-size: 20px;
-  padding: 4px 0 4px 0;
+  font-size: 22px;
+  padding-bottom: 8px;
 }
 .search-description {
-  font-size: 12px;
+  font-size: 14px;
   display: inline-block;
 }
 @media only screen and (max-width: 750px) {
