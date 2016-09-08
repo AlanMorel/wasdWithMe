@@ -1,9 +1,11 @@
 var exports = module.exports = {};
 
+var unirest  = require('unirest');
 var async  = require('async');
 var Logger = require('../utility/logger');
 var User   = require('../models/user');
 var Game   = require('../models/game');
+var config = require('../config');
 
 exports.search = function(query, limit, req, res, ret){
 
@@ -23,6 +25,15 @@ exports.search = function(query, limit, req, res, ret){
             "$regex": query
         }
     };
+
+    unirest.get(config.base_url + "?fields=name%2Csummary%2Crelease_dates&limit=10&offset=0&order=release_dates.date%3Adesc&search=" + query)
+        .header("X-Mashape-Key", config.api_key)
+        .header("Accept", "application/json")
+        .end(function (result) {
+            console.log("START API");
+            console.log(result.status, result.headers, result.body);
+            console.log("END API");
+        });
 
     async.parallel({
         users: function (cb){ User.find(userQuery).exec(cb); },

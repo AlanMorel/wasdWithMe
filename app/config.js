@@ -56,4 +56,11 @@ config.psnIdMaxLength = 0;
 config.twitchNameMinLength = 0;
 config.twitchNameMaxLength = 0;
 
+//IGDB Api
+config.base_url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
+
+//Usually cause for concern to have this open to the public but given that the key
+//is free to obtain, I'm not concerned about unauthorized usage for now
+config.api_key = "JhLqNbheBFmshilJrKIbRedqpI2Ap1J6HWbjsnUI5CoGpvRbJg";
+
 module.exports = config;
