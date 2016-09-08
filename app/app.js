@@ -15,7 +15,6 @@ var stylus       = require('express-stylus');
 var config       = require('./config');
 
 var User         = require('./models/user');
-var Game         = require('./models/game');
 
 var homepage     = require('./routes/homepage');
 var api          = require('./routes/api');

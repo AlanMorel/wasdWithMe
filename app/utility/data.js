@@ -1,11 +1,11 @@
 var exports = module.exports = {};
 
-var unirest  = require('unirest');
-var async  = require('async');
-var Logger = require('../utility/logger');
-var User   = require('../models/user');
-var Game   = require('../models/game');
-var config = require('../config');
+var unirest = require('unirest');
+var async   = require('async');
+var Logger  = require('../utility/logger');
+var User    = require('../models/user');
+var Game    = require('../models/game');
+var config  = require('../config');
 
 exports.search = function(query, limit, req, res, ret){
 
@@ -18,13 +18,13 @@ exports.search = function(query, limit, req, res, ret){
 
     var userQuery = {
         "username": {
-            "$regex": query
+            $regex : query + ".*"
         }
     };
 
     var gameQuery = {
         "name": {
-            "$regex": query
+            $regex : ".*" + query + ".*"
         }
     };
 
@@ -39,19 +39,19 @@ exports.search = function(query, limit, req, res, ret){
             return;
         }
 
-        var results = [];
-
         var users = result.users;
         var games = result.games;
 
         console.log("Query: " + query + " Users: " + users.length + " Games: " + games.length);
+
+        var results = [];
 
         for (var i = 0; i < users.length; i++){
             addToResults(results,
                 "user",
                 users[i].display_name,
                 "/images/placeholder.png",
-                users[i].bio === undefined ? "" : users[i].bio
+                getDescription(users[i].bio, 500)
             );
         }
 
@@ -60,7 +60,7 @@ exports.search = function(query, limit, req, res, ret){
                 "game",
                 games[i].display_name,
                 games[i].boxart,
-                getDescription(games[i].description)
+                getDescription(games[i].description, 300)
             );
         }
 
@@ -104,19 +104,23 @@ function callApi(req, res, query, ret){
                     "game",
                     game.name,
                     getBoxArt(game),
-                    'summary' in game ? getDescription(game.summary) : ""
+                    'summary' in game ? getDescription(game.summary, 300) : ""
                 );
                 addToDatabase(game);
             });
+
             ret(req, res, query, results);
         });
 }
 
-function getDescription(description){
-    if (description.length < 300){
+function getDescription(description, limit){
+    if (description === undefined){
+        return "";
+    }
+    if (description.length < limit){
         return description;
     }
-    return description.substring(0, 300) + "...";
+    return description.substring(0, limit) + "...";
 }
 
 function getBoxArt(game){
@@ -144,6 +148,7 @@ function addToDatabase(game){
         function (err, numAffected) {
             if (err){
                 Logger.log("Adding new games from API to database failed.", err);
+                return;
             }
             console.log("Added " + game.name + " successfully.");
         }
