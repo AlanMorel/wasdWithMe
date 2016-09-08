@@ -49,7 +49,7 @@ exports.search = function(query, limit, req, res, ret){
                 "user",
                 users[i].display_name,
                 "/images/placeholder.png",
-                users[i].tagline === undefined ? "" : users[i].tagline
+                users[i].bio === undefined ? "" : users[i].bio
             );
         }
 
@@ -58,7 +58,7 @@ exports.search = function(query, limit, req, res, ret){
                 "game",
                 games[i].name,
                 "https://static-cdn.jtvnw.net/ttv-boxart/" + encodeURI(games[i].name) + "-136x190.jpg",
-                games[i].description
+                getDescription(games[i].description)
             );
         }
 
@@ -77,7 +77,7 @@ function callApi(req, res, query, ret){
 
     var api = {
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover"),
-        limit:  "&limit="  + 10,
+        limit:  "&limit="  + 5,
         offset: "&offset=" + 0,
         order:  "&order="  + encodeURI("release_dates.date:desc"),
         query:  "&search=" + query
@@ -104,12 +104,18 @@ function callApi(req, res, query, ret){
                     "game",
                     game.name,
                     getBoxArt(game, size),
-                    game.summary
+                    'summary' in game ? getDescription(game.summary) : ""
                 );
             });
-            console.log(results);
             ret(req, res, query, results);
         });
+}
+
+function getDescription(description){
+    if (description.length < 256){
+        return description;
+    }
+    return description.substring(0, 256) + "...";
 }
 
 function getBoxArt(game, size){

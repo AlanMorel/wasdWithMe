@@ -68,7 +68,8 @@ html {
   margin-left: 16px;
 }
 .name {
-  font-size: 18px;
+  font-size: 20px;
+  padding-bottom: 4px;
 }
 form {
   position: relative;
@@ -110,10 +111,11 @@ form {
 }
 .info {
   float: right;
-  width: 425px;
+  width: 380px;
+  padding: 0 4px 8px 0;
 }
 .description {
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
 }
 .results-box {
@@ -129,7 +131,7 @@ form {
   box-shadow: 0 0 75px #000;
 }
 .results-box img {
-  max-width: 64px;
+  max-width: 100px;
   vertical-align: middle;
 }
 footer {
@@ -225,7 +227,7 @@ body {
   color: #fff;
 }
 .search-results img {
-  max-width: 100px;
+  max-width: 128px;
   vertical-align: middle;
 }
 .search-result {
@@ -236,6 +238,7 @@ body {
   margin-top: 4px;
   cursor: pointer;
   color: #000;
+  padding-bottom: 12px;
 }
 .search-result:hover {
   background-color: #6441a5;
@@ -243,13 +246,14 @@ body {
 }
 .search-info {
   float: right;
-  width: 575px;
+  width: 550px;
 }
 .search-info .search-name {
-  font-size: 26px;
+  font-size: 20px;
+  padding: 4px 0 4px 0;
 }
 .search-description {
-  font-size: 16px;
+  font-size: 12px;
   display: inline-block;
 }
 @media only screen and (max-width: 750px) {
