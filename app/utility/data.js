@@ -76,7 +76,7 @@ exports.search = function(query, limit, req, res, ret){
 function callApi(req, res, query, ret){
 
     var api = {
-        fields: "?fields=" + encodeURI("name,summary,release_dates"),
+        fields: "?fields=" + encodeURI("name,summary,release_dates,cover"),
         limit:  "&limit="  + 10,
         offset: "&offset=" + 0,
         order:  "&order="  + encodeURI("release_dates.date:desc"),
@@ -92,21 +92,31 @@ function callApi(req, res, query, ret){
 
             var results = [];
 
+            var size = "cover_big";
+
             if (result.status != 200){
                 return results;
             }
 
             result.body.forEach(function(game){
+                console.log(game);
                 addToResults(results,
                     "game",
                     game.name,
-                    "https://static-cdn.jtvnw.net/ttv-boxart/" + encodeURI(game.name) + "-136x190.jpg",
+                    getBoxArt(game, size),
                     game.summary
                 );
             });
             console.log(results);
             ret(req, res, query, results);
         });
+}
+
+function getBoxArt(game, size){
+    if ('cover' in game){
+        return "https://res.cloudinary.com/igdb/image/upload/t_" + size + "/" + game.cover.cloudinary_id + ".jpg";
+    }
+    return "https://static-cdn.jtvnw.net/ttv-static/404_boxart-136x190.jpg";
 }
 
 function addToResults(results, type, name, image, description){
