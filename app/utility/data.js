@@ -50,7 +50,7 @@ exports.search = function(query, limit, req, res, ret){
             addToResults(results,
                 "user",
                 users[i].display_name,
-                "/images/placeholder.png",
+                "/images/placeholder.png", //users[i].profile_pic
                 getDescription(users[i].bio)
             );
         }
@@ -60,7 +60,7 @@ exports.search = function(query, limit, req, res, ret){
                 "game",
                 games[i].display_name,
                 games[i].boxart,
-                getDescription(games[i].description)
+                games[i].description
             );
         }
 

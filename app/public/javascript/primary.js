@@ -2,7 +2,6 @@ function showSearchResults(query) {
     var results = document.querySelector(".results-box");
 
     if (!query || query.length < 3) {
-        results.innerHTML = "";
         results.style.visibility = "hidden";
         return;
     }
@@ -27,7 +26,6 @@ function showSearchResults(query) {
             results.innerHTML = html;
             results.style.visibility = "visible";
         } else {
-            results.innerHTML = "";
             results.style.visibility = "hidden";
         }
     };
@@ -35,3 +33,18 @@ function showSearchResults(query) {
     request.open("GET", "/api?q=" + query, true);
     request.send();
 }
+
+document.querySelector("html").onclick = function(e) {
+    var results = document.querySelector(".results-box");
+    var search = document.querySelector(".search-box");
+    if (e.target === search){
+        var query = search.value;
+        if (!query || query.length < 3) {
+            results.style.visibility = "hidden";
+        } else {
+            results.style.visibility = "visible";
+        }
+    } else if(e.target != results) {
+        results.style.visibility = "hidden";
+    }
+};
