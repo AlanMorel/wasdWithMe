@@ -2,7 +2,9 @@
     <form method="post" action="/user/{{owner.display_name}}/edit">
         <div class="header">
             <div class="pic">
-                <img src="/images/placeholder.png">
+                <img class="profile-pic" src="/images/placeholder.png">
+                <input class="image-upload" type="file" name="image" accept="image/x-png"/>
+                <h2>Change Picture</h2>
             </div>
             <div class="user-info">
                 <div class="username">{{owner.display_name}}</div>
