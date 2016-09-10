@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+var multer  = require('multer');
+var upload = multer({ dest: 'upload/'});
+var fs = require('fs');
+
 var User   = require('../models/user');
 var config = require('../config');
 var Logger = require('../utility/logger');
@@ -99,7 +103,9 @@ router.get('/:username/edit', function(req, res, next) {
     });
 });
 
-router.post('/:username/edit', function(req, res, next) {
+var type = upload.single('image');
+
+router.post('/:username/edit', type, function(req, res) {
     var username = req.params.username;
     var slug = username.toLowerCase(); //properly slug
 
@@ -111,6 +117,10 @@ router.post('/:username/edit', function(req, res, next) {
     var bio = req.body.bio;
 
     var games = req.body.games;
+
+    var image = req.body.image;
+
+    console.log(image);
 
     var weekdays = {
         morning: req.body.weekdaysmorning !== undefined,
@@ -156,6 +166,17 @@ router.post('/:username/edit', function(req, res, next) {
     var options = {
         upsert: true
     };
+
+    if (req.file) {
+        var image = req.file;
+        var profile_pic = {
+            "originalName": image.originalName,
+            "size": image.size,
+            "b64": new Buffer(fs.readFileSync(image.path)).toString("base64")
+        };
+        //do something with image
+        fs.unlink(image.path);
+    }
 
     User.findOneAndUpdate(query, update, options, function(err, doc){
         if (err) {

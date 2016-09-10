@@ -48,7 +48,7 @@ hbs.registerHelper('config', function(variable) {
 //BodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 
 //CookieParser
