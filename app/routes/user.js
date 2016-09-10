@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var multer  = require('multer');
-var upload = multer({ dest: 'upload/'});
+var multer = require('multer');
 var fs = require('fs');
 
 var User   = require('../models/user');
@@ -103,7 +102,7 @@ router.get('/:username/edit', function(req, res, next) {
     });
 });
 
-var type = upload.single('image');
+var type = multer({ dest: 'upload/'}).single('image');
 
 router.post('/:username/edit', type, function(req, res) {
     var username = req.params.username;
@@ -117,10 +116,6 @@ router.post('/:username/edit', type, function(req, res) {
     var bio = req.body.bio;
 
     var games = req.body.games;
-
-    var image = req.body.image;
-
-    console.log(image);
 
     var weekdays = {
         morning: req.body.weekdaysmorning !== undefined,

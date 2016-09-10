@@ -85,7 +85,7 @@ function callApi(req, res, query, ret){
         query:  "&search=" + query
     };
 
-    var request = config.api_url + api.fields  + api.limit + api.offset + api.order + api.query;
+    var request = config.api_url + api.fields + api.limit + api.offset + api.order + api.query;
 
     unirest.get(request)
         .header("X-Mashape-Key", config.api_key)
