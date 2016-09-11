@@ -175,8 +175,9 @@ function addToResults(results, type, name, image, description){
 }
 
 function getProfilePic(owner){
-    if (owner.profile_pic.data){
-        return "data:image/png;base64," + owner.profile_pic.data;
+    console.log(owner);
+    if (!owner.profile_pic || !owner.profile_pic.data){
+        return "/images/placeholder.png";
     }
-    return "/images/placeholder.png";
+    return "data:image/png;base64," + owner.profile_pic.data;
 }

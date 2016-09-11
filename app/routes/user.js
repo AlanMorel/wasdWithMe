@@ -54,7 +54,7 @@ router.get('/:username/edit', function(req, res, next) {
         }
 
         addTemporaryInfo(owner);
-
+        
         res.render('edit', {
             title: owner.display_name,
             layout: 'primary',
@@ -101,14 +101,7 @@ router.post('/:username/edit', type, function(req, res) {
         }
     };
 
-    var imageData;
-
-    if (req.file) {
-        var path = req.file.path;
-        var buffer = new Buffer(fs.readFileSync(path));
-        imageData = buffer.toString("base64");
-        fs.unlink(path);
-    }
+    var image = getImage(req.file);
 
     //validate data here, return error if there is one
 
@@ -130,9 +123,7 @@ router.post('/:username/edit', type, function(req, res) {
         bio: bio,
         availability: availability,
         games: games,
-        profile_pic: {
-            data: imageData
-        }
+        profile_pic: image
     };
 
     var options = {
@@ -145,11 +136,26 @@ router.post('/:username/edit', type, function(req, res) {
             res.redirect("/");
             return;
         }
+        console.log("Edited user profile successfully.");
+        res.redirect("/user/" + username);
     });
-
-    console.log("Edited user profile successfully.");
-    res.redirect("/user/" + username);
 });
+
+function getImage(data){
+    if(!data){
+        return;
+    }
+    console.log(data);
+    var path = data.path;
+    var buffer = new Buffer(fs.readFileSync(path));
+    var image = {
+        name: data.originalname,
+        data: buffer.toString("base64"),
+        size: data.size
+    };
+    fs.unlink(path);
+    return image;
+}
 
 //add temporary info to profile owners for testing purposes
 function addTemporaryInfo(owner){
@@ -189,10 +195,10 @@ function getAge(birthday){
 }
 
 function getProfilePic(owner){
-    if (owner.profile_pic.data){
-        return "data:image/png;base64," + owner.profile_pic.data;
+    if (!owner.profile_pic || !owner.profile_pic.data){
+        return "/images/placeholder.png";
     }
-    return "/images/placeholder.png";
+    return "data:image/png;base64," + owner.profile_pic.data;
 }
 
 function userNotFound(res, user, username){

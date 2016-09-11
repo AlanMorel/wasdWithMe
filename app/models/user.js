@@ -51,8 +51,14 @@ var comments = [{
 }];
 
 var image = {
+    name: {
+        type: String
+    },
     data: {
         type: String
+    },
+    size: {
+        type: Number
     },
     one_ups: {
         type: oneUps
