@@ -60,15 +60,15 @@ var image = {
     size: {
         type: Number
     },
+    uploaded: {
+        type: Date,
+        default: Date.now
+    },
     one_ups: {
         type: oneUps
     },
     comments: {
         type: comments
-    },
-    uploaded: {
-        type: Date,
-        default: Date.now
     }
 };
 
@@ -107,7 +107,7 @@ var User = new mongoose.Schema({
         city: {
             type: String,
             required: true
-        },
+        }
     },
     profile_pic: {
         type: image
@@ -152,27 +152,27 @@ var User = new mongoose.Schema({
     accounts: {
         steam: {
             steam_id: {
-                type: String,
-            },
+                type: String
+            }
         },
         xbox: {
             gamertag: {
-                type: String,
-            },
+                type: String
+            }
         },
         playstation: {
             psn_id: {
-                type: String,
-            },
+                type: String
+            }
         },
         twitch: {
             username: {
-                type: String,
-            },
-        },
+                type: String
+            }
+        }
     },
     games: [{
-       type: String,
+       type: String
     }],
     coins: {
         type: Number,

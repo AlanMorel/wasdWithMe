@@ -93,7 +93,7 @@ function callApi(req, res, query, results, display){
         .end(function (result) {
 
             if (result.status != 200){
-                display(req, res, query, null);
+                display(req, res, query, results);
                 return;
             }
 
@@ -108,22 +108,19 @@ function callApi(req, res, query, results, display){
             });
 
             display(req, res, query, results);
-        });
+        }
+    );
 }
 
 function getDescription(description){
-    if (description === undefined){
-        return "";
-    }
-    return description;
+    return description === undefined ? "" : description;
 }
 
 function getBoxArt(game){
     if ('cover' in game){
-        var size = "cover_big";
-        return "https://res.cloudinary.com/igdb/image/upload/t_" + size + "/" + game.cover.cloudinary_id + ".jpg";
+        return "https://res.cloudinary.com/igdb/image/upload/t_cover_big/" + game.cover.cloudinary_id + ".jpg";
     }
-    return "https://static-cdn.jtvnw.net/ttv-static/404_boxart-136x190.jpg";
+    return config.game_not_found_boxart;
 }
 
 function addToDatabase(game){
@@ -150,17 +147,14 @@ function addToDatabase(game){
 }
 
 function getCleanedGameName(game){
-    var name = game.name;
-    name = name.toLowerCase();
-    name = name.replace('é', 'e');
+    var name = game.name
+        .toLowerCase()
+        .replace('é', 'e');
     return name;
 }
 
 function getReleaseDate(game){
-    if ('release_dates' in game){
-        return new Date(game.release_dates[0].date);
-    }
-    return 0;
+    return 'release_dates' in game ? new Date(game.release_dates[0].date) : 0;
 }
 
 function addToResults(results, type, name, image, description){

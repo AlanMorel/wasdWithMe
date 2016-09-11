@@ -122,7 +122,7 @@ router.post('/:username/edit', type, function(req, res) {
         last_name: lastname,
         bio: bio,
         availability: availability,
-        games: games,
+        games: games
     };
 
     if (image){
@@ -136,10 +136,9 @@ router.post('/:username/edit', type, function(req, res) {
     User.findOneAndUpdate(query, update, options, function(err, doc){
         if (err) {
             Logger.log("Updating user profile failed.", err);
-            res.redirect("/");
-            return;
+        } else {
+            console.log("Edited user profile successfully.");
         }
-        console.log("Edited user profile successfully.");
         res.redirect("/user/" + username);
     });
 });
@@ -148,19 +147,16 @@ function getImage(data){
     if(!data){
         return;
     }
-    console.log(data);
     var path = data.path;
-    var buffer = new Buffer(fs.readFileSync(path));
     var image = {
         name: data.originalname,
-        data: buffer.toString("base64"),
+        data: new Buffer(fs.readFileSync(path)).toString("base64"),
         size: data.size
     };
     fs.unlink(path);
     return image;
 }
 
-//add temporary info to profile owners for testing purposes
 function addTemporaryInfo(owner){
     owner.online_status = "online";
 
@@ -193,8 +189,7 @@ function isOwner(user, owner){
 function getAge(birthday){
     var difference = new Date() - new Date(birthday);
     var year = 1000 * 60 * 60 * 24 * 365;
-    var age = Math.floor(difference / year);
-    return age;
+    return Math.floor(difference / year);
 }
 
 function getProfilePic(owner){

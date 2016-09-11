@@ -211,7 +211,6 @@ body {
 }
 .header {
   overflow: hidden;
-  min-height: 128px;
 }
 .header img {
   max-width: 128px;
@@ -220,6 +219,7 @@ body {
 }
 .pic {
   display: inline-block;
+  min-height: 128px;
 }
 .header,
 .about,

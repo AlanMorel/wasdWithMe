@@ -63,4 +63,7 @@ config.api_url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/
 //is free to obtain, I'm not concerned about unauthorized usage for now
 config.api_key = "JhLqNbheBFmshilJrKIbRedqpI2Ap1J6HWbjsnUI5CoGpvRbJg";
 
+//Other
+config.game_not_found_boxart = "https://static-cdn.jtvnw.net/ttv-static/404_boxart-136x190.jpg";
+
 module.exports = config;

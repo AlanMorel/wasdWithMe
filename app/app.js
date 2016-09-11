@@ -1,7 +1,7 @@
 var express      = require('express');
 var path         = require('path');
 var favicon      = require('serve-favicon');
-var logger       = require('morgan');
+var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
@@ -31,11 +31,13 @@ var public = path.join(__dirname, 'public');
 //Express
 app.use(favicon(path.join(public, 'favicon.ico')));
 app.use(express.static(public));
-app.use(logger('dev'));
 app.set('port',(process.env.PORT || 3000));
 
 app.enable('case sensitive routing');
 app.disable('x-powered-by');
+
+//Morgan
+app.use(morgan('dev'));
 
 //Handlebars
 app.set('views', path.join(__dirname, 'views'));
