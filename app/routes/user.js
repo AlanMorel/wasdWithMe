@@ -8,6 +8,11 @@ var User   = require('../models/user');
 var config = require('../config');
 var Logger = require('../utility/logger');
 
+//You should not be able to access /user/ directly
+router.get('/', function(req, res, next) {
+    return res.redirect("/");
+});
+
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
     var usernameSlug = username.toLowerCase(); //properly slug it
@@ -27,6 +32,7 @@ router.get('/:username', function(req, res, next) {
             file: 'user',
             user : req.user,
             owner: owner,
+            profile_pic: getProfilePic(owner),
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
             all_games: getGames(owner.games),
@@ -35,44 +41,6 @@ router.get('/:username', function(req, res, next) {
         });
     });
 });
-
-//add temporary info to profile owners for testing purposes
-function addTemporaryInfo(owner){
-    owner.online_status = "online";
-
-    owner.accounts.steam.steam_id = "SharpAceX";
-    owner.accounts.xbox.gamertag = "SharpAceX";
-    owner.accounts.playstation.psn_id = "SharpAceX";
-    owner.accounts.twitch.username = "SharpAceX";
-}
-
-function getGames(games_list){
-    var games = [];
-
-    for (var i = 0; i < games_list.length; i++) {
-        var name = games_list[i];
-        var boxart = encodeURI(name);
-        var slug = name.replace(/ /g, '').replace(/:/g, '');
-        var game = {
-            name: games_list[i],
-            boxart: boxart,
-            slug: slug
-        };
-        games.push(game);
-    }
-    return games;
-}
-
-function isOwner(user, owner){
-    return user && user.username === owner.username;
-}
-
-function getAge(birthday){
-    var difference = new Date() - new Date(birthday);
-    var year = 1000 * 60 * 60 * 24 * 365;
-    var age = Math.floor(difference / year);
-    return age;
-}
 
 router.get('/:username/edit', function(req, res, next) {
     var username = req.params.username;
@@ -93,6 +61,7 @@ router.get('/:username/edit', function(req, res, next) {
             file: 'user',
             user : req.user,
             owner: owner,
+            profile_pic: getProfilePic(owner),
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
             all_games: getGames(owner.games),
@@ -132,15 +101,13 @@ router.post('/:username/edit', type, function(req, res) {
         }
     };
 
+    var imageData;
+
     if (req.file) {
-        var image = req.file;
-        var profile_pic = {
-            "originalName": image.originalName,
-            "size": image.size,
-            "b64": new Buffer(fs.readFileSync(image.path)).toString("base64")
-        };
-        //do something with image
-        fs.unlink(image.path);
+        var path = req.file.path;
+        var buffer = new Buffer(fs.readFileSync(path));
+        imageData = buffer.toString("base64");
+        fs.unlink(path);
     }
 
     //validate data here, return error if there is one
@@ -162,7 +129,10 @@ router.post('/:username/edit', type, function(req, res) {
         last_name: lastname,
         bio: bio,
         availability: availability,
-        games: games
+        games: games,
+        profile_pic: {
+            data: imageData
+        }
     };
 
     var options = {
@@ -181,6 +151,50 @@ router.post('/:username/edit', type, function(req, res) {
     res.redirect("/user/" + username);
 });
 
+//add temporary info to profile owners for testing purposes
+function addTemporaryInfo(owner){
+    owner.online_status = "online";
+
+    owner.accounts.steam.steam_id = "SharpAceX";
+    owner.accounts.xbox.gamertag = "SharpAceX";
+    owner.accounts.playstation.psn_id = "SharpAceX";
+    owner.accounts.twitch.username = "SharpAceX";
+}
+
+function getGames(games_list){
+    var games = [];
+
+    for (var i = 0; i < games_list.length; i++) {
+        var name = games_list[i];
+        var boxart = encodeURI(name);
+        var slug = name.replace(/ /g, '').replace(/:/g, '');
+        var game = {
+            name: games_list[i],
+            boxart: boxart,
+            slug: slug
+        };
+        games.push(game);
+    }
+    return games;
+}
+function isOwner(user, owner){
+    return user && user.username === owner.username;
+}
+
+function getAge(birthday){
+    var difference = new Date() - new Date(birthday);
+    var year = 1000 * 60 * 60 * 24 * 365;
+    var age = Math.floor(difference / year);
+    return age;
+}
+
+function getProfilePic(owner){
+    if (owner.profile_pic.data){
+        return "data:image/png;base64," + owner.profile_pic.data;
+    }
+    return "/images/placeholder.png";
+}
+
 function userNotFound(res, user, username){
     res.status(404);
     res.render('404', {
@@ -191,10 +205,5 @@ function userNotFound(res, user, username){
         message: username + " not found!"
     });
 }
-
-//You should not be able to access /user/ directly
-router.get('/', function(req, res, next) {
-    return res.redirect("/");
-});
 
 module.exports = router;

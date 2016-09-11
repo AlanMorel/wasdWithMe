@@ -50,7 +50,7 @@ exports.search = function(query, limit, req, res, display){
             addToResults(results,
                 "user",
                 users[i].display_name,
-                "/images/placeholder.png", //users[i].profile_pic
+                getProfilePic(users[i]),
                 getDescription(users[i].bio)
             );
         }
@@ -172,4 +172,11 @@ function addToResults(results, type, name, image, description){
     };
     results.push(item);
     return results;
+}
+
+function getProfilePic(owner){
+    if (owner.profile_pic.data){
+        return "data:image/png;base64," + owner.profile_pic.data;
+    }
+    return "/images/placeholder.png";
 }

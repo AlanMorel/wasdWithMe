@@ -211,6 +211,7 @@ body {
 }
 .header {
   overflow: hidden;
+  min-height: 128px;
 }
 .header img {
   max-width: 128px;
