@@ -164,7 +164,7 @@ footer .bottom {
 .one-ups-label:hover {
   background-color: #cfffd4;
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 500px) {
   .wasd-header {
     height: 50px;
   }
@@ -175,7 +175,7 @@ footer .bottom {
     margin-top: 0;
   }
   .wasd-bottom {
-    font-size: 18px;
+    font-size: 13px;
   }
   .search input[type="text"] {
     width: 70vw;
@@ -530,7 +530,7 @@ h2 {
     text-align: center;
   }
   .extra-info {
-    font-size: 3vw;
+    font-size: 4vw;
   }
   .tagline {
     font-size: 3.5vw;
@@ -550,7 +550,7 @@ h2 {
   .discard-button {
     margin: auto;
     margin-top: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
   }
   .status {
     margin-top: 10px;
@@ -591,5 +591,16 @@ h2 {
   .all-games div {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  h2 {
+    position: absolute;
+    top: -14px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 0;
+    font-size: 18px;
+    border-bottom-right-radius: 2px;
+  }
+  .pic:hover h2 {
+    color: #fff;
   }
 }
