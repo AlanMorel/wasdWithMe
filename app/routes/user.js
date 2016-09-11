@@ -54,7 +54,7 @@ router.get('/:username/edit', function(req, res, next) {
         }
 
         addTemporaryInfo(owner);
-        
+
         res.render('edit', {
             title: owner.display_name,
             layout: 'primary',
@@ -108,8 +108,8 @@ router.post('/:username/edit', type, function(req, res) {
     console.log("tagline: " + tagline
     + " firstname: " + firstname
     + " lastname: " + lastname
-    + " bio" + bio
-    + "games: " + games
+    + " bio: " + bio
+    + " games: " + games
     );
 
     var query = {
@@ -123,8 +123,11 @@ router.post('/:username/edit', type, function(req, res) {
         bio: bio,
         availability: availability,
         games: games,
-        profile_pic: image
     };
+
+    if (image){
+        update.profile_pic = image;
+    }
 
     var options = {
         upsert: true

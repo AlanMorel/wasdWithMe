@@ -13,8 +13,8 @@
 - [X] build a fetch if not in db, put in db once fetched system
 - [X] convert description trimming to CSS
 - [X] make live search more responsive
+- [X] implement changing profile pics
 - [ ] build individual games pages by pulling info via API
-- [ ] implement changing profile pics
 - [ ] implement proper adding games via search
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough
