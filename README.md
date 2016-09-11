@@ -30,13 +30,14 @@ You can also:
 * [express-session](https://www.npmjs.com/package/express-session) - session middleware
 * [Handlebars](http://handlebarsjs.com/) - html view engine
 * [Mongoose](http://mongoosejs.com/) - mongodb object modeling for node.js
-* [mongoose-type-url](https://www.npmjs.com/package/mongoose-type-url) - url field-type for mongoose schemas
 * [morgan](https://www.npmjs.com/package/morgan) - http request logger middleware
+* [multer](https://www.npmjs.com/package/multer) - multipart/form-data handling
 * [Passport](http://passportjs.org/) - node.js authentication
 * [passport-local](https://www.npmjs.com/package/passport-local) - local authentication strategy
 * [passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose) - simplifies building username and password login with Passport
 * [serve-favicon](https://www.npmjs.com/package/serve-favicon) - favicon serving middleware
 * [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
+* [unirest](https://www.npmjs.com/package/unirest) - lightweight http client library
 
 ## Other Technologies
 
@@ -58,7 +59,13 @@ $ cd wasdWithMe
 $ npm install
 ```
 
-Edit `config.js` to your liking, then start the app
+Edit `config.js` to your liking, then start the mongodb server in a separate terminal window
+
+```sh
+$ ./mongodb-xxxxxxx/bin/mongod
+```
+
+Now start the app
 
 ```sh
 $ npm start
