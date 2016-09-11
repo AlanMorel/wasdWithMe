@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
-require('mongoose-type-url');
-var url = mongoose.SchemaTypes.Url;
 
 var oneUps = [{
     oneUpper: {
@@ -52,6 +50,22 @@ var comments = [{
     }
 }];
 
+var image = {
+    data: {
+        type: String
+    },
+    one_ups: {
+        type: oneUps
+    },
+    comments: {
+        type: comments
+    },
+    uploaded: {
+        type: Date,
+        default: Date.now
+    }
+};
+
 var User = new mongoose.Schema({
     display_name: {
         type: String,
@@ -90,7 +104,7 @@ var User = new mongoose.Schema({
         },
     },
     profile_pic: {
-        type: url
+        type: image
     },
     first_name: {
         type: String,
@@ -127,16 +141,7 @@ var User = new mongoose.Schema({
         type: String
     }],
     images: [{
-        url: {
-            type: url,
-            required: true
-        },
-        one_ups: {
-            type: oneUps
-        },
-        comments: {
-            type: comments
-        },
+       type: image
     }],
     accounts: {
         steam: {

@@ -102,7 +102,7 @@ router.get('/:username/edit', function(req, res, next) {
     });
 });
 
-var type = multer({ dest: 'upload/'}).single('image');
+var type = multer({ dest: 'uploads/'}).single('image');
 
 router.post('/:username/edit', type, function(req, res) {
     var username = req.params.username;
@@ -132,6 +132,17 @@ router.post('/:username/edit', type, function(req, res) {
         }
     };
 
+    if (req.file) {
+        var image = req.file;
+        var profile_pic = {
+            "originalName": image.originalName,
+            "size": image.size,
+            "b64": new Buffer(fs.readFileSync(image.path)).toString("base64")
+        };
+        //do something with image
+        fs.unlink(image.path);
+    }
+
     //validate data here, return error if there is one
 
     console.log("tagline: " + tagline
@@ -157,17 +168,6 @@ router.post('/:username/edit', type, function(req, res) {
     var options = {
         upsert: true
     };
-
-    if (req.file) {
-        var image = req.file;
-        var profile_pic = {
-            "originalName": image.originalName,
-            "size": image.size,
-            "b64": new Buffer(fs.readFileSync(image.path)).toString("base64")
-        };
-        //do something with image
-        fs.unlink(image.path);
-    }
 
     User.findOneAndUpdate(query, update, options, function(err, doc){
         if (err) {

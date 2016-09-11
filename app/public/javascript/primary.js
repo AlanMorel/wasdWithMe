@@ -1,50 +1,55 @@
-function showSearchResults(query) {
-    var results = document.querySelector(".results-box");
+var screen = document.querySelector("html");
+var box = document.querySelector(".results-box");
+var search = document.querySelector(".search-box");
 
-    if (!query || query.length < 3) {
-        results.style.visibility = "hidden";
+function shouldShow(query){
+    return query && query.length > 2;
+}
+
+search.onkeyup = function() {
+
+    //Must have 3 or more characters to initiate a search
+    if (!shouldShow(search.value)) {
+        box.style.visibility = "hidden";
         return;
     }
 
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200 && request.responseText.length > 2) {
-            var json = JSON.parse(request.responseText);
-            var html = "";
-
-            for (var i = 0; i < json.length; i++){
-                var result = json[i];
-                html += "<a href='/" + result.type + "/" + result.name + "'>";
-                html += "<div class='result'>";
-                html += "<img src='" + result.image + "'/>";
-                html += "<div class='info'><div class='name'>" + result.name + "</div>";
-                html += "<div class='description'>" + result.description + "</div>";
-                html += "</div></div></a>";
-            }
-
-            results.innerHTML = html;
-            results.style.visibility = "visible";
-        } else {
-            results.style.visibility = "hidden";
+        if (request.readyState != 4 || request.status != 200 || request.responseText.length < 3){
+            //If something went wrong or no results returned, hide box
+            box.style.visibility = "hidden";
+            return;
         }
+
+        var data = JSON.parse(request.responseText);
+        var html = "";
+
+        //Build out the results html
+        data.forEach(function(result){
+            html += "<a href='/" + result.type + "/" + result.name + "'>";
+            html += "<div class='result'><img src='" + result.image + "'/>";
+            html += "<div class='info'><div class='name'>" + result.name + "</div>";
+            html += "<div class='description'>" + result.description + "</div>";
+            html += "</div></div></a>";
+        });
+
+        //Display results to the user
+        box.innerHTML = html;
+        box.style.visibility = "visible";
     };
 
-    request.open("GET", "/api?q=" + query, true);
+    request.open("GET", "/api?q=" + search.value, true);
     request.send();
-}
+};
 
-document.querySelector("html").onclick = function(e) {
-    var results = document.querySelector(".results-box");
-    var search = document.querySelector(".search-box");
+screen.onclick = function(e) {
     if (e.target === search){
-        var query = search.value;
-        if (!query || query.length < 3) {
-            results.style.visibility = "hidden";
-        } else {
-            results.style.visibility = "visible";
-        }
-    } else if(e.target != results) {
-        results.style.visibility = "hidden";
+        //If the search bar was clicked
+        box.style.visibility = shouldShow(search.value) ? "visible" : "hidden";
+    } else if(e.target != box) {
+        //Hide the search box if anything else was clicked on
+        box.style.visibility = "hidden";
     }
 };
