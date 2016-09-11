@@ -117,23 +117,19 @@ router.post('/:username/edit', type, function(req, res) {
 
     var games = req.body.games;
 
-    var weekdays = {
-        morning: req.body.weekdaysmorning !== undefined,
-        day: req.body.weekdaysday !== undefined,
-        night: req.body.weekdaysnight !== undefined,
-        never: req.body.weekdaysnever !== undefined
-    };
-
-    var weekends = {
-        morning: req.body.weekendsmorning !== undefined,
-        day: req.body.weekendsday !== undefined,
-        night: req.body.weekendsnight !== undefined,
-        never: req.body.weekendsnever !== undefined
-    };
-
     var availability = {
-        weekdays: weekdays,
-        weekends: weekends
+        weekdays: {
+            morning: req.body.weekdaysmorning !== undefined,
+            day: req.body.weekdaysday !== undefined,
+            night: req.body.weekdaysnight !== undefined,
+            never: req.body.weekdaysnever !== undefined
+        },
+        weekends: {
+            morning: req.body.weekendsmorning !== undefined,
+            day: req.body.weekendsday !== undefined,
+            night: req.body.weekendsnight !== undefined,
+            never: req.body.weekendsnever !== undefined
+        }
     };
 
     //validate data here, return error if there is one

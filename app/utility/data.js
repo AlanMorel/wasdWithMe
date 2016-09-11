@@ -7,10 +7,10 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-exports.search = function(query, limit, req, res, ret){
+exports.search = function(query, limit, req, res, display){
 
     if (query.length < 1){
-        ret(req, res, query, null);
+        display(req, res, query, null);
         return;
     }
 
@@ -64,18 +64,18 @@ exports.search = function(query, limit, req, res, ret){
             );
         }
 
-        if (results.length < 1){
-            callApi(req, res, query, ret);
+        if (results.length < 5){
+            callApi(req, res, query, results, display);
             return;
         }
 
         results = results.slice(0, limit);
 
-        ret(req, res, query, results);
+        display(req, res, query, results);
     });
 };
 
-function callApi(req, res, query, ret){
+function callApi(req, res, query, results, display){
 
     var api = {
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover"),
@@ -93,11 +93,9 @@ function callApi(req, res, query, ret){
         .end(function (result) {
 
             if (result.status != 200){
-                ret(req, res, query, null);
+                display(req, res, query, null);
                 return;
             }
-
-            var results = [];
 
             result.body.forEach(function(game){
                 addToResults(results,
@@ -109,7 +107,7 @@ function callApi(req, res, query, ret){
                 addToDatabase(game);
             });
 
-            ret(req, res, query, results);
+            display(req, res, query, results);
         });
 }
 
