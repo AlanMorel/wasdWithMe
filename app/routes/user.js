@@ -166,16 +166,13 @@ function addTemporaryInfo(owner){
     owner.accounts.twitch.username = "SharpAceX";
 }
 
-function getGames(games_list){
+function getGames(list){
     var games = [];
-    for (var i = 0; i < games_list.length; i++) {
-        var name = games_list[i];
-        var uri = encodeURI(name);
-        var game = {
-            name: games_list[i],
-            uri: uri
-        };
-        games.push(game);
+    for (var i = 0; i < list.length; i++) {
+        games.push({
+            name: list[i],
+            uri: encodeURI(list[i])
+        });
     }
     return games;
 }

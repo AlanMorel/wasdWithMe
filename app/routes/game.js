@@ -4,6 +4,7 @@ var router = express.Router();
 var User   = require('../models/user');
 var config = require('../config');
 var Logger = require('../utility/logger');
+var data = require('../utility/data');
 
 //You should not be able to access /game/ directly
 router.get('/', function(req, res, next) {
@@ -13,7 +14,18 @@ router.get('/', function(req, res, next) {
 router.get('/:game', function(req, res, next) {
     var game = req.params.game;
     console.log(game);
-    return res.send(game);
+    data.search(game, 1, req, res, sendHTML);
 });
+
+var sendHTML = function(req, res, query, results) {
+    res.render('game', {
+        title: query,
+        layout: 'primary',
+        file: 'game',
+        user: req.user,
+        query: query,
+        results: results
+    });
+};
 
 module.exports = router;

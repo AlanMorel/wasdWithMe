@@ -64,8 +64,8 @@ exports.search = function(query, limit, req, res, display){
             );
         }
 
-        if (results.length < 5){
-            callApi(req, res, query, results, display);
+        if (results.length < limit){
+            callApi(req, res, query, limit, results, display);
             return;
         }
 
@@ -75,7 +75,7 @@ exports.search = function(query, limit, req, res, display){
     });
 };
 
-function callApi(req, res, query, results, display){
+function callApi(req, res, query, limit, results, display){
 
     var api = {
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover"),
@@ -106,6 +106,8 @@ function callApi(req, res, query, results, display){
                 );
                 addToDatabase(game);
             });
+
+            results = results.slice(0, limit);
 
             display(req, res, query, results);
         }
