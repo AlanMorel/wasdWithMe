@@ -431,7 +431,7 @@ img.boxart:hover {
 }
 @-moz-keyframes bannermove {
   0% {
-    margin-left: 0px;
+    margin-left: 0;
   }
   100% {
     margin-left: -2625px;
@@ -439,7 +439,7 @@ img.boxart:hover {
 }
 @-webkit-keyframes bannermove {
   0% {
-    margin-left: 0px;
+    margin-left: 0;
   }
   100% {
     margin-left: -2625px;
@@ -447,7 +447,7 @@ img.boxart:hover {
 }
 @-o-keyframes bannermove {
   0% {
-    margin-left: 0px;
+    margin-left: 0;
   }
   100% {
     margin-left: -2625px;
@@ -455,7 +455,7 @@ img.boxart:hover {
 }
 @keyframes bannermove {
   0% {
-    margin-left: 0px;
+    margin-left: 0;
   }
   100% {
     margin-left: -2625px;

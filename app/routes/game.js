@@ -4,7 +4,7 @@ var router = express.Router();
 var User   = require('../models/user');
 var config = require('../config');
 var Logger = require('../utility/logger');
-var data = require('../utility/data');
+var data   = require('../utility/data');
 
 //You should not be able to access /game/ directly
 router.get('/', function(req, res, next) {
