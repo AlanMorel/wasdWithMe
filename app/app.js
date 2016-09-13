@@ -23,6 +23,7 @@ var login        = require('./routes/login');
 var logout       = require('./routes/logout');
 var user         = require('./routes/user');
 var search       = require('./routes/search');
+var game         = require('./routes/game');
 
 var app = express();
 
@@ -82,6 +83,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/user', user);
 app.use('/search', search);
+app.use('/game', game);
 
 //MongoDB
 if(app.get('env')==='production'){

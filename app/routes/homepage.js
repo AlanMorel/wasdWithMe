@@ -32,19 +32,15 @@ router.get('/', function (req, res, next) {
 
 function getGames(games_list){
     var games = [];
-
     for (var i = 0; i < games_list.length; i++) {
         var name = games_list[i];
-        var boxart = encodeURI(name);
-        var slug = name.replace(/ /g, '').replace(/:/g, '');
+        var uri = encodeURI(name);
         var game = {
             name: games_list[i],
-            boxart: boxart,
-            slug: slug
+            uri: uri
         };
         games.push(game);
     }
-
     return games;
 }
 
