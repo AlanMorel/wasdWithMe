@@ -133,6 +133,7 @@ function addToDatabase(game){
         display_name: game.name,
         description: 'summary' in game ? game.summary : "",
         release_date: new Date(getReleaseDate(game)),
+        rating: getRating(game),
         boxart: getBoxArt(game)
     };
     Game.update(
@@ -170,6 +171,13 @@ function getReleaseDate(game){
         return 0;
     }
     return date;
+}
+
+function getRating(game){
+    if (!'rating' in game || game.rating == undefined){
+        return 0;
+    }
+    return game.rating;
 }
 
 function addToResults(results, type, name, image, description){
