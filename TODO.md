@@ -47,4 +47,5 @@
 - [ ] leaderboards page
 - [ ] recatcha on sign up page
 - [ ] google analytics
+- [ ] Gaming-related news
 - [ ] before launch: https://expressjs.com/en/advanced/best-practice-security.html
