@@ -78,7 +78,7 @@ exports.search = function(query, limit, req, res, display){
 function callApi(req, res, query, limit, results, display){
 
     var api = {
-        fields: "?fields=" + encodeURI("name,summary,release_dates,cover"),
+        fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,developers,publishers"),
         limit:  "&limit="  + 50, //maximum allowed per api
         offset: "&offset=" + 0,
         order:  "&order="  + encodeURI("release_dates.date:desc"),
