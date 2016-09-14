@@ -14,7 +14,7 @@
 - [X] convert description trimming to CSS
 - [X] make live search more responsive
 - [X] implement changing profile pics
-- [ ] build individual games pages by pulling info via API
+- [ ] build individual games pages by pulling more info via API
 - [ ] implement proper adding games via search
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough

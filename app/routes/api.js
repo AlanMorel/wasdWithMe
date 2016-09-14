@@ -3,7 +3,7 @@ var router = express.Router();
 
 var data = require('../utility/data');
 
-router.get('/', function(req, res, next) {
+router.get('/search', function(req, res, next) {
     var query = req.query.q;
     data.search(query, 10, req, res, sendJSON);
 });

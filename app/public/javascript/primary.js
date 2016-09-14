@@ -40,7 +40,7 @@ search.onkeyup = function() {
         box.style.visibility = "visible";
     };
 
-    request.open("GET", "/api?q=" + search.value, true);
+    request.open("GET", "/api/search?q=" + search.value, true);
     request.send();
 };
 
