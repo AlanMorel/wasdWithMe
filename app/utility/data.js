@@ -145,7 +145,7 @@ function addToDatabase(game){
                 Logger.log("Adding new games from API to database failed.", err);
                 return;
             }
-            console.log("Added " + game.name + " successfully.");
+            console.log("Added " + game.name + ".");
         }
     );
 }
@@ -163,7 +163,6 @@ function getReleaseDate(game){
     }
     var dates = game.release_dates;
     if (dates == undefined || !'date' in dates){
-        console.log("ret2");
         return 0;
     }
     var date = dates[0].date;
@@ -174,7 +173,7 @@ function getReleaseDate(game){
 }
 
 function getRating(game){
-    if (!'rating' in game || game.rating == undefined){
+    if (game.rating == undefined || !'rating' in game){
         return 0;
     }
     return game.rating;
