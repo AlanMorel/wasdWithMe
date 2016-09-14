@@ -64,7 +64,7 @@ exports.search = function(query, limit, req, res, display){
             );
         }
 
-        if (results.length < limit){
+        if (results.length < 1){
             callApi(req, res, query, limit, results, display);
             return;
         }
@@ -79,7 +79,7 @@ function callApi(req, res, query, limit, results, display){
 
     var api = {
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover"),
-        limit:  "&limit="  + 10,
+        limit:  "&limit="  + 50, //maximum allowed per api
         offset: "&offset=" + 0,
         order:  "&order="  + encodeURI("release_dates.date:desc"),
         query:  "&search=" + query,
@@ -132,9 +132,9 @@ function addToDatabase(game){
         name: getCleanedGameName(game),
         display_name: game.name,
         description: 'summary' in game ? game.summary : "",
-        release_date: getReleaseDate(game),
+        release_date: new Date(getReleaseDate(game)),
         boxart: getBoxArt(game)
-    }
+    };
     Game.update(
         {id: game.id},
         {$setOnInsert: new_game},
@@ -157,7 +157,19 @@ function getCleanedGameName(game){
 }
 
 function getReleaseDate(game){
-    return 'release_dates' in game ? new Date(game.release_dates[0].date) : 0;
+    if (!'release_dates' in game){
+        return 0;
+    }
+    var dates = game.release_dates;
+    if (dates == undefined || !'date' in dates){
+        console.log("ret2");
+        return 0;
+    }
+    var date = dates[0].date;
+    if (date == undefined || date === "Invalid Date"){
+        return 0;
+    }
+    return date;
 }
 
 function addToResults(results, type, name, image, description){

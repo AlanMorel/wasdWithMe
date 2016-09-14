@@ -1,7 +1,7 @@
 var exports = module.exports = {};
 
 exports.log = function(message, err){
-    Console.log(message);
-    Console.log(err);
+    console.log(message);
+    throw err;
     //In production, add to database
 };
