@@ -23,7 +23,7 @@ router.get('/:username/edit', function(req, res, next) {
         res.render('edit', {
             title: owner.display_name,
             layout: 'primary',
-            file: 'user',
+            file: 'edit',
             user : req.user,
             owner: owner,
             profile_pic: getProfilePic(owner),
