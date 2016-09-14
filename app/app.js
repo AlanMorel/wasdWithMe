@@ -22,6 +22,7 @@ var signUp       = require('./routes/signup');
 var login        = require('./routes/login');
 var logout       = require('./routes/logout');
 var user         = require('./routes/user');
+var edit         = require('./routes/edit');
 var search       = require('./routes/search');
 var game         = require('./routes/game');
 
@@ -82,6 +83,7 @@ app.use('/signup', signUp);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/user', user);
+app.use('/user', edit);
 app.use('/search', search);
 app.use('/game', game);
 
