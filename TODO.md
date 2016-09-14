@@ -18,6 +18,7 @@
 - [ ] implement proper adding games via search
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough
+- [ ] create helper file for functions being duplicated
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)
