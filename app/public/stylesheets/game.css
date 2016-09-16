@@ -132,7 +132,7 @@ form {
   box-shadow: 0 0 75px #000;
   width: 500px;
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .results-box img {
   max-width: 100px;
@@ -231,6 +231,8 @@ footer .bottom {
 }
 .boxart {
   float: left;
+  box-shadow: 0 0 50px rgba(255,255,255,0.5);
+  max-height: 350px;
 }
 .game-name {
   color: #fff;
@@ -247,5 +249,8 @@ footer .bottom {
   display: inline-block;
   font-size: 22px;
   margin-left: 25px;
-  min-width: 300px;
+  min-width: 500px;
+}
+.game-description {
+  margin-bottom: 30px;
 }
