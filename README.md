@@ -81,3 +81,9 @@ Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/).
 ## License
 
 **wasdWithMe** is licensed under the [MIT license](LICENSE).
+
+## Screenshots
+
+![alt tag](http://i.imgur.com/is0otGi.png)
+![alt tag](http://i.imgur.com/CMNEQeD.png)
+![alt tag](http://i.imgur.com/HL5aWSz.png)
