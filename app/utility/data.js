@@ -134,7 +134,7 @@ function addToDatabase(game){
         description : 'summary' in game ? game.summary : "",
         boxart: getBoxArt(game)
     };
-    
+
     var date = getReleaseDate(game);
     if (date > 0){
         new_game.release_date = new Date(date);
@@ -185,7 +185,7 @@ function getScreenshots(game){
 
 function getReleaseDate(game){
     try {
-        return new Date(game.release_dates[0].date);
+        return game.release_dates[0].date;
     } catch (err){
         return 0;
     }
@@ -211,7 +211,6 @@ function addToResults(results, type, name, image, description){
 }
 
 function getProfilePic(owner){
-    console.log(owner);
     if (!owner.profile_pic || !owner.profile_pic.data){
         return "/images/placeholder.png";
     }
