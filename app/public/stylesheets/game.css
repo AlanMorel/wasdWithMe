@@ -208,17 +208,15 @@ footer .bottom {
   margin: auto;
 }
 .banner {
-  max-height: 300px;
+  max-height: 400px;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   width: 100%;
 }
 .banner img {
   width: 100%;
-  -webkit-filter: blur(3px);
-  filter: blur(3px);
-  -webkit-filter: brightness(50%);
-  filter: brightness(50%);
+  -webkit-filter: blur(3px) brightness(50%);
+  filter: blur(3px) brightness(50%);
   transform: scale(1.1);
 }
 .top {
@@ -226,6 +224,9 @@ footer .bottom {
 }
 .game {
   margin-top: 100px;
+}
+.game .top {
+  margin-bottom: 30px;
 }
 .boxart {
   float: left;
@@ -238,4 +239,12 @@ footer .bottom {
   margin-left: 20px;
   letter-spacing: 2px;
   max-width: 500px;
+  margin-top: 50px;
+}
+.release-date {
+  color: #d3d3d3;
+  display: inline-block;
+  font-size: 24px;
+  margin-left: 25px;
+  min-width: 300px;
 }

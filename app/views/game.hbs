@@ -10,6 +10,9 @@
             <div class="top">
                 <img class="boxart" src="{{game.boxart}}"/>
                 <div class="game-name">{{game.display_name}}</div>
+                {{#if release}}
+                <div class="release-date">{{release}}</div>
+                {{/if}}
             </div>
             <div class="game-description">{{game.description}}</div>
         </div>

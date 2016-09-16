@@ -77,7 +77,6 @@ function getProfilePic(owner){
 }
 
 function userNotFound(res, user, username){
-    Logger.log("User " + username + " was not found.");
     res.status(404);
     res.render('404', {
         title: 'User not found!',
