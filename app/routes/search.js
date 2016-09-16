@@ -5,10 +5,10 @@ var data = require('../utility/data');
 
 router.get('/', function (req, res, next) {
     var query = req.query.query;
-    data.search(query, 10, req, res, sendHTML);
+    data.search(query, 10, req, res, sendResults);
 });
 
-var sendHTML = function(req, res, query, results) {
+var sendResults = function(req, res, query, results) {
     res.render('search', {
         title: 'Search Results',
         layout: 'primary',

@@ -18,13 +18,14 @@ router.get('/:game', function(req, res, next) {
 });
 
 var sendHTML = function(req, res, query, results) {
+    console.log(results[0]);
     res.render('game', {
         title: query,
         layout: 'primary',
         file: 'game',
         user: req.user,
         query: query,
-        results: results
+        game: results[0]
     });
 };
 

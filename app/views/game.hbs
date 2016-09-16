@@ -1,16 +1,21 @@
-<div class="query">Showing results for '{{query}}'</div>
+{{#if game.screenshots}}
+    <img src="{{game.screenshots.[0]}}"/>
+    {{game.screenshots.[0]}}
+{{/if}}
+<img src="{{game.screenshots.[0]}}"/>
+{{game.screenshots.[0]}}
 <div class="search-results">
-{{#each results}}
-    <a href='/{{type}}/{{name}}'>
-        <div class="search-result">
-            <img src="{{image}}"/>
-            <div class="search-info">
-                <div class="search-name">{{name}}</div>
-                <div class="search-description">{{description}}</div>
+    {{#if game}}
+        <a href='/{{game.type}}/{{game.name}}'>
+            <div class="search-result">
+                <img src="{{game.image}}"/>
+                <div class="search-info">
+                    <div class="search-name">{{game.name}}</div>
+                    <div class="search-description">{{game.description}}</div>
+                </div>
             </div>
-        </div>
-    </a>
-{{else}}
-<span>Sorry, your search did not return any results.</span>
-{{/each}}
+        </a>
+    {{else}}
+        <span>Sorry, your search did not return any results.</span>
+    {{/if}}
 </div>

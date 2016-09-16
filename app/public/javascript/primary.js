@@ -17,26 +17,14 @@ search.onkeyup = function() {
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
-        if (request.readyState != 4 || request.status != 200 || request.responseText.length < 3){
+        if (request.readyState != 4 || request.status != 200 || request.responseText.length < 1){
             //If something went wrong or no results returned, hide box
             box.style.visibility = "hidden";
             return;
         }
 
-        var data = JSON.parse(request.responseText);
-        var html = "";
-
-        //Build out the results html
-        data.forEach(function(result){
-            html += "<a href='/" + result.type + "/" + result.name + "'>";
-            html += "<div class='result'><img src='" + result.image + "'/>";
-            html += "<div class='info'><div class='name'>" + result.name + "</div>";
-            html += "<div class='description'>" + result.description + "</div>";
-            html += "</div></div></a>";
-        });
-
         //Display results to the user
-        box.innerHTML = html;
+        box.innerHTML = request.responseText;
         box.style.visibility = "visible";
     };
 

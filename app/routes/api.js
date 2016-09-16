@@ -5,12 +5,13 @@ var data = require('../utility/data');
 
 router.get('/search', function(req, res, next) {
     var query = req.query.q;
-    data.search(query, 10, req, res, sendJSON);
+    data.search(query, 10, req, res, sendResults);
 });
 
-var sendJSON = function(req, res, query, results) {
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify(results));
+var sendResults = function(req, res, query, results) {
+    res.render('partials/results', {
+        results: results
+    });
 };
 
 module.exports = router;
