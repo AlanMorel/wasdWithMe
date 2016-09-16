@@ -46,7 +46,7 @@ router.get('/:game', function(req, res, next) {
             var locale = "en-us";
             var month = date.toLocaleString(locale, {month: "long"});
 
-            release = month + " " + date.getDay() + ", " + date.getFullYear();
+            release = month + " " + date.getDate() + ", " + date.getFullYear();
         }
 
         var banner;
