@@ -15,8 +15,10 @@
 - [X] make live search more responsive
 - [X] implement changing profile pics
 - [X] add backend support for rating API field
+- [X] build individual games pages
+- [ ] add ratings to games page
 - [ ] add backend support for developers and publishers API fields
-- [ ] build individual games pages by pulling more info via API
+- [ ] add developers and publishers to games page
 - [ ] implement proper adding games via search
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough

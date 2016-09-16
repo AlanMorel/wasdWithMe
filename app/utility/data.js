@@ -85,12 +85,11 @@ function callApi(req, res, query, limit, results, display){
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,developers,publishers"),
         limit:  "&limit="  + 50, //maximum allowed per api
         offset: "&offset=" + 0,
-        order:  "&order="  + encodeURI("release_dates.date:desc"),
         query:  "&search=" + query,
         filter: "&filter[category][eq]=0"
     };
 
-    var request = config.api_url + api.fields + api.limit + api.offset + api.order + api.query + api.filter;
+    var request = config.api_url + api.fields + api.limit + api.offset + api.query + api.filter;
 
     unirest.get(request)
         .header("X-Mashape-Key", config.api_key)
