@@ -226,7 +226,8 @@ footer .bottom {
   margin-top: 100px;
 }
 .game .top {
-  margin-bottom: 30px;
+  min-height: 300px;
+  margin-bottom: 10px;
 }
 .boxart {
   float: left;
@@ -234,7 +235,7 @@ footer .bottom {
 .game-name {
   color: #fff;
   display: inline-block;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: bold;
   margin-left: 20px;
   letter-spacing: 2px;
@@ -244,7 +245,7 @@ footer .bottom {
 .release-date {
   color: #d3d3d3;
   display: inline-block;
-  font-size: 24px;
+  font-size: 22px;
   margin-left: 25px;
   min-width: 300px;
 }

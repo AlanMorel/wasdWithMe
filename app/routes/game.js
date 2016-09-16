@@ -13,13 +13,12 @@ router.get('/', function(req, res, next) {
 
 router.get('/:game', function(req, res, next) {
     var query = decodeURI(req.params.game);
-    console.log(query);
 
     if (query.length < 1){
         return;
     }
 
-    query = query.toLowerCase();
+    query = getCleanedName(query);
 
     console.log(query);
 
@@ -59,6 +58,13 @@ router.get('/:game', function(req, res, next) {
         });
     });
 });
+
+function getCleanedName(name){
+    var ret = name
+        .toLowerCase()
+        .replace('é', 'e');
+    return ret;
+}
 
 function gameNotFound(res, user, game){
     res.status(404);
