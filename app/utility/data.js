@@ -24,18 +24,24 @@ exports.search = function(query, limit, req, res, display){
 
     var gameQuery = {
         "name": {
-            $regex : ".*" + query + ".*"
+            $regex : query + ".*"
         }
     };
 
     async.parallel({
-        users: function (cb){ User.find(userQuery).exec(cb); },
-        games: function (cb){ Game.find(gameQuery).exec(cb); }
+        users: function (cb){
+            User.find(userQuery).exec(cb);
+        },
+        games: function (cb){
+            Game.find(gameQuery).exec(cb);
+        }
     }, function(err, result){
+
+        var results = [];
 
         if (err){
             Logger.log("Querying database during search failed.", err);
-            res.redirect("/");
+            display(req, res, query, results);
             return;
         }
 
@@ -44,14 +50,12 @@ exports.search = function(query, limit, req, res, display){
 
         console.log("Query: " + query + " Users: " + users.length + " Games: " + games.length);
 
-        var results = [];
-
         for (var i = 0; i < users.length; i++){
             addToResults(results,
                 "user",
                 users[i].display_name,
                 getProfilePic(users[i]),
-                getDescription(users[i].bio)
+                users[i].bio === undefined ? "" : users[i].bio
             );
         }
 
@@ -113,10 +117,6 @@ function callApi(req, res, query, limit, results, display){
             display(req, res, query, results);
         }
     );
-}
-
-function getDescription(description){
-    return description === undefined ? "" : description;
 }
 
 function getBoxArt(game){
