@@ -1,6 +1,6 @@
-{{#if game.screenshots}}
+{{#if banner}}
 <div class="banner">
-    <img src="https://res.cloudinary.com/igdb/image/upload/t_screenshot_huge/{{game.screenshots.[0]}}.jpg"/>
+    <img src="https://res.cloudinary.com/igdb/image/upload/t_screenshot_huge/{{banner}}.jpg"/>
 </div>
 {{/if}}
 {{game.screenshots.[0]}}
@@ -14,7 +14,10 @@
                 <div class="release-date">{{release}}</div>
                 {{/if}}
             </div>
+            {{#if game.description}}
+            <h1>Description</h1>
             <div class="game-description">{{game.description}}</div>
+            {{/if}}
         </div>
     {{else}}
         <span>Sorry, your search did not return any results.</span>

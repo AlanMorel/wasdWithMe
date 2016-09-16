@@ -48,13 +48,21 @@ router.get('/:game', function(req, res, next) {
 
             release = month + " " + date.getDay() + ", " + date.getFullYear();
         }
+
+        var banner;
+
+        if (game.screenshots){
+            banner = game.screenshots[Math.floor(Math.random()*game.screenshots.length)];
+        }
+
         return res.render('game', {
             title: game.display_name,
             layout: 'primary',
             file: 'game',
             user : req.user,
             game: game,
-            release: release
+            release: release,
+            banner: banner
         });
     });
 });

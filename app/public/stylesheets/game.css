@@ -201,10 +201,13 @@ footer .bottom {
     font-size: 3vw;
   }
 }
+body {
+  background-color: #e9ebee;
+}
 .container {
   color: #000;
   position: relative;
-  width: 800px;
+  width: 700px;
   margin: auto;
 }
 .banner {
@@ -222,8 +225,11 @@ footer .bottom {
 .top {
   display: inline-block;
 }
+h1 {
+  font-weight: lighter;
+}
 .game {
-  margin-top: 100px;
+  margin-top: 125px;
 }
 .game .top {
   min-height: 300px;
@@ -241,7 +247,7 @@ footer .bottom {
   font-weight: bold;
   margin-left: 20px;
   letter-spacing: 2px;
-  max-width: 500px;
+  max-width: 400px;
   margin-top: 50px;
 }
 .release-date {
@@ -249,7 +255,7 @@ footer .bottom {
   display: inline-block;
   font-size: 22px;
   margin-left: 25px;
-  min-width: 500px;
+  min-width: 400px;
 }
 .game-description {
   margin-bottom: 30px;
