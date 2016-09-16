@@ -103,7 +103,7 @@ function callApi(req, res, query, limit, results, display){
                     "game",
                     game.name,
                     getBoxArt(game),
-                    'summary' in game ? getDescription(game.summary) : ""
+                    'summary' in game ? game.summary : ""
                 );
                 addToDatabase(game);
             });
@@ -131,13 +131,10 @@ function addToDatabase(game){
         id: game.id,
         name: getCleanedGameName(game),
         display_name: game.name,
+        description : 'summary' in game ? game.summary : "",
         boxart: getBoxArt(game)
     };
-
-    if ('summary' in game){
-        new_game.description = game.summary;
-    }
-
+    
     var date = getReleaseDate(game);
     if (date > 0){
         new_game.release_date = new Date(date);
@@ -159,7 +156,7 @@ function addToDatabase(game){
         {upsert: true},
         function (err, numAffected) {
             if (err){
-                Logger.log("Adding new games from API to database failed.", err);
+                Logger.log("Adding " + game.name + " from API to failed.", err);
                 return;
             }
             console.log("Added " + game.name + ".");
