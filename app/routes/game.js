@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var User   = require('../models/user');
+var Game   = require('../models/game');
 var config = require('../config');
 var Logger = require('../utility/logger');
 var data   = require('../utility/data');
@@ -12,21 +12,36 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:game', function(req, res, next) {
-    var game = req.params.game;
-    console.log(game);
-    data.search(game, 1, req, res, sendHTML);
-});
+    var query = req.params.game;
+    console.log(query);
 
-var sendHTML = function(req, res, query, results) {
-    console.log(results[0]);
-    res.render('game', {
-        title: query,
-        layout: 'primary',
-        file: 'game',
-        user: req.user,
-        query: query,
-        game: results[0]
+    if (query.length < 1){
+        return;
+    }
+
+    query = query.toLowerCase();
+
+    var gameQuery = {
+        "name": {
+            $regex : query + ".*"
+        }
+    };
+
+    Game.findOne(gameQuery, function(err, game) {
+
+        if (err){
+            Logger.log("Searching for game " + query + " failed.", err);
+            return;
+        }
+
+        return res.render('game', {
+            title: game.display_name,
+            layout: 'primary',
+            file: 'game',
+            user : req.user,
+            game: game
+        });
     });
-};
+});
 
 module.exports = router;

@@ -4,17 +4,15 @@
 {{/if}}
 <img src="{{game.screenshots.[0]}}"/>
 {{game.screenshots.[0]}}
-<div class="search-results">
+<div class="container">
     {{#if game}}
-        <a href='/{{game.type}}/{{game.name}}'>
-            <div class="search-result">
-                <img src="{{game.image}}"/>
-                <div class="search-info">
-                    <div class="search-name">{{game.name}}</div>
-                    <div class="search-description">{{game.description}}</div>
-                </div>
+        <div class="game">
+            <img class="boxart" src="{{game.image}}"/>
+            <div class="game-info">
+                <div class="game-name">{{game.name}}</div>
+                <div class="game-description">{{game.description}}</div>
             </div>
-        </a>
+        </div>
     {{else}}
         <span>Sorry, your search did not return any results.</span>
     {{/if}}
