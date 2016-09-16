@@ -22,6 +22,9 @@ var Game = new mongoose.Schema({
     boxart: {
         type: String
     },
+    screenshots: [{
+       type: String
+    }],
     owners: [{
         type: String
     }]

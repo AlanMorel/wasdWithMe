@@ -78,7 +78,7 @@ exports.search = function(query, limit, req, res, display){
 function callApi(req, res, query, limit, results, display){
 
     var api = {
-        fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,developers,publishers"),
+        fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,developers,publishers"),
         limit:  "&limit="  + 50, //maximum allowed per api
         offset: "&offset=" + 0,
         order:  "&order="  + encodeURI("release_dates.date:desc"),
@@ -131,11 +131,28 @@ function addToDatabase(game){
         id: game.id,
         name: getCleanedGameName(game),
         display_name: game.name,
-        description: 'summary' in game ? game.summary : "",
-        release_date: new Date(getReleaseDate(game)),
-        rating: getRating(game),
         boxart: getBoxArt(game)
     };
+
+    if ('summary' in game){
+        new_game.description = game.summary;
+    }
+
+    var date = getReleaseDate(game);
+    if (date > 0){
+        new_game.release_date = new Date(date);
+    }
+
+    var rating = getRating(game);
+    if (rating > 0){
+        new_game.rating = rating;
+    }
+
+    var screens = getScreenshots(game);
+    if (screens){
+        new_game.screenshots = screens;
+    }
+
     Game.update(
         {id: game.id},
         {$setOnInsert: new_game},
@@ -157,26 +174,32 @@ function getCleanedGameName(game){
     return name;
 }
 
+function getScreenshots(game){
+    try {
+        var screenshots = [];
+        game.screenshots.forEach(function(screen){
+            screenshots.push(screen.cloudinary_id);
+        });
+        return screenshots;
+    } catch (err) {
+        return null;
+    }
+}
+
 function getReleaseDate(game){
-    if (!'release_dates' in game){
+    try {
+        return new Date(game.release_dates[0].date);
+    } catch (err){
         return 0;
     }
-    var dates = game.release_dates;
-    if (dates == undefined || !'date' in dates){
-        return 0;
-    }
-    var date = dates[0].date;
-    if (date == undefined || date === "Invalid Date"){
-        return 0;
-    }
-    return date;
 }
 
 function getRating(game){
-    if (game.rating == undefined || !'rating' in game){
+    try {
+        return game.rating;
+    } catch (err){
         return 0;
     }
-    return game.rating;
 }
 
 function addToResults(results, type, name, image, description){
