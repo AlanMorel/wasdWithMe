@@ -70,7 +70,8 @@ router.get('/:game', function(req, res, next) {
 function getCleanedName(name){
     var ret = name
         .toLowerCase()
-        .replace('é', 'e');
+        .replace('é', 'e')
+        .replace('&', 'and');
     return ret;
 }
 

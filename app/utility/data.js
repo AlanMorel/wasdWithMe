@@ -166,7 +166,8 @@ function addToDatabase(game){
 function getCleanedGameName(game){
     var name = game.name
         .toLowerCase()
-        .replace('é', 'e');
+        .replace('é', 'e')
+        .replace('&', 'and');
     return name;
 }
 

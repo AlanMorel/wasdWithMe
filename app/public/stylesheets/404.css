@@ -99,11 +99,12 @@ form {
 .search .result {
   text-align: left;
   display: inline-block;
-  width: 100%;
   margin-bottom: 4px;
   margin-top: 4px;
   cursor: pointer;
   color: #000;
+  width: 485px;
+  float: left;
 }
 .search .result:hover {
   background-color: #6441a5;
