@@ -2,11 +2,43 @@
 
 .container{
   color:black;
+  position: relative;
+  width: 800px;
+  margin: auto;
 }
 .banner {
   max-height: 300px;
-  overflow-y: hidden;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
   img {
     width: 100%;
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+    -webkit-filter: brightness(50%);
+    filter: brightness(50%);
+    transform: scale(1.1);
   }
+}
+
+.top {
+  display: inline-block;
+}
+
+.game {
+  margin-top: 100px;
+}
+
+  .boxart{
+    float: left;
+  }
+
+.game-name {
+  color: white;
+  display: inline-block;
+  font-size: 60px;
+  font-weight: bold;
+  margin-left: 20px;
+  letter-spacing: 2px;
+  max-width: 500px;
 }

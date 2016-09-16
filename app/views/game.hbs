@@ -7,11 +7,11 @@
 <div class="container">
     {{#if game}}
         <div class="game">
-            <img class="boxart" src="{{game.image}}"/>
-            <div class="game-info">
-                <div class="game-name">{{game.name}}</div>
-                <div class="game-description">{{game.description}}</div>
+            <div class="top">
+                <img class="boxart" src="{{game.boxart}}"/>
+                <div class="game-name">{{game.display_name}}</div>
             </div>
+            <div class="game-description">{{game.description}}</div>
         </div>
     {{else}}
         <span>Sorry, your search did not return any results.</span>
