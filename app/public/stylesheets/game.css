@@ -204,3 +204,10 @@ footer .bottom {
 .container {
   color: #000;
 }
+.banner {
+  max-height: 300px;
+  overflow-y: hidden;
+}
+.banner img {
+  width: 100%;
+}

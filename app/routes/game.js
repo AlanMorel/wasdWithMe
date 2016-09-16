@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:game', function(req, res, next) {
-    var query = req.params.game;
+    var query = decodeURI(req.params.game);
     console.log(query);
 
     if (query.length < 1){
@@ -20,6 +20,8 @@ router.get('/:game', function(req, res, next) {
     }
 
     query = query.toLowerCase();
+
+    console.log(query);
 
     var gameQuery = {
         "name": {
