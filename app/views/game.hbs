@@ -5,23 +5,29 @@
 {{/if}}
 <div class="container">
     {{#if game}}
-        <div class="game">
-            <div class="top">
-                <img class="boxart" src="{{game.boxart}}"/>
-                <div class="game-name">{{game.display_name}}</div>
-                {{#if release}}
-                <div class="release-date">{{release}}</div>
-                {{/if}}
-            </div>
-            {{#if rating}}
-                <div class="rating" style="background-color:{{rating.color}};">{{rating.number}}</div>
-            {{/if}}
-            {{#if game.description}}
-            <h1>Description</h1>
-            <div class="game-description">{{game.description}}</div>
+    <div class="game">
+        <div class="top">
+            <img class="boxart" src="{{game.boxart}}"/>
+            <div class="game-name">{{game.display_name}}</div>
+            {{#if release}}
+            <div class="release-date">{{release}}</div>
             {{/if}}
         </div>
+        {{#if rating}}
+        <div class="rating" style="background-color:{{rating.color}};">{{rating.number}}</div>
+        {{/if}}
+        {{#if game.description}}
+        <h1>Description</h1>
+        <div class="game-description">{{game.description}}</div>
+        {{/if}}
+        {{#if game.screenshots}}
+        <h1>Screenshots</h1>
+        {{/if}}
+        {{#each game.screenshots}}
+            <img src="https://res.cloudinary.com/igdb/image/upload/t_screenshot_huge/{{this}}.jpg" class="screenshot"/>
+        {{/each}}
+        </div>
     {{else}}
-        <span>Sorry, your search did not return any results.</span>
+    <span>Sorry, your search did not return any results.</span>
     {{/if}}
 </div>
