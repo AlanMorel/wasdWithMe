@@ -1,7 +1,19 @@
+function addOnKeyUps(){
+    var inputs = document.querySelectorAll(".input-game");
+    for (var i = 0; i < inputs.length; ++i) {
+        inputs[i].onkeyup = function(){
+
+        };
+    }
+}
+
+addOnKeyUps();
+
 //Add a new game input when the button is clicked
 document.querySelector(".add-another").onclick = function() {
     var input = '<input type="text" name="games" class="input-game">';
     document.querySelector(".games-list").innerHTML += input;
+    addOnKeyUps();
 };
 
 //Start the upload process when the pic is clicked
