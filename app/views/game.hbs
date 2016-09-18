@@ -13,6 +13,9 @@
                 <div class="release-date">{{release}}</div>
                 {{/if}}
             </div>
+            {{#if rating}}
+                <div class="rating" style="background-color:{{rating.color}};">{{rating.number}}</div>
+            {{/if}}
             {{#if game.description}}
             <h1>Description</h1>
             <div class="game-description">{{game.description}}</div>

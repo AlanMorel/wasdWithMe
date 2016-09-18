@@ -52,7 +52,23 @@ router.get('/:game', function(req, res, next) {
         var banner;
 
         if (game.screenshots){
+            //select a random screenshot as the game banner
             banner = game.screenshots[Math.floor(Math.random()*game.screenshots.length)];
+        }
+
+        var rating = {};
+
+        if (game.rating && game.rating > 0){
+            //Set the rating as an int with a corresponding color
+            var number = Math.ceil(game.rating);
+            rating.number = number;
+            if (number > 80){
+                rating.color = "limegreen";
+            } else if (number > 60) {
+                rating.color = "goldenrod";
+            } else {
+                rating.color = "firebrick";
+            }
         }
 
         return res.render('game', {
@@ -62,7 +78,8 @@ router.get('/:game', function(req, res, next) {
             user : req.user,
             game: game,
             release: release,
-            banner: banner
+            banner: banner,
+            rating: rating
         });
     });
 });

@@ -16,7 +16,7 @@
 - [X] implement changing profile pics
 - [X] add backend support for rating API field
 - [X] build individual games pages
-- [ ] add ratings to games page
+- [X] add ratings to games page
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
 - [ ] implement proper adding games via search

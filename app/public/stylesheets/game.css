@@ -261,3 +261,15 @@ h1 {
 .game-description {
   margin-bottom: 50px;
 }
+.rating {
+  color: #fff;
+  display: inline-block;
+  position: absolute;
+  left: 600px;
+  top: 225px;
+  font-size: 36px;
+  font-weight: lighter;
+  min-width: 80px;
+  padding-left: 10px;
+  padding-top: 40px;
+}
