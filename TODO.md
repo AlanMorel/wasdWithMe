@@ -19,6 +19,7 @@
 - [X] add ratings to games page
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
+- [ ] add videos to game page
 - [ ] implement proper adding games via search
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough

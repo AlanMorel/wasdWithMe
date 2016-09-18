@@ -7,10 +7,10 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-exports.search = function(query, limit, req, res, display){
+exports.search = function(query, limit, req, res, callback){
 
     if (query.length < 1){
-        display(req, res, query, null);
+        callback(req, res, query, null);
         return;
     }
 
@@ -41,7 +41,7 @@ exports.search = function(query, limit, req, res, display){
 
         if (err){
             Logger.log("Querying database during search failed.", err);
-            display(req, res, query, results);
+            callback(req, res, query, results);
             return;
         }
 
@@ -69,17 +69,17 @@ exports.search = function(query, limit, req, res, display){
         }
 
         if (results.length < 1){
-            callApi(req, res, query, limit, results, display);
+            callApi(req, res, query, limit, results, callback);
             return;
         }
 
         results = results.slice(0, limit);
 
-        display(req, res, query, results);
+        callback(req, res, query, results);
     });
 };
 
-function callApi(req, res, query, limit, results, display){
+function callApi(req, res, query, limit, results, callback){
 
     var api = {
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,developers,publishers"),
@@ -97,7 +97,7 @@ function callApi(req, res, query, limit, results, display){
         .end(function (result) {
 
             if (result.status != 200){
-                display(req, res, query, results);
+                callback(req, res, query, results);
                 return;
             }
 
@@ -113,7 +113,7 @@ function callApi(req, res, query, limit, results, display){
 
             results = results.slice(0, limit);
 
-            display(req, res, query, results);
+            callback(req, res, query, results);
         }
     );
 }
