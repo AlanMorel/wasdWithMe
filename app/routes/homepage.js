@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
     User.find().sort(query).limit(5).exec(function (err, users) {
         if (err){
             Logger.log("Searching for live user profiles failed.", err);
-            //Properly handle this edge case
+            //Properly handle this
             return;
         }
         users = addStaticInfo(users);

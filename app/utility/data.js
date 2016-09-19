@@ -9,7 +9,7 @@ var config  = require('../config');
 
 exports.search = function(query, limit, req, res, callback){
 
-    if (query.length < 1){
+    if (query.length < 3){
         callback(req, res, query, null);
         return;
     }
@@ -79,7 +79,7 @@ exports.search = function(query, limit, req, res, callback){
     });
 };
 
-function callApi(req, res, query, limit, results, callback){
+exports.callApi = function(req, res, query, limit, results, callback){
 
     var api = {
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,developers,publishers"),
@@ -116,14 +116,7 @@ function callApi(req, res, query, limit, results, callback){
             callback(req, res, query, results);
         }
     );
-}
-
-function getBoxArt(game){
-    if ('cover' in game){
-        return "https://res.cloudinary.com/igdb/image/upload/t_cover_big/" + game.cover.cloudinary_id + ".jpg";
-    }
-    return config.game_not_found_boxart;
-}
+};
 
 function addToDatabase(game){
     var new_game = {
@@ -169,6 +162,13 @@ function getCleanedGameName(game){
         .replace('é', 'e')
         .replace('&', 'and');
     return name;
+}
+
+function getBoxArt(game){
+    if ('cover' in game){
+        return "https://res.cloudinary.com/igdb/image/upload/t_cover_big/" + game.cover.cloudinary_id + ".jpg";
+    }
+    return config.game_not_found_boxart;
 }
 
 function getScreenshots(game){

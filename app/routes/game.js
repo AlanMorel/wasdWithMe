@@ -35,54 +35,66 @@ router.get('/:game', function(req, res, next) {
         }
 
         if (!game){
-            gameNotFound(res, req.user, query);
+            data.callApi(req, res, query, 1, [], displayGame);
             return;
         }
 
-        var release;
-
-        if (game.release_date) {
-            var date = game.release_date;
-            var locale = "en-us";
-            var month = date.toLocaleString(locale, {month: "long"});
-
-            release = month + " " + date.getDate() + ", " + date.getFullYear();
-        }
-
-        var banner;
-
-        if (game.screenshots){
-            //select a random screenshot as the game banner
-            banner = game.screenshots[Math.floor(Math.random()*game.screenshots.length)];
-        }
-
-        var rating = {};
-
-        if (game.rating && game.rating > 0){
-            //Set the rating as an int with a corresponding color
-            var number = Math.ceil(game.rating);
-            rating.number = number;
-            if (number > 80){
-                rating.color = "limegreen";
-            } else if (number > 60) {
-                rating.color = "goldenrod";
-            } else {
-                rating.color = "firebrick";
-            }
-        }
-
-        return res.render('game', {
-            title: game.display_name,
-            layout: 'primary',
-            file: 'game',
-            user : req.user,
-            game: game,
-            release: release,
-            banner: banner,
-            rating: rating
-        });
+        displayGame(req, res, query, game);
     });
 });
+
+function displayGame(req, res, query, game){
+
+    if(Array.isArray(game)){
+        if(game.length < 1){
+            return gameNotFound(req, res, query);
+        }
+        game = game[0];
+    }
+
+    var release;
+
+    if (game.release_date) {
+        var date = game.release_date;
+        var locale = "en-us";
+        var month = date.toLocaleString(locale, {month: "long"});
+
+        release = month + " " + date.getDate() + ", " + date.getFullYear();
+    }
+
+    var banner;
+
+    if (game.screenshots){
+        //select a random screenshot as the game banner
+        banner = game.screenshots[Math.floor(Math.random()*game.screenshots.length)];
+    }
+
+    var rating = {};
+
+    if (game.rating && game.rating > 0){
+        //Set the rating as an int with a corresponding color
+        var number = Math.ceil(game.rating);
+        rating.number = number;
+        if (number > 80){
+            rating.color = "limegreen";
+        } else if (number > 60) {
+            rating.color = "goldenrod";
+        } else {
+            rating.color = "firebrick";
+        }
+    }
+
+    return res.render('game', {
+        title: game.display_name,
+        layout: 'primary',
+        file: 'game',
+        user : req.user,
+        game: game,
+        release: release,
+        banner: banner,
+        rating: rating
+    });
+}
 
 function getCleanedName(name){
     var ret = name
@@ -92,14 +104,14 @@ function getCleanedName(name){
     return ret;
 }
 
-function gameNotFound(res, user, game){
+function gameNotFound(req, res, query){
     res.status(404);
     res.render('404', {
         title: 'Game not found!',
         layout: 'primary',
         file: '404',
-        user: user,
-        message: game + " not found!"
+        user: req.user,
+        message: query + " not found!"
     });
 }
 
