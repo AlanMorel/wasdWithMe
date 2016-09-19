@@ -1,8 +1,10 @@
+var currentInput = null;
+
 function addOnKeyUps(){
     var inputs = document.querySelectorAll(".input-game");
     for (var i = 0; i < inputs.length; ++i) {
         inputs[i].onkeyup = function(){
-
+            currentInput = this;
             var request = new XMLHttpRequest();
 
             var subbox = document.querySelector("span.sub-results-box");
@@ -20,6 +22,12 @@ function addOnKeyUps(){
                 subbox.innerHTML = request.responseText;
                 subbox.style.visibility = "visible";
                 subbox.style.display = "block";
+
+                //Give each game an onclick event
+                var children = subbox.childNodes;
+                for(var child in children) {
+                    children[child].onclick = selectGame;
+                }
             };
 
             request.open("GET", "/api/search?q=" + this.value, true);
@@ -28,12 +36,29 @@ function addOnKeyUps(){
     }
 }
 
+var selectGame = function(){
+    //Set the text input to the clicked game
+    var name = this.querySelector(".name").innerHTML;
+    currentInput.value = name;
+    currentInput.readOnly = true;
+
+    //Hide the box since game selection was made
+    var subbox = document.querySelector("span.sub-results-box");
+    subbox.style.visibility = "hidden";
+    subbox.style.display = "none";
+    return false;
+};
+
 addOnKeyUps();
 
 //Add a new game input when the button is clicked
 document.querySelector(".add-another").onclick = function() {
-    var input = '<input type="text" name="games" class="input-game">';
-    document.querySelector(".games-list").innerHTML += input;
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "input-game";
+    input.name = "games";
+    document.querySelector(".games-list").appendChild(input);
+
     addOnKeyUps();
 };
 

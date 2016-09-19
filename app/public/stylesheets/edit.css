@@ -597,6 +597,9 @@ span.sub-results-box {
 span.sub-results-box a {
   color: #000;
 }
+input:read-only {
+  color: #808080;
+}
 @media only screen and (max-width: 700px) {
   .input-name {
     width: 100%;

@@ -17,11 +17,13 @@
 - [X] add backend support for rating API field
 - [X] build individual games pages
 - [X] add ratings to games page
+- [X] implement proper adding games via search
+- [X] make game names readonly once selected
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
+- [ ] remove favorite games section in edit page, add checkboxes to game library section
 - [ ] add videos to game page
 - [ ] implement removing games
-- [ ] implement proper adding games via search
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough
 - [ ] create helper file for functions being duplicated

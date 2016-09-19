@@ -44,7 +44,7 @@
             <div class="fav-games-header">Favorite Games</div>
             <div class="games">
                 {{#each fav_games}}
-                    <input type="text" class="input-game" value="{{name}}">
+                    <input readonly type="text" class="input-game" value="{{name}}">
                 {{/each}}
             </div>
         </div>
@@ -68,7 +68,7 @@
             <div class="fav-games-header">Games Library</div>
             <div class="games-list">
                 {{#each all_games}}
-                    <input type="text" name="games" class="input-game" value="{{name}}">
+                    <input readonly type="text" name="games" class="input-game" value="{{name}}">
                 {{/each}}
                 <span class="sub-results-box"></span>
             </div>
