@@ -6,17 +6,20 @@ function addOnKeyUps(){
             var request = new XMLHttpRequest();
 
             var subbox = document.querySelector("span.sub-results-box");
+            this.parentNode.insertBefore(subbox, this.nextSibling);
 
             request.onreadystatechange = function() {
                 if (request.readyState != 4 || request.status != 200 || request.responseText.length < 1){
                     //If something went wrong or no results returned, hide box
                     subbox.style.visibility = "hidden";
+                    subbox.style.display = "none";
                     return;
                 }
 
                 //Display results to the user
                 subbox.innerHTML = request.responseText;
                 subbox.style.visibility = "visible";
+                subbox.style.display = "block";
             };
 
             request.open("GET", "/api/search?q=" + this.value, true);

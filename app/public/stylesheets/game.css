@@ -74,14 +74,16 @@ html {
 form {
   position: relative;
 }
-.search {
+.search,
+.sub-results-box {
   height: 40px;
   background-color: #53368a;
   text-align: center;
   padding-top: 16px;
   padding-bottom: 10px;
 }
-.search input[type="text"] {
+.search input[type="text"],
+.sub-results-box input[type="text"] {
   width: 350px;
   font-size: 18px;
   height: 24px;
@@ -90,13 +92,15 @@ form {
   border: none;
   outline: none;
 }
-.search input[type="image"] {
+.search input[type="image"],
+.sub-results-box input[type="image"] {
   max-height: 32px;
   max-width: 32px;
   vertical-align: top;
   margin-left: 6px;
 }
-.search .result {
+.search .result,
+.sub-results-box .result {
   text-align: left;
   display: inline-block;
   margin-bottom: 4px;
@@ -106,7 +110,8 @@ form {
   width: 485px;
   float: left;
 }
-.search .result:hover {
+.search .result:hover,
+.sub-results-box .result:hover {
   background-color: #6441a5;
   color: #fff;
 }
