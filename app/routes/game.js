@@ -45,6 +45,9 @@ router.get('/:game', function(req, res, next) {
 
 function displayGame(req, res, query, game){
 
+    //Display Game can be called either with a single game (if found by db)
+    //or an array of length 1 (if found by api) so the follow code is needed
+
     if(Array.isArray(game)){
         if(game.length < 1){
             return gameNotFound(req, res, query);

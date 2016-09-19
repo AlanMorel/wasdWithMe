@@ -121,7 +121,8 @@ form {
   max-height: 105px;
   overflow: hidden;
 }
-.results-box {
+.results-box,
+.sub-results-box {
   position: absolute;
   top: 50px;
   background: #fff;
@@ -135,7 +136,8 @@ form {
   max-height: 500px;
   overflow-y: auto;
 }
-.results-box img {
+.results-box img,
+.sub-results-box img {
   max-width: 100px;
   vertical-align: middle;
 }
@@ -185,11 +187,13 @@ footer .bottom {
     width: 70vw;
     font-size: 16px;
   }
-  .results-box {
+  .results-box,
+  .sub-results-box {
     width: 94vw;
     left: 1vw;
   }
-  .results-box img {
+  .results-box img,
+  .sub-results-box img {
     max-width: 15vw;
     vertical-align: middle;
   }
