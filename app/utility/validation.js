@@ -62,7 +62,7 @@ exports.slugUser = function(username){
 /*
  Regex operation ensures first character is an alphanumeric
  */
-function usernameIsValid(username) {
+exports.usernameIsValid = function(username) {
     return /^[a-zA-z][0-9a-zA-Z_-]+$/.test(username);
 }
 
