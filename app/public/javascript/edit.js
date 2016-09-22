@@ -1,5 +1,6 @@
 var currentInput = null;
 var subbox = document.querySelector("span.sub-results-box");
+var gamesList = document.querySelector(".games-list");
 
 //Searches for games whenever a key is pressed in any text input
 var searchGame = function(){
@@ -46,6 +47,16 @@ var selectGame = function(){
     return false;
 };
 
+//deletes game when button is pressed
+var deleteGame = function(button){
+    if (button.target) {
+        button = button.target;
+    }
+
+    gamesList.removeChild(button.previousSibling);
+    gamesList.removeChild(button);
+};
+
 //Add a new game input when the button is clicked
 document.querySelector(".add-another").onclick = function() {
     var input = document.createElement("input");
@@ -54,7 +65,13 @@ document.querySelector(".add-another").onclick = function() {
     input.name = "games";
     input.onkeyup = searchGame;
 
-    document.querySelector(".games-list").appendChild(input);
+    var button = document.createElement("button");
+    button.type = "button";
+    button.innerHTML = "Remove Game";
+    button.onclick = deleteGame;
+
+    gamesList.appendChild(input);
+    gamesList.appendChild(button);
 };
 
 //Start the upload process when the pic is clicked

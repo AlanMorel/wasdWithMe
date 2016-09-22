@@ -68,7 +68,7 @@
             <div class="fav-games-header">Games Library</div>
             <div class="games-list">
             {{#each all_games}}
-                <input readonly type="text" name="games" class="input-game" value="{{name}}">
+                <input readonly type="text" name="games" class="input-game" value="{{name}}"><button type="button" onclick="deleteGame(this)">Remove Game</button>
             {{/each}}
                 <span class="sub-results-box"></span>
             </div>

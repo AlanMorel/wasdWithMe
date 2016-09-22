@@ -2,6 +2,7 @@ var screen = document.querySelector("html");
 var box = document.querySelector(".results-box");
 var search = document.querySelector(".search-box");
 
+//returns true if box should be shown, false if not
 function shouldShow(query){
     return query && query.length > 2;
 }
