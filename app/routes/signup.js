@@ -7,6 +7,7 @@ var config     = require('../config');
 var Validation = require('../utility/validation');
 var Logger     = require('../utility/logger');
 
+//renders the signup page when users visit /signup/
 router.get('/', function (req, res, next) {
     res.render('signup', {
         title: 'Sign Up',
@@ -46,6 +47,7 @@ router.post('/', function (req, res) {
 
     var error = Validation.checkAccount(displayName, password, email);
 
+    //Any errors are displayed to the user, otherwise continue signing them up
     if (error != undefined) {
         res.render('signup', {
             title: 'Sign Up',
@@ -71,7 +73,8 @@ router.post('/', function (req, res) {
             state: state,
             city: city
         },
-        //Randomly give newly registered users 1-100 one ups and 1-10 coins for testing purposes
+        //Randomly give newly registered users 1-100 one ups and 1-10 coins
+        //this is temporary and just for testing
         one_ups: oneUps,
         one_up_count: oneUpCount,
         coins: getRandomCoins(10)

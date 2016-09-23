@@ -21,9 +21,9 @@
 - [X] make game names readonly once selected
 - [X] implement removing games
 - [X] make favorite games have no more limits
+- [X] remove favorite games section in edit page, add checkboxes to game library section
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
-- [ ] remove favorite games section in edit page, add checkboxes to game library section
 - [ ] add videos to game page
 - [ ] implement search filters
 - [ ] add pagination to search results when the database gets big enough

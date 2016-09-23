@@ -3,11 +3,13 @@ var router = express.Router();
 
 var data = require('../utility/data');
 
+//handles search results
 router.get('/', function (req, res, next) {
     var query = req.query.query;
     data.search(query, 10, req, res, sendResults);
 });
 
+//renders the search results
 var sendResults = function(req, res, query, results) {
     res.render('search', {
         title: 'Search Results',

@@ -7,6 +7,7 @@ var User       = require('../models/user');
 var config     = require('../config');
 var Logger     = require('../utility/logger');
 
+//handles GET requests to /username/edit
 router.get('/:username/edit', function(req, res, next) {
     var username = req.params.username;
     var slug = username.toLowerCase(); //properly slug it
@@ -38,6 +39,7 @@ router.get('/:username/edit', function(req, res, next) {
 
 var type = multer({ dest: 'uploads/'}).single('image');
 
+//handles POST requests to /username/edit
 router.post('/:username/edit', type, function(req, res) {
     var username = req.params.username;
     var slug = username.toLowerCase(); //properly slug
@@ -51,6 +53,7 @@ router.post('/:username/edit', type, function(req, res) {
 
     var games = [];
 
+    //populate games array
     for (var i = 0; i < req.body.games.length; i++){
         games.push({
             name: req.body.games[i],
@@ -76,13 +79,6 @@ router.post('/:username/edit', type, function(req, res) {
     var image = getImage(req.file);
 
     //validate data here, return error if there is one
-
-    console.log("tagline: " + tagline
-        + " firstname: " + firstname
-        + " lastname: " + lastname
-        + " bio: " + bio
-        + " games: " + games
-    );
 
     var query = {
         'username': slug
@@ -115,6 +111,7 @@ router.post('/:username/edit', type, function(req, res) {
     });
 });
 
+//returns image object of uploaded profile picture
 function getImage(data){
     if(!data){
         return;
@@ -129,15 +126,17 @@ function getImage(data){
     return image;
 }
 
+//adds temporary data to the owner object
 function addTemporaryInfo(owner){
     owner.online_status = "online";
 
-    owner.accounts.steam.steam_id = "SharpAceX";
-    owner.accounts.xbox.gamertag = "SharpAceX";
-    owner.accounts.playstation.psn_id = "SharpAceX";
-    owner.accounts.twitch.username = "SharpAceX";
+    owner.accounts.steam.steam_id = "Alan";
+    owner.accounts.xbox.gamertag = "Alan";
+    owner.accounts.playstation.psn_id = "Alan";
+    owner.accounts.twitch.username = "Alan";
 }
 
+//returns list of game names, encoded uri and favorite boolean
 function getGames(list, fav){
     var games = [];
     for (var i = 0; i < list.length; i++) {
@@ -154,16 +153,20 @@ function getGames(list, fav){
     }
     return games;
 }
+
+//returns true if user is on own page
 function isOwner(user, owner){
     return user && user.username === owner.username;
 }
 
+//returns age of user in years
 function getAge(birthday){
     var difference = new Date() - new Date(birthday);
     var year = 1000 * 60 * 60 * 24 * 365;
     return Math.floor(difference / year);
 }
 
+//returns profile picture of page owner, if none exist, returns placeholder
 function getProfilePic(owner){
     if (!owner.profile_pic || !owner.profile_pic.data){
         return "/images/placeholder.png";
@@ -171,6 +174,7 @@ function getProfilePic(owner){
     return "data:image/png;base64," + owner.profile_pic.data;
 }
 
+//gets called when user was not found (should not occur under normal circumstances)
 function userNotFound(res, user, username){
     Logger.log("User " + username + " was not found.");
     res.status(404);

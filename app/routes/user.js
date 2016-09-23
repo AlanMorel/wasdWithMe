@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
     return res.redirect("/");
 });
 
+//Returns back requested user
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
     var usernameSlug = username.toLowerCase(); //properly slug it
@@ -39,15 +40,17 @@ router.get('/:username', function(req, res, next) {
     });
 });
 
+//adds temporary information to the owner
 function addTemporaryInfo(owner){
     owner.online_status = "online";
 
-    owner.accounts.steam.steam_id = "SharpAceX";
-    owner.accounts.xbox.gamertag = "SharpAceX";
-    owner.accounts.playstation.psn_id = "SharpAceX";
-    owner.accounts.twitch.username = "SharpAceX";
+    owner.accounts.steam.steam_id = "Alan";
+    owner.accounts.xbox.gamertag = "Alan";
+    owner.accounts.playstation.psn_id = "Alan";
+    owner.accounts.twitch.username = "Alan";
 }
 
+//returns list of game names, uris and favorite boolean
 function getGames(list, fav){
     var games = [];
     for (var i = 0; i < list.length; i++) {
@@ -65,16 +68,19 @@ function getGames(list, fav){
     return games;
 }
 
+//returns true if user is on own page
 function isOwner(user, owner){
     return user && user.username === owner.username;
 }
 
+//returns age of user in years
 function getAge(birthday){
     var difference = new Date() - new Date(birthday);
     var year = 1000 * 60 * 60 * 24 * 365;
     return Math.floor(difference / year);
 }
 
+//returns profile pic of user, placeholder if none exists
 function getProfilePic(owner){
     if (!owner.profile_pic || !owner.profile_pic.data){
         return "/images/placeholder.png";
@@ -82,6 +88,7 @@ function getProfilePic(owner){
     return "data:image/png;base64," + owner.profile_pic.data;
 }
 
+//renders 404 page whenever a user was not found
 function userNotFound(res, user, username){
     res.status(404);
     res.render('404', {

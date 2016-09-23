@@ -4,6 +4,7 @@ var router = express.Router();
 var Logger = require('../utility/logger');
 var User = require('../models/user');
 
+//handles GET requests to the root
 router.get('/', function (req, res, next) {
 
     var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
@@ -18,7 +19,7 @@ router.get('/', function (req, res, next) {
             //Properly handle this
             return;
         }
-        users = addStaticInfo(users);
+        users = addTemporaryInfo(users);
         res.render('homepage', {
             title: 'wasdWithMe - Connect with gamers.',
             layout: 'primary',
@@ -30,6 +31,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
+//returns list of game names and uris
 function getGames(list){
     var games = [];
     for (var i = 0; i < list.length; i++) {
@@ -41,10 +43,10 @@ function getGames(list){
     return games;
 }
 
-function addStaticInfo(users) {
+//adds temporary information to users
+function addTemporaryInfo(users) {
     var allPlatforms = ["Steam", "Xbox", "Playstation", "Twitch"];
     for (var i = 0; i < users.length; i++) {
-        //I won't even bother commenting this mess, it is only temporary
         users[i].platforms = allPlatforms.sort(function () {return 0.5 - Math.random()}).slice(0, Math.floor(Math.random() * allPlatforms.length) + 1);
         users[i].profile_pic = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png2/64/-profile-filled.png";
     }

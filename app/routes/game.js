@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
     return res.redirect("/");
 });
 
+//handles GET requests to /game/
 router.get('/:game', function(req, res, next) {
     var query = decodeURI(req.params.game);
 
@@ -43,6 +44,7 @@ router.get('/:game', function(req, res, next) {
     });
 });
 
+//Display a single game
 function displayGame(req, res, query, game){
 
     //Display Game can be called either with a single game (if found by db)
@@ -99,6 +101,7 @@ function displayGame(req, res, query, game){
     });
 }
 
+//cleans up a game name of edge-case characters
 function getCleanedName(name){
     var ret = name
         .toLowerCase()
@@ -107,6 +110,7 @@ function getCleanedName(name){
     return ret;
 }
 
+//called when a game was not found
 function gameNotFound(req, res, query){
     res.status(404);
     res.render('404', {
