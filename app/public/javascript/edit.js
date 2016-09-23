@@ -53,8 +53,8 @@ var deleteGame = function(button){
         button = button.target;
     }
 
-    gamesList.removeChild(button.previousSibling);
-    gamesList.removeChild(button);
+    //delete the entire div
+    gamesList.removeChild(button.parentNode);
 };
 
 //Add a new game input when the button is clicked

@@ -52,11 +52,9 @@ router.post('/:username/edit', type, function(req, res) {
     var games = [];
 
     for (var i = 0; i < req.body.games.length; i++){
-        var name = req.body.games[i];
-        var faved = true;
         games.push({
-            name: name,
-            favorite: faved
+            name: req.body.games[i],
+            favorite: req.body.favorite[i]
         });
     }
 
