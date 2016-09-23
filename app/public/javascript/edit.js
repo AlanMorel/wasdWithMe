@@ -2,8 +2,21 @@ var currentInput = null;
 var subbox = document.querySelector("span.sub-results-box");
 var gamesList = document.querySelector(".games-list");
 
+//returns true if box should be shown, false if not
+function shouldShow(query){
+    return query && query.length > 2;
+}
+
 //Searches for games whenever a key is pressed in any text input
 var searchGame = function(){
+
+    //Must have 3 or more characters to initiate a search
+    if (!shouldShow(this.value)) {
+        subbox.style.visibility = "hidden";
+        subbox.style.display = "none";
+        return;
+    }
+
     currentInput = this;
     var request = new XMLHttpRequest();
 
