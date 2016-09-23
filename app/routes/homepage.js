@@ -45,7 +45,7 @@ function getGames(list){
 
 //adds temporary information to users
 function addTemporaryInfo(users) {
-    var allPlatforms = ["Steam", "Xbox", "Playstation", "Twitch"];
+    var allPlatforms = ["steam", "xbox", "playstation", "twitch"];
     for (var i = 0; i < users.length; i++) {
         users[i].platforms = allPlatforms.sort(function () {return 0.5 - Math.random()}).slice(0, Math.floor(Math.random() * allPlatforms.length) + 1);
         users[i].profile_pic = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png2/64/-profile-filled.png";

@@ -35,7 +35,7 @@ app.use(favicon(path.join(public, 'favicon.ico')));
 app.use(express.static(public));
 app.set('port',(process.env.PORT || 3000));
 
-//app.enable('case sensitive routing');
+app.enable('case sensitive routing');
 app.disable('x-powered-by');
 
 //Morgan
