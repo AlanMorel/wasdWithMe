@@ -6,11 +6,15 @@ var data = require('../utility/data');
 //returns back html of search results
 router.get('/search', function(req, res, next) {
     var query = req.query.q;
-    data.search(query, 10, req, res, sendResults);
+    data.search(query, req, res, sendResults);
 });
 
 //callback after searching
 var sendResults = function(req, res, query, results) {
+
+    //we don't want to send more than 10 results to user
+    results = results.slice(0, 10);
+
     res.render('partials/results', {
         results: results
     });

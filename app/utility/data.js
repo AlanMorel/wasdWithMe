@@ -7,7 +7,7 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-exports.search = function(query, limit, req, res, callback){
+exports.search = function(query, req, res, callback){
 
     if (query.length < 3){
         callback(req, res, query, null);
@@ -69,17 +69,15 @@ exports.search = function(query, limit, req, res, callback){
         }
 
         if (results.length < 1){
-            callApi(req, res, query, limit, results, callback);
+            callApi(req, res, query, results, callback);
             return;
         }
-
-        results = results.slice(0, limit);
 
         callback(req, res, query, results);
     });
 };
 
-exports.callApi = function(req, res, query, limit, results, callback){
+exports.callApi = function(req, res, query, results, callback){
 
     var api = {
         fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,developers,publishers"),
@@ -94,6 +92,7 @@ exports.callApi = function(req, res, query, limit, results, callback){
     unirest.get(request)
         .header("X-Mashape-Key", config.api_key)
         .header("Accept", "application/json")
+        .timeout(1000)
         .end(function (result) {
 
             if (result.status != 200){
@@ -110,8 +109,6 @@ exports.callApi = function(req, res, query, limit, results, callback){
                 );
                 addToDatabase(game);
             });
-
-            results = results.slice(0, limit);
 
             callback(req, res, query, results);
         }
