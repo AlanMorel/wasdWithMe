@@ -54,7 +54,7 @@ router.post('/:username/edit', type, function(req, res) {
     for (var i = 0; i < req.body.games.length; i++){
         games.push({
             name: req.body.games[i],
-            favorite: req.body.favorite[i]
+            favorite: req.body.favorite === undefined ? false : req.body.favorite[i]
         });
     }
 
@@ -148,7 +148,8 @@ function getGames(list, fav){
         }
         games.push({
             name: list[i].name,
-            uri: encodeURI(list[i].name)
+            uri: encodeURI(list[i].name),
+            favorite: list[i].favorite
         });
     }
     return games;

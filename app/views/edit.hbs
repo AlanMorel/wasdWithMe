@@ -63,7 +63,7 @@
                 <div>
                     <input readonly type="text" name="games" class="input-game" value="{{name}}">
                     <button type="button" onclick="deleteGame(this)">Remove Game</button>
-                    <input type="checkbox" name="favorite" {{#if favorite}}checked{{/if}}> Favorite
+                    <input type="checkbox" name="favorite[{{@index}}]" {{#if favorite}}checked{{/if}}> Favorite
                 </div>
             {{/each}}
                 <span class="sub-results-box"></span>

@@ -58,7 +58,8 @@ function getGames(list, fav){
         }
         games.push({
             name: list[i].name,
-            uri: encodeURI(list[i].name)
+            uri: encodeURI(list[i].name),
+            favorite: list[i].favorite
         });
     }
     return games;
