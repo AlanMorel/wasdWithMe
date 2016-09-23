@@ -20,7 +20,7 @@
 - [X] implement proper adding games via search
 - [X] make game names readonly once selected
 - [X] implement removing games
-- [ ] make favorite games have no more limits
+- [X] make favorite games have no more limits
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
 - [ ] remove favorite games section in edit page, add checkboxes to game library section

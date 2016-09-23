@@ -40,14 +40,6 @@
             <div class="checkbox"><input type="checkbox" name="weekendsnight"{{#if owner.availability.weekends.night}}checked{{/if}}> Night</div>
             <div class="checkbox"><input type="checkbox" name="weekendsnever"{{#if owner.availability.weekends.never}}checked{{/if}}> Never</div>
         </div>
-        <div class="fav-games">
-            <div class="fav-games-header">Favorite Games</div>
-            <div class="games">
-            {{#each fav_games}}
-                <input readonly type="text" class="input-game" value="{{name}}">
-            {{/each}}
-            </div>
-        </div>
         <div class="platform steam">
             <div class="header">Steam</div>
             <div class="platform-name">{{owner.accounts.steam.steam_id}}</div>

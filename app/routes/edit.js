@@ -29,8 +29,8 @@ router.get('/:username/edit', function(req, res, next) {
             profile_pic: getProfilePic(owner),
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
-            all_games: getGames(owner.games),
-            fav_games: getGames(owner.games.splice(0, 5)),
+            all_games: getGames(owner.games, false),
+            fav_games: getGames(owner.games, true),
             is_owner: isOwner(req.user, owner)
         });
     });
@@ -49,7 +49,16 @@ router.post('/:username/edit', type, function(req, res) {
 
     var bio = req.body.bio;
 
-    var games = req.body.games;
+    var games = [];
+
+    for (var i = 0; i < req.body.games.length; i++){
+        var name = req.body.games[i];
+        var faved = true;
+        games.push({
+            name: name,
+            favorite: faved
+        });
+    }
 
     var availability = {
         weekdays: {
@@ -131,17 +140,21 @@ function addTemporaryInfo(owner){
     owner.accounts.twitch.username = "SharpAceX";
 }
 
-function getGames(list){
+function getGames(list, fav){
     var games = [];
     for (var i = 0; i < list.length; i++) {
+        if (fav){
+            if (!list[i].favorite){
+                continue;
+            }
+        }
         games.push({
-            name: list[i],
-            uri: encodeURI(list[i])
+            name: list[i].name,
+            uri: encodeURI(list[i].name)
         });
     }
     return games;
 }
-
 function isOwner(user, owner){
     return user && user.username === owner.username;
 }

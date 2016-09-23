@@ -143,9 +143,6 @@ var User = new mongoose.Schema({
             type: availabilityTimes
         }
     },
-    fav_games: [{
-        type: String
-    }],
     images: [{
        type: image
     }],
@@ -172,7 +169,13 @@ var User = new mongoose.Schema({
         }
     },
     games: [{
-       type: String
+        name: {
+            type: String
+        },
+        favorite: {
+            type: Boolean,
+            default: 0
+        }
     }],
     coins: {
         type: Number,

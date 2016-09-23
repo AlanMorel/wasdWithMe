@@ -32,8 +32,8 @@ router.get('/:username', function(req, res, next) {
             profile_pic: getProfilePic(owner),
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
-            all_games: getGames(owner.games),
-            fav_games: getGames(owner.games.splice(0, 5)),
+            all_games: getGames(owner.games, false),
+            fav_games: getGames(owner.games, true),
             is_owner: isOwner(req.user, owner)
         });
     });
@@ -48,12 +48,17 @@ function addTemporaryInfo(owner){
     owner.accounts.twitch.username = "SharpAceX";
 }
 
-function getGames(list){
+function getGames(list, fav){
     var games = [];
     for (var i = 0; i < list.length; i++) {
+        if (fav){
+            if (!list[i].favorite){
+                continue;
+            }
+        }
         games.push({
-            name: list[i],
-            uri: encodeURI(list[i])
+            name: list[i].name,
+            uri: encodeURI(list[i].name)
         });
     }
     return games;
