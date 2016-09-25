@@ -36,7 +36,7 @@ router.get('/:game', function(req, res, next) {
         }
 
         if (!game){
-            data.callApi(req, res, query, 1, [], displayGame);
+            data.callApi(req, res, query, [], displayGame);
             return;
         }
 
@@ -57,22 +57,9 @@ function displayGame(req, res, query, game){
         game = game[0];
     }
 
-    var release;
+    var release = getReleaseDate(game.release_date);
 
-    if (game.release_date) {
-        var date = game.release_date;
-        var locale = "en-us";
-        var month = date.toLocaleString(locale, {month: "long"});
-
-        release = month + " " + date.getDate() + ", " + date.getFullYear();
-    }
-
-    var banner;
-
-    if (game.screenshots){
-        //select a random screenshot as the game banner
-        banner = game.screenshots[Math.floor(Math.random()*game.screenshots.length)];
-    }
+    var banner = getBanner(game.screenshots);
 
     var rating = {};
 
@@ -99,6 +86,23 @@ function displayGame(req, res, query, game){
         banner: banner,
         rating: rating
     });
+}
+
+function getReleaseDate(releaseDate){
+    if (releaseDate) {
+        var date = releaseDate;
+        var locale = "en-us";
+        var month = date.toLocaleString(locale, {month: "long"});
+
+        return month + " " + date.getDate() + ", " + date.getFullYear();
+    }
+}
+
+function getBanner(screenshots){
+    if (screenshots){
+        //select a random screenshot as the game banner
+        banner = screenshots[Math.floor(Math.random() * screenshots.length)];
+    }
 }
 
 //cleans up a game name of edge-case characters

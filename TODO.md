@@ -25,8 +25,10 @@
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
 - [ ] add videos to game page
+- [ ] add mobile css to the game page
+- [ ] fix new game additions by accessing the game page directly
 - [ ] implement search filters
-- [ ] add pagination to search results when the database gets big enough
+- [ ] add pagination to search results
 - [ ] create helper file for functions being duplicated
 
 # Edgar's Todo

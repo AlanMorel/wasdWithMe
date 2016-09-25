@@ -51,15 +51,7 @@ router.post('/:username/edit', type, function(req, res) {
 
     var bio = req.body.bio;
 
-    var games = [];
-
-    //populate games array
-    for (var i = 0; i < req.body.games.length; i++){
-        games.push({
-            name: req.body.games[i],
-            favorite: req.body.favorite === undefined ? false : req.body.favorite[i]
-        });
-    }
+    var games = populateGames(req.body.games, req.body.favorite);
 
     var availability = {
         weekdays: {
@@ -111,6 +103,19 @@ router.post('/:username/edit', type, function(req, res) {
     });
 });
 
+
+//populates games to insert into database
+function populateGames(games, favorite){
+    var populated = [];
+    for (var i = 0; i < games.length; i++){
+        populated.push({
+            name: games[i],
+            favorite: favorite === undefined ? false : favorite[i]
+        });
+    }
+    return populated;
+}
+
 //returns image object of uploaded profile picture
 function getImage(data){
     if(!data){
@@ -140,10 +145,8 @@ function addTemporaryInfo(owner){
 function getGames(list, fav){
     var games = [];
     for (var i = 0; i < list.length; i++) {
-        if (fav){
-            if (!list[i].favorite){
-                continue;
-            }
+        if (fav && !list[i].favorite){
+            continue;
         }
         games.push({
             name: list[i].name,
