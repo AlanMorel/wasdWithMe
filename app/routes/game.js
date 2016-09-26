@@ -73,6 +73,7 @@ function displayGame(req, res, query, game){
     });
 }
 
+//returns the game's release date if one exists
 function getReleaseDate(releaseDate){
     if (releaseDate) {
         var date = releaseDate;
@@ -83,6 +84,7 @@ function getReleaseDate(releaseDate){
     }
 }
 
+//returns banner of the game's page given the game's screenshots
 function getBanner(screenshots){
     if (screenshots){
         //select a random screenshot as the game banner
@@ -90,9 +92,9 @@ function getBanner(screenshots){
     }
 }
 
+//returns object containing game rating and color
 function getRating(rating){
     if (rating && rating > 0){
-        //Set the rating as an int with a corresponding color
         var result = {
             number: Math.ceil(rating),
             color: getRatingColor(rating)
@@ -101,6 +103,7 @@ function getRating(rating){
     }
 }
 
+//returns the color of the game rating, given the game's rating
 function getRatingColor(rating){
     if (rating > 80){
         return "limegreen";
