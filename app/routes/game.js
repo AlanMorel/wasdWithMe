@@ -93,16 +93,21 @@ function getBanner(screenshots){
 function getRating(rating){
     if (rating && rating > 0){
         //Set the rating as an int with a corresponding color
-        var ratingObj = {};
-        ratingObj.number = Math.ceil(rating);
-        if (ratingObj.number > 80){
-            ratingObj.color = "limegreen";
-        } else if (ratingObj.number > 60) {
-            ratingObj.color = "goldenrod";
-        } else {
-            ratingObj.color = "firebrick";
-        }
-        return ratingObj;
+        var result = {
+            number: Math.ceil(rating),
+            color: getRatingColor(rating)
+        };
+        return result;
+    }
+}
+
+function getRatingColor(rating){
+    if (rating > 80){
+        return "limegreen";
+    } else if (rating > 60) {
+        return "goldenrod";
+    } else {
+        return "firebrick";
     }
 }
 
