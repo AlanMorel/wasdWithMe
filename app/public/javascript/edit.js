@@ -57,6 +57,7 @@ var selectGame = function(){
     //Hide the box since game selection was made
     subbox.style.visibility = "hidden";
     subbox.style.display = "none";
+
     return false;
 };
 
@@ -66,25 +67,40 @@ var deleteGame = function(button){
         button = button.target;
     }
 
-    //delete the entire div
+    //delete the entire parent div
     gamesList.removeChild(button.parentNode);
 };
 
 //Add a new game input when the button is clicked
 document.querySelector(".add-another").onclick = function() {
+
+    var div = document.createElement("div");
+
+    //create new input
     var input = document.createElement("input");
     input.type = "text";
     input.className = "input-game";
     input.name = "games";
     input.onkeyup = searchGame;
 
+    //create new button
     var button = document.createElement("button");
     button.type = "button";
     button.innerHTML = "Remove Game";
     button.onclick = deleteGame;
 
-    gamesList.appendChild(input);
-    gamesList.appendChild(button);
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    var favorite = document.createTextNode("Favorite");
+
+    //append the two
+    div.appendChild(input);
+    div.appendChild(button);
+    div.appendChild(checkbox);
+    div.appendChild(favorite);
+
+    gamesList.appendChild(div);
 };
 
 //Start the upload process when the pic is clicked
