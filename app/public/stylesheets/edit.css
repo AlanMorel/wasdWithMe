@@ -362,6 +362,7 @@ img.coin {
 .games div,
 .games-list div {
   padding: 0;
+  position: relative;
 }
 .game {
   width: 125px;
@@ -590,8 +591,8 @@ h2 {
 }
 span.sub-results-box {
   display: block;
-  position: initial;
-  height: 100%;
+  position: absolute;
+  height: 500px;
 }
 span.sub-results-box a {
   color: #000;

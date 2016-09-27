@@ -103,6 +103,7 @@ document.querySelector(".add-another").onclick = function() {
     div.appendChild(checkbox);
     div.appendChild(favorite);
 
+    //append div to games list
     gamesList.appendChild(div);
 };
 
