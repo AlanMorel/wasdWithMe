@@ -74,6 +74,7 @@ var deleteGame = function(button){
 //Add a new game input when the button is clicked
 document.querySelector(".add-another").onclick = function() {
 
+    //create new div
     var div = document.createElement("div");
 
     //create new input
@@ -89,12 +90,14 @@ document.querySelector(".add-another").onclick = function() {
     button.innerHTML = "Remove Game";
     button.onclick = deleteGame;
 
+    //create new checkbox
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
 
+    //create favorite text label
     var favorite = document.createTextNode("Favorite");
 
-    //append the two
+    //append the elements
     div.appendChild(input);
     div.appendChild(button);
     div.appendChild(checkbox);
