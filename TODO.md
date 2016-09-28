@@ -25,15 +25,16 @@
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
 - [ ] add videos to game page
+- [ ] add +1s to video game pages
 - [ ] add mobile css to the game page
 - [ ] fix new game additions by accessing the game page directly
 - [ ] implement search filters
 - [ ] add pagination to search results
 - [ ] create helper file for functions being duplicated
+- [ ] build out footer
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)
-
 - [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 - [ ] display error messages on login page just like sign up page
 - [ ] if (user.last_activity.minutes < 5) { status = "online"; }
@@ -53,7 +54,6 @@
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] add messaging other users
 - [ ] add blocking other users
-- [ ] build out footer
 - [ ] leaderboards page
 - [ ] recatcha on sign up page
 - [ ] google analytics
