@@ -6,11 +6,11 @@
     <form method="post" action="/login">
         <div>
             <label>Username:</label>
-            <input type="text" name="username">
+            <input type="text" name="username" maxlength="{{config "usernameMaxLength"}}">
         </div>
         <div>
             <label>Password:</label>
-            <input type="password" name="password">
+            <input type="password" name="password" maxlength="{{config "passwordMaxLength"}}">
         </div>
         <div class="action-button">
             <input type="submit" value="Log In" class="button">

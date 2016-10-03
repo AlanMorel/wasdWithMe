@@ -2,7 +2,7 @@ var config  = require('../config');
 var exports = module.exports = {};
 
 //returns undefined if no error occurs
-exports.checkAccount = function(username, password, email) {
+exports.checkAccount = function(username, password, confirmation, email) {
 
     if (username === '') {
         return "Username not entered";
@@ -27,6 +27,10 @@ exports.checkAccount = function(username, password, email) {
 
     if(!passwordIsValid(password)){
       return "Your password must contain at least one letter and one number";
+    }
+
+    if (password !== confirmation){
+        return "The two passwords entered do not match.";
     }
 
     //check email field if valid

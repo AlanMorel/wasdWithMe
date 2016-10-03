@@ -28,6 +28,7 @@ router.post('/', function (req, res) {
     var displayName = req.body.username;
     var username = displayName.toLowerCase(); //properly slug this
     var password = req.body.password;
+    var confirmation = req.body.confirmation;
     var email = req.body.email;
     var gender = req.body.gender;
     var birthday = req.body.date_of_birth;
@@ -45,7 +46,7 @@ router.post('/', function (req, res) {
         + " state: " + state
         + " city: " + city);
 
-    var error = Validation.checkAccount(displayName, password, email);
+    var error = Validation.checkAccount(displayName, password, confirmation, email);
 
     //Any errors are displayed to the user, otherwise continue signing them up
     if (error != undefined) {
