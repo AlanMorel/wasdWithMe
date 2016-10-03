@@ -25,6 +25,8 @@
 - [X] add min/maxLength attributes to ALL input tags where applicable (sign up/login/editing profile)
 - [X] add extra field for password confirmation
 - [X] validate that the two passwords are equal
+- [X] display error messages on login page just like sign up page
+- [X] add html attributes to input tags
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
 - [ ] add videos to game page
@@ -35,15 +37,14 @@
 - [ ] add pagination to search results
 - [ ] create helper file for functions being duplicated
 - [ ] build out footer
+- [ ] recode signup js
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)
 - [ ] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
-- [ ] display error messages on login page just like sign up page
 - [ ] if (user.last_activity.minutes < 5) { status = "online"; }
 - [ ] bio, first name, last name, checks on user profile , tag line
 - [ ] client-side form validation to register and sign in pages
-- [ ] add html attributes to input tags
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [ ] sanitize input for form data
 - [ ] display error messages on login page just like sign up page
