@@ -5,28 +5,28 @@ var exports = module.exports = {};
 exports.checkAccount = function(username, password, confirmation, email) {
 
     if (username === '') {
-        return "Username not entered";
+        return "Username not entered.";
     }
     //check username first
     if (!usernameIsValid(username)) {
-        return "Usernames may only contain letters, numbers, dashes and underscores";
+        return "Usernames may only contain letters, numbers, dashes and underscores.";
     }
 
     if (username.length < config.usernameMinLength || username.length > config.usernameMaxLength) {
-        return "Username must be between " + config.usernameMinLength+ " and " + config.usernameMaxLength + " characters in length";
+        return "Username must be between " + config.usernameMinLength+ " and " + config.usernameMaxLength + " characters in length.";
     }
 
     //check password field valid next
     if (password === '') {
-        return "You must input a password";
+        return "You must input a password.";
     }
 
     if (password.length < config.passwordMinLength || password.length > config.passwordMaxLength) {
-        return "Passwords must be between " + config.passwordMinLength + " and " + config.passwordMaxLength + " characters in length";
+        return "Passwords must be between " + config.passwordMinLength + " and " + config.passwordMaxLength + " characters in length.";
     }
 
     if(!passwordIsValid(password)){
-      return "Your password must contain at least one letter and one number";
+      return "Your password must contain at least one letter and one number.";
     }
 
     if (password !== confirmation){
@@ -35,15 +35,15 @@ exports.checkAccount = function(username, password, confirmation, email) {
 
     //check email field if valid
     if (email === '') {
-        return "Email address not entered";
+        return "Email address not entered.";
     }
 
     if(email.length < config.emailMinLength || email.length > config.emailMaxLength){
-      return "Email length not between " + config.emailMinLength + " and " + config.emailMaxLength + " characters";
+      return "Email length not between " + config.emailMinLength + " and " + config.emailMaxLength + " characters.";
     }
 
     if (!emailIsValid(email)) {
-        return "Please provide a valid email address";
+        return "Please provide a valid email address.";
     }
 
     return undefined;

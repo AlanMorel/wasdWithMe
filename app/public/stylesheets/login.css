@@ -59,13 +59,14 @@ input:focus {
   border-radius: 18px;
   padding-bottom: 50px;
   margin-bottom: 75px;
+  padding-top: 14px;
 }
 img {
   text-align: center;
   margin-bottom: 30px;
 }
 .container div {
-  padding-top: 30px;
+  padding-top: 20px;
   text-align: left;
 }
 label {
@@ -73,12 +74,12 @@ label {
   font-size: 20px;
   float: left;
   text-align: right;
-  margin-right: 1vw;
+  margin-right: 10px;
 }
 input,
 select {
   font-size: 18px;
-  width: 200px;
+  width: 250px;
 }
 .title {
   color: #fff;
