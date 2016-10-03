@@ -7,6 +7,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var flash        = require('connect-flash');
 var mongoose     = require('mongoose');
+var bluebird     = require('bluebird');
 var passport     = require('passport');
 var Strategy     = require('passport-local').Strategy;
 var hbs          = require('hbs');
@@ -87,7 +88,8 @@ app.use('/user', edit);
 app.use('/search', search);
 app.use('/game', game);
 
-//MongoDB
+//Mongoose
+mongoose.Promise = bluebird;
 if(app.get('env')==='production'){
   app.listen(app.get('port'));
   //NOTE: You have to run heroku config first to set this environment variable
