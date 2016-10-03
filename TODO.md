@@ -30,6 +30,7 @@
 - [X] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 - [X] display error messages on login page just like sign up page
 - [X] sanitize input for form data
+- [X] bio, first name, last name, checks on user profile , tag line
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
 - [ ] add videos to game page
@@ -45,7 +46,6 @@
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)
 - [ ] if (user.last_activity.minutes < 5) { status = "online"; }
-- [ ] bio, first name, last name, checks on user profile , tag line
 - [ ] ensure usernames only contain contain alphanumeric, numbers, and underscore
 - [ ] ctrl+f every file for "properly slug", and slug it
 

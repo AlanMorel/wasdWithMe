@@ -47,21 +47,21 @@ exports.checkAccount = function(username, password, confirmation, email) {
     }
 
     return undefined;
-}
+};
 
 //slugs title by replacing spaces with dashes, removing all symbols, removes a sequence of dashes,
 //disallows a dash from start or end of slug
 //@return: Returns undefeined if cannot be slugged
 exports.slugTitle = function(title){
   return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '') .replace(/^-+/, '').replace(/-+$/, '') || undefined;
-}
+};
 
 exports.slugUser = function(username){
   if(usernameIsValid(username)){
     return slugTitle(username);
   }
   return undefined;
-}
+};
 
 /*
  Regex operation ensures first character is an alphanumeric

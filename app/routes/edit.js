@@ -44,12 +44,12 @@ router.post('/:username/edit', type, function(req, res) {
     var username = req.params.username;
     var slug = username.toLowerCase(); //properly slug
 
-    var tagline = req.body.tagline;
+    var tagline = req.body.tagline.substring(0, config.taglineMaxLength);
 
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
 
-    var bio = req.body.bio;
+    var bio = req.body.bio.substring(0, config.bioMaxLength);
 
     var games = populateGames(req.body.games, req.body.favorite);
 
@@ -69,8 +69,6 @@ router.post('/:username/edit', type, function(req, res) {
     };
 
     var image = getImage(req.file);
-
-    //validate data here, return error if there is one
 
     var query = {
         'username': slug
