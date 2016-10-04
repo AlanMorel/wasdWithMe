@@ -1,5 +1,3 @@
-var exports = module.exports = {};
-
 var unirest = require('unirest');
 var async   = require('async');
 var Logger  = require('../utility/logger');
@@ -7,7 +5,7 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-exports.search = function(query, req, res, callback){
+function search(query, req, res, callback){
 
     if (query.length < 3){
         callback(req, res, query, null);
@@ -75,12 +73,12 @@ exports.search = function(query, req, res, callback){
 
         callback(req, res, query, results);
     });
-};
+}
 
-exports.callApi = function(req, res, query, results, callback){
+function callApi(req, res, query, results, callback){
 
     var api = {
-        fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,developers,publishers"),
+        fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,videos,developers,publishers"),
         limit:  "&limit="  + 50, //maximum allowed per api
         offset: "&offset=" + 0,
         query:  "&search=" + query,
@@ -113,7 +111,7 @@ exports.callApi = function(req, res, query, results, callback){
             callback(req, res, query, results);
         }
     );
-};
+}
 
 function addToDatabase(game){
     var new_game = {
@@ -137,6 +135,11 @@ function addToDatabase(game){
     var screens = getScreenshots(game);
     if (screens){
         new_game.screenshots = screens;
+    }
+
+    var videos = getVideos(game);
+    if (screens){
+        new_game.videos = videos;
     }
 
     Game.update(
@@ -180,6 +183,21 @@ function getScreenshots(game){
     }
 }
 
+function getVideos(game){
+    try {
+        var videos = [];
+        game.videos.forEach(function(video){
+            videos.push({
+                title: video.name,
+                link: video.video_id
+            });
+        });
+        return videos;
+    } catch (err) {
+        return null;
+    }
+}
+
 function getReleaseDate(game){
     try {
         return game.release_dates[0].date;
@@ -213,3 +231,8 @@ function getProfilePic(owner){
     }
     return "data:image/png;base64," + owner.profile_pic.data;
 }
+
+module.exports = {
+    callApi: callApi,
+    search: search,
+};

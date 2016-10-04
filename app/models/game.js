@@ -25,6 +25,14 @@ var Game = new mongoose.Schema({
     screenshots: [{
        type: String
     }],
+    videos: [{
+        title: {
+            type: String
+        },
+        link: {
+            type: String
+        }
+    }],
     owners: [{
         type: String
     }]
