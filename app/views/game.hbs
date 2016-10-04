@@ -27,6 +27,16 @@
             <img src="https://res.cloudinary.com/igdb/image/upload/t_screenshot_huge/{{this}}.jpg" class="screenshot"/>
         {{/each}}
         </div>
+        {{#if game.videos}}
+        <h1>Videos</h1>
+        {{/if}}
+        {{#each game.videos}}
+            <div class="video-title">{{this.title}}</div>
+            <div class="video-wrapper">
+                <iframe width="420" height="315" frameborder="0" src="https://www.youtube.com/embed/{{this.link}}"></iframe>
+            </div>
+        {{/each}}
+        </div>
     {{else}}
     <span>Sorry, your search did not return any results.</span>
     {{/if}}
