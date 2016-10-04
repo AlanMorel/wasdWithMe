@@ -213,6 +213,7 @@ footer .bottom {
 }
 body {
   background-color: #e9ebee;
+  overflow-x: hidden;
 }
 .container {
   color: #000;
@@ -316,13 +317,19 @@ img.screenshot {
     color: #000;
     margin-left: 0;
     width: 100%;
+    max-width: 100%;
+    font-size: 36px;
   }
   .release-date {
     color: #6f6f6f;
     margin-left: 0;
+    min-width: 100%;
+    font-size: 24px;
+    padding-top: 16px;
   }
   .top {
     text-align: center;
+    width: 100%;
   }
   .boxart {
     width: 50%;
