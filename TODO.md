@@ -30,12 +30,12 @@
 - [X] Mongoose: mpromise (mongoose's default promise library) is deprecated, plug in your own promise library instead: http://mongoosejs.com/docs/promises.html
 - [X] display error messages on login page just like sign up page
 - [X] sanitize input for form data
-- [X] bio, first name, last name, checks on user profile , tag line
+- [X] bio, first name, last name, checks on user profile, tag line
+- [X] add mobile css to the game page
 - [ ] add backend support for developers and publishers API fields
 - [ ] add developers and publishers to games page
 - [ ] add videos to game page
 - [ ] add +1s to video game pages
-- [ ] add mobile css to the game page
 - [ ] fix new game additions by accessing the game page directly
 - [ ] implement search filters
 - [ ] add pagination to search results

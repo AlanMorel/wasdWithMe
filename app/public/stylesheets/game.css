@@ -285,3 +285,46 @@ h1 {
 img.screenshot {
   max-width: 340px;
 }
+@media only screen and (max-width: 750px) {
+  .container {
+    width: 100%;
+  }
+  img.screenshot {
+    max-width: 100%;
+  }
+  .game-name {
+    color: #000;
+    margin-left: 0;
+    width: 100%;
+  }
+  .release-date {
+    color: #6f6f6f;
+    margin-left: 0;
+  }
+  .top {
+    text-align: center;
+  }
+  .boxart {
+    width: 50%;
+    max-height: 100%;
+    margin: auto;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 40px;
+  }
+  .banner {
+    position: initial;
+  }
+  .game {
+    margin-top: 0;
+  }
+  .rating {
+    display: block;
+    position: inherit;
+    text-align: center;
+    padding-top: 0;
+    padding-left: 0;
+    line-height: 75px;
+    margin: auto;
+  }
+}
