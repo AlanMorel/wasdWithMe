@@ -241,12 +241,11 @@ footer img {
     height: initial;
     width: 100%;
   }
-  .madeinny {
-    text-align: center;
-  }
+  .madeinny,
   .madeinny-container {
     text-align: center;
   }
+  .madeinny img,
   .madeinny-container img {
     width: 50%;
   }
