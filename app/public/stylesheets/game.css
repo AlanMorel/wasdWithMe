@@ -232,6 +232,25 @@ footer img {
     font-size: 3vw;
   }
 }
+@media only screen and (max-width: 750px) {
+  .section {
+    width: 90%;
+    margin-left: 20px;
+  }
+  footer .top {
+    height: initial;
+    width: 100%;
+  }
+  .madeinny {
+    text-align: center;
+  }
+  .madeinny-container {
+    text-align: center;
+  }
+  .madeinny-container img {
+    width: 50%;
+  }
+}
 body {
   background-color: #e9ebee;
   overflow-x: hidden;
