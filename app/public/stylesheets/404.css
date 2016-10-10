@@ -147,12 +147,13 @@ form {
   vertical-align: middle;
 }
 footer {
-  height: 225px;
-  background-color: #282828;
   margin-top: 100px;
+  background-color: #282828;
 }
 footer .top {
-  height: 150px;
+  height: 155px;
+  width: 800px;
+  margin: auto;
 }
 footer .bottom {
   background-color: rgba(0,0,0,0.25);
@@ -173,6 +174,22 @@ footer .bottom {
 }
 .one-ups-label:hover {
   background-color: #cfffd4;
+}
+.section {
+  display: inline-block;
+  width: 240px;
+  vertical-align: top;
+}
+.footer-header {
+  margin-top: 20px;
+  margin-bottom: 10PX;
+  font-size: 20px;
+}
+footer img {
+  width: 100px;
+}
+.madeinny-container {
+  text-align: center;
 }
 @media only screen and (max-width: 500px) {
   .wasd-header {
