@@ -5,7 +5,6 @@
 - [ ] implement search filters
 - [ ] add pagination to search results
 - [ ] create helper file for functions being duplicated
-- [ ] build out footer
 - [ ] recode/add client-side form validation to register and sign in pages
 
 # Edgar's Todo

@@ -193,7 +193,7 @@ footer img {
   text-align: center;
 }
 .footer-item {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 @media only screen and (max-width: 500px) {
   .wasd-header {

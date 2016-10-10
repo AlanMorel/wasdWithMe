@@ -93,7 +93,6 @@ router.post('/', function (req, res) {
             return;
         }
         authentication(req, res, function () {
-            console.log("Authenticated successfully");
             return res.redirect('/');
         });
     });
