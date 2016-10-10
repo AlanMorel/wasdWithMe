@@ -1,11 +1,11 @@
 {
-  "name": "wasdWithMe",
+  "name": "WASD With Me",
   "version": "0.0.0",
   "author": "Alan Morel <alanmorel.com>",
   "contributors": [
     "Alan Morel <alan.morel@nyu.edu> (http://alanmorel.com)"
   ],
-  "description": "wasdWithMe is the online destination to meet and play with gamers.",
+  "description": "WASD With Me is the online destination to meet and play with gamers.",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

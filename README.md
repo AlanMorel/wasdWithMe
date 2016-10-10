@@ -1,6 +1,6 @@
-# wasdWithMe
+# WASD With Me
 
-**wasdWithMe** is the online destination to meet and play with gamers.
+**WASD With Me** is the online destination to meet and play with gamers.
 
   - Discover and connect with gamers
   - Set up gaming sessions
@@ -19,7 +19,7 @@ You can also:
 
 ## Dependencies
 
-**wasdWithMe** uses a number of dependencies to work properly:
+**WASD With Me** uses a number of dependencies to work properly:
 
 * [async](https://www.npmjs.com/package/async) - functions for working with asynchronous JavaScript
 * [bluebird](https://www.npmjs.com/package/bluebird) - full featured Promises
@@ -50,13 +50,13 @@ You can also:
 Install node.js, npm, and mongodb, then clone this repository
 
 ```sh
-$ git clone https://github.com/AlanMorel/wasdWithMe wasdWithMe
+$ git clone https://github.com/AlanMorel/wasdWithMe WASDWithMe
 ```
 
 Install the node dependencies
 
 ```sh
-$ cd wasdWithMe
+$ cd WASDWithMe
 $ npm install
 ```
 
@@ -81,7 +81,7 @@ Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/). Pl
 
 ## License
 
-**wasdWithMe** is licensed under the [MIT license](LICENSE).
+**WASD With Me** is licensed under the [MIT license](LICENSE).
 
 ## Screenshots
 

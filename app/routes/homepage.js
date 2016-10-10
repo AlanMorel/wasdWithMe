@@ -21,7 +21,7 @@ router.get('/', function (req, res, next) {
         }
         users = addTemporaryInfo(users);
         res.render('homepage', {
-            title: 'wasdWithMe - Connect with gamers.',
+            title: 'WASD With Me - Connect with gamers.',
             layout: 'primary',
             file: 'homepage',
             user: req.user,

@@ -1,11 +1,11 @@
 var config = {};
 
 //General
-config.name = "wasdWithMe";
-config.description = "wasdWithMe is the online destination to meet and play with gamers.";
-config.siteUrl = "http://wasdWithMe.com";
+config.name = "WASD With Me";
+config.description = "WASD With Me is the online destination to meet and play with gamers.";
+config.siteUrl = "http://wasdwithme.com";
 config.favicon = "/favicon.ico";
-config.keywords = "wasdWithMe, gaming";
+config.keywords = "WASD, with, me, gaming";
 
 //jQuery
 config.jQueryUrl = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js";

@@ -85,7 +85,7 @@ router.post('/', function (req, res) {
         if (err) {
             Logger.log("Registering user failed.", err);
             res.render('signup', {
-              title: 'wasdWithMe - Sign up!',
+              title: 'WASD With Me - Sign up!',
               layout: 'secondary',
               file: 'signup',
               error: err.message

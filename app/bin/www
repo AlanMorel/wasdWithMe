@@ -90,4 +90,4 @@ function onListening() {
 }
 
 var url = "http://localhost:3000/";
-console.log("Visit " + url + " to visit wasdWithMe homepage.");
+console.log("Visit " + url + " to visit WASD With Me homepage.");
