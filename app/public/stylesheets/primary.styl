@@ -17,40 +17,27 @@ transition(transition) {
   transition: transition;
 }
 .button {
-  font-family: 'Source Sans Pro', sans-serif;
-  letter-spacing: 1px;
-  border: 1px solid #cccccc;
   cursor: pointer;
   color: black;
   background: white;
   border-radius: 4px;
-  font-weight: lighter;
   padding: 2% 6%;
-  text-decoration: none;
   font-size: 1.5vw;
   transition(all 0.1s ease-in-out);
 }
 .button:hover {
   background: wasdWithMeGray;
-  cursor: pointer;
   color: white;
   border: 1px solid #111111;
 }
 .wasd-text {
-  display: inline-block;
   float: right;
-  height: 100%;
   text-align: right;
-  font-size: 1vw;
   margin-top: 6px;
 }
 .wasd-top {
-  font-family: 'Roboto', sans-serif;
-  margin: auto;
   text-align: right;
-  text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-size: 16px;
 }
 .wasd-bottom {
   font-size: 20px;
@@ -70,8 +57,7 @@ form {
   height: 40px;
   background-color: #53368a;
   text-align: center;
-  padding-top: 16px;
-  padding-bottom: 10px;
+  padding: 16px 0 10px 0;
   input[type="text"] {
     width: 350px;
     font-size: 18px;
@@ -89,11 +75,8 @@ form {
   }
   .result {
     text-align: left;
-    display: inline-block;
-    margin-bottom: 4px;
-    margin-top: 4px;
+    margin: 4px 0 4px 0;
     cursor: pointer;
-    color: black;
     width: 485px;
     float: left;
   }
@@ -108,9 +91,9 @@ form {
   padding-right: 10px;
 }
 .description {
-  font-size: 12px;
+  font-size: 13px;
   display: inline-block;
-  max-height: 105px;
+  max-height: 94px;
   overflow: hidden;
 }
 .results-box, .sub-results-box {
@@ -121,7 +104,6 @@ form {
   padding: 2px 6px 2px 6px;
   border-radius: 4px;
   visibility: hidden;
-  z-index: 1;
   box-shadow: 0 0 75px black;
   width: 500px;
   max-height: 500px;
@@ -135,7 +117,6 @@ footer {
   margin-top: 100px;
   background-color: wasdWithMeGray;
   .top {
-    height: 155px;
     width: 800px;
     margin: auto;
     margin-bottom: 24px;
@@ -167,14 +148,13 @@ footer {
   vertical-align: top;
 }
 .footer-header {
-  margin-top: 20px;
-  margin-bottom: 10PX;
+  margin: 20px 0 10px 0;
   font-size: 20px;
 }
-footer img{
+footer img {
   width: 100px;
 }
-.madeinny-container{
+.madeinny-container {
   text-align: center;
 }
 .footer-item {
@@ -220,8 +200,8 @@ footer img{
     width: 90%;
     margin-left: 20px;
   }
-  footer{
-    .top{
+  footer {
+    .top {
       height: initial;
       width: 100%;
     }

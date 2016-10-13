@@ -22,16 +22,11 @@ html {
   height: 100%;
 }
 .button {
-  font-family: 'Source Sans Pro', sans-serif;
-  letter-spacing: 1px;
-  border: 1px solid #ccc;
   cursor: pointer;
   color: #000;
   background: #fff;
   border-radius: 4px;
-  font-weight: lighter;
   padding: 2% 6%;
-  text-decoration: none;
   font-size: 1.5vw;
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
@@ -40,25 +35,17 @@ html {
 }
 .button:hover {
   background: #282828;
-  cursor: pointer;
   color: #fff;
   border: 1px solid #111;
 }
 .wasd-text {
-  display: inline-block;
   float: right;
-  height: 100%;
   text-align: right;
-  font-size: 1vw;
   margin-top: 6px;
 }
 .wasd-top {
-  font-family: 'Roboto', sans-serif;
-  margin: auto;
   text-align: right;
-  text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-size: 16px;
 }
 .wasd-bottom {
   font-size: 20px;
@@ -79,8 +66,7 @@ form {
   height: 40px;
   background-color: #53368a;
   text-align: center;
-  padding-top: 16px;
-  padding-bottom: 10px;
+  padding: 16px 0 10px 0;
 }
 .search input[type="text"],
 .sub-results-box input[type="text"] {
@@ -102,11 +88,8 @@ form {
 .search .result,
 .sub-results-box .result {
   text-align: left;
-  display: inline-block;
-  margin-bottom: 4px;
-  margin-top: 4px;
+  margin: 4px 0 4px 0;
   cursor: pointer;
-  color: #000;
   width: 485px;
   float: left;
 }
@@ -121,9 +104,9 @@ form {
   padding-right: 10px;
 }
 .description {
-  font-size: 12px;
+  font-size: 13px;
   display: inline-block;
-  max-height: 105px;
+  max-height: 94px;
   overflow: hidden;
 }
 .results-box,
@@ -135,7 +118,6 @@ form {
   padding: 2px 6px 2px 6px;
   border-radius: 4px;
   visibility: hidden;
-  z-index: 1;
   box-shadow: 0 0 75px #000;
   width: 500px;
   max-height: 500px;
@@ -151,7 +133,6 @@ footer {
   background-color: #282828;
 }
 footer .top {
-  height: 155px;
   width: 800px;
   margin: auto;
   margin-bottom: 24px;
@@ -182,8 +163,7 @@ footer .bottom {
   vertical-align: top;
 }
 .footer-header {
-  margin-top: 20px;
-  margin-bottom: 10PX;
+  margin: 20px 0 10px 0;
   font-size: 20px;
 }
 footer img {
@@ -254,7 +234,6 @@ footer img {
 .promo2 {
   display: inline-block;
   text-align: center;
-  width: 100%;
 }
 .promo {
   background-color: #282828;
@@ -322,11 +301,8 @@ img.couple {
   max-height: 64px;
 }
 .live-profiles {
-  width: 100%;
-  height: 325px;
   color: #000;
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding: 30px 0 50px 0;
   text-align: center;
 }
 .live-profiles-header {
