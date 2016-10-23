@@ -6,6 +6,7 @@
 - [ ] add pagination to search results
 - [ ] create helper file for functions being duplicated
 - [ ] recode/add client-side form validation to register and sign in pages
+- [ ] redesign api/database retrieval system for better clarity and modularity
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)

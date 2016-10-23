@@ -232,6 +232,7 @@ footer img {
 .promo2 {
   display: inline-block;
   text-align: center;
+  width: 100%;
 }
 .promo {
   background-color: #282828;
@@ -356,7 +357,7 @@ img.couple {
 .popular-games {
   background-color: #282828;
   text-align: center;
-  height: 475px;
+  padding-bottom: 40px;
 }
 .popular-games-header {
   font-size: 24px;
@@ -442,6 +443,12 @@ img.boxart:hover {
     margin-left: 10px;
     margin-right: 10px;
     height: 12vw;
+  }
+  img.boxart {
+    max-width: 125px;
+  }
+  .game-title {
+    font-size: 14px;
   }
   .live-profiles {
     display: table;
