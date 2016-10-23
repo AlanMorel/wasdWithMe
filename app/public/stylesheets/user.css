@@ -1,518 +1,518 @@
 html,
 body {
-  font-family: 'Open Sans', sans-serif;
-  color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
 }
 body {
-  margin: 0;
+    margin: 0;
 }
 a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 html {
-  color: #fff;
+    color: #fff;
 }
 .wasd-header {
-  height: 75px;
-  background-color: #6441a5;
-  padding: 15px;
+    height: 75px;
+    background-color: #6441a5;
+    padding: 15px;
 }
 .logo {
-  height: 100%;
+    height: 100%;
 }
 .button {
-  font-family: 'Source Sans Pro', sans-serif;
-  letter-spacing: 1px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  color: #000;
-  background: #fff;
-  border-radius: 4px;
-  font-weight: lighter;
-  padding: 2% 6%;
-  text-decoration: none;
-  font-size: 1.5vw;
-  -moz-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 1px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: #000;
+    background: #fff;
+    border-radius: 4px;
+    font-weight: lighter;
+    padding: 2% 6%;
+    text-decoration: none;
+    font-size: 1.5vw;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 .button:hover {
-  background: #282828;
-  cursor: pointer;
-  color: #fff;
-  border: 1px solid #111;
+    background: #282828;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #111;
 }
 .wasd-text {
-  display: inline-block;
-  float: right;
-  height: 100%;
-  text-align: right;
-  font-size: 1vw;
-  margin-top: 6px;
+    display: inline-block;
+    float: right;
+    height: 100%;
+    text-align: right;
+    font-size: 1vw;
+    margin-top: 6px;
 }
 .wasd-top {
-  font-family: 'Roboto', sans-serif;
-  margin: auto;
-  text-align: right;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 16px;
 }
 .wasd-bottom {
-  font-size: 20px;
-  margin-top: 12px;
+    font-size: 20px;
+    margin-top: 12px;
 }
 .wasd-bottom a {
-  margin-left: 16px;
+    margin-left: 16px;
 }
 .name {
-  font-size: 20px;
-  padding-bottom: 4px;
+    font-size: 20px;
+    padding-bottom: 4px;
 }
 form {
-  position: relative;
+    position: relative;
 }
 .search {
-  height: 40px;
-  background-color: #53368a;
-  text-align: center;
-  padding-top: 16px;
-  padding-bottom: 10px;
+    height: 40px;
+    background-color: #53368a;
+    text-align: center;
+    padding-top: 16px;
+    padding-bottom: 10px;
 }
 .search input[type="text"] {
-  width: 350px;
-  font-size: 18px;
-  height: 24px;
-  padding: 4px;
-  border-radius: 4px;
-  border: none;
-  outline: none;
+    width: 350px;
+    font-size: 18px;
+    height: 24px;
+    padding: 4px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
 }
 .search input[type="image"] {
-  max-height: 32px;
-  max-width: 32px;
-  vertical-align: top;
-  margin-left: 6px;
+    max-height: 32px;
+    max-width: 32px;
+    vertical-align: top;
+    margin-left: 6px;
 }
 .search .result {
-  text-align: left;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 4px;
-  margin-top: 4px;
-  cursor: pointer;
-  color: #000;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    cursor: pointer;
+    color: #000;
 }
 .search .result:hover {
-  background-color: #6441a5;
-  color: #fff;
+    background-color: #6441a5;
+    color: #fff;
 }
 .info {
-  float: right;
-  width: 360px;
-  padding-right: 10px;
+    float: right;
+    width: 360px;
+    padding-right: 10px;
 }
 .description {
-  font-size: 12px;
-  display: inline-block;
-  max-height: 105px;
-  overflow: hidden;
+    font-size: 12px;
+    display: inline-block;
+    max-height: 105px;
+    overflow: hidden;
 }
 .results-box {
-  position: absolute;
-  top: 50px;
-  background: #fff;
-  color: #000;
-  padding: 2px 6px 2px 6px;
-  border-radius: 4px;
-  visibility: hidden;
-  z-index: 1;
-  box-shadow: 0 0 75px #000;
-  width: 500px;
-  max-height: 500px;
-  overflow-y: scroll;
+    position: absolute;
+    top: 50px;
+    background: #fff;
+    color: #000;
+    padding: 2px 6px 2px 6px;
+    border-radius: 4px;
+    visibility: hidden;
+    z-index: 1;
+    box-shadow: 0 0 75px #000;
+    width: 500px;
+    max-height: 500px;
+    overflow-y: scroll;
 }
 .results-box img {
-  max-width: 100px;
-  vertical-align: middle;
+    max-width: 100px;
+    vertical-align: middle;
 }
 footer {
-  height: 225px;
-  background-color: #282828;
+    height: 225px;
+    background-color: #282828;
 }
 footer .top {
-  height: 150px;
+    height: 150px;
 }
 footer .bottom {
-  background-color: rgba(0,0,0,0.25);
-  height: 75px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
+    background-color: rgba(0,0,0,0.25);
+    height: 75px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
 }
 .one-ups-label {
-  font-size: 10px;
-  border-radius: 6px;
-  border: 1px solid #008629;
-  padding: 2px 4px 2px 4px;
-  vertical-align: middle;
-  color: #008629;
-  background-color: #edfff3;
-  cursor: pointer;
+    font-size: 10px;
+    border-radius: 6px;
+    border: 1px solid #008629;
+    padding: 2px 4px 2px 4px;
+    vertical-align: middle;
+    color: #008629;
+    background-color: #edfff3;
+    cursor: pointer;
 }
 .one-ups-label:hover {
-  background-color: #cfffd4;
+    background-color: #cfffd4;
 }
 @media only screen and (max-width: 500px) {
-  .wasd-header {
-    height: 50px;
-  }
-  .wasd-top {
-    font-size: 14px;
-  }
-  .wasd-text {
-    margin-top: 0;
-  }
-  .wasd-bottom {
-    font-size: 13px;
-  }
-  .search input[type="text"] {
-    width: 70vw;
-    font-size: 16px;
-  }
-  .results-box {
-    width: 94vw;
-    left: 1vw;
-  }
-  .results-box img {
-    max-width: 15vw;
-    vertical-align: middle;
-  }
-  .info {
-    width: 77vw;
-  }
-  .name {
-    font-size: 4vw;
-  }
-  .description {
-    font-size: 3vw;
-  }
+    .wasd-header {
+        height: 50px;
+    }
+    .wasd-top {
+        font-size: 14px;
+    }
+    .wasd-text {
+        margin-top: 0;
+    }
+    .wasd-bottom {
+        font-size: 13px;
+    }
+    .search input[type="text"] {
+        width: 70vw;
+        font-size: 16px;
+    }
+    .results-box {
+        width: 94vw;
+        left: 1vw;
+    }
+    .results-box img {
+        max-width: 15vw;
+        vertical-align: middle;
+    }
+    .info {
+        width: 77vw;
+    }
+    .name {
+        font-size: 4vw;
+    }
+    .description {
+        font-size: 3vw;
+    }
 }
 body {
-  background-color: #e9ebee;
+    background-color: #e9ebee;
 }
 .profile {
-  color: #000;
-  width: 700px;
-  margin: auto;
-  margin-top: 35px;
-  margin-bottom: 35px;
+    color: #000;
+    width: 700px;
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
 }
 .header {
-  overflow: hidden;
+    overflow: hidden;
 }
 .header img {
-  max-width: 128px;
-  max-height: 128px;
-  vertical-align: bottom;
+    max-width: 128px;
+    max-height: 128px;
+    vertical-align: bottom;
 }
 .pic {
-  display: inline-block;
-  min-height: 128px;
+    display: inline-block;
+    min-height: 128px;
 }
 .header,
 .about,
 .fav-games,
 .platform,
 .all-games {
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  margin-bottom: 35px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 35px;
 }
 .user-info {
-  display: inline-block;
-  vertical-align: top;
-  margin-left: 20px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
 }
 .username {
-  display: inline;
-  vertical-align: top;
-  font-size: 40px;
-  font-weight: lighter;
-  letter-spacing: 2px;
+    display: inline;
+    vertical-align: top;
+    font-size: 40px;
+    font-weight: lighter;
+    letter-spacing: 2px;
 }
 .extra-info {
-  line-height: 40px;
+    line-height: 40px;
 }
 .right-side {
-  float: right;
-  display: inline-block;
+    float: right;
+    display: inline-block;
 }
 .profile-one-ups,
 .profile-coins {
-  text-align: right;
-  margin-right: 16px;
-  margin-top: 7px;
-  font-size: 18px;
+    text-align: right;
+    margin-right: 16px;
+    margin-top: 7px;
+    font-size: 18px;
 }
 .message-button,
 .edit-profile-button,
 .discard-button {
-  width: 100px;
-  border-radius: 4px;
-  text-align: center;
-  line-height: 40px;
-  color: #fff;
-  margin-top: 16px;
-  margin-right: 16px;
-  cursor: pointer;
-  font-family: 'Roboto', sans-serif;
+    width: 100px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    margin-top: 16px;
+    margin-right: 16px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
 }
 .edit-profile-button {
-  border: 1px solid #146588;
-  background-color: #3e72ae;
+    border: 1px solid #146588;
+    background-color: #3e72ae;
 }
 .edit-profile-button:hover {
-  background-color: #2c89cc;
+    background-color: #2c89cc;
 }
 .message-button {
-  border: 1px solid #00881d;
-  background-color: #27ae60;
+    border: 1px solid #00881d;
+    background-color: #27ae60;
 }
 .message-button:hover {
-  background-color: #2ecc71;
+    background-color: #2ecc71;
 }
 .tagline {
-  font-size: 18px;
+    font-size: 18px;
 }
 .user-name,
 .bio {
-  padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 .about div,
 .fav-games div,
 .platform div,
 .all-games div {
-  padding-left: 25px;
-  padding-right: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 img.coin {
-  vertical-align: top;
-  padding-top: 5px;
-  padding-left: 8px;
-  padding-right: 8px;
+    vertical-align: top;
+    padding-top: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .about-header,
 .fav-games-header,
 .platform .header,
 .all-games-header {
-  font-size: 20px;
-  line-height: 40px;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: #ddd;
-  background-color: #f3f3f3;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  padding-bottom: 0;
-  margin-bottom: 16px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+    font-size: 20px;
+    line-height: 40px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #ddd;
+    background-color: #f3f3f3;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .about,
 .fav-games,
 .all-games {
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 }
 .user-name {
-  font-size: 26px;
+    font-size: 26px;
 }
 .bio {
-  font-size: 14px;
-  line-height: 150%;
+    font-size: 14px;
+    line-height: 150%;
 }
 .status {
-  display: inline-block;
-  padding: 5px;
-  margin-top: 22px;
-  margin-left: 16px;
-  border-radius: 100%;
+    display: inline-block;
+    padding: 5px;
+    margin-top: 22px;
+    margin-left: 16px;
+    border-radius: 100%;
 }
 .online {
-  box-shadow: 0 0 0 2.5px #00d280;
+    box-shadow: 0 0 0 2.5px #00d280;
 }
 .offline {
-  box-shadow: 0 0 0 2.5px #f00;
+    box-shadow: 0 0 0 2.5px #f00;
 }
 .games div,
 .games-list div {
-  padding: 0;
+    padding: 0;
 }
 .game {
-  width: 125px;
-  display: inline-table;
-  text-align: center;
-  margin-bottom: 14px;
+    width: 125px;
+    display: inline-table;
+    text-align: center;
+    margin-bottom: 14px;
 }
 .game-title {
-  font-size: 13px;
+    font-size: 13px;
 }
 img.boxart {
-  max-width: 120px;
-  border: 1px solid #ddd;
+    max-width: 120px;
+    border: 1px solid #ddd;
 }
 img.boxart:hover {
-  border: 1px solid #6441a5;
-  box-shadow: 0 0 25px #6441a5;
+    border: 1px solid #6441a5;
+    box-shadow: 0 0 25px #6441a5;
 }
 .availability-header {
-  font-size: 20px;
+    font-size: 20px;
 }
 .availability-header img {
-  max-height: 16px;
-  margin-right: 5px;
+    max-height: 16px;
+    margin-right: 5px;
 }
 .availability {
-  font-size: 16px;
-  margin-top: 8px;
+    font-size: 16px;
+    margin-top: 8px;
 }
 .availability img {
-  max-height: 20px;
-  vertical-align: bottom;
-  margin-right: 10px;
+    max-height: 20px;
+    vertical-align: bottom;
+    margin-right: 10px;
 }
 .availability div {
-  font-weight: lighter;
+    font-weight: lighter;
 }
 .availability-type {
-  font-weight: normal;
+    font-weight: normal;
 }
 .checkbox,
 li {
-  font-weight: lighter;
-  font-size: 16px;
+    font-weight: lighter;
+    font-size: 16px;
 }
 ul {
-  margin-top: 0;
+    margin-top: 0;
 }
 .platform-name {
-  font-size: 28px;
-  padding-bottom: 16px;
+    font-size: 28px;
+    padding-bottom: 16px;
 }
 .steam {
-  background: #fffffe;
+    background: #fffffe;
 }
 .steam .header {
-  background: #171a21;
-  border-color: #171a21;
-  color: #fff;
+    background: #171a21;
+    border-color: #171a21;
+    color: #fff;
 }
 .xbox {
-  background: #f3ffed;
+    background: #f3ffed;
 }
 .xbox .header {
-  background: #107c10;
-  border-color: #107c10;
-  color: #fff;
+    background: #107c10;
+    border-color: #107c10;
+    color: #fff;
 }
 .playstation {
-  background: #edf4ff;
+    background: #edf4ff;
 }
 .playstation .header {
-  background: #003791;
-  border-color: #003791;
-  color: #fff;
+    background: #003791;
+    border-color: #003791;
+    color: #fff;
 }
 .twitch {
-  background: #f9ebff;
+    background: #f9ebff;
 }
 .twitch .header {
-  background: #6441a5;
-  border-color: #6441a5;
-  color: #fff;
+    background: #6441a5;
+    border-color: #6441a5;
+    color: #fff;
 }
 .button {
-  width: 300px;
-  height: 75px;
-  font-size: 28px;
+    width: 300px;
+    height: 75px;
+    font-size: 28px;
 }
 .profile-pic {
-  position: relative;
+    position: relative;
 }
 @media only screen and (max-width: 700px) {
-  .profile {
-    width: 95%;
-    padding: 0 1vw 0 1vw;
-  }
-  .header img {
-    max-width: 100%;
-    max-height: 100%;
-    vertical-align: bottom;
-  }
-  .pic {
-    text-align: center;
-    width: 100%;
-  }
-  .username,
-  .tagline,
-  .extra-info {
-    padding-top: 2px;
-  }
-  .username {
-    font-size: 10vw;
-  }
-  .user-info {
-    display: block;
-    vertical-align: top;
-    margin: auto;
-    text-align: center;
-  }
-  .extra-info {
-    font-size: 4vw;
-  }
-  .tagline {
-    font-size: 3.5vw;
-  }
-  .right-side {
-    float: left;
-    width: 100%;
-    text-align: center;
-  }
-  .profile-one-ups,
-  .profile-coins {
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-  .message-button,
-  .discard-button {
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 18px;
-  }
-  .status {
-    margin-top: 10px;
-    padding: 1vw;
-    margin-left: 8px;
-  }
-  .button {
-    width: 100%;
-    height: 15vw;
-    font-size: 5vw;
-  }
-  .games,
-  .games-list {
-    text-align: center;
-  }
-  .about div,
-  .fav-games div,
-  .platform div,
-  .all-games div {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+    .profile {
+        width: 95%;
+        padding: 0 1vw 0 1vw;
+    }
+    .header img {
+        max-width: 100%;
+        max-height: 100%;
+        vertical-align: bottom;
+    }
+    .pic {
+        text-align: center;
+        width: 100%;
+    }
+    .username,
+    .tagline,
+    .extra-info {
+        padding-top: 2px;
+    }
+    .username {
+        font-size: 10vw;
+    }
+    .user-info {
+        display: block;
+        vertical-align: top;
+        margin: auto;
+        text-align: center;
+    }
+    .extra-info {
+        font-size: 4vw;
+    }
+    .tagline {
+        font-size: 3.5vw;
+    }
+    .right-side {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+    .profile-one-ups,
+    .profile-coins {
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .message-button,
+    .discard-button {
+        margin: auto;
+        margin-top: 25px;
+        margin-bottom: 18px;
+    }
+    .status {
+        margin-top: 10px;
+        padding: 1vw;
+        margin-left: 8px;
+    }
+    .button {
+        width: 100%;
+        height: 15vw;
+        font-size: 5vw;
+    }
+    .games,
+    .games-list {
+        text-align: center;
+    }
+    .about div,
+    .fav-games div,
+    .platform div,
+    .all-games div {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

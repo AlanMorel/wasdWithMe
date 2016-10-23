@@ -127,6 +127,7 @@ form {
 footer {
   margin-top: 100px;
   background-color: #282828;
+  text-align: center;
 }
 footer .top {
   width: 800px;
