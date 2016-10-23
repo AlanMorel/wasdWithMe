@@ -1,5 +1,4 @@
-html,
-body {
+html {
   font-family: 'Open Sans', sans-serif;
   color: #fff;
 }
@@ -9,9 +8,6 @@ body {
 a {
   color: #fff;
   text-decoration: none;
-}
-html {
-  color: #fff;
 }
 .wasd-header {
   height: 75px;
