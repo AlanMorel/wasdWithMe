@@ -109,9 +109,6 @@ var User = new mongoose.Schema({
             required: true
         }
     },
-    profile_pic: {
-        type: image
-    },
     first_name: {
         type: String,
         maxlength: config.nameMaxLength

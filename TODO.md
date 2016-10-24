@@ -7,6 +7,7 @@
 - [ ] create helper file for functions being duplicated
 - [ ] recode/add client-side form validation to register and sign in pages
 - [ ] redesign api/database retrieval system for better clarity and modularity
+- [ ] replace profile image data in database with actual image on filesystem
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)

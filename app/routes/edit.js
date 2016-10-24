@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var multer     = require('multer');
-var filesystem = require('fs');
-var User       = require('../models/user');
-var config     = require('../config');
-var Logger     = require('../utility/logger');
+var multer = require('multer');
+var User   = require('../models/user');
+var config = require('../config');
+var Logger = require('../utility/logger');
 
 //handles GET requests to /username/edit
 router.get('/:username/edit', function(req, res, next) {
@@ -37,7 +36,27 @@ router.get('/:username/edit', function(req, res, next) {
     });
 });
 
-var type = multer({ dest: 'uploads/'}).single('image');
+//set the image destination and name as "username.png"
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '../public/images/profile/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.params.username.toLowerCase() + '.png')
+    }
+});
+
+//limit the size of images to 4MB and set the storage engine
+var uploadOptions = {
+    dest: '../public/images/profile/',
+    limits: {
+        fileSize: Math.pow(2, 20) * 4, // 4MB
+        files: 1
+    },
+    storage: storage
+};
+
+var type = multer(uploadOptions).single('image');
 
 //handles POST requests to /username/edit
 router.post('/:username/edit', type, function(req, res) {
@@ -68,8 +87,6 @@ router.post('/:username/edit', type, function(req, res) {
         }
     };
 
-    var image = getImage(req.file);
-
     var query = {
         'username': slug
     };
@@ -82,10 +99,6 @@ router.post('/:username/edit', type, function(req, res) {
         availability: availability,
         games: games
     };
-
-    if (image){
-        update.profile_pic = image;
-    }
 
     var options = {
         upsert: true
@@ -112,21 +125,6 @@ function populateGames(games, favorite){
         });
     }
     return populated;
-}
-
-//returns image object of uploaded profile picture
-function getImage(data){
-    if(!data){
-        return;
-    }
-    var path = data.path;
-    var image = {
-        name: data.originalname,
-        data: new Buffer(filesystem.readFileSync(path)).toString("base64"),
-        size: data.size
-    };
-    filesystem.unlink(path);
-    return image;
 }
 
 //adds temporary data to the owner object
@@ -167,12 +165,15 @@ function getAge(birthday){
     return Math.floor(difference / year);
 }
 
-//returns profile picture of page owner, if none exist, returns placeholder
+//returns profile pic of user if an image was uploaded, placeholder if none exists
 function getProfilePic(owner){
-    if (!owner.profile_pic || !owner.profile_pic.data){
-        return "/images/placeholder.png";
+    var path = "/images/profile/" + owner.display_name + ".png";
+    try {
+        fs.accessSync(path, fs.F_OK);
+        return path;
+    } catch (e) {
     }
-    return "data:image/png;base64," + owner.profile_pic.data;
+    return "/images/placeholder.png";
 }
 
 //gets called when user was not found (should not occur under normal circumstances)

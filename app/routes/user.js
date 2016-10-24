@@ -3,7 +3,7 @@ var router = express.Router();
 
 var User   = require('../models/user');
 var config = require('../config');
-var Logger = require('../utility/logger');
+var fs     = require('fs');
 
 //You should not be able to access /user/ directly
 router.get('/', function(req, res, next) {
@@ -80,12 +80,15 @@ function getAge(birthday){
     return Math.floor(difference / year);
 }
 
-//returns profile pic of user, placeholder if none exists
+//returns profile pic of user if an image was uploaded, placeholder if none exists
 function getProfilePic(owner){
-    if (!owner.profile_pic || !owner.profile_pic.data){
-        return "/images/placeholder.png";
+    var path = "/images/profile/" + owner.display_name + ".png";
+    try {
+        fs.accessSync(path, fs.F_OK);
+        return path;
+    } catch (e) {
     }
-    return "data:image/png;base64," + owner.profile_pic.data;
+    return "/images/placeholder.png";
 }
 
 //renders 404 page whenever a user was not found
