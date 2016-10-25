@@ -98,6 +98,7 @@ form {
   width: 100%;
   float: left;
   color: #000;
+  padding: 8px 0 8px 0;
 }
 .search .result:hover,
 .sub-results-box .result:hover {
