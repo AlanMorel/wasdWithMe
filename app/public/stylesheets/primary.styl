@@ -115,6 +115,7 @@ form {
   width: 500px;
   max-height: 500px;
   overflow-y: auto;
+  margin-left: -90px;
   img {
     max-width: 100px;
     vertical-align: middle;
@@ -169,7 +170,7 @@ footer img {
 .footer-item {
   margin-bottom: 10px;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
   .wasd-header {
     height: 50px;
   }
@@ -182,26 +183,34 @@ footer img {
   .wasd-bottom {
     font-size: 13px;
   }
-  .search input[type="text"] {
-    width: 70vw;
-    font-size: 16px;
+  .search{
+    input[type="text"] {
+      width: 50vw;
+      font-size: 14px;
+    }
+    .result{
+      width:100%;
+    }
   }
   .results-box, .sub-results-box {
-    width: 94vw;
+    width: 98%;
     left: 1vw;
+    margin-left: 0;
+    max-height: 50vh;
   }
   .results-box img, .sub-results-box img {
     max-width: 15vw;
     vertical-align: middle;
   }
   .info {
-    width: 77vw;
+    width: 80%;
+    padding-right:0;
   }
   .name {
-    font-size: 4vw;
+    font-size: 3vw;
   }
   .description {
-    font-size: 3vw;
+    font-size: 2vw;
   }
 }
 @media only screen and (max-width: 750px) {
@@ -213,6 +222,9 @@ footer img {
     .top {
       height: initial;
       width: 100%;
+    }
+    .bottom {
+      font-size: 3vw;
     }
   }
   .madeinny, .madeinny-container {
