@@ -488,7 +488,7 @@ ul {
   width: 300px;
   height: 75px;
   font-size: 28px;
-  border: 1px solid #282828;
+  border: 1px solid #ddd;
 }
 .profile-pic {
   position: relative;
@@ -637,6 +637,11 @@ span.sub-results-box a {
 }
 input:read-only {
   color: #808080;
+}
+.remove {
+  vertical-align: middle;
+  width: 24px;
+  margin: 0 2px 0 2px;
 }
 @media only screen and (max-width: 700px) {
   .input-name {

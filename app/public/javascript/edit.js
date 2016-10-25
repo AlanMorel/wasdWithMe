@@ -84,11 +84,11 @@ document.querySelector(".add-another").onclick = function() {
     input.name = "games";
     input.onkeyup = searchGame;
 
-    //create new button
-    var button = document.createElement("button");
-    button.type = "button";
-    button.innerHTML = "Remove Game";
-    button.onclick = deleteGame;
+    //create new remove image
+    var remove = document.createElement("img");
+    remove.src = "/images/remove.png";
+    remove.className = "remove";
+    remove.onclick = deleteGame;
 
     //create new checkbox
     var checkbox = document.createElement("input");
@@ -99,7 +99,7 @@ document.querySelector(".add-another").onclick = function() {
 
     //append the elements
     div.appendChild(input);
-    div.appendChild(button);
+    div.appendChild(remove);
     div.appendChild(checkbox);
     div.appendChild(favorite);
 

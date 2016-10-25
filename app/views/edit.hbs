@@ -62,7 +62,7 @@
             {{#each all_games}}
                 <div>
                     <input readonly type="text" name="games" class="input-game" value="{{name}}">
-                    <button type="button" onclick="deleteGame(this)">Remove Game</button>
+                    <img src="/images/remove.png" class="remove" onclick="deleteGame(this)">
                     <input type="checkbox" name="favorite[{{@index}}]" {{#if favorite}}checked{{/if}}> Favorite
                 </div>
             {{/each}}
