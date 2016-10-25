@@ -8,10 +8,6 @@ router.get('/', function (req, res, next) {
     var query = req.query.query;
     var type = req.query.type;
 
-    if (!type){
-        type = "all";
-    }
-
     var searchRequest = data.makeSearchRequest(query, 0, type != "games", type != "users");
 
     data.search(searchRequest, req, res, sendResults);
@@ -19,8 +15,6 @@ router.get('/', function (req, res, next) {
 
 //renders the search results
 var sendResults = function(req, res, searchRequest, results) {
-
-    console.log(results.length);
 
     //we don't want to send more than 10 results to user
     results = results.slice(0, 10);

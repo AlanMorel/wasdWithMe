@@ -2,12 +2,12 @@
 - [ ] add developers and publishers to games page
 - [ ] add +1s to video game pages
 - [ ] fix new game additions by accessing the game page directly
-- [ ] implement search filters
-- [ ] add pagination to search results
+- [ ] add pagination to search results page
 - [ ] create helper file for functions being duplicated
 - [ ] recode/add client-side form validation to register and sign in pages
-- [ ] redesign api/database retrieval system for better clarity and modularity
-- [ ] replace profile image data in database with actual image on filesystem
+- [X] redesign api/database retrieval system for better clarity and modularity
+- [X] replace profile image data in database with actual image on filesystem
+- [X] implement search filters
 
 # Edgar's Todo
 - [O] add credentials file for passport secret key (change when deployed)

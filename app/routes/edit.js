@@ -5,6 +5,7 @@ var multer = require('multer');
 var User   = require('../models/user');
 var config = require('../config');
 var Logger = require('../utility/logger');
+var fs     = require('fs');
 
 //handles GET requests to /username/edit
 router.get('/:username/edit', function(req, res, next) {

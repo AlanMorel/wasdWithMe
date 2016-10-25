@@ -4,6 +4,7 @@ var Logger  = require('../utility/logger');
 var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
+var fs      = require('fs');
 
 //returns a search request object to be used in the search function
 function makeSearchRequest(query, page, users, games){
@@ -136,7 +137,7 @@ function callApi(req, res, searchRequest, results, callback){
     unirest.get(request)
         .header("X-Mashape-Key", config.api_key)
         .header("Accept", "application/json")
-        .timeout(1000)
+        .timeout(config.api_timeout)
         .end(function (result) {
 
             if (result.status != 200){
@@ -184,17 +185,22 @@ function addToDatabase(game){
     }
 
     var videos = getVideos(game);
-    if (screens){
+    if (videos){
         new_game.videos = videos;
     }
 
-    Game.update(
-        {id: game.id},
-        {$setOnInsert: new_game},
-        {upsert: true},
-        function (err, numAffected) {
+    var query = {
+        id: game.id
+    };
+
+    var uspert = {
+        upsert: true
+    };
+
+    Game.findOneAndUpdate(query, new_game, uspert,
+        function (err, doc) {
             if (err){
-                Logger.log("Adding " + game.name + " from API to failed.", err);
+                Logger.log("Failed to add " + game.name + " from API.", err);
                 return;
             }
             console.log("Added " + game.name + ".");
@@ -213,8 +219,9 @@ function getCleanedGameName(game){
 function getBoxArt(game){
     if ('cover' in game){
         return "https://res.cloudinary.com/igdb/image/upload/t_cover_big/" + game.cover.cloudinary_id + ".jpg";
+    } else {
+        return config.game_not_found_boxart;
     }
-    return config.game_not_found_boxart;
 }
 
 function getScreenshots(game){
@@ -271,15 +278,19 @@ function addToResults(results, type, name, image, description){
     return results;
 }
 
+//returns profile pic of user if an image was uploaded, placeholder if none exists
 function getProfilePic(owner){
-    if (!owner.profile_pic || !owner.profile_pic.data){
-        return "/images/placeholder.png";
+    var path = "/images/profile/" + owner.display_name + ".png";
+    try {
+        fs.accessSync(path, fs.F_OK);
+        return path;
+    } catch (e) {
     }
-    return "data:image/png;base64," + owner.profile_pic.data;
+    return "/images/placeholder.png";
 }
 
 module.exports = {
     callApi: callApi,
     search: search,
-    makeSearchRequest: makeSearchRequest,
+    makeSearchRequest: makeSearchRequest
 };
