@@ -1,8 +1,7 @@
 var screen = document.querySelector("html");
 var box = document.querySelector(".results-box");
 var search = document.querySelector(".search-box");
-
-var searchType = "all";
+var select = document.querySelector('select[name="type"]');
 
 //returns true if box should be shown, false if not
 function shouldShow(query){
@@ -31,7 +30,9 @@ search.onkeyup = function() {
         box.style.visibility = "visible";
     };
 
-    request.open("GET", "/api/search?q=" + search.value + "&type=" + searchType, true);
+    var type = select.options[select.selectedIndex].value;
+
+    request.open("GET", "/api/search?q=" + search.value + "&type=" + type, true);
     request.send();
 };
 
