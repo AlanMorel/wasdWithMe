@@ -56,6 +56,7 @@ config.twitchNameMaxLength = 0;
 
 //IGDB Api
 config.api_url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
+config.api_max_per_query = 50;
 
 //Usually cause for concern to have this open to the public but given that the key
 //is free to obtain, I'm not concerned about unauthorized usage for now

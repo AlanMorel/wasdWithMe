@@ -5,83 +5,129 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-function search(query, req, res, callback){
+//returns a search request object to be used in the search function
+function makeSearchRequest(query, page, users, games){
+    var searchRequest = {
+        query: query, //text that is being searched for
+        page: page, //what page offset do they want
+        users: users, //boolean defining whether or not to include games
+        games: games //boolean defining whether or not to include users
+    };
+    return searchRequest;
+}
 
-    if (query.length < 3){
-        callback(req, res, query, null);
+//returns an object containing functions to be called asynchronously and in parallel
+function getAsyncFunctions(searchRequest){
+    var query = searchRequest.query.toLowerCase();
+
+    var asyncFunctions = {};
+
+    if (searchRequest.users) {
+        var userQuery = {
+            "username": {
+                $regex: query + ".*"
+            }
+        };
+        asyncFunctions.users = function (cb){
+            User.find(userQuery).exec(cb);
+        };
+    }
+
+    if (searchRequest.games){
+        var gameQuery = {
+            "name": {
+                $regex : query + ".*"
+            }
+        };
+        asyncFunctions.games = function (cb){
+            Game.find(gameQuery).exec(cb);
+        };
+    }
+
+    return asyncFunctions;
+}
+
+//calls the callback function with results accumulated using
+//the information given inside the searchRequest object
+function search(searchRequest, req, res, callback){
+
+    //if the query is too short, return
+    if (searchRequest.query.length < 3){
+        callback(req, res, searchRequest, null);
         return;
     }
 
-    query = query.toLowerCase();
+    console.log("Query: " + searchRequest.query);
 
-    var userQuery = {
-        "username": {
-            $regex : query + ".*"
-        }
-    };
+    //get the functions to be called asynchronously
+    var asyncRequest = getAsyncFunctions(searchRequest);
 
-    var gameQuery = {
-        "name": {
-            $regex : query + ".*"
-        }
-    };
-
-    async.parallel({
-        users: function (cb){
-            User.find(userQuery).exec(cb);
-        },
-        games: function (cb){
-            Game.find(gameQuery).exec(cb);
-        }
-    }, function(err, result){
-
-        var results = [];
+    //call asynchronous functions
+    async.parallel(asyncRequest, function(err, result){
 
         if (err){
             Logger.log("Querying database during search failed.", err);
-            callback(req, res, query, results);
+            callback(req, res, searchRequest, null);
             return;
         }
 
         var users = result.users;
         var games = result.games;
 
-        console.log("Query: " + query + " Users: " + users.length + " Games: " + games.length);
+        //the results to return
+        var results = [];
 
-        for (var i = 0; i < users.length; i++){
-            addToResults(results,
-                "user",
-                users[i].display_name,
-                getProfilePic(users[i]),
-                users[i].bio === undefined ? "" : users[i].bio
-            );
+        //if users returned, populate results
+        if (users) {
+            for (var i = 0; i < users.length; i++) {
+                addToResults(results,
+                    "user",
+                    users[i].display_name,
+                    getProfilePic(users[i]),
+                    users[i].bio === undefined ? "" : users[i].bio
+                );
+            }
+            console.log("Users: " + users.length);
         }
 
-        for (var i = 0; i < games.length; i++){
-            addToResults(results,
-                "game",
-                games[i].display_name,
-                games[i].boxart,
-                games[i].description
-            );
+        //if games returned, populate results
+        if (games) {
+            for (var i = 0; i < games.length; i++) {
+                addToResults(results,
+                    "game",
+                    games[i].display_name,
+                    games[i].boxart,
+                    games[i].description
+                );
+            }
+            console.log("Games: " + games.length);
+
+            //if games are requested but none returned from the database
+            //use the api to populate the results
+            if (games.length < 1){
+                callApi(req, res, searchRequest, results, callback);
+                return;
+            }
         }
 
-        if (results.length < 1){
-            callApi(req, res, query, results, callback);
-            return;
-        }
-
-        callback(req, res, query, results);
+        //call the callback function with the results
+        callback(req, res, searchRequest, results);
     });
 }
 
-function callApi(req, res, query, results, callback){
+//returns the fields when searching for games via the api
+function getFields(){
+    var fields = ["name", "summary", "release_dates", "cover", "rating", "screenshots", "videos", "developers", "publishers"];
+    return encodeURI(fields.join());
+}
+
+function callApi(req, res, searchRequest, results, callback){
 
     var api = {
-        fields: "?fields=" + encodeURI("name,summary,release_dates,cover,rating,screenshots,videos,developers,publishers"),
-        limit:  "&limit="  + 50, //maximum allowed per api
+        fields: "?fields=" + getFields(),
+        limit:  "&limit="  + config.api_max_per_query,
         offset: "&offset=" + 0,
-        query:  "&search=" + query,
+        query:  "&search=" + searchRequest.query,
         filter: "&filter[category][eq]=0"
     };
 
@@ -94,7 +140,7 @@ function callApi(req, res, query, results, callback){
         .end(function (result) {
 
             if (result.status != 200){
-                callback(req, res, query, results);
+                callback(req, res, searchRequest, results);
                 return;
             }
 
@@ -108,7 +154,7 @@ function callApi(req, res, query, results, callback){
                 addToDatabase(game);
             });
 
-            callback(req, res, query, results);
+            callback(req, res, searchRequest, results);
         }
     );
 }
@@ -235,4 +281,5 @@ function getProfilePic(owner){
 module.exports = {
     callApi: callApi,
     search: search,
+    makeSearchRequest: makeSearchRequest,
 };
