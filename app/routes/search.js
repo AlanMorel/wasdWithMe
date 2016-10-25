@@ -6,11 +6,21 @@ var data = require('../utility/data');
 //handles search results
 router.get('/', function (req, res, next) {
     var query = req.query.query;
-    data.search(query, req, res, sendResults);
+    var type = req.query.type;
+
+    if (!type){
+        type = "all";
+    }
+
+    var searchRequest = data.makeSearchRequest(query, 0, type != "games", type != "users");
+
+    data.search(searchRequest, req, res, sendResults);
 });
 
 //renders the search results
-var sendResults = function(req, res, query, results) {
+var sendResults = function(req, res, searchRequest, results) {
+
+    console.log(results.length);
 
     //we don't want to send more than 10 results to user
     results = results.slice(0, 10);
@@ -20,7 +30,7 @@ var sendResults = function(req, res, query, results) {
         layout: 'primary',
         file: 'search',
         user: req.user,
-        query: query,
+        query: searchRequest.query,
         results: results
     });
 };

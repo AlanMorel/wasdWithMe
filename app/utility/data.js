@@ -126,7 +126,7 @@ function callApi(req, res, searchRequest, results, callback){
     var api = {
         fields: "?fields=" + getFields(),
         limit:  "&limit="  + config.api_max_per_query,
-        offset: "&offset=" + 0,
+        offset: "&offset=" + searchRequest.page * config.results_per_page,
         query:  "&search=" + searchRequest.query,
         filter: "&filter[category][eq]=0"
     };

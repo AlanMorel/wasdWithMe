@@ -34,6 +34,11 @@
   </div>
   <div class="search">
       <form method="get" action="/search">
+          <select name="type">
+              <option value="all">All</option>
+              <option value="users">Users</option>
+              <option value="games">Games</option>
+          </select>
           <span class="results-box"></span>
           <input name="query" class="search-box" type="text" autocomplete="off" placeholder="Search for people or games..." />
           <input type="image" src="/images/search.png" alt="Submit Form" />

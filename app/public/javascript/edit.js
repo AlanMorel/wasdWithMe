@@ -43,7 +43,7 @@ var searchGame = function(){
         }
     };
 
-    request.open("GET", "/api/search?q=" + this.value, true);
+    request.open("GET", "/api/search?q=" + this.value + "&type=games", true);
     request.send();
 };
 

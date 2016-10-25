@@ -64,6 +64,14 @@ form {
   text-align: center;
   padding: 16px 0 10px 0;
 }
+.search select,
+.sub-results-box select {
+  font-size: 16px;
+  padding: 6px 0 6px 0;
+  vertical-align: middle;
+  border-radius: 4px;
+  margin-right: 6px;
+}
 .search input[type="text"],
 .sub-results-box input[type="text"] {
   width: 350px;

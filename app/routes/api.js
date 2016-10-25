@@ -6,12 +6,12 @@ var data = require('../utility/data');
 //returns back html of search results
 router.get('/search', function(req, res, next) {
     var query = req.query.q;
+    var type = req.query.type;
 
-    var searchRequest = data.makeSearchRequest(query, 0, true, true);
+    var searchRequest = data.makeSearchRequest(query, 0, type != "games", type != "users");
 
     data.search(searchRequest, req, res, sendResults);
 });
-
 
 //callback after searching
 var sendResults = function(req, res, searchRequest, results) {

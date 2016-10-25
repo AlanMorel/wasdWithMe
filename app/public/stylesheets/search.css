@@ -64,6 +64,14 @@ form {
   text-align: center;
   padding: 16px 0 10px 0;
 }
+.search select,
+.sub-results-box select {
+  font-size: 16px;
+  padding: 6px 0 6px 0;
+  vertical-align: middle;
+  border-radius: 4px;
+  margin-right: 6px;
+}
 .search input[type="text"],
 .sub-results-box input[type="text"] {
   width: 350px;
@@ -240,17 +248,12 @@ body {
   font-size: 24px;
 }
 .search-results {
-  color: #000;
-  text-align: left;
   width: 700px;
   margin: auto;
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 75px;
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
-  padding: 10px 14px 10px 14px;
+  padding: 10px 0 10px 0;
 }
 .search-results a {
   color: #000;
@@ -263,13 +266,11 @@ body {
   vertical-align: middle;
 }
 .search-result {
-  text-align: left;
   display: inline-block;
   width: 100%;
   margin-bottom: 6px;
   margin-top: 6px;
   cursor: pointer;
-  color: #000;
 }
 .search-result:hover {
   background-color: #6441a5;
@@ -277,14 +278,15 @@ body {
 }
 .search-info {
   float: right;
-  width: 540px;
+  width: 530px;
   overflow: hidden;
   height: 165px;
-  padding-right: 10px;
+  padding-right: 20px;
   margin-bottom: 10px;
 }
 .search-info .search-name {
-  font-size: 22px;
+  font-size: 20px;
+  padding-top: 4px;
   padding-bottom: 8px;
 }
 .search-description {
