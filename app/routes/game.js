@@ -35,8 +35,11 @@ router.get('/:game', function(req, res, next) {
             Logger.log("Searching for game " + query + " failed.", err);
         }
 
+        //if game not found, search via api
         if (!game){
-            data.callApi(req, res, query, [], displayGame);
+            var searchRequest = data.makeSearchRequest(query, 0, false, true);
+
+            data.callApi(req, res, searchRequest, [], displayGame);
             return;
         }
 
