@@ -8,6 +8,7 @@
 - [ ] do a general clean and add comments whenever necessary
 - [ ] add back links to sign up and log in pages
 - [ ] make search results page mobile compatible
+- [ ] improve styling of edit page
 - [X] redesign api/database retrieval system for better clarity and modularity
 - [X] replace profile image data in database with actual image on filesystem
 - [X] implement search filters
@@ -22,10 +23,10 @@
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] add messaging other users
 - [ ] add blocking other users
-- [ ] leaderboards page
-- [ ] about page
-- [ ] team page
-- [ ] recatcha on sign up page
-- [ ] google analytics
-- [ ] Gaming-related news
+- [ ] create leaderboards page
+- [ ] create about page
+- [ ] create team page
+- [ ] add recatcha support to sign up page
+- [ ] add google analytics
+- [ ] explore gaming news on homepage
 - [ ] before launch: https://expressjs.com/en/advanced/best-practice-security.html
