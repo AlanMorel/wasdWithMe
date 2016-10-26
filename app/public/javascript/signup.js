@@ -21,15 +21,13 @@ email.addEventListener("focusout", function(){
     feedback.innerHTML = validateEmail(this.value);
 });
 
-//default date of birth to today's date
-date.valueAsDate = new Date();
-
 date.addEventListener("focusout", function(){
     feedback.innerHTML = validateDate(this.value);
 });
 
-function validate(e) {
-    if (feedback.innerHTML.length > 0){
-        return false;
-    }
+//default date of birth to today's date
+date.valueAsDate = new Date();
+
+function validate() {
+    return feedback.innerHTML.length == 0;
 }

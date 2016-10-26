@@ -3,7 +3,7 @@
 </a>
 <div class="title">Sign up for your account!</div>
 <div class="container">
-    <form method="post" action="/signup" onsubmit="return validate(this)">
+    <form method="post" action="/signup" onsubmit="return validate()">
         <div>
             <label>Username:</label>
             <input type="text" name="username" maxlength="{{config "usernameMaxLength"}}">
