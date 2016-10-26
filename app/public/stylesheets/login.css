@@ -18,9 +18,7 @@ body {
   color: #000;
 }
 input {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #afafaf;
+  border: 1px solid #afafaf;
   padding: 4px;
 }
 input:focus {
