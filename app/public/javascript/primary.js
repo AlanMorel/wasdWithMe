@@ -2,6 +2,7 @@ var screen = document.querySelector("html");
 var box = document.querySelector(".results-box");
 var search = document.querySelector(".search-box");
 var select = document.querySelector('select[name="type"]');
+var oneUps = document.querySelectorAll(".one-ups-label");
 
 //returns true if box should be shown, false if not
 function shouldShow(query){
@@ -46,3 +47,9 @@ screen.onclick = function(e) {
         box.style.visibility = "hidden";
     }
 };
+
+for (var i = 0; i < oneUps.length; i++) {
+    oneUps[i].onclick = function() {
+        this.classList.toggle('one-upped');
+    };
+}
