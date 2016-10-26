@@ -15,7 +15,9 @@ router.get('/', function(req, res, next) {
 router.get('/:game', function(req, res, next) {
     var query = decodeURI(req.params.game);
 
+    //if no game given, redirect
     if (query.length < 1){
+        res.redirect("/");
         return;
     }
 
@@ -29,36 +31,37 @@ router.get('/:game', function(req, res, next) {
         }
     };
 
+    //try and find the game, then display
     Game.findOne(gameQuery, function(err, game) {
 
         if (err){
             Logger.log("Searching for game " + query + " failed.", err);
+            return gameNotFound(req, res, query);
         }
 
-        //if game not found, search via api
-        if (!game){
+        //if game found, display, otherwise search via api for it
+        if (game){
+            displayGame(req, res, query, game);
+        } else {
             var searchRequest = data.makeSearchRequest(query, 0, false, true);
-
-            data.callApi(req, res, searchRequest, [], displayGame);
-            return;
+            data.callApi(req, res, searchRequest, [], displayApiResults);
         }
-
-        displayGame(req, res, query, game);
     });
 });
 
-//Display a single game
-function displayGame(req, res, query, game){
-
-    //Display Game can be called either with a single game (if found by db)
-    //or an array of length 1 (if found by api) so the follow code is needed
-
-    if(Array.isArray(game)){
-        if(game.length < 1){
-            return gameNotFound(req, res, query);
-        }
-        game = game[0];
+//callback for when calling the api
+function displayApiResults(req, res, query, games){
+    //if api returned nothing, game could not be found
+    if (games.length < 1){
+        return gameNotFound(req, res, query);
+    } else {
+        //api returns array of games but we only want the first game
+        displayGame(req, res, query, games[0]);
     }
+}
+
+//displays a game page to the user
+function displayGame(req, res, query, game){
 
     var release = getReleaseDate(game.release_date);
     var banner = getBanner(game.screenshots);

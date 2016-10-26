@@ -49,7 +49,7 @@ function getAsyncFunctions(searchRequest){
 }
 
 //calls the callback function with results accumulated using
-//the information given inside the searchRequest object
+//the information inside the searchRequest object
 function search(searchRequest, req, res, callback){
 
     //if the query is too short, return
@@ -81,12 +81,10 @@ function search(searchRequest, req, res, callback){
         //if users returned, populate results
         if (users) {
             for (var i = 0; i < users.length; i++) {
-                addToResults(results,
-                    "user",
-                    users[i].display_name,
-                    getProfilePic(users[i]),
-                    users[i].bio === undefined ? "" : users[i].bio
-                );
+                var name = users[i].display_name;
+                var image = getProfilePic(users[i]);
+                var text = users[i].bio === undefined ? "" : users[i].bio;
+                addToResults(results, "user", name, image, text);
             }
             console.log("Users: " + users.length);
         }
@@ -94,12 +92,10 @@ function search(searchRequest, req, res, callback){
         //if games returned, populate results
         if (games) {
             for (var i = 0; i < games.length; i++) {
-                addToResults(results,
-                    "game",
-                    games[i].display_name,
-                    games[i].boxart,
-                    games[i].description
-                );
+                var name = games[i].display_name;
+                var image = games[i].boxart;
+                var text = games[i].description;
+                addToResults(results, "game", name, image, text);
             }
             console.log("Games: " + games.length);
 
@@ -122,6 +118,7 @@ function getFields(){
     return encodeURI(fields.join());
 }
 
+//makes a call to IGDB via their api to search through their databases for games
 function callApi(req, res, searchRequest, results, callback){
 
     var api = {
@@ -134,32 +131,36 @@ function callApi(req, res, searchRequest, results, callback){
 
     var request = config.api_url + api.fields + api.limit + api.offset + api.query + api.filter;
 
-    unirest.get(request)
+    unirest
+        .get(request)
         .header("X-Mashape-Key", config.api_key)
         .header("Accept", "application/json")
         .timeout(config.api_timeout)
         .end(function (result) {
 
+            //if something went wrong, call callback
             if (result.status != 200){
                 callback(req, res, searchRequest, results);
                 return;
             }
 
+            //otherwise iterate through all the games and
+            //add it to our results and database
             result.body.forEach(function(game){
-                addToResults(results,
-                    "game",
-                    game.name,
-                    getBoxArt(game),
-                    'summary' in game ? game.summary : ""
-                );
+                var name = game.name;
+                var image = getBoxArt(game);
+                var text = 'summary' in game ? game.summary : "";
+                addToResults(results, "game", name, image, text);
                 addToDatabase(game);
             });
 
+            //finally, call callback with all the results
             callback(req, res, searchRequest, results);
         }
     );
 }
 
+//adds a new game to the database for further use in the future
 function addToDatabase(game){
     var new_game = {
         id: game.id,
@@ -275,7 +276,6 @@ function addToResults(results, type, name, image, description){
         description: description
     };
     results.push(item);
-    return results;
 }
 
 //returns profile pic of user if an image was uploaded, placeholder if none exists

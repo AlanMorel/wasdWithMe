@@ -1,4 +1,4 @@
-var currentInput = null;
+var currentInput = null; //the current text input user typed into
 var subbox = document.querySelector("span.sub-results-box");
 var gamesList = document.querySelector(".games-list");
 

@@ -65,6 +65,6 @@ config.api_key = "JhLqNbheBFmshilJrKIbRedqpI2Ap1J6HWbjsnUI5CoGpvRbJg";
 
 //Other
 config.game_not_found_boxart = "https://static-cdn.jtvnw.net/ttv-static/404_boxart-136x190.jpg";
-config.results_per_page = 5;
+config.results_per_page = 10;
 
 module.exports = config;

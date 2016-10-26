@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 var multer = require('multer');
+var fs     = require('fs');
 var User   = require('../models/user');
 var config = require('../config');
 var Logger = require('../utility/logger');
-var fs     = require('fs');
 
 //handles GET requests to /username/edit
 router.get('/:username/edit', function(req, res, next) {
@@ -66,8 +66,8 @@ router.post('/:username/edit', type, function(req, res) {
 
     var tagline = req.body.tagline.substring(0, config.taglineMaxLength);
 
-    var firstname = req.body.firstname;
-    var lastname = req.body.lastname;
+    var firstname = req.body.firstname.substring(0, config.nameMaxLength);
+    var lastname = req.body.lastname.substring(0, config.nameMaxLength);
 
     var bio = req.body.bio.substring(0, config.bioMaxLength);
 
@@ -177,7 +177,7 @@ function getProfilePic(owner){
     return "/images/placeholder.png";
 }
 
-//gets called when user was not found (should not occur under normal circumstances)
+//gets called when user was not found
 function userNotFound(res, user, username){
     Logger.log("User " + username + " was not found.");
     res.status(404);

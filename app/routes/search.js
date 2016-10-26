@@ -8,7 +8,9 @@ router.get('/', function (req, res, next) {
     var query = req.query.query;
     var type = req.query.type;
 
-    var searchRequest = data.makeSearchRequest(query, 0, type != "games", type != "users");
+    var users = type === "all" || type === "users";
+    var games = type === "all" || type === "games";
+    var searchRequest = data.makeSearchRequest(query, 0, users, games);
 
     data.search(searchRequest, req, res, sendResults);
 });

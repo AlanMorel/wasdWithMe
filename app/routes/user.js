@@ -17,9 +17,9 @@ router.get('/:username', function(req, res, next) {
 
     User.findByUsername(usernameSlug, true, function(err, owner) {
 
+        //if error or user not found, return userNotFound
         if (err || !owner){
-            userNotFound(res, req.user, username);
-            return;
+            return userNotFound(res, req.user, username);
         }
 
         addTemporaryInfo(owner);

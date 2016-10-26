@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var passport = require('passport');
+var Logger   = require('../utility/logger');
 
 //handles GET requests to /login
 router.get('/', function(req, res, next) {
@@ -15,7 +16,9 @@ router.get('/', function(req, res, next) {
 //handles a login attempt
 router.post('/', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
-        if (err  || !user) {
+
+        //if there is an error or user not found
+        if (err || !user) {
             res.render('login', {
                 title: 'Log In',
                 layout: 'secondary',
@@ -24,17 +27,23 @@ router.post('/', function(req, res, next) {
             });
             return;
         }
+
+        //otherwise attempt login
         req.login(user, function(err){
+
+            //if error occurred, let user know
             if(err){
                 res.render('login', {
                     title: 'Log In',
                     layout: 'secondary',
                     file: 'login',
-                    error: "An internal error has occurred."
+                    error: "An error has occurred."
                 });
+                Logger.log("Login attempt by " + user.display_name + " failed.", err);
                 return;
             }
-            //User logged in successfully, redirect to homepage
+
+            //user logged in successfully, redirect to homepage
             return res.redirect("/");
         });
     })(req, res, next);
