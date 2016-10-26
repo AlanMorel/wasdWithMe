@@ -3,7 +3,8 @@
 - [ ] add +1s to video game pages
 - [ ] fix new game additions by accessing the game page directly
 - [ ] create helper file for functions being duplicated
-- [ ] recode/add client-side form validation to register and sign in pages
+- [ ] add basic validation to login page
+- [X] recode client-side form validation for sign up page
 - [X] add pagination to search results page
 - [X] do a general clean and add comments whenever necessary
 - [X] add back links to sign up and log in pages

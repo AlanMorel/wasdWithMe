@@ -6,7 +6,7 @@ exports.checkAccount = function(username, password, confirmation, email) {
 
     //ensure a username was entered
     if (username === '') {
-        return "Username not entered.";
+        return "A username was not entered.";
     }
 
     //ensure correct username length
@@ -21,7 +21,7 @@ exports.checkAccount = function(username, password, confirmation, email) {
 
     //check password was entered
     if (password === '') {
-        return "You must input a password.";
+        return "A password was not entered.";
     }
 
     //ensure correct password length
@@ -41,7 +41,7 @@ exports.checkAccount = function(username, password, confirmation, email) {
 
     //ensure email entered
     if (email === '') {
-        return "Email address not entered.";
+        return "An email address was not entered.";
     }
 
     //ensure correct email length

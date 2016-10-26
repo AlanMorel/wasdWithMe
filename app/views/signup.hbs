@@ -3,26 +3,22 @@
 </a>
 <div class="title">Sign up for your account!</div>
 <div class="container">
-    <form method="post" action="/signup">
+    <form method="post" action="/signup" onsubmit="return validate(this)">
         <div>
             <label>Username:</label>
             <input type="text" name="username" maxlength="{{config "usernameMaxLength"}}">
-            <p id="username_feedback"></p>
         </div>
         <div>
             <label>Password:</label>
             <input type="password" name="password" maxlength="{{config "passwordMaxLength"}}">
-            <p id="password_feedback"></p>
         </div>
         <div>
             <label>Confirm Password:</label>
             <input type="password" name="confirmation" maxlength="{{config "passwordMaxLength"}}">
-            <p id="password_feedback"></p>
         </div>
         <div>
             <label>Email:</label>
             <input type="email" name="email" maxlength="{{config "emailMaxLength"}}">
-            <p id="email_feedback"></p>
         </div>
         <div>
             <label>Gender:</label>
@@ -35,7 +31,6 @@
         <div>
             <label>Date of Birth:</label>
             <input type="date" name="date_of_birth">
-            <p id="date_feedback"></p>
         </div>
         <div>
             <label>Country:</label>
@@ -58,7 +53,7 @@
         </div>
         <p class="feedback">{{#if error}}{{error}}{{/if}}</p>
         <div class="action-button">
-            <input type="submit" value="Sign Up" class="button" onclick="stop()">
+            <input type="submit" value="Sign Up" class="button">
         </div>
     </form>
 </div>

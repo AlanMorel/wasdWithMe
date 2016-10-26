@@ -11,7 +11,7 @@
   <body>
     {{{body}}}
   </body>
-  {{#if js}}
-  <script src="/javascript/{{js}}.js"></script>
-  {{/if}}
+  {{#each js}}
+  <script src="/javascript/{{this}}.js"></script>
+  {{/each}}
 </html>

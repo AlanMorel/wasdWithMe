@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
         title: 'Sign Up',
         layout: 'secondary',
         file: 'signup',
-        js: 'signup'
+        js: ['validation', 'signup']
     });
 });
 
