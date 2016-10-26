@@ -56,6 +56,19 @@ body {
   font-size: 13px;
   display: inline-block;
 }
+.pagination {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 32px;
+  a{
+    color: darkgray;
+    margin: 0 12px 0 12px;
+  }
+}
+.current{
+  font-weight: bold;
+  color: black;
+}
 @media only screen and (max-width: 750px) {
   .search-results{
     width: 96%;
@@ -84,5 +97,11 @@ body {
     font-size: 4vw;
     margin: 5%;
     width: 100%;
+  }
+  .pagination {
+    font-size: 5vw;
+    a{
+      margin: 0 2vw 0 2vw;
+    }
   }
 }

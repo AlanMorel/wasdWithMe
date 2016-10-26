@@ -11,7 +11,7 @@ router.get('/search', function(req, res, next) {
 
     var users = type === "all" || type === "users";
     var games = type === "all" || type === "games";
-    var searchRequest = data.makeSearchRequest(query, 0, users, games);
+    var searchRequest = data.makeSearchRequest(query, 1, users, games);
 
     data.search(searchRequest, req, res, sendResults);
 });

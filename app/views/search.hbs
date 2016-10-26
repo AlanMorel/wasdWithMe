@@ -14,3 +14,10 @@
 <span>Sorry, your search did not return any results.</span>
 {{/each}}
 </div>
+<div class="pagination">
+{{#each pages}}
+    <a href="/search?type={{../type}}&query={{../query}}&page={{this.page_id}}">
+        <span {{#if this.current}}class="current"{{/if}}>{{this.page_id}}</span>
+    </a>
+{{/each}}
+</div>

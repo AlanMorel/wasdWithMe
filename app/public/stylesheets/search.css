@@ -309,6 +309,19 @@ body {
   font-size: 13px;
   display: inline-block;
 }
+.pagination {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 32px;
+}
+.pagination a {
+  color: #a9a9a9;
+  margin: 0 12px 0 12px;
+}
+.current {
+  font-weight: bold;
+  color: #000;
+}
 @media only screen and (max-width: 750px) {
   .search-results {
     width: 96%;
@@ -337,5 +350,11 @@ body {
     font-size: 4vw;
     margin: 5%;
     width: 100%;
+  }
+  .pagination {
+    font-size: 5vw;
+  }
+  .pagination a {
+    margin: 0 2vw 0 2vw;
   }
 }
