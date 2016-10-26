@@ -12,7 +12,8 @@ router.get('/', function (req, res, next) {
     res.render('signup', {
         title: 'Sign Up',
         layout: 'secondary',
-        file: 'signup'
+        file: 'signup',
+        js: 'signup'
     });
 });
 
