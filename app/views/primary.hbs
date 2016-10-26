@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-      {{>header}}
+    <head>
+        <title>{{title}}</title>
+        {{>header}}
 
-      <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+        <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 
-      <link rel="stylesheet" href="/stylesheets/{{file}}.css" />
-  </head>
-  <body>
-  <div class="wasd-header">
-      <a href="/">
-          <img src="/images/logo.png" class="logo">
-      </a>
-      <div class="wasd-text">
-          <div class="wasd-top">
-          {{#if user}}
-              Hello, {{user.username}}
-          {{else}}
-              Hello, Guest
-          {{/if}}
-          </div>
-          <div class="wasd-bottom">
-          {{#if user}}
-              <a href="/user/{{user.display_name}}/messages">Messages</a>
-              <a href="/user/{{user.display_name}}">Profile</a>
-              <a href="/logout">Log Out</a>
-          {{else}}
-              <a href="/login">Log In</a>
-          {{/if}}
-          </div>
-      </div>
-  </div>
-  <div class="search">
-      <form method="get" action="/search">
-          <select name="type">
-              <option value="all">All</option>
-              <option value="users">Users</option>
-              <option value="games">Games</option>
-          </select>
-          <span class="results-box"></span>
-          <input name="query" class="search-box" type="text" autocomplete="off" placeholder="Search for users or games..." />
-          <input type="image" src="/images/search.png" alt="Submit Form" />
-      </form>
-  </div>
-  {{{body}}}
-  <footer>
-      <div class="top">
-          <div class="section">
-            <div class="footer-header">WASD With Me</div>
-              <div class="footer-item">About</div>
-              <div class="footer-item">Leaderboards</div>
-              <div class="footer-item">Team</div>
-          </div>
-          <div class="section">
-              <div class="footer-header">Follow Us</div>
-              <div class="footer-item">Facebook</div>
-              <div class="footer-item">Twitter</div>
-              <div class="footer-item">Google+</div>
-          </div>
-          <div class="section">
-              <div class="footer-header madeinny">Made with ♥ in New York</div>
-              <div class="madeinny-container">
-                <img src="/images/madeinny.png">
-              </div>
-          </div>
-      </div>
-      <div class="bottom">Copyright © 2016 WASD With Me. All rights reserved.</div>
-  </footer>
-  </body>
-  {{#if js}}
-  <script src="/javascript/{{js}}.js"></script>
-  {{/if}}
-  <script src="/javascript/primary.js"></script>
+        <link rel="stylesheet" href="/stylesheets/{{file}}.css"/>
+    </head>
+    <body>
+        <div class="wasd-header">
+            <a href="/">
+                <img src="/images/logo.png" class="logo">
+            </a>
+            <div class="wasd-text">
+                <div class="wasd-top">
+                    {{#if user}}
+                    Hello, {{user.username}}
+                    {{else}}
+                    Hello, Guest
+                    {{/if}}
+                </div>
+                <div class="wasd-bottom">
+                {{#if user}}
+                    <a href="/user/{{user.display_name}}/messages">Messages</a>
+                    <a href="/user/{{user.display_name}}">Profile</a>
+                    <a href="/logout">Log Out</a>
+                {{else}}
+                    <a href="/login">Log In</a>
+                {{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="search">
+            <form method="get" action="/search">
+                <select name="type">
+                    <option value="all">All</option>
+                    <option value="users">Users</option>
+                    <option value="games">Games</option>
+                </select>
+                <span class="results-box"></span>
+                <input name="query" class="search-box" type="text" autocomplete="off" placeholder="Search for users or games..."/>
+                <input type="image" src="/images/search.png" alt="Submit Form"/>
+            </form>
+        </div>
+        {{{body}}}
+        <footer>
+            <div class="top">
+                <div class="section">
+                    <div class="footer-header">WASD With Me</div>
+                    <div class="footer-item">About</div>
+                    <div class="footer-item">Leaderboards</div>
+                    <div class="footer-item">Team</div>
+                </div>
+                <div class="section">
+                    <div class="footer-header">Follow Us</div>
+                    <div class="footer-item">Facebook</div>
+                    <div class="footer-item">Twitter</div>
+                    <div class="footer-item">Google+</div>
+                </div>
+                <div class="section">
+                    <div class="footer-header madeinny">Made with ♥ in New York</div>
+                    <div class="madeinny-container">
+                        <img src="/images/madeinny.png">
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">Copyright © 2016 WASD With Me. All rights reserved.</div>
+        </footer>
+    </body>
+    {{#if js}}
+        <script src="/javascript/{{js}}.js"></script>
+    {{/if}}
+    <script src="/javascript/primary.js"></script>
 </html>
