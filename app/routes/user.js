@@ -84,9 +84,10 @@ function getAge(birthday){
 function getProfilePic(owner){
     var path = "/images/profile/" + owner.display_name + ".png";
     try {
-        fs.accessSync(path, fs.F_OK);
+        fs.accessSync(path);
         return path;
     } catch (e) {
+
     }
     return "/images/placeholder.png";
 }

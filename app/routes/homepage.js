@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var Logger = require('../utility/logger');
-var User = require('../models/user');
+var User  = require('../models/user');
+var fs    = require('fs');
 
 //handles GET requests to the root
 router.get('/', function (req, res, next) {
@@ -47,9 +48,21 @@ function addTemporaryInfo(users) {
     var platforms = ["steam", "xbox", "playstation", "twitch"];
     for (var i = 0; i < users.length; i++) {
         users[i].platforms = platforms.sort(function () {return 0.5 - Math.random()}).slice(0, Math.floor(Math.random() * platforms.length) + 1);
-        users[i].profile_pic = "http://iconshow.me/media/images/Mixed/small-n-flat-icon/png2/64/-profile-filled.png";
+        users[i].profile_pic = getProfilePic(users[i]);
     }
     return users;
+}
+
+//returns profile pic of user if an image was uploaded, placeholder if none exists
+function getProfilePic(owner){
+    var path = "/images/profile/" + owner.display_name + ".png";
+    try {
+        fs.accessSync(path);
+        return path;
+    } catch (e) {
+
+    }
+    return "/images/placeholder.png";
 }
 
 module.exports = router;
