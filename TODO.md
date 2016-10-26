@@ -6,7 +6,7 @@
 - [ ] create helper file for functions being duplicated
 - [ ] recode/add client-side form validation to register and sign in pages
 - [ ] do a general clean and add comments whenever necessary
-- [ ] add back links to sign up and log in pages
+- [X] add back links to sign up and log in pages
 - [X] make search results page mobile compatible
 - [X] improve styling of edit page
 - [X] redesign api/database retrieval system for better clarity and modularity
