@@ -4,7 +4,7 @@
 - [ ] fix new game additions by accessing the game page directly
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city
-- [ ] add basic validation to login page
+- [X] add basic validation to login page
 - [X] recode client-side form validation for sign up page
 - [X] add pagination to search results page
 - [X] do a general clean and add comments whenever necessary

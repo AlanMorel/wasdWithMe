@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
     res.render('login', {
         title: 'Log in',
         layout: 'secondary',
-        file: 'login'
+        file: 'login',
+        js: ['validation', 'login']
     });
 });
 
@@ -23,6 +24,7 @@ router.post('/', function(req, res, next) {
                 title: 'Log In',
                 layout: 'secondary',
                 file: 'login',
+                js: ['validation', 'login'],
                 error: "The username or password is not correct."
             });
             return;
@@ -37,6 +39,7 @@ router.post('/', function(req, res, next) {
                     title: 'Log In',
                     layout: 'secondary',
                     file: 'login',
+                    js: ['validation', 'login'],
                     error: "An error has occurred."
                 });
                 Logger.log("Login attempt by " + user.display_name + " failed.", err);

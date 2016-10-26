@@ -32,7 +32,6 @@ input:focus {
 .button {
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 1px;
-  border: 1px solid #ccc;
   cursor: pointer;
   background: #fff;
   -webkit-transition: all 0.1s ease-in-out;
@@ -42,7 +41,6 @@ input:focus {
   border-radius: 4px;
   font-weight: lighter;
   padding: 2% 6%;
-  text-decoration: none;
   font-size: 24px;
 }
 .button:hover {
@@ -56,9 +54,8 @@ input:focus {
   width: 550px;
   background-color: #fff;
   border-radius: 18px;
-  padding-bottom: 50px;
+  padding: 14px 0 50px 0;
   margin-bottom: 20px;
-  padding-top: 14px;
 }
 img {
   text-align: center;
@@ -82,24 +79,26 @@ select {
 }
 .title {
   color: #fff;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding: 16px 0 16px 0;
   background: -webkit-linear-gradient(left, rgba(255,0,0,0), #000, rgba(255,0,0,0));
   margin: auto;
   margin-bottom: 30px;
   width: 500px;
-  font-size: 16px;
 }
 .container .action-button {
   text-align: center;
 }
 .links {
   font-size: 18px;
-  color: #fff;
   margin-bottom: 50px;
 }
 .links a {
   margin: 0 10px 0 10px;
+}
+.feedback {
+  background-color: #fdc4c4;
+  line-height: 50px;
+  margin-top: 30px;
 }
 @media only screen and (max-width: 600px) {
   img {
@@ -110,8 +109,7 @@ select {
     width: 80%;
   }
   .container {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 0 5% 10% 5%;
   }
   label {
     text-align: left;
@@ -123,11 +121,6 @@ select {
   label {
     width: 96%;
   }
-}
-.feedback {
-  background-color: #fdc4c4;
-  line-height: 50px;
-  margin-top: 30px;
 }
 select {
   width: 260px;

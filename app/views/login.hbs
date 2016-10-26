@@ -3,7 +3,7 @@
 </a>
 <div class="title">Log in to your account!</div>
 <div class="container">
-    <form method="post" action="/login">
+    <form method="post" action="/login" onsubmit="return validate()">
         <div>
             <label>Username:</label>
             <input type="text" name="username" maxlength="{{config "usernameMaxLength"}}">
@@ -12,7 +12,7 @@
             <label>Password:</label>
             <input type="password" name="password" maxlength="{{config "passwordMaxLength"}}">
         </div>
-        <p id="feedback">{{#if error}}{{error}}{{/if}}</p>
+        <p class="feedback">{{#if error}}{{error}}{{/if}}</p>
         <div class="action-button">
             <input type="submit" value="Log In" class="button">
         </div>
