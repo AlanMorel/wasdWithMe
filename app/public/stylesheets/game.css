@@ -352,6 +352,10 @@ img.screenshot {
   width: 100%;
   height: 100%;
 }
+.game-one-ups {
+  float: right;
+  margin-right: 10px;
+}
 @media only screen and (max-width: 750px) {
   .container {
     width: 100%;

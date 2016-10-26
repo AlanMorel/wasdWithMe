@@ -66,6 +66,7 @@ function displayGame(req, res, query, game){
     var release = getReleaseDate(game.release_date);
     var banner = getBanner(game.screenshots);
     var rating = getRating(game.rating);
+    var oneUpCount = getOneUpCount(game);
 
     return res.render('game', {
         title: game.display_name,
@@ -75,8 +76,17 @@ function displayGame(req, res, query, game){
         game: game,
         release: release,
         banner: banner,
-        rating: rating
+        rating: rating,
+        one_up_count: oneUpCount
     });
+}
+
+function getOneUpCount(game){
+    if (game.one_ups){
+        return game.one_ups.length;
+    } else {
+        return 0;
+    }
 }
 
 //returns the game's release date if one exists

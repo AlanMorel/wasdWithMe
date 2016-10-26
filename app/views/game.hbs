@@ -16,6 +16,10 @@
         {{#if rating}}
         <div class="rating" style="background-color:{{rating.color}};">{{rating.number}}</div>
         {{/if}}
+        <div class="game-one-ups">
+            <span class="one-ups-value">{{one_up_count}}</span>
+            <span class="one-ups-button">1UP</span>
+        </div>
         {{#if game.description}}
         <h1>Description</h1>
         <div class="game-description">{{game.description}}</div>
