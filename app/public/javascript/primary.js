@@ -2,7 +2,7 @@ var screen = document.querySelector("html");
 var box = document.querySelector(".results-box");
 var search = document.querySelector(".search-box");
 var select = document.querySelector('select[name="type"]');
-var oneUps = document.querySelectorAll(".one-ups-label");
+var oneUps = document.querySelectorAll(".one-ups-button");
 
 //returns true if box should be shown, false if not
 function shouldShow(query){
@@ -48,8 +48,20 @@ screen.onclick = function(e) {
     }
 };
 
+//increment one up count when clicked, decrement if clicked again
+function oneUpOnClick(){
+    this.classList.toggle('one-upped');
+
+    var label = this.previousElementSibling;
+    var value = parseInt(label.innerHTML);
+
+    if (this.classList.contains("one-upped")){
+        label.innerHTML = value + 1;
+    } else {
+        label.innerHTML = value - 1;
+    }
+}
+
 for (var i = 0; i < oneUps.length; i++) {
-    oneUps[i].onclick = function() {
-        this.classList.toggle('one-upped');
-    };
+    oneUps[i].onclick = oneUpOnClick;
 }

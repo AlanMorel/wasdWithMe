@@ -1,76 +1,7 @@
 var mongoose = require('mongoose');
 var passportPlugin = require('passport-local-mongoose');
 var config = require('../config');
-
-var oneUps = [{
-    oneUpper: {
-        type: String,
-        required: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    }
-}];
-
-var availabilityTimes = {
-    morning: {
-        type: Boolean
-    },
-    day: {
-        type: Boolean
-    },
-    night: {
-        type: Boolean
-    },
-    never: {
-        type: Boolean
-    }
-};
-
-var comments = [{
-    author: {
-        type: String,
-        required: true
-    },
-    content: {
-        type: String,
-        required: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
-    },
-    one_ups: {
-        type: oneUps
-    },
-    deleted: {
-        type: Boolean,
-        default: 0
-    }
-}];
-
-var image = {
-    name: {
-        type: String
-    },
-    data: {
-        type: String
-    },
-    size: {
-        type: Number
-    },
-    uploaded: {
-        type: Date,
-        default: Date.now
-    },
-    one_ups: {
-        type: oneUps
-    },
-    comments: {
-        type: comments
-    }
-};
+var objects = require('../models/objects');
 
 var User = new mongoose.Schema({
     display_name: {
@@ -122,7 +53,7 @@ var User = new mongoose.Schema({
         maxlength: config.taglineMaxLength
     },
     one_ups: {
-        type: oneUps
+        type: objects.oneUps
     },
     one_up_count: {
         type: Number,
@@ -134,14 +65,14 @@ var User = new mongoose.Schema({
     },
     availability:{
         weekdays: {
-            type: availabilityTimes
+            type: objects.availabilityTimes
         },
         weekends: {
-            type: availabilityTimes
+            type: objects.availabilityTimes
         }
     },
     images: [{
-       type: image
+       type: objects.image
     }],
     accounts: {
         steam: {

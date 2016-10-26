@@ -24,7 +24,10 @@
                 <div class="message-button">Message</div>
             </a>
             {{/if}}
-            <div class="profile-one-ups">{{owner.one_up_count}} <span class="one-ups-label">1UP</span></div>
+            <div class="profile-one-ups">
+                <span class="one-ups-value">{{owner.one_up_count}}</span>
+                <span class="one-ups-button">1UP</span>
+            </div>
             <div class="profile-coins">{{owner.coins}} <img class="coin" src="/images/coin.png"></div>
         </div>
     </div>

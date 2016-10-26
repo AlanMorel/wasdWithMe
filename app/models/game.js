@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var objects = require('../models/objects');
 
 var Game = new mongoose.Schema({
     id:{
@@ -35,7 +36,10 @@ var Game = new mongoose.Schema({
     }],
     owners: [{
         type: String
-    }]
+    }],
+    one_ups: {
+        type: objects.oneUps
+    }
 });
 
 module.exports = mongoose.model('Game', Game);

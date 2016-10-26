@@ -155,7 +155,7 @@ footer .bottom {
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
 }
-.one-ups-label {
+.one-ups-button {
   font-size: 10px;
   border-radius: 6px;
   border: 1px solid #008629;
@@ -165,15 +165,15 @@ footer .bottom {
   background-color: #edfff3;
   cursor: pointer;
 }
-.one-ups-label:hover {
+.one-ups-button:hover {
   background-color: #cfffd4;
 }
 .one-upped {
-  background-color: #008629;
+  background-color: #009e30;
   color: #fff;
 }
 .one-upped:hover {
-  background-color: #006820;
+  background-color: #008629;
 }
 .section {
   display: inline-block;
