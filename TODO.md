@@ -2,7 +2,7 @@
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
 - [ ] newly added games cannot be immediately favorite'd
-- [ ] ensure you can only edit the profile of just yourself and only when logged in
+- [X] ensure you can only edit the profile of just yourself and only when logged in
 - [X] fix new game additions by accessing the game page directly
 - [X] add +1s to video game pages
 - [X] add basic validation to login page

@@ -9,6 +9,19 @@ var Logger = require('../utility/logger');
 
 //handles GET requests to /username/edit
 router.get('/:username/edit', function(req, res, next) {
+
+    //in the case somebody isn't logged in but tries to edit
+    if (!req.user){
+        res.render('404', {
+            title: 'Cannot edit profile',
+            layout: 'primary',
+            file: '404',
+            user: req.user,
+            message: "You must log in to edit a profile."
+        });
+        return;
+    }
+
     var username = req.params.username;
     var slug = username.toLowerCase();
 
@@ -16,6 +29,18 @@ router.get('/:username/edit', function(req, res, next) {
 
         if (err || !owner){
             userNotFound(res, req.user, username);
+            return;
+        }
+
+        //user tried to edit somebody else's profile
+        if(!isOwner(req.user, owner)){
+            res.render('404', {
+                title: 'Cannot edit profile',
+                layout: 'primary',
+                file: '404',
+                user: req.user,
+                message: "You cannot edit somebody else's profile."
+            });
             return;
         }
 
@@ -116,6 +141,10 @@ router.post('/:username/edit', type, function(req, res) {
     });
 });
 
+//returns true if user is on own page
+function isOwner(user, owner){
+    return user && user.username === owner.username;
+}
 
 //populates games to insert into database
 function populateGames(games, favorite){
