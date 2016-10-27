@@ -1,6 +1,7 @@
 var currentInput = null; //the current text input user typed into
 var subbox = document.querySelector("span.sub-results-box");
 var gamesList = document.querySelector(".games-list");
+var favorites = document.querySelectorAll('.games-list input[type="checkbox"]').length;
 
 //returns true if box should be shown, false if not
 function shouldShow(query){
@@ -93,6 +94,7 @@ document.querySelector(".add-another").onclick = function() {
     //create new checkbox
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    checkbox.name = "favorite[" + (favorites++) + "]";
 
     //create favorite text label
     var favorite = document.createTextNode("Favorite");
