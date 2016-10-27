@@ -10,7 +10,7 @@ var Logger = require('../utility/logger');
 //handles GET requests to /username/edit
 router.get('/:username/edit', function(req, res, next) {
     var username = req.params.username;
-    var slug = username.toLowerCase(); //properly slug it
+    var slug = username.toLowerCase();
 
     User.findByUsername(slug, true, function(err, owner) {
 
@@ -63,7 +63,7 @@ var type = multer(uploadOptions).single('image');
 //handles POST requests to /username/edit
 router.post('/:username/edit', type, function(req, res) {
     var username = req.params.username;
-    var slug = username.toLowerCase(); //properly slug
+    var slug = username.toLowerCase();
 
     var tagline = req.body.tagline.substring(0, config.taglineMaxLength);
 
@@ -188,7 +188,7 @@ function userNotFound(res, user, username){
         layout: 'primary',
         file: '404',
         user: user,
-        message: username + " not found!"
+        message: "We could not find any user named '" + username + "'."
     });
 }
 

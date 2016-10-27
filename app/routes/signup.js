@@ -27,7 +27,7 @@ var authentication = passport.authenticate('local', authenticationOptions);
 
 router.post('/', function (req, res) {
     var displayName = req.body.username;
-    var username = displayName.toLowerCase(); //properly slug this
+    var username = displayName.toLowerCase();
     var password = req.body.password;
     var confirmation = req.body.confirmation;
     var email = req.body.email;

@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 //Returns back requested user
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
-    var usernameSlug = username.toLowerCase(); //properly slug it
+    var usernameSlug = username.toLowerCase();
 
     User.findByUsername(usernameSlug, true, function(err, owner) {
 
@@ -100,7 +100,7 @@ function userNotFound(res, user, username){
         layout: 'primary',
         file: '404',
         user: user,
-        message: username + " not found!"
+        message: "We could not find any user named '" + username + "'."
     });
 }
 

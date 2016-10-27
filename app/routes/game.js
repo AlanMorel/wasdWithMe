@@ -41,27 +41,28 @@ router.get('/:game', function(req, res, next) {
 
         //if game found, display, otherwise search via api for it
         if (game){
-            displayGame(req, res, query, game);
+            displayGame(req, res, game);
         } else {
-            var searchRequest = data.makeSearchRequest(query, 0, false, true);
-            data.callApi(req, res, searchRequest, [], displayApiResults);
+            var searchRequest = data.makeSearchRequest(req, res, query, 0, false, true);
+            data.callApi(searchRequest, [], displayFirstGame, data.getFirstGame);
         }
     });
 });
 
 //callback for when calling the api
-function displayApiResults(req, res, query, games){
+function displayFirstGame(searchRequest, game){
     //if api returned nothing, game could not be found
-    if (games.length < 1){
-        return gameNotFound(req, res, query);
+    if (!game){
+        return gameNotFound(searchRequest.req, searchRequest.res, searchRequest.query);
     } else {
         //api returns array of games but we only want the first game
-        displayGame(req, res, query, games[0]);
+        console.log("calling display game");
+        displayGame(searchRequest.req, searchRequest.res, game);
     }
 }
 
 //displays a game page to the user
-function displayGame(req, res, query, game){
+function displayGame(req, res, game){
 
     var release = getReleaseDate(game.release_date);
     var banner = getBanner(game.screenshots);
@@ -147,7 +148,7 @@ function gameNotFound(req, res, query){
         layout: 'primary',
         file: '404',
         user: req.user,
-        message: query + " not found!"
+        message: "We could not find any game named '" + query + "'."
     });
 }
 

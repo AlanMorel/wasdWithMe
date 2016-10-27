@@ -16,7 +16,7 @@ exports.checkAccount = function(username, password, confirmation, email) {
 
     //check username validity
     if (!usernameIsValid(username)) {
-        return "Usernames may only contain letters, numbers, dashes and underscores.";
+        return "Usernames may only contain letters, numbers, and underscores.";
     }
 
     //check password was entered
@@ -58,24 +58,9 @@ exports.checkAccount = function(username, password, confirmation, email) {
     return undefined;
 };
 
-//slugs title by replacing spaces with dashes, removing all symbols, removes a sequence of dashes,
-//disallows a dash from start or end of slug
-//@return: Returns undefined if cannot be slugged
-exports.slugTitle = function(title){
-  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '') .replace(/^-+/, '').replace(/-+$/, '') || undefined;
-};
-
-exports.slugUser = function(username){
-  if(usernameIsValid(username)){
-      return slugTitle(username);
-  } else {
-      return undefined;
-  }
-};
-
-//regex operation ensures first character is an alphanumeric
+//regex operation ensures usernames must be alphanumeric + underscores
 function usernameIsValid(username) {
-    return /^[a-zA-z][0-9a-zA-Z_-]+$/.test(username);
+    return /^[a-zA-z][0-9a-zA-Z_]+$/.test(username);
 }
 
 //regex operation ensures a valid email
@@ -83,7 +68,7 @@ function emailIsValid(email) {
     return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/.test(email);
 }
 
-//regex operation ensures at least 1 alpha and 1 numeric
+//regex operation ensures at least 1 alpha and 1 numeric character
 function passwordIsValid(password){
   return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
 }

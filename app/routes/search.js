@@ -12,13 +12,13 @@ router.get('/', function (req, res, next) {
 
     var users = type === "all" || type === "users";
     var games = type === "all" || type === "games";
-    var searchRequest = data.makeSearchRequest(query, page, users, games);
+    var searchRequest = data.makeSearchRequest(req, res, query, page, users, games);
 
-    data.search(searchRequest, req, res, sendResults);
+    data.search(searchRequest, sendResults);
 });
 
 //renders the search results
-var sendResults = function(req, res, searchRequest, results) {
+var sendResults = function(searchRequest, results) {
 
     var pagination = getPagination(searchRequest, results);
 
@@ -28,14 +28,14 @@ var sendResults = function(req, res, searchRequest, results) {
     results = results.slice(lower, upper);
 
     if (results.length < 1){
-        return emptySearchResults(req, res, searchRequest.query);
+        return emptySearchResults(searchRequest.query);
     }
 
-    res.render('search', {
+    searchRequest.res.render('search', {
         title: 'Search Results',
         layout: 'primary',
         file: 'search',
-        user: req.user,
+        user: searchRequest.req.user,
         query: searchRequest.query,
         type: getType(searchRequest),
         results: results,

@@ -112,7 +112,7 @@ app.use(function(req, res, next) {
     layout: 'primary',
     file: '404',
     user : req.user,
-    message: "Page not found!"
+    message: "Page you are looking for could not be found."
   });
 });
 

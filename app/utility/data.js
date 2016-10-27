@@ -7,8 +7,10 @@ var config  = require('../config');
 var fs      = require('fs');
 
 //returns a search request object to be used in the search function
-function makeSearchRequest(query, page, users, games){
+function makeSearchRequest(req, res, query, page, users, games){
     var searchRequest = {
+        req: req, //the request object
+        res: res, //the response object
         query: query, //text that is being searched for
         page: page, //what page offset do they want
         users: users, //boolean defining whether or not to include games
@@ -50,11 +52,11 @@ function getAsyncFunctions(searchRequest){
 
 //calls the callback function with results accumulated using
 //the information inside the searchRequest object
-function search(searchRequest, req, res, callback){
+function search(searchRequest, callback){
 
     //if the query is too short, return
     if (searchRequest.query.length < 3){
-        callback(req, res, searchRequest, null);
+        callback(searchRequest, null);
         return;
     }
 
@@ -68,7 +70,7 @@ function search(searchRequest, req, res, callback){
 
         if (err){
             Logger.log("Querying database during search failed.", err);
-            callback(req, res, searchRequest, null);
+            callback(searchRequest, null);
             return;
         }
 
@@ -102,13 +104,13 @@ function search(searchRequest, req, res, callback){
             //if games are requested but none returned from the database
             //use the api to populate the results
             if (games.length < 1){
-                callApi(req, res, searchRequest, results, callback);
+                callApi(searchRequest, results, callback, getAllGames);
                 return;
             }
         }
 
         //call the callback function with the results
-        callback(req, res, searchRequest, results);
+        callback(searchRequest, results);
     });
 }
 
@@ -119,7 +121,7 @@ function getFields(){
 }
 
 //makes a call to IGDB via their api to search through their databases for games
-function callApi(req, res, searchRequest, results, callback){
+function callApi(searchRequest, results, callback, handler){
 
     var api = {
         fields: "?fields=" + getFields(),
@@ -136,38 +138,59 @@ function callApi(req, res, searchRequest, results, callback){
         .header("X-Mashape-Key", config.api_key)
         .header("Accept", "application/json")
         .timeout(config.api_timeout)
-        .end(function (result) {
+        .end(function (response) {
 
             //if something went wrong, call callback
-            if (result.status != 200){
-                callback(req, res, searchRequest, results);
+            if (response.status != 200){
+                callback(searchRequest, results);
                 return;
             }
 
-            //otherwise iterate through all the games and
-            //add it to our results and database
-            result.body.forEach(function(game){
-                var name = game.name;
-                var image = getBoxArt(game);
-                var text = 'summary' in game ? game.summary : "";
-                addToResults(results, "game", name, image, text);
-                addToDatabase(game);
-            });
+            //otherwise call handler with results and response
+            results = handler(results, response);
 
-            //finally, call callback with all the results
-            callback(req, res, searchRequest, results);
+            //finally, call callback with the results
+            callback(searchRequest, results);
         }
     );
 }
 
-//adds a new game to the database for further use in the future
-function addToDatabase(game){
+function getAllGames(results, response){
+    //otherwise iterate through all the games and
+    //add it to our results and database
+    response.body.forEach(function(game){
+        var name = game.name;
+        var image = getBoxArt(game);
+        var text = 'summary' in game ? game.summary : "";
+        addToResults(results, "game", name, image, text);
+        addToDatabase(game);
+    });
+    return results;
+}
+
+function getFirstGame(results, response){
+    //in the case that no games were found
+    if (response.body.length == 0){
+        return;
+    }
+    //otherwise add every game to the database
+    //then return just the first game, parsed
+    response.body.forEach(function(game){
+        addToDatabase(game);
+    });
+
+    return parseGame(response.body[0]);
+}
+
+//parses api data and returns a game object
+function parseGame(game){
     var new_game = {
         id: game.id,
         name: getCleanedGameName(game),
         display_name: game.name,
         description : 'summary' in game ? game.summary : "",
-        boxart: getBoxArt(game)
+        boxart: getBoxArt(game),
+        one_ups: []
     };
 
     var date = getReleaseDate(game);
@@ -189,6 +212,14 @@ function addToDatabase(game){
     if (videos){
         new_game.videos = videos;
     }
+
+    return new_game;
+}
+
+//adds a new game to the database for further use in the future
+function addToDatabase(game){
+
+    var new_game = parseGame(game);
 
     var query = {
         id: game.id
@@ -292,5 +323,7 @@ function getProfilePic(owner){
 module.exports = {
     callApi: callApi,
     search: search,
-    makeSearchRequest: makeSearchRequest
+    makeSearchRequest: makeSearchRequest,
+    getAllGames: getAllGames,
+    getFirstGame: getFirstGame
 };

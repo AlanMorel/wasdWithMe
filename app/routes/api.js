@@ -11,18 +11,18 @@ router.get('/search', function(req, res, next) {
 
     var users = type === "all" || type === "users";
     var games = type === "all" || type === "games";
-    var searchRequest = data.makeSearchRequest(query, 1, users, games);
+    var searchRequest = data.makeSearchRequest(req, res, query, 1, users, games);
 
-    data.search(searchRequest, req, res, sendResults);
+    data.search(searchRequest, sendResults);
 });
 
 //callback after searching
-var sendResults = function(req, res, searchRequest, results) {
+var sendResults = function(searchRequest, results) {
 
     //we don't want to send more than 10 results to user
     results = results.slice(0, config.results_per_page);
 
-    res.render('partials/results', {
+    searchRequest.res.render('partials/results', {
         results: results
     });
 };
