@@ -37,6 +37,7 @@ You can also:
 * [passport-local](https://www.npmjs.com/package/passport-local) - local authentication strategy
 * [passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose) - simplifies building username and password login with Passport
 * [serve-favicon](https://www.npmjs.com/package/serve-favicon) - favicon serving middleware
+* [socket.io] (https://www.npmjs.com/package/socket.io) - node.js realtime framework server
 * [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
 * [unirest](https://www.npmjs.com/package/unirest) - lightweight http client library
 
