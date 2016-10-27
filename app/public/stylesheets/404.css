@@ -261,10 +261,10 @@ footer img {
   color: #000;
   padding-top: 50px;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
 }
 @media only screen and (max-width: 500px) {
   .message {
-    font-size: 5vw;
+    font-size: 4vw;
   }
 }
