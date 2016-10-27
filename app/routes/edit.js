@@ -50,7 +50,7 @@ router.get('/:username/edit', function(req, res, next) {
             title: owner.display_name,
             layout: 'primary',
             file: 'edit',
-            js: 'edit',
+            js: ['/javascript/edit'],
             user : req.user,
             owner: owner,
             profile_pic: getProfilePic(owner),

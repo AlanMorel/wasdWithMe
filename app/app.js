@@ -26,6 +26,7 @@ var user         = require('./routes/user');
 var edit         = require('./routes/edit');
 var search       = require('./routes/search');
 var game         = require('./routes/game');
+var message      = require('./routes/message');
 
 var app = express();
 
@@ -87,6 +88,7 @@ app.use('/user', user);
 app.use('/user', edit);
 app.use('/search', search);
 app.use('/game', game);
+app.use('/message', message);
 
 //Mongoose
 mongoose.Promise = bluebird;
