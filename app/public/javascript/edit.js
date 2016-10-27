@@ -70,6 +70,7 @@ var deleteGame = function(button){
 
     //delete the entire parent div
     gamesList.removeChild(button.parentNode);
+    favorites--;
 };
 
 //Add a new game input when the button is clicked
