@@ -1,6 +1,8 @@
 # Alan's Todo
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
+- [ ] newly added games cannot be immediately favorite'd
+- [ ] ensure you can only edit the profile of just yourself and only when logged in
 - [X] fix new game additions by accessing the game page directly
 - [X] add +1s to video game pages
 - [X] add basic validation to login page
@@ -17,12 +19,10 @@
 # Edgar's Todo
 - [ ] add credentials file for passport secret key (change when deployed)
 - [ ] if (user.last_activity.minutes < 5) { status = "online"; }
-- [X] ensure usernames only contain contain alphanumeric, numbers, and underscore
-- [X] ctrl+f every file for "properly slug", and slug it
 
 # General Todo
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
-- [ ] add messaging other users
+- [ ] add messaging/live chat other users
 - [ ] add blocking other users
 - [ ] create leaderboards page
 - [ ] create about page
