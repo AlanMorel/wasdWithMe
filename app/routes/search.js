@@ -10,6 +10,11 @@ router.get('/', function (req, res, next) {
     var type = req.query.type;
     var page = req.query.page ? req.query.page : 1;
 
+    //no point in searching for pages 0 or negative pages
+    if (page < 1){
+        return emptySearchResults(req, res, query);
+    }
+
     var users = type === "all" || type === "users";
     var games = type === "all" || type === "games";
     var searchRequest = data.makeSearchRequest(req, res, query, page, users, games);
@@ -28,7 +33,7 @@ var sendResults = function(searchRequest, results) {
     results = results.slice(lower, upper);
 
     if (results.length < 1){
-        return emptySearchResults(searchRequest.query);
+        return emptySearchResults(searchRequest.req, searchRequest.res, searchRequest.query);
     }
 
     searchRequest.res.render('search', {
