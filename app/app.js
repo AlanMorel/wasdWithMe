@@ -12,10 +12,13 @@ var passport     = require('passport');
 var Strategy     = require('passport-local').Strategy;
 var hbs          = require('hbs');
 var stylus       = require('express-stylus');
+var redis        = require("redis");
+var MongoStore   = require('connect-mongo')(session);
 
 var config       = require('./config');
 
 var User         = require('./models/user');
+var ioserver     = require('./utility/io');
 
 var homepage     = require('./routes/homepage');
 var api          = require('./routes/api');
@@ -29,6 +32,9 @@ var game         = require('./routes/game');
 var message      = require('./routes/message');
 
 var app = express();
+var http  = require('http');
+var server = http.createServer(app);
+var io = require('socket.io')(server);
 
 var public = path.join(__dirname, 'public');
 
@@ -63,14 +69,37 @@ app.use(cookieParser());
 //Flash
 app.use(flash());
 
-//Passport
-app.use(session({
-      secret: config.passportSecret,
-      resave: false,
-      saveUninitialized: false,
-    }
-));
+//Mongoose
+mongoose.Promise = bluebird;
+if(app.get('env')==='production'){
+  app.listen(app.get('port'));
+  //NOTE: You have to run heroku config first to set this environment variable
+  //otherwise it defaults to the config file in config.mongooseUri
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(config.mongooseUri);
+}
 
+//Session
+var sessionMiddleware = session({
+  store: new MongoStore({
+    url: config.mongooseUri
+  }),
+  secret: config.passportSecret,
+  resave: false,
+  saveUninitialized: false
+});
+
+app.use(sessionMiddleware);
+
+//io set up
+io.use(function(socket, next) {
+  sessionMiddleware(socket.request, socket.request.res, next);
+});
+
+ioserver.run(io);
+
+//Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -89,17 +118,6 @@ app.use('/user', edit);
 app.use('/search', search);
 app.use('/game', game);
 app.use('/message', message);
-
-//Mongoose
-mongoose.Promise = bluebird;
-if(app.get('env')==='production'){
-  app.listen(app.get('port'));
-  //NOTE: You have to run heroku config first to set this environment variable
-  //otherwise it defaults to the config file in config.mongooseUri
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect(config.mongooseUri);
-}
 
 //Stylus
 app.use(stylus({
@@ -138,4 +156,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-module.exports = app;
+module.exports = {
+  app: app,
+  server: server
+};
