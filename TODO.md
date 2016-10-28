@@ -1,25 +1,17 @@
 # Alan's Todo
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
+
+# Chat Todo
+- [ ] save messages include from, to, timestamp
+- [ ] load saved messages
+- [ ] "online now" for chat
 - [ ] handle offline user live chat attempt
-- [ ] start the process of incorporating database
-- [ ] possible "online now" for chat
-- [ ] give it proper structure, load in profile pic
-- [X] add messaging/live chat other users
-- [X] newly added games cannot be immediately favorite'd
-- [X] ensure you can only edit the profile of just yourself and only when logged in
-- [X] fix new game additions by accessing the game page directly
-- [X] add +1s to video game pages
-- [X] add basic validation to login page
-- [X] recode client-side form validation for sign up page
-- [X] add pagination to search results page
-- [X] do a general clean and add comments whenever necessary
-- [X] add back links to sign up and log in pages
-- [X] make search results page mobile compatible
-- [X] improve styling of edit page
-- [X] redesign api/database retrieval system for better clarity and modularity
-- [X] replace profile image data in database with actual image on filesystem
-- [X] implement search filters
+- [ ] all previous chats on the left
+- [ ] add more information about the "to" including their profile pic
+- [ ] make chat auto scroll
+- [ ] prevent own chat messaging
+- [ ] look into changing the title of the page upon new message when tab inactive
 
 # Edgar's Todo
 - [ ] add credentials file for passport secret key (change when deployed)
