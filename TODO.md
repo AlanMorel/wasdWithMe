@@ -1,7 +1,11 @@
 # Alan's Todo
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
-- [ ] add messaging/live chat other users
+- [ ] handle offline user live chat attempt
+- [ ] start the process of incorporating database
+- [ ] possible "online now" for chat
+- [ ] give it proper structure, load in profile pic, style it
+- [X] add messaging/live chat other users
 - [X] newly added games cannot be immediately favorite'd
 - [X] ensure you can only edit the profile of just yourself and only when logged in
 - [X] fix new game additions by accessing the game page directly
