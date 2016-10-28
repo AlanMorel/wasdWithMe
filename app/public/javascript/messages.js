@@ -1,6 +1,6 @@
 var socket = io.connect();
 var form = document.querySelector(".chat-form");
-var box = document.querySelector(".box");
+var input = document.querySelector(".input");
 var chat = document.querySelector(".chat");
 
 var url = window.location.href;
@@ -20,7 +20,7 @@ console.log("User: " + to);
 
 form.onsubmit = function(e){
     e.preventDefault();
-    sendMessage(box.value);
+    sendMessage(input.value);
 };
 
 function sendMessage(text){
@@ -29,7 +29,7 @@ function sendMessage(text){
         message: text
     };
     socket.emit('send message', data);
-    box.value = "";
+    input.value = "";
 }
 
 socket.on('new message', function(data){

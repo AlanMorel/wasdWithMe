@@ -4,7 +4,7 @@
 - [ ] handle offline user live chat attempt
 - [ ] start the process of incorporating database
 - [ ] possible "online now" for chat
-- [ ] give it proper structure, load in profile pic, style it
+- [ ] give it proper structure, load in profile pic
 - [X] add messaging/live chat other users
 - [X] newly added games cannot be immediately favorite'd
 - [X] ensure you can only edit the profile of just yourself and only when logged in
