@@ -62,6 +62,6 @@ socket.on('own message', function(data){
 function addMessage(from, message){
     var other = from === to;
     var cssClass = other ? "other-message" : "own-message";
-    var append = "<div class='" + cssClass + "'>" + from + ": "  + message + "</div>";
+    var append = "<div class='bubble'><span class='" + cssClass + "'>" + from + ": "  + message + "</span></div>";
     chat.innerHTML = chat.innerHTML + append;
 }

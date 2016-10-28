@@ -26,16 +26,29 @@ body {
 .chat {
   background-color: white;
   border-radius: 8px;
-  padding: 8px;
+  padding: 12px;
   border: 1px solid #ddd;
   color: white;
   height: 500px;
   max-height: 500px;
   overflow-y: auto;
 }
+.bubble{
+  width: 100%;
+  display: inline-block;
+}
+.other-message, .own-message{
+  display: inline-block;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 4px;
+}
 .other-message{
-  color: wasdWithMePurple;
+  color: black;
+  background-color: lightgrey;
 }
 .own-message{
-  color:grey;
+  background-color: wasdWithMePurple;
+  color: white;
+  float: right;
 }
