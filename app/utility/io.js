@@ -1,7 +1,4 @@
-var io;
-
-function run(server) {
-    io = server;
+function run(io) {
 
     io.sockets.on("connection", function(socket) {
         var username = socket.request.session.passport.user;
@@ -11,7 +8,7 @@ function run(server) {
             return;
         }
 
-        console.log("Connection opened by " + username);
+        console.log("Connection opened by " + username + ".");
 
         socket.on('send message', function (data) {
             console.log("received: " + data + " from " + username);

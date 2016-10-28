@@ -1,6 +1,7 @@
 # Alan's Todo
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
+- [ ] add messaging/live chat other users
 - [X] newly added games cannot be immediately favorite'd
 - [X] ensure you can only edit the profile of just yourself and only when logged in
 - [X] fix new game additions by accessing the game page directly
@@ -22,14 +23,15 @@
 
 # General Todo
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
-- [ ] add messaging/live chat other users
 - [ ] add blocking other users
 - [ ] create leaderboards page
 - [ ] create about page
 - [ ] create team page
+
+# Before Launch
+- [ ] https://expressjs.com/en/advanced/best-practice-security.html
 - [ ] add recatcha support to sign up page
 - [ ] add google analytics
-- [ ] before launch: https://expressjs.com/en/advanced/best-practice-security.html
 
 # Possibilities
 - [ ] add developers and publishers to games page

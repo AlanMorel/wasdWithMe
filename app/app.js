@@ -1,4 +1,5 @@
 var express      = require('express');
+var http         = require('http');
 var path         = require('path');
 var favicon      = require('serve-favicon');
 var morgan       = require('morgan');
@@ -32,9 +33,8 @@ var game         = require('./routes/game');
 var message      = require('./routes/message');
 
 var app = express();
-var http  = require('http');
+
 var server = http.createServer(app);
-var io = require('socket.io')(server);
 
 var public = path.join(__dirname, 'public');
 
@@ -93,6 +93,8 @@ var sessionMiddleware = session({
 app.use(sessionMiddleware);
 
 //io set up
+var io = require('socket.io')(server);
+
 io.use(function(socket, next) {
   sessionMiddleware(socket.request, socket.request.res, next);
 });
