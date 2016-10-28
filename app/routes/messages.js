@@ -10,23 +10,23 @@ router.get('/', function (req, res, next) {
         layout: 'primary',
         file: 'message',
         user: req.user,
-        js: ["/socket.io/socket.io", "/javascript/message"]
+        js: ["/socket.io/socket.io", "/javascript/messages"]
     });
 });
 
 //handles GET requests to /message/username
-router.get('/:message', function (req, res, next) {
+router.get('/:username', function (req, res, next) {
 
     //check if user is logged in
 
-    var to = req.params.message;
+    var to = req.params.username;
 
     res.render('message', {
         title: 'Message with ' + to,
         layout: 'primary',
         file: 'message',
         user: req.user,
-        js: ["/socket.io/socket.io", "/javascript/message"]
+        js: ["/socket.io/socket.io", "/javascript/messages"]
     });
 });
 
