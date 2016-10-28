@@ -1,6 +1,6 @@
 var socket = io.connect();
 var form = document.querySelector(".chat-form");
-var message = document.querySelector(".message");
+var box = document.querySelector(".box");
 var chat = document.querySelector(".chat");
 
 var url = window.location.href;
@@ -20,7 +20,7 @@ console.log("User: " + to);
 
 form.onsubmit = function(e){
     e.preventDefault();
-    sendMessage(message.value);
+    sendMessage(box.value);
 };
 
 function sendMessage(text){
@@ -29,7 +29,7 @@ function sendMessage(text){
         message: text
     };
     socket.emit('send message', data);
-    message.value = "";
+    box.value = "";
 }
 
 socket.on('new message', function(data){
@@ -37,29 +37,31 @@ socket.on('new message', function(data){
     //if you're person A talking to person B,
     //but then person C messages you (person A),
     //we don't want to load C's message
-    console.log(data.from);
-    console.log(data.to);
-    console.log(to);
 
     if (data.from !== to){
         console.log("message blocked");
         return;
     }
 
-    var append = data.from + ": "  + data.message;
-    chat.innerHTML = chat.innerHTML + (append + "<br/>");
+    addMessage(data.from, data.message);
 });
 
 socket.on('own message', function(data){
-    console.log(data.from);
-    console.log(data.to);
-    console.log(to);
+
+    //this prevents your own message from
+    //appearing in your other chats
 
     if (data.to !== to){
         console.log("message blocked");
         return;
     }
 
-    var append = data.from + ": "  + data.message;
-    chat.innerHTML = chat.innerHTML + (append + "<br/>");
+    addMessage(data.from, data.message);
 });
+
+function addMessage(from, message){
+    var other = from === to;
+    var cssClass = other ? "other-message" : "own-message";
+    var append = "<div class='" + cssClass + "'>" + from + ": "  + message + "</div>";
+    chat.innerHTML = chat.innerHTML + append;
+}

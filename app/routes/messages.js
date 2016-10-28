@@ -26,7 +26,8 @@ router.get('/:username', function (req, res, next) {
         layout: 'primary',
         file: 'message',
         user: req.user,
-        js: ["/socket.io/socket.io", "/javascript/messages"]
+        js: ["/socket.io/socket.io", "/javascript/messages"],
+        to: to
     });
 });
 
