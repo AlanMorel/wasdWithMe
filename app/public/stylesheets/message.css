@@ -283,7 +283,10 @@ body {
 .header {
   color: #000;
   margin: 20px 0 20px 0;
-  font-size: 24px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  margin-bottom: 35px;
 }
 .input {
   width: 75%;
@@ -326,4 +329,30 @@ body {
   background-color: #6441a5;
   color: #fff;
   float: right;
+}
+.pic,
+.user-info {
+  display: inline-block;
+  vertical-align: top;
+}
+.user-info {
+  margin-left: 10px;
+}
+.profile-pic {
+  max-width: 128px;
+  max-height: 128px;
+  vertical-align: middle;
+}
+.username {
+  display: inline;
+  vertical-align: top;
+  font-size: 40px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+.extra-info {
+  line-height: 40px;
+}
+.tagline {
+  font-size: 18px;
 }

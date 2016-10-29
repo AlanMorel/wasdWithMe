@@ -8,7 +8,7 @@
 - [ ] "online now" for chat
 - [ ] handle offline user live chat attempt
 - [ ] all previous chats on the left
-- [ ] add more information about the "to" including their profile pic
+- [X] add more information about the "to" including their profile pic
 - [ ] make chat auto scroll
 - [ ] prevent own chat messaging
 - [ ] look into changing the title of the page upon new message when tab inactive
