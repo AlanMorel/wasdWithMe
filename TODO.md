@@ -2,7 +2,7 @@
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play
-- [ ] standardize 404 error page messages
+- [X] standardize 404 error page messages
 
 # Messaging System Todo
 - [ ] "online now" for chat

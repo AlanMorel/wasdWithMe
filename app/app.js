@@ -20,6 +20,7 @@ var config       = require('./config');
 
 var User         = require('./models/user');
 var ioserver     = require('./utility/io');
+var alert        = require('./utility/alert');
 
 var homepage     = require('./routes/homepage');
 var api          = require('./routes/api');
@@ -129,13 +130,7 @@ app.use(stylus({
 //404 error handler
 app.use(function(req, res, next) {
   res.status(404);
-  res.render('404', {
-    title: 'WASD With Me - Page not found!',
-    layout: 'primary',
-    file: '404',
-    user : req.user,
-    message: "Page you are looking for could not be found."
-  });
+  alert.send(req, res, 'Page not found!', "The page you are looking for could not be found.");
 });
 
 //Development error handler

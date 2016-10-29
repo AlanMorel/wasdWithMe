@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Logger  = require('../utility/logger');
+var alert   = require('../utility/alert');
 var User    = require('../models/user');
 var Message = require('../models/message');
 var config  = require('../config');
@@ -25,7 +26,7 @@ router.get('/', function (req, res, next) {
 router.get('/:username', function (req, res, next) {
 
     if (!req.user){
-        message(res, req.user, "Please log in.", "You must log in to message others.");
+        alert(req, res, "Please log in.", "You must log in to message others.");
         return;
     }
 
@@ -33,7 +34,7 @@ router.get('/:username', function (req, res, next) {
 
     //to prevent people from trying to message themselves
     if (req.user.username === username){
-        message(res, req.user, "You cannot message yourself.", "You cannot message yourself.");
+        alert(req, res, "You cannot message yourself.", "You cannot message yourself.");
         return;
     }
 
@@ -42,7 +43,7 @@ router.get('/:username', function (req, res, next) {
 
         //if error or user not found, return
         if (err || !to){
-            message(res, req.user, "User not found!", "We could not find any user named'" + username + "'.");
+            alert(req, res, "User not found!", "We could not find any user named'" + username + "'.");
             return;
         }
 
@@ -56,7 +57,7 @@ router.get('/:username', function (req, res, next) {
 
             if (err){
                 Logger.log("Getting messages from " + req.user.username + " failed.", err);
-                message(res, req.user, "Internal error!", "We could not find retrieve your messages.");
+                alert(req, res, "Internal error!", "We could not find retrieve your messages.");
                 return;
             }
 
@@ -80,18 +81,6 @@ router.get('/:username', function (req, res, next) {
         });
     });
 });
-
-//renders a page with a custom error message
-function message(res, user, title, message){
-    res.status(404);
-    res.render('404', {
-        title: title,
-        layout: 'primary',
-        file: '404',
-        user: user,
-        message: message
-    });
-}
 
 //returns age of user in years
 function getAge(birthday){

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var data   = require('../utility/data');
+var alert  = require('../utility/alert');
+
 var config = require('../config');
 
 //handles search results
@@ -12,7 +14,8 @@ router.get('/', function (req, res, next) {
 
     //no point in searching for pages 0 or negative pages
     if (page < 1){
-        return emptySearchResults(req, res, query);
+        alert.send(req, res, 'Empty search results', "We did not find any results for '" + query + "'.");
+        return;
     }
 
     var users = type === "all" || type === "users";
@@ -33,7 +36,8 @@ var sendResults = function(searchRequest, results) {
     results = results.slice(lower, upper);
 
     if (results.length < 1){
-        return emptySearchResults(searchRequest.req, searchRequest.res, searchRequest.query);
+        alert.send(searchRequest.req, searchRequest.res, 'Empty search results', "We did not find any results for '" + searchRequest.query + "'.");
+        return;
     }
 
     searchRequest.res.render('search', {
@@ -69,17 +73,6 @@ function getPagination(searchRequest, results){
         pages.push(page);
     }
     return pages;
-}
-
-function emptySearchResults(req, res, query){
-    res.status(404);
-    res.render('404', {
-        title: 'Empty search results',
-        layout: 'primary',
-        file: '404',
-        user: req.user,
-        message: "We did not find any results for '" + query + "'."
-    });
 }
 
 module.exports = router;

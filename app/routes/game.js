@@ -5,6 +5,7 @@ var Game   = require('../models/game');
 var config = require('../config');
 var Logger = require('../utility/logger');
 var data   = require('../utility/data');
+var alert  = require('../utility/alert');
 
 //You should not be able to access /game/ directly
 router.get('/', function(req, res, next) {
@@ -36,7 +37,8 @@ router.get('/:game', function(req, res, next) {
 
         if (err){
             Logger.log("Searching for game " + query + " failed.", err);
-            return gameNotFound(req, res, query);
+            alert.send(req, res, 'Game not found!', "We could not find any game named '" + query + "'.");
+            return;
         }
 
         //if game found, display, otherwise search via api for it
@@ -53,7 +55,7 @@ router.get('/:game', function(req, res, next) {
 function displayFirstGame(searchRequest, game){
     //if api returned nothing, game could not be found
     if (!game){
-        return gameNotFound(searchRequest.req, searchRequest.res, searchRequest.query);
+        alert.send(searchRequest.req, searchRequest.res, 'Game not found!', "We could not find any game named '" + searchRequest.query + "'.");
     } else {
         //api returns array of games but we only want the first game
         console.log("calling display game");
@@ -138,18 +140,6 @@ function getCleanedName(name){
         .replace('é', 'e')
         .replace('&', 'and');
     return ret;
-}
-
-//called when a game was not found
-function gameNotFound(req, res, query){
-    res.status(404);
-    res.render('404', {
-        title: 'Game not found!',
-        layout: 'primary',
-        file: '404',
-        user: req.user,
-        message: "We could not find any game named '" + query + "'."
-    });
 }
 
 module.exports = router;

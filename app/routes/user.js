@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var User   = require('../models/user');
+var alert  = require('../utility/alert');
 var config = require('../config');
 var fs     = require('fs');
 
@@ -19,7 +20,8 @@ router.get('/:username', function(req, res, next) {
 
         //if error or user not found, return userNotFound
         if (err || !owner){
-            return userNotFound(res, req.user, username);
+            alert.send(req, res, 'User not found!', "We could not find any user named '" + username + "'.");
+            return;
         }
 
         addTemporaryInfo(owner);
@@ -90,18 +92,6 @@ function getProfilePic(owner){
 
     }
     return "/images/placeholder.png";
-}
-
-//renders 404 page whenever a user was not found
-function userNotFound(res, user, username){
-    res.status(404);
-    res.render('404', {
-        title: 'User not found!',
-        layout: 'primary',
-        file: '404',
-        user: user,
-        message: "We could not find any user named '" + username + "'."
-    });
 }
 
 module.exports = router;

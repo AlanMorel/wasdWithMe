@@ -62,6 +62,7 @@ function oneUpOnClick(){
     }
 }
 
+//add an onclick handler to every oneup button on the page
 for (var i = 0; i < oneUps.length; i++) {
     oneUps[i].onclick = oneUpOnClick;
 }
