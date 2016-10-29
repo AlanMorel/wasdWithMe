@@ -1,36 +1,42 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300");
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,300,700");
-html,
-body {
-  height: 100%;
-  font: 16px 'Open Sans', Helvetica, Arial, sans-serif;
-  background: #6441a4;
+html {
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
 }
 body {
   margin: 0;
-  text-align: center;
-  margin-top: 4%;
 }
 a {
-  color: #00b7ff;
+  color: #fff;
+  text-decoration: none;
 }
-.header {
-  width: 100%;
-  height: 140px;
-  background-color: #fff;
+input,
+textarea {
+  border: 1px solid #ddd;
+  padding: 4px;
 }
-.logo {
-  height: 100px;
-  margin: 20px 0px 20px 20px;
+input:focus,
+textarea:focus {
+  border-color: #6441a5;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #6441a5;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #6441a5;
+}
+input[type="image"] {
+  border: 0;
+  padding: 0;
+}
+html {
+  background: #6441a5;
+}
+body {
+  text-align: center;
+  margin-top: 20px;
+  color: #000;
 }
 .button {
   font-family: 'Source Sans Pro', sans-serif;
   letter-spacing: 1px;
-  border: 1px solid #ccc;
   cursor: pointer;
-  color: #000;
   background: #fff;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
@@ -39,59 +45,85 @@ a {
   border-radius: 4px;
   font-weight: lighter;
   padding: 2% 6%;
-  text-decoration: none;
-  font-size: 1.25vw;
+  font-size: 24px;
 }
 .button:hover {
-  background: #6441a4;
-  cursor: pointer;
+  background: #6441a5;
   color: #fff;
   border: 1px solid #55378c;
 }
 .container {
   text-align: center;
   margin: auto;
-  min-width: 400px;
-  max-width: 35vw;
+  width: 550px;
   background-color: #fff;
   border-radius: 18px;
-  padding-bottom: 2vw;
-  margin-bottom: 100px;
-  padding-top: 1%;
+  padding: 14px 0 50px 0;
+  margin-bottom: 20px;
 }
 img {
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 30px;
 }
 .container div {
-  padding-top: 30px;
+  padding-top: 20px;
   text-align: left;
 }
 label {
-  width: 12vw;
-  font-size: 1.2vw;
+  width: 200px;
+  font-size: 20px;
   float: left;
   text-align: right;
-  margin-right: 1vw;
+  margin-right: 10px;
 }
 input,
 select {
-  font-size: 1.2vw;
+  font-size: 18px;
+  width: 250px;
+  border-color: #ddd;
 }
 .title {
   color: #fff;
-  padding: 16px;
+  padding: 16px 0 16px 0;
   background: -webkit-linear-gradient(left, rgba(255,0,0,0), #000, rgba(255,0,0,0));
   margin: auto;
-  margin-bottom: 2%;
-  min-width: 400px;
-  max-width: 35vw;
-  font-size: 1vw;
-}
-input.button {
-  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 500px;
 }
 .container .action-button {
   text-align: center;
-  margin-right: 20px;
+}
+.links {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+.links a {
+  margin: 0 10px 0 10px;
+}
+.feedback {
+  background-color: #fdc4c4;
+  line-height: 50px;
+  margin-top: 30px;
+}
+@media only screen and (max-width: 600px) {
+  img {
+    height: 150px;
+  }
+  .title,
+  .container {
+    width: 80%;
+  }
+  .container {
+    padding: 0 5% 10% 5%;
+  }
+  label {
+    text-align: left;
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+  input,
+  select,
+  label {
+    width: 96%;
+  }
 }
