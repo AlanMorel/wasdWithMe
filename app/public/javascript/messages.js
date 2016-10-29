@@ -1,19 +1,12 @@
 var socket = io.connect();
+
 var form = document.querySelector(".chat-form");
 var input = document.querySelector(".input");
 var chat = document.querySelector(".chat");
 
 var url = window.location.href;
+var title = document.title;
 var to = getTo(url);
-
-function getTo(url){
-    var index = url.indexOf('/messages/');
-    if(index < 0){
-        return null;
-    } else {
-        return url.substring(index + 10, url.length).replace('/','').toLowerCase();
-    }
-}
 
 console.log(url);
 console.log("User: " + to);
@@ -22,15 +15,6 @@ form.onsubmit = function(e){
     e.preventDefault();
     sendMessage(input.value);
 };
-
-function sendMessage(text){
-    var data = {
-        to: to,
-        message: text
-    };
-    socket.emit('send message', data);
-    input.value = "";
-}
 
 socket.on('new message', function(data){
 
@@ -59,9 +43,48 @@ socket.on('own message', function(data){
     addMessage(data.from, data.message);
 });
 
+function getTo(url){
+    var index = url.indexOf('/messages/');
+    if(index < 0){
+        return null;
+    } else {
+        return title.split(" ")[2].toLowerCase();
+    }
+}
+
+function sendMessage(text){
+    var data = {
+        to: to,
+        message: text
+    };
+    socket.emit('send message', data);
+    input.value = "";
+}
+
 function addMessage(from, message){
     var other = from === to;
     var cssClass = other ? "other-message" : "own-message";
     var append = "<div class='bubble'><span class='" + cssClass + "'>" + from + ": "  + message + "</span></div>";
     chat.innerHTML = chat.innerHTML + append;
+    sendTitleBlink(other);
+}
+
+function sendTitleBlink(other) {
+    //blink only if tab is inactive and not your own message
+    if (other && document.visibilityState !== 'visible'){
+        blink = setInterval(changeTitle, 1000);
+    }
+}
+
+var blink = null;
+var blinkBoolean = true;
+
+window.onfocus = function() {
+    clearInterval(blink);
+    document.title = title;
+};
+
+function changeTitle() {
+    document.title = blinkBoolean ? "New Message from " + to + "!" : title;
+    blinkBoolean = !blinkBoolean;
 }
