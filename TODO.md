@@ -2,11 +2,12 @@
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play
+- [ ] standardize 404 error page messages
 
 # Messaging System Todo
-- [ ] load saved messages
 - [ ] "online now" for chat
 - [ ] all previous chats on the left
+- [X] load saved messages
 - [X] make chat auto scroll
 - [X] look into changing the title of the page upon new message when tab inactive
 - [X] save messages include from, to, timestamp

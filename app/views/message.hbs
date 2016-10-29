@@ -19,7 +19,13 @@
                 <div class="tagline">{{to.tagline}}</div>
             </div>
         </div>
-        <div class="chat"></div>
+        <div class="chat">
+        {{#each messages}}
+            <div class="bubble">
+                <span class="{{this.css}}-message">{{this.from}}: {{this.message}}</span>
+            </div>
+        {{/each}}
+        </div>
         <form class="chat-form">
             <input class="input" placeholder="Type a message...">
             <input type="submit" value="Send Message" class="button">
