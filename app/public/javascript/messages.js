@@ -4,13 +4,12 @@ var form = document.querySelector(".chat-form");
 var input = document.querySelector(".input");
 var chat = document.querySelector(".chat");
 
-//you need this for auto scrolling
+//auto scroll chat down
 var originalHeight = chat.scrollHeight;
+chat.scrollTop = originalHeight;
 
 var title = document.title;
 var to = title.split(" ")[2].toLowerCase();
-
-console.log("User: " + to);
 
 form.onsubmit = function(e){
     e.preventDefault();

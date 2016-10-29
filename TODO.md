@@ -7,6 +7,8 @@
 # Messaging System Todo
 - [ ] "online now" for chat
 - [ ] all previous chats on the left
+- [ ] only load last 100 or so messages
+- [X] make chatbox auto scroll to bottom at start
 - [X] load saved messages
 - [X] make chat auto scroll
 - [X] look into changing the title of the page upon new message when tab inactive
