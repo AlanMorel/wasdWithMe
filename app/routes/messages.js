@@ -4,6 +4,7 @@ var router = express.Router();
 var Logger = require('../utility/logger');
 var User   = require('../models/user');
 var config = require('../config');
+var fs     = require('fs');
 
 //handles get request for all messages
 router.get('/', function (req, res, next) {

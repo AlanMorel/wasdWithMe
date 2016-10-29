@@ -11,7 +11,7 @@ a {
 }
 input,
 textarea {
-  border: 1px solid #afafaf;
+  border: 1px solid #ddd;
   padding: 4px;
 }
 input:focus,

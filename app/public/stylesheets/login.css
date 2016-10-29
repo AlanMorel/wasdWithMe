@@ -11,7 +11,7 @@ a {
 }
 input,
 textarea {
-  border: 1px solid #afafaf;
+  border: 1px solid #ddd;
   padding: 4px;
 }
 input:focus,
@@ -80,6 +80,7 @@ input,
 select {
   font-size: 18px;
   width: 250px;
+  border-color: #ddd;
 }
 .title {
   color: #fff;

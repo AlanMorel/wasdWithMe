@@ -11,7 +11,7 @@ a {
 }
 input,
 textarea {
-  border: 1px solid #afafaf;
+  border: 1px solid #ddd;
   padding: 4px;
 }
 input:focus,
@@ -277,16 +277,37 @@ body {
   background-color: #e9ebee;
 }
 .container {
-  width: 600px;
+  width: 850px;
   margin: auto;
+  display: flex;
 }
-.header {
-  color: #000;
-  margin: 20px 0 20px 0;
+.all-messages {
+  float: left;
+  width: 250px;
+  min-height: 700px;
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
-  margin-bottom: 35px;
+  margin: 35px 25px 0 0;
+}
+.top-header {
+  color: #000;
+  text-align: center;
+  font-size: 20px;
+  border-bottom: 1px #f5f5dc;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.main {
+  float: right;
+  width: 600px;
+}
+.header {
+  color: #000;
+  margin: 35px 0 35px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
 }
 .input {
   width: 75%;
@@ -319,7 +340,6 @@ body {
   display: inline-block;
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
-  margin-bottom: 4px;
 }
 .other-message {
   color: #000;
@@ -336,12 +356,14 @@ body {
   vertical-align: top;
 }
 .user-info {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .profile-pic {
   max-width: 128px;
   max-height: 128px;
   vertical-align: middle;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 .username {
   display: inline;
@@ -354,5 +376,5 @@ body {
   line-height: 40px;
 }
 .tagline {
-  font-size: 18px;
+  font-size: 17px;
 }

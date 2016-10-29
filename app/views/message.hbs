@@ -1,23 +1,28 @@
 <div class="container">
-    <div class="header">
-        <div class="pic">
-            <img class="profile-pic" src="{{profile_pic}}">
-        </div>
-        <div class="user-info">
-            <div class="username">{{to.display_name}}<span class="status {{to.online_status}}"></span></div>
-            <div class="extra-info">
-                <span class="age">{{age}}</span>
-                &bull;
-                <span class="location">{{to.location.city}}, {{to.location.state}}, {{to.location.country}}</span>
-                &bull;
-                <span class="gender">{{gender}}</span>
-            </div>
-            <div class="tagline">{{to.tagline}}</div>
-        </div>
+    <div class="all-messages">
+        <div class="top-header">Messenger</div>
     </div>
-    <div class="chat"></div>
-    <form class="chat-form">
-        <input class="input" placeholder="Type a message...">
-        <input type="submit" value="Send Message" class="button">
-    </form>
+    <div class="main">
+        <div class="header">
+            <div class="pic">
+                <img class="profile-pic" src="{{profile_pic}}">
+            </div>
+            <div class="user-info">
+                <div class="username">{{to.display_name}}<span class="status {{to.online_status}}"></span></div>
+                <div class="extra-info">
+                    <span class="age">{{age}}</span>
+                    &bull;
+                    <span class="location">{{to.location.city}}, {{to.location.state}}, {{to.location.country}}</span>
+                    &bull;
+                    <span class="gender">{{gender}}</span>
+                </div>
+                <div class="tagline">{{to.tagline}}</div>
+            </div>
+        </div>
+        <div class="chat"></div>
+        <form class="chat-form">
+            <input class="input" placeholder="Type a message...">
+            <input type="submit" value="Send Message" class="button">
+        </form>
+    </div>
 </div>

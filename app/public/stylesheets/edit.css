@@ -11,7 +11,7 @@ a {
 }
 input,
 textarea {
-  border: 1px solid #afafaf;
+  border: 1px solid #ddd;
   padding: 4px;
 }
 input:focus,
@@ -359,7 +359,7 @@ body {
   background-color: #2ecc71;
 }
 .tagline {
-  font-size: 18px;
+  font-size: 17px;
 }
 .user-name,
 .bio {
@@ -666,6 +666,7 @@ input:read-only {
   vertical-align: middle;
   width: 24px;
   margin: 0 2px 0 2px;
+  cursor: pointer;
 }
 input[type='checkbox'] {
   width: 20px;

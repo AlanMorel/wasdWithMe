@@ -47,6 +47,7 @@ function run(io) {
         });
     });
 
+    //adds a socket to a user's sockets array
     function addSocket(username, socket){
         var sockets = users[username];
         if (!sockets){
@@ -56,6 +57,7 @@ function run(io) {
         users[username] = sockets;
     }
 
+    //removes a socket from a user's sockets array
     function removeSocket(username, socket){
         var sockets = users[username];
         var index = sockets.indexOf(socket);
