@@ -1,3 +1,6 @@
+var Message = require('../models/message');
+var Logger  = require('../utility/logger');
+
 var users = {};
 
 function run(io) {
@@ -19,6 +22,22 @@ function run(io) {
 
             data.from = username;
 
+            var toUsername = data.to.toLowerCase();
+
+            //build the message object
+            var message = new Message({
+                from: username,
+                to: toUsername,
+                message: data.message
+            });
+
+            //save message to database
+            message.save(function (err) {
+                if (err) {
+                    Logger.log("Message from " + username + " to " + toUsername + " was unable to be saved.", err);
+                }
+            });
+
             //send message back to yourself
             var fromSockets = users[username];
             for (var i = 0; i < fromSockets.length; i++){
@@ -27,7 +46,6 @@ function run(io) {
             }
 
             //send message to recipient's sockets
-            var toUsername = data.to.toLowerCase();
             var toSockets = users[toUsername];
 
             if(!toSockets || toSockets.length == 0){

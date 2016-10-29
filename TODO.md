@@ -1,14 +1,14 @@
 # Alan's Todo
 - [ ] create helper file for functions being duplicated
 - [ ] add full support for country/state/city in sign up page
+- [ ] add user filter searching by game, time of play
 
 # Chat Todo
-- [ ] save messages include from, to, timestamp
+- [X] save messages include from, to, timestamp
 - [ ] load saved messages
 - [ ] "online now" for chat
 - [ ] handle offline user live chat attempt
 - [ ] all previous chats on the left
-- [X] add more information about the "to" including their profile pic
 - [ ] make chat auto scroll
 - [ ] prevent own chat messaging
 - [ ] look into changing the title of the page upon new message when tab inactive
