@@ -1,8 +1,6 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 
 var multer = require('multer');
-var fs     = require('fs');
 var User   = require('../models/user');
 var config = require('../config');
 var Logger = require('../utility/logger');

@@ -1,17 +1,15 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 
 var Logger  = require('../utility/logger');
 var alert   = require('../utility/alert');
 var User    = require('../models/user');
 var Message = require('../models/message');
 var config  = require('../config');
-var fs      = require('fs');
 
 //handles get request for all messages
 router.get('/', function (req, res, next) {
 
-    //display all messages here
+    //redirect to last chat
 
     res.render('message', {
         title: 'All Messages',

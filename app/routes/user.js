@@ -1,10 +1,8 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 
 var User   = require('../models/user');
 var alert  = require('../utility/alert');
 var config = require('../config');
-var fs     = require('fs');
 
 //You should not be able to access /user/ directly
 router.get('/', function(req, res, next) {
@@ -14,9 +12,8 @@ router.get('/', function(req, res, next) {
 //Returns back requested user
 router.get('/:username', function(req, res, next) {
     var username = req.params.username;
-    var usernameSlug = username.toLowerCase();
 
-    User.findByUsername(usernameSlug, true, function(err, owner) {
+    User.findByUsername(username.toLowerCase(), true, function(err, owner) {
 
         //if error or user not found, return userNotFound
         if (err || !owner){

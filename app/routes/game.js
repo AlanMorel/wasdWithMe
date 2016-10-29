@@ -1,9 +1,7 @@
-var express = require('express');
-var router = express.Router();
+var router = require('express').Router();
 
 var Game   = require('../models/game');
 var config = require('../config');
-var Logger = require('../utility/logger');
 var data   = require('../utility/data');
 var alert  = require('../utility/alert');
 
@@ -35,31 +33,22 @@ router.get('/:game', function(req, res, next) {
     //try and find the game, then display
     Game.findOne(gameQuery, function(err, game) {
 
-        if (err){
-            Logger.log("Searching for game " + query + " failed.", err);
-            alert.send(req, res, 'Game not found!', "We could not find any game named '" + query + "'.");
-            return;
-        }
-
         //if game found, display, otherwise search via api for it
         if (game){
             displayGame(req, res, game);
         } else {
             var searchRequest = data.makeSearchRequest(req, res, query, 0, false, true);
-            data.callApi(searchRequest, [], displayFirstGame, data.getFirstGame);
+            data.callApi(searchRequest, [], displayApiGame, data.getFirstGame);
         }
     });
 });
 
-//callback for when calling the api
-function displayFirstGame(searchRequest, game){
-    //if api returned nothing, game could not be found
-    if (!game){
-        alert.send(searchRequest.req, searchRequest.res, 'Game not found!', "We could not find any game named '" + searchRequest.query + "'.");
-    } else {
-        //api returns array of games but we only want the first game
-        console.log("calling display game");
+//displays the game given from api results
+function displayApiGame(searchRequest, game){
+    if (game){
         displayGame(searchRequest.req, searchRequest.res, game);
+    } else {
+        alert.send(searchRequest.req, searchRequest.res, 'Game not found!', "We could not find any game named '" + searchRequest.query + "'.");
     }
 }
 
@@ -84,12 +73,9 @@ function displayGame(req, res, game){
     });
 }
 
+//returns number of one ups game has
 function getOneUpCount(game){
-    if (game.one_ups){
-        return game.one_ups.length;
-    } else {
-        return 0;
-    }
+    return game.one_ups ? game.one_ups.length : 0;
 }
 
 //returns the game's release date if one exists
@@ -103,10 +89,9 @@ function getReleaseDate(releaseDate){
     }
 }
 
-//returns banner of the game's page given the game's screenshots
+//returns a random screenshot of the game as the banner
 function getBanner(screenshots){
     if (screenshots){
-        //select a random screenshot as the game banner
         return screenshots[Math.floor(Math.random() * screenshots.length)];
     }
 }

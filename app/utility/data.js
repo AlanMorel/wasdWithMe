@@ -4,17 +4,16 @@ var Logger  = require('../utility/logger');
 var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
-var fs      = require('fs');
 
 //returns a search request object to be used in the search function
 function makeSearchRequest(req, res, query, page, users, games){
     var searchRequest = {
-        req: req, //the request object
-        res: res, //the response object
+        req: req,     //the request object
+        res: res,     //the response object
         query: query, //text that is being searched for
-        page: page, //what page offset do they want
+        page: page,   //what page number was requested
         users: users, //boolean defining whether or not to include games
-        games: games //boolean defining whether or not to include users
+        games: games  //boolean defining whether or not to include users
     };
     return searchRequest;
 }
@@ -173,12 +172,13 @@ function getFirstGame(results, response){
     if (response.body.length == 0){
         return;
     }
+
     //otherwise add every game to the database
-    //then return just the first game, parsed
     response.body.forEach(function(game){
         addToDatabase(game);
     });
 
+    //then return just the first game, parsed
     return parseGame(response.body[0]);
 }
 
