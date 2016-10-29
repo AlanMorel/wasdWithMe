@@ -1,6 +1,7 @@
 var Message = require('../models/message');
 var Logger  = require('../utility/logger');
 
+//cache of usernames to sockets array
 var users = {};
 
 function run(io) {
@@ -9,34 +10,22 @@ function run(io) {
         var username = socket.request.session.passport.user;
 
         if (!username){
-            console.log("User not logged in.");
+            console.log("User not logged in, so do nothing.");
             return;
         }
 
-        console.log("Connection opened by " + username + ".");
-
+        console.log("Socket opened by " + username + ".");
         addSocket(username, socket);
 
         socket.on('send message', function (data) {
-            console.log("received: " + data + " from " + username);
-
+            //set the data's from field
             data.from = username;
 
+            //user where this message is heading to
             var toUsername = data.to.toLowerCase();
 
-            //build the message object
-            var message = new Message({
-                from: username,
-                to: toUsername,
-                message: data.message
-            });
-
             //save message to database
-            message.save(function (err) {
-                if (err) {
-                    Logger.log("Message from " + username + " to " + toUsername + " was unable to be saved.", err);
-                }
-            });
+            saveMessage(username, toUsername, data.message);
 
             //send message back to yourself
             var fromSockets = users[username];
@@ -45,14 +34,15 @@ function run(io) {
                 fromSocket.emit('own message', data);
             }
 
-            //send message to recipient's sockets
+            //get recipient's sockets
             var toSockets = users[toUsername];
 
+            //if there are none, they are currently offline, don't emit message
             if(!toSockets || toSockets.length == 0){
-                //the recipient is offline
                 return;
             }
 
+            //they are online, emit the message to them
             for (var i = 0; i < toSockets.length; i++){
                 var toSocket = toSockets[i];
                 toSocket.emit('new message', data);
@@ -60,7 +50,7 @@ function run(io) {
         });
 
         socket.on('disconnect', function(data){
-            console.log("Connection closed by " + username + ".");
+            console.log("Socket closed by " + username + ".");
             removeSocket(username, socket);
         });
     });
@@ -80,6 +70,23 @@ function run(io) {
         var sockets = users[username];
         var index = sockets.indexOf(socket);
         sockets.splice(index, 1);
+    }
+
+    //saves a message to the database
+    function saveMessage(from, to, message){
+        //build the message object
+        var message = new Message({
+            from: from,
+            to: to,
+            message: message
+        });
+
+        //save message to database
+        message.save(function (err) {
+            if (err) {
+                Logger.log("Message from " + from + " to " + to + " was unable to be saved.", err);
+            }
+        });
     }
 }
 

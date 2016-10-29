@@ -3,15 +3,15 @@
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play
 
-# Chat Todo
-- [X] save messages include from, to, timestamp
+# Messaging System Todo
 - [ ] load saved messages
 - [ ] "online now" for chat
-- [ ] handle offline user live chat attempt
 - [ ] all previous chats on the left
 - [ ] make chat auto scroll
-- [ ] prevent own chat messaging
 - [ ] look into changing the title of the page upon new message when tab inactive
+- [X] save messages include from, to, timestamp
+- [X] handle offline user live chat attempt
+- [X] prevent own chat messaging
 
 # Edgar's Todo
 - [ ] add credentials file for passport secret key (change when deployed)

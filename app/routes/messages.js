@@ -25,6 +25,12 @@ router.get('/:username', function (req, res, next) {
 
     var username = req.params.username.toLowerCase();
 
+    //to prevent people from trying to message themselves
+    if (req.user.username === username){
+        return selfMessageError(res, req.user);
+    }
+
+    //otherwise, find the person they're trying to message
     User.findByUsername(username, true, function(err, user) {
 
         //if error or user not found, return userNotFound
@@ -57,6 +63,18 @@ function userNotFound(res, user, username){
         file: '404',
         user: user,
         message: "We could not find any user named '" + username + "'."
+    });
+}
+
+//renders a custom page whenever a user tries to message themselves
+function selfMessageError(res, user){
+    res.status(404);
+    res.render('404', {
+        title: 'You cannot message yourself.',
+        layout: 'primary',
+        file: '404',
+        user: user,
+        message: "You cannot message yourself."
     });
 }
 
