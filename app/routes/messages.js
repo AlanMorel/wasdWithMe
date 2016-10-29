@@ -73,7 +73,6 @@ router.get('/:username', function (req, res, next) {
                 user: req.user,
                 js: ["/socket.io/socket.io", "/javascript/messages"],
                 to: to,
-                profile_pic: getProfilePic(to),
                 gender: config.gender[to.gender],
                 age: getAge(to.birthday),
                 messages: messages
@@ -87,18 +86,6 @@ function getAge(birthday){
     var difference = new Date() - new Date(birthday);
     var year = 1000 * 60 * 60 * 24 * 365;
     return Math.floor(difference / year);
-}
-
-//returns profile pic of user if an image was uploaded, placeholder if none exists
-function getProfilePic(owner){
-    var path = "/images/profile/" + owner.display_name + ".png";
-    try {
-        fs.accessSync(path);
-        return path;
-    } catch (e) {
-
-    }
-    return "/images/placeholder.png";
 }
 
 module.exports = router;

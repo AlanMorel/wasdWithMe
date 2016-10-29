@@ -129,6 +129,11 @@ app.use(stylus({
 
 //404 error handler
 app.use(function(req, res, next) {
+  //if a user doesn't have a profile, return placeholder
+  if (req.url.indexOf("/images/profile/") == 0){
+    res.sendFile(path.join(public, '/images/placeholder.png'));
+    return;
+  }
   res.status(404);
   alert.send(req, res, 'Page not found!', "The page you are looking for could not be found.");
 });

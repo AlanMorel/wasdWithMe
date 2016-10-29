@@ -42,7 +42,6 @@ router.get('/:username/edit', function(req, res, next) {
             js: ['/javascript/edit'],
             user : req.user,
             owner: owner,
-            profile_pic: getProfilePic(owner),
             gender: config.gender[owner.gender],
             age: getAge(owner.birthday),
             all_games: getGames(owner.games, false),
@@ -178,18 +177,6 @@ function getAge(birthday){
     var difference = new Date() - new Date(birthday);
     var year = 1000 * 60 * 60 * 24 * 365;
     return Math.floor(difference / year);
-}
-
-//returns profile pic of user if an image was uploaded, placeholder if none exists
-function getProfilePic(owner){
-    var path = "/images/profile/" + owner.display_name + ".png";
-    try {
-        fs.accessSync(path);
-        return path;
-    } catch (e) {
-
-    }
-    return "/images/placeholder.png";
 }
 
 module.exports = router;

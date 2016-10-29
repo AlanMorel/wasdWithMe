@@ -84,7 +84,7 @@ function search(searchRequest, callback){
         if (users) {
             for (var i = 0; i < users.length; i++) {
                 var name = users[i].display_name;
-                var image = getProfilePic(users[i]);
+                var image = "/images/profile/" + users[i].display_name + ".png";
                 var text = users[i].bio === undefined ? "" : users[i].bio;
                 addToResults(results, "user", name, image, text);
             }
@@ -219,18 +219,17 @@ function parseGame(game){
 //adds a new game to the database for further use in the future
 function addToDatabase(game){
 
-    var new_game = parseGame(game);
+    var newGame = parseGame(game);
 
     var query = {
         id: game.id
     };
 
-    var uspert = {
+    var options = {
         upsert: true
     };
 
-    Game.findOneAndUpdate(query, new_game, uspert,
-        function (err, doc) {
+    Game.findOneAndUpdate(query, newGame, options, function (err, doc) {
             if (err){
                 Logger.log("Failed to add " + game.name + " from API.", err);
                 return;
@@ -307,17 +306,6 @@ function addToResults(results, type, name, image, description){
         description: description
     };
     results.push(item);
-}
-
-//returns profile pic of user if an image was uploaded, placeholder if none exists
-function getProfilePic(owner){
-    var path = "/images/profile/" + owner.display_name + ".png";
-    try {
-        fs.accessSync(path, fs.F_OK);
-        return path;
-    } catch (e) {
-    }
-    return "/images/placeholder.png";
 }
 
 module.exports = {

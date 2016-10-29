@@ -48,21 +48,8 @@ function addTemporaryInfo(users) {
     var platforms = ["steam", "xbox", "playstation", "twitch"];
     for (var i = 0; i < users.length; i++) {
         users[i].platforms = platforms.sort(function () {return 0.5 - Math.random()}).slice(0, Math.floor(Math.random() * platforms.length) + 1);
-        users[i].profile_pic = getProfilePic(users[i]);
     }
     return users;
-}
-
-//returns profile pic of user if an image was uploaded, placeholder if none exists
-function getProfilePic(owner){
-    var path = "/images/profile/" + owner.display_name + ".png";
-    try {
-        fs.accessSync(path);
-        return path;
-    } catch (e) {
-
-    }
-    return "/images/placeholder.png";
 }
 
 module.exports = router;
