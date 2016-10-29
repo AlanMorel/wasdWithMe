@@ -19,26 +19,26 @@ function run(io) {
 
             data.from = username;
 
-            var toUsername = data.to.toLowerCase();
-            var toSockets = users[toUsername];
-            for (var i = 0; i < toSockets.length; i++){
-                var toSocket = toSockets[i];
-                if (toSocket) {
-                    toSocket.emit('new message', data);
-                } else {
-                    //they are not online, maybe return here
-                    console.log(toUsername + "'s socket not found");
-                }
-            }
-
+            //send message back to yourself
             var fromSockets = users[username];
             for (var i = 0; i < fromSockets.length; i++){
                 var fromSocket = fromSockets[i];
                 fromSocket.emit('own message', data);
             }
 
-            //socket.emit('new message', data);
-            //io.sockets.emit('new message', data);
+            //send message to recipient's sockets
+            var toUsername = data.to.toLowerCase();
+            var toSockets = users[toUsername];
+
+            if(!toSockets || toSockets.length == 0){
+                //the recipient is offline
+                return;
+            }
+
+            for (var i = 0; i < toSockets.length; i++){
+                var toSocket = toSockets[i];
+                toSocket.emit('new message', data);
+            }
         });
 
         socket.on('disconnect', function(data){
@@ -54,15 +54,12 @@ function run(io) {
         }
         sockets.push(socket);
         users[username] = sockets;
-        console.log("add: " + username + " has " + sockets.length + " sockets");
     }
 
     function removeSocket(username, socket){
         var sockets = users[username];
         var index = sockets.indexOf(socket);
         sockets.splice(index, 1);
-       // delete sockets[socket];
-        console.log("remove: " + username + " has " + sockets.length + " sockets");
     }
 }
 
