@@ -7,7 +7,7 @@
 - [ ] load saved messages
 - [ ] "online now" for chat
 - [ ] all previous chats on the left
-- [ ] make chat auto scroll
+- [X] make chat auto scroll
 - [X] look into changing the title of the page upon new message when tab inactive
 - [X] save messages include from, to, timestamp
 - [X] handle offline user live chat attempt

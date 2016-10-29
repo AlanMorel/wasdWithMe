@@ -4,11 +4,12 @@ var form = document.querySelector(".chat-form");
 var input = document.querySelector(".input");
 var chat = document.querySelector(".chat");
 
-var url = window.location.href;
-var title = document.title;
-var to = getTo(url);
+//you need this for auto scrolling
+var originalHeight = chat.scrollHeight;
 
-console.log(url);
+var title = document.title;
+var to = title.split(" ")[2].toLowerCase();
+
 console.log("User: " + to);
 
 form.onsubmit = function(e){
@@ -43,15 +44,6 @@ socket.on('own message', function(data){
     addMessage(data.from, data.message);
 });
 
-function getTo(url){
-    var index = url.indexOf('/messages/');
-    if(index < 0){
-        return null;
-    } else {
-        return title.split(" ")[2].toLowerCase();
-    }
-}
-
 function sendMessage(text){
     var data = {
         to: to,
@@ -63,24 +55,40 @@ function sendMessage(text){
 
 function addMessage(from, message){
     var other = from === to;
-    var cssClass = other ? "other-message" : "own-message";
-    var append = "<div class='bubble'><span class='" + cssClass + "'>" + from + ": "  + message + "</span></div>";
-    chat.innerHTML = chat.innerHTML + append;
+    var cssClass = other ? "other" : "own";
+    var append = "<div class='bubble'><span class='" + cssClass + "-message'>" + from + ": "  + message + "</span></div>";
+    appendText(other, append);
     sendTitleBlink(other);
 }
 
-function sendTitleBlink(other) {
-    //blink only if tab is inactive and not your own message
-    if (other && document.visibilityState !== 'visible'){
-        blink = setInterval(changeTitle, 1000);
+function appendText(other, append){
+
+    //if you sent the message or you're already at the bottom, auto-scroll down
+    var scrollDown = !other || chat.scrollTop - chat.scrollHeight >= -originalHeight;
+
+    chat.innerHTML = chat.innerHTML + append;
+
+    if (scrollDown){
+        chat.scrollTop = chat.scrollHeight;
     }
 }
+
+//title blink implementation below
 
 var blink = null;
 var blinkBoolean = true;
 
+function sendTitleBlink(other) {
+    //blink only if not your own message, the tab is not active and is not already blinking
+    var shouldBlink = other && document.visibilityState !== 'visible' && blink == null;
+    if (shouldBlink){
+        blink = setInterval(changeTitle, 1000);
+    }
+}
+
 window.onfocus = function() {
     clearInterval(blink);
+    blink = null;
     document.title = title;
 };
 
