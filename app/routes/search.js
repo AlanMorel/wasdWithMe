@@ -10,8 +10,12 @@ router.get('/', function (req, res, next) {
     var type = req.query.type;
     var page = req.query.page ? req.query.page : 1;
 
-    //no point in searching for pages 0 or negative pages
-    if (page < 1){
+    var ageMin = req.query.agemin;
+    var ageMax = req.query.agemax;
+    var gender = req.query.gender;
+
+    //In any of these cases, we should return an alert
+    if (page < 1 || !query || query.length < 3){
         alert.send(req, res, 'Empty search results', "We did not find any results for '" + query + "'.");
         return;
     }
@@ -46,7 +50,8 @@ var sendResults = function(searchRequest, results) {
         query: searchRequest.query,
         type: getType(searchRequest),
         results: results,
-        pages: pagination
+        pages: pagination,
+        js: ["/javascript/search"]
     });
 };
 

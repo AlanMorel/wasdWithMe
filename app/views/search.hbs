@@ -1,5 +1,5 @@
 <div class="refinement">
-    <form method="get" action="/search">
+    <form method="get" action="/search" onsubmit="return sendRefinedQuery()">
         <div class="type">
             <div class="category">Users</div>
             <div class="option">
@@ -18,9 +18,9 @@
             </div>
             <div class="option">
                 <div class="option-header">Age</div>
-                <input type="number" name="min" min="13" max="100" value="18">
+                <input type="number" name="agemin" min="13" max="100" value="18">
                 to
-                <input type="number" name="max" min="13" max="100" value="65">
+                <input type="number" name="agemax" min="13" max="100" value="65">
             </div>
             <div class="option">
                 <div class="option-header">Gender</div>
