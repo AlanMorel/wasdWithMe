@@ -3,6 +3,8 @@ var socket = io.connect();
 var form = document.querySelector(".chat-form");
 var input = document.querySelector(".input");
 var chat = document.querySelector(".chat");
+var typing = document.querySelector(".typing");
+var isTypingDisplayTime = 7000; //in milliseconds
 
 var title = document.title;
 var to = title.split(" ")[2].toLowerCase();
@@ -14,6 +16,13 @@ chat.scrollTop = originalHeight;
 form.onsubmit = function(e){
     e.preventDefault();
     sendMessage(input.value);
+};
+
+input.onkeyup = function() {
+    var data = {
+        to: to
+    };
+    socket.emit('typing', data);
 };
 
 socket.on('new message', function(data){
@@ -42,6 +51,37 @@ socket.on('own message', function(data){
 
     addMessage(data.from, data.message);
 });
+
+//user is typing implementation below
+
+var typingInterval;
+
+socket.on('typing', function(data){
+    showTyping();
+});
+
+//shows that the other user is typing
+function showTyping(){
+
+    //show the typing text
+    typing.innerHTML = to + " is typing...";
+
+    //if the text is set to be remove, reset the time
+    if (typingInterval) {
+        clearTimeout(typingInterval);
+    }
+
+    //set the timeout to clear the message
+    typingInterval = setTimeout(function(){
+        clearTyping();
+    }, isTypingDisplayTime);
+}
+
+//clears the message and nulls the interval variable
+function clearTyping(){
+    typingInterval = null;
+    typing.innerHTML = "";
+}
 
 function sendMessage(text){
     var data = {

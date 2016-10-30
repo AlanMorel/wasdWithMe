@@ -36,6 +36,12 @@ function run(io) {
             console.log("Socket closed by " + username + ".");
             removeSocket(username, socket);
         });
+
+        socket.on('typing', function(data){
+            console.log(username + " is typing.");
+            var toUsername = data.to.toLowerCase();
+            broadcast(toUsername, "typing", data);
+        });
     });
 }
 
