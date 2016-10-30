@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
 router.get('/:username', function (req, res, next) {
 
     if (!req.user){
-        alert(req, res, "Please log in.", "You must log in to message others.");
+        alert.send(req, res, "Please log in.", "You must log in to message others.");
         return;
     }
 
@@ -32,7 +32,7 @@ router.get('/:username', function (req, res, next) {
 
     //to prevent people from trying to message themselves
     if (req.user.username === username){
-        alert(req, res, "You cannot message yourself.", "You cannot message yourself.");
+        alert.send(req, res, "You cannot message yourself.", "You cannot message yourself.");
         return;
     }
 
@@ -41,21 +41,32 @@ router.get('/:username', function (req, res, next) {
 
         //if error or user not found, return
         if (err || !to){
-            alert(req, res, "User not found!", "We could not find any user named'" + username + "'.");
+            alert.send(req, res, "User not found!", "We could not find any user named'" + username + "'.");
             return;
         }
 
-        //query to search for messages
-        var query = {
+        //query to search for sent messages
+        var sent = {
             from: req.user.username.toLowerCase(),
             to: to.username
         };
 
-        Message.find(query, function(err, messages) {
+        //query to search for received messages
+        var received = {
+            from: to.username,
+            to: req.user.username.toLowerCase()
+        };
 
-            if (err){
-                Logger.log("Getting messages from " + req.user.username + " failed.", err);
-                alert(req, res, "Internal error!", "We could not find retrieve your messages.");
+        //query for all messages sent and received
+        var query = {
+            $or: [sent, received]
+        };
+
+        Message.find(query).sort('-created_at').limit(config.max_messages).exec(function(err, messages) {
+
+            if (err || !messages){
+                Logger.log("Getting messages between " + req.user.username + " and " + to.username + " failed.", err);
+                alert.send(req, res, "Messaging error!", "We could not find retrieve your messages.");
                 return;
             }
 

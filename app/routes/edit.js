@@ -11,7 +11,7 @@ router.get('/:username/edit', function(req, res, next) {
 
     //in the case somebody isn't logged in but tries to edit
     if (!req.user){
-        alert(req, res, 'Cannot edit profile', "You must log in to edit a profile.");
+        alert.send(req, res, 'Cannot edit profile', "You must log in to edit a profile.");
         return;
     }
 
@@ -21,13 +21,13 @@ router.get('/:username/edit', function(req, res, next) {
     User.findByUsername(slug, true, function(err, owner) {
 
         if (err || !owner){
-            alert(req, res, 'User not found!', "We could not find any user named '" + username + "'.");
+            alert.send(req, res, 'User not found!', "We could not find any user named '" + username + "'.");
             return;
         }
 
         //user tried to edit somebody else's profile
         if(!isOwner(req.user, owner)){
-            alert(req, res, 'Cannot edit profile', "You cannot edit somebody else's profile.");
+            alert.send(req, res, 'Cannot edit profile', "You cannot edit somebody else's profile.");
             return;
         }
 
