@@ -2,8 +2,9 @@ body {
   background-color: #e9ebee;
 }
 .container {
-  margin: auto;
-  display: table;
+  width: 890px;
+  margin: 0 auto;
+  display: flex;
 }
 .all-messages {
   width: 250px;

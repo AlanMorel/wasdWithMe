@@ -13,12 +13,18 @@ var to = title.split(" ")[2].toLowerCase();
 var originalHeight = chat.scrollHeight;
 chat.scrollTop = originalHeight;
 
-form.onsubmit = function(e){
+form.onsubmit = function(e) {
     e.preventDefault();
+    if (input.value.length == 0) {
+        return;
+    }
     sendMessage(input.value);
 };
 
 input.onkeyup = function() {
+    if (input.value.length == 0){
+        return;
+    }
     var data = {
         to: to
     };
@@ -36,6 +42,7 @@ socket.on('new message', function(data){
         return;
     }
 
+    clearTyping();
     addMessage(data.from, data.message);
 });
 
@@ -63,13 +70,11 @@ socket.on('typing', function(data){
 //shows that the other user is typing
 function showTyping(){
 
+    //resets the countdown
+    clearTimeout(typingInterval);
+
     //show the typing text
     typing.innerHTML = to + " is typing...";
-
-    //if the text is set to be remove, reset the time
-    if (typingInterval) {
-        clearTimeout(typingInterval);
-    }
 
     //set the timeout to clear the message
     typingInterval = setTimeout(function(){
@@ -77,9 +82,8 @@ function showTyping(){
     }, isTypingDisplayTime);
 }
 
-//clears the message and nulls the interval variable
 function clearTyping(){
-    typingInterval = null;
+    clearTimeout(typingInterval);
     typing.innerHTML = "";
 }
 

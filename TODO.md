@@ -8,7 +8,7 @@
 # Messaging System Todo
 - [ ] "online now" for chat
 - [ ] all previous chats on the left
-- [ ] implement "is currently typing"
+- [X] implement "is currently typing"
 - [X] only load last 100 or so messages
 - [X] make chatbox auto scroll to bottom at start
 - [X] load saved messages
