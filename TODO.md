@@ -3,13 +3,13 @@
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play
 - [ ] fix search refinement checkbox submission
-- [X] ensure last 100 messages from both parties are retrieved
 - [X] standardize 404 error page messages
 
 # Messaging System Todo
 - [ ] "online now" for chat
 - [ ] all previous chats on the left
-- [ ] only load last 100 or so messages
+- [ ] implement "is currently typing"
+- [X] only load last 100 or so messages
 - [X] make chatbox auto scroll to bottom at start
 - [X] load saved messages
 - [X] make chat auto scroll

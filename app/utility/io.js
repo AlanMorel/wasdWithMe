@@ -27,26 +27,9 @@ function run(io) {
             //save message to database
             saveMessage(username, toUsername, data.message);
 
-            //send message back to yourself
-            var fromSockets = users[username];
-            for (var i = 0; i < fromSockets.length; i++){
-                var fromSocket = fromSockets[i];
-                fromSocket.emit('own message', data);
-            }
-
-            //get recipient's sockets
-            var toSockets = users[toUsername];
-
-            //if there are none, they are currently offline, don't emit message
-            if(!toSockets || toSockets.length == 0){
-                return;
-            }
-
-            //they are online, emit the message to them
-            for (var i = 0; i < toSockets.length; i++){
-                var toSocket = toSockets[i];
-                toSocket.emit('new message', data);
-            }
+            //broadcast message to yourself and recipient
+            broadcast(username, "own message", data);
+            broadcast(toUsername, "new message", data);
         });
 
         socket.on('disconnect', function(data){
@@ -54,40 +37,56 @@ function run(io) {
             removeSocket(username, socket);
         });
     });
+}
 
-    //adds a socket to a user's sockets array
-    function addSocket(username, socket){
-        var sockets = users[username];
-        if (!sockets){
-            sockets = [];
+//broadcasts data with an action tied to it to username
+function broadcast(username, action, data){
+    //get user's sockets
+    var sockets = users[username];
+
+    //if there are none, they are currently offline, don't emit message
+    if(!sockets || sockets.length == 0){
+        return;
+    }
+
+    //they are online, emit data to them
+    for (var i = 0; i < sockets.length; i++){
+        sockets[i].emit(action, data);
+    }
+}
+
+//adds a socket to a user's sockets array
+function addSocket(username, socket){
+    var sockets = users[username];
+    if (!sockets){
+        sockets = [];
+    }
+    sockets.push(socket);
+    users[username] = sockets;
+}
+
+//removes a socket from a user's sockets array
+function removeSocket(username, socket){
+    var sockets = users[username];
+    var index = sockets.indexOf(socket);
+    sockets.splice(index, 1);
+}
+
+//saves a message to the database
+function saveMessage(from, to, message){
+    //build the message object
+    var message = new Message({
+        from: from,
+        to: to,
+        message: message
+    });
+
+    //save message to database
+    message.save(function (err) {
+        if (err) {
+            Logger.log("Message from " + from + " to " + to + " was unable to be saved.", err);
         }
-        sockets.push(socket);
-        users[username] = sockets;
-    }
-
-    //removes a socket from a user's sockets array
-    function removeSocket(username, socket){
-        var sockets = users[username];
-        var index = sockets.indexOf(socket);
-        sockets.splice(index, 1);
-    }
-
-    //saves a message to the database
-    function saveMessage(from, to, message){
-        //build the message object
-        var message = new Message({
-            from: from,
-            to: to,
-            message: message
-        });
-
-        //save message to database
-        message.save(function (err) {
-            if (err) {
-                Logger.log("Message from " + from + " to " + to + " was unable to be saved.", err);
-            }
-        });
-    }
+    });
 }
 
 module.exports = {

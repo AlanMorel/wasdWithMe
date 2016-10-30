@@ -62,13 +62,16 @@ router.get('/:username', function (req, res, next) {
             $or: [sent, received]
         };
 
-        Message.find(query).sort('-created_at').limit(config.max_messages).exec(function(err, messages) {
+        Message.find(query).sort('created_at').exec(function(err, messages) {
 
             if (err || !messages){
                 Logger.log("Getting messages between " + req.user.username + " and " + to.username + " failed.", err);
                 alert.send(req, res, "Messaging error!", "We could not find retrieve your messages.");
                 return;
             }
+
+            //limit the number of messages we send to the user
+            messages = messages.slice(-config.max_messages);
 
             //set whether they are own or message from another person
             messages.forEach(function(message) {
