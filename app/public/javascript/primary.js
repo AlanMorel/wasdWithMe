@@ -10,6 +10,11 @@ function shouldShow(query){
 }
 
 search.onkeyup = function() {
+    updateResults();
+};
+
+//updates the search results
+function updateResults(){
 
     //Must have 3 or more characters to initiate a search
     if (!shouldShow(search.value)) {
@@ -17,11 +22,6 @@ search.onkeyup = function() {
         return;
     }
 
-    updateResults();
-};
-
-//updates the search results
-function updateResults(){
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {

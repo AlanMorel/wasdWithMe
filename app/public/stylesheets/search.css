@@ -75,17 +75,21 @@ body {
   color: #000;
   margin-top: 35px;
 }
+.option-header {
+  margin-bottom: 4px;
+}
 .option {
-  width: 45%;
+  width: 40%;
   display: inline-block;
   margin-bottom: 10px;
+  font-size: 15px;
 }
 .type {
   margin-left: 20px;
 }
 .category {
   font-size: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .button-container {
   text-align: right;
