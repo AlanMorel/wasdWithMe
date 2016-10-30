@@ -17,6 +17,11 @@ search.onkeyup = function() {
         return;
     }
 
+    updateResults();
+};
+
+//updates the search results
+function updateResults(){
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
@@ -36,12 +41,15 @@ search.onkeyup = function() {
 
     request.open("GET", "/api/search?q=" + search.value + "&type=" + type, true);
     request.send();
-};
+}
 
 screen.onclick = function(e) {
     if (e.target === search){
         //If the search bar was clicked
         box.style.visibility = shouldShow(search.value) ? "visible" : "hidden";
+        if (box.innerHTML.length == 0){
+            updateResults();
+        }
     } else if(e.target != box) {
         //Hide the search box if anything else was clicked on
         box.style.visibility = "hidden";

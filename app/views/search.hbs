@@ -1,3 +1,45 @@
+<div class="refinement">
+    <form method="get" action="/search">
+        <div class="type">
+            <div class="category">Users</div>
+            <div class="option">
+                <div class="option-header">Weekdays Availability</div>
+                <div class="checkbox"><input type="checkbox" name="weekdaysmorning"> Morning</div>
+                <div class="checkbox"><input type="checkbox" name="weekdaysday"> Day</div>
+                <div class="checkbox"><input type="checkbox" name="weekdaysnight"> Night</div>
+                <div class="checkbox"><input type="checkbox" name="weekdaysnever"> Never</div>
+            </div>
+            <div class="option">
+                <div class="option-header">Weekends Availability</div>
+                <div class="checkbox"><input type="checkbox" name="weekendsmorning"> Morning</div>
+                <div class="checkbox"><input type="checkbox" name="weekendsday"> Day</div>
+                <div class="checkbox"><input type="checkbox" name="weekendsnight"> Night</div>
+                <div class="checkbox"><input type="checkbox" name="weekendsnever"> Never</div>
+            </div>
+            <div class="option">
+                <div class="option-header">Age</div>
+                <input type="number" name="min" min="13" max="100" value="18">
+                to
+                <input type="number" name="max" min="13" max="100" value="65">
+            </div>
+            <div class="option">
+                <div class="option-header">Gender</div>
+                <select name="gender">
+                    <option value="0">Any</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                    <option value="3">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="type">
+            <div class="category">Games</div>
+        </div>
+        <div class="button-container">
+            <input type="submit" value="Refine Search" class="button">
+        </div>
+    </form>
+</div>
 <div class="query">Showing results for '{{query}}'</div>
 <div class="search-results">
 {{#each results}}

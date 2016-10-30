@@ -11,16 +11,20 @@ var oneUps = [{
 
 var availabilityTimes = {
     morning: {
-        type: Boolean
+        type: Boolean,
+        default: true
     },
     day: {
-        type: Boolean
+        type: Boolean,
+        default: true
     },
     night: {
-        type: Boolean
+        type: Boolean,
+        default: true
     },
     never: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 };
 

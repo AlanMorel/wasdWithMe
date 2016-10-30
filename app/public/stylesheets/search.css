@@ -8,7 +8,8 @@ body {
   margin: 32px auto 32px auto;
   font-size: 24px;
 }
-.search-results {
+.search-results,
+.refinement {
   width: 700px;
   margin: auto;
   border-radius: 8px;
@@ -16,13 +17,16 @@ body {
   background-color: #fff;
   padding: 10px 0 10px 0;
 }
-.search-results a {
+.search-results a,
+.refinement a {
   color: #000;
 }
-.search-results a:hover {
+.search-results a:hover,
+.refinement a:hover {
   color: #fff;
 }
-.search-results img {
+.search-results img,
+.refinement img {
   max-width: 128px;
   vertical-align: middle;
   margin-left: 12px;
@@ -41,14 +45,13 @@ body {
 }
 .search-info {
   float: right;
-  width: 530px;
+  width: 520px;
   overflow: hidden;
   padding-right: 20px;
   margin-bottom: 10px;
 }
 .search-info .search-name {
   font-size: 20px;
-  padding-top: 4px;
   padding-bottom: 8px;
 }
 .search-description {
@@ -67,6 +70,31 @@ body {
 .current {
   font-weight: bold;
   color: #000;
+}
+.refinement {
+  color: #000;
+  margin-top: 35px;
+}
+.option {
+  width: 45%;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.type {
+  margin-left: 20px;
+}
+.category {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.button-container {
+  text-align: right;
+}
+.button {
+  padding: 10px 20px;
+  font-size: 14px;
+  margin-right: 20px;
+  margin-bottom: 8px;
 }
 @media only screen and (max-width: 750px) {
   .search-results {

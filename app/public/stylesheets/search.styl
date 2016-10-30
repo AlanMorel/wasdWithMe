@@ -9,7 +9,7 @@ body {
   margin: 32px auto 32px auto;
   font-size: 24px;
 }
-.search-results {
+.search-results, .refinement {
   width: 700px;
   margin: auto;
   border-radius: 8px;
@@ -42,13 +42,12 @@ body {
 }
 .search-info {
   float: right;
-  width: 530px;
+  width: 520px;
   overflow: hidden;
   padding-right: 20px;
   margin-bottom: 10px;
   .search-name {
     font-size: 20px;
-    padding-top: 4px;
     padding-bottom: 8px;
   }
 }
@@ -69,6 +68,31 @@ body {
   font-weight: bold;
   color: black;
 }
+.refinement{
+  color: black;
+  margin-top: 35px;
+}
+.option{
+  width: 45%;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.type{
+  margin-left: 20px;
+}
+.category{
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+  .button-container{
+    text-align: right;
+  }
+  .button{
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-right: 20px;
+    margin-bottom: 8px;
+  }
 @media only screen and (max-width: 750px) {
   .search-results{
     width: 96%;

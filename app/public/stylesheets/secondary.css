@@ -10,7 +10,8 @@ a {
   text-decoration: none;
 }
 input,
-textarea {
+textarea,
+select {
   border: 1px solid #ddd;
   padding: 4px;
 }
