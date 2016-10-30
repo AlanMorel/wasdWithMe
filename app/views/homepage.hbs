@@ -63,18 +63,18 @@
     </div>
     {{#each live_profile_users}}
         <div class="live-profile">
-            <img src="/images/profile/{{display_name}}.png" class="live-profile-pic">
+            <img src="/images/profile/{{display_name}}.png">
             <a href="/user/{{display_name}}">
-                <div class="live-profile-username">{{display_name}}</div>
+                <div class="username">{{display_name}}</div>
             </a>
-            <div class="live-profile-oneUps">
+            <div class="one-ups">
                 <span class="one-ups-value">{{one_up_count}}</span>
                 <span class="one-ups-button">1UP</span>
             </div>
-            <div class="live-profile-platforms">
-                {{#each platforms}}
-                    <img class="live-profile-platform" src="/images/{{this}}.png">
-                {{/each}}
+            <div class="platforms">
+            {{#each platforms}}
+                <img src="/images/{{this}}.png">
+            {{/each}}
             </div>
         </div>
     {{/each}}

@@ -15,19 +15,18 @@
                 <img src="/images/logo.png" class="logo">
             </a>
             <div class="wasd-text">
-                <div class="wasd-top">
-                    {{#if user}}
-                    Hello, {{user.username}}
-                    {{else}}
-                    Hello, Guest
-                    {{/if}}
-                </div>
+                {{#if user}}
+                <div class="wasd-top">Hello, {{user.username}}</div>
+                {{else}}
+                <div class="wasd-top">Hello, Guest</div>
+                {{/if}}
                 <div class="wasd-bottom">
                 {{#if user}}
                     <a href="/messages/">Messages</a>
                     <a href="/user/{{user.display_name}}">Profile</a>
                     <a href="/logout">Log Out</a>
                 {{else}}
+                    <a href="/signup">Log In</a>
                     <a href="/login">Log In</a>
                 {{/if}}
                 </div>

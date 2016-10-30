@@ -87,43 +87,43 @@ img.couple {
   margin-left: 15px;
   margin-right: 15px;
 }
-.live-profile a {
-  color: #000;
-}
-.live-profile a:hover {
-  color: #ff8c00;
-}
-.live-profile-pic {
+.live-profile > img {
   max-height: 150px;
   min-height: 150px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   vertical-align: middle;
 }
+.live-profile a {
+  color: #000;
+}
+.live-profile a:hover {
+  color: #ff8c00;
+}
+.live-profile .one-ups {
+  font-size: 18px;
+  margin: 10px 0 10px 0;
+}
 .live-profile:hover {
   border: 1px solid #aaa;
 }
-.live-profile-username {
+.username {
   font-weight: 300;
   font-size: 20px;
   padding: 6px 0 6px 0;
   background-color: #f7f7f7;
 }
-.live-profile-platforms {
+.platforms {
   background-color: #282828;
   padding-top: 8px;
   padding-bottom: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-.live-profile-platform {
+.platforms img {
   height: 16px;
   margin-left: 6px;
   margin-right: 6px;
-}
-.live-profile-oneUps {
-  font-size: 18px;
-  margin: 10px 0 10px 0;
 }
 .sign-up-button {
   padding-top: 2vw;
