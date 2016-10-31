@@ -71,9 +71,7 @@ var User = new mongoose.Schema({
             type: objects.availabilityTimes
         }
     },
-    images: [{
-       type: objects.image
-    }],
+    images: [objects.image],
     accounts: {
         steam: {
             steam_id: {
