@@ -6,8 +6,9 @@
 - [X] standardize 404 error page messages
 
 # Messaging System Todo
-- [ ] "online now" for chat
-- [ ] reorder left chats if a new message is sent
+- [ ] "online now" feature
+- [ ] update most recent conversation if a new message is sent
+- [X] add snippet of last sent message under conversator's name
 - [X] all previous chats on the left
 - [X] implement "is currently typing"
 - [X] only load last 100 or so messages
@@ -38,3 +39,4 @@
 # Possibilities
 - [ ] add developers and publishers to games page
 - [ ] real current gaming news on homepage
+- [ ] site-wide notification system

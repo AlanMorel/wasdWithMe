@@ -2,10 +2,13 @@
     <div class="all-conversations">
         <div class="top-header">Messenger</div>
         {{#each conversations}}
-            <a href="/messages/{{this}}">
+            <a href="/messages/{{this.name}}">
                 <div class="conversation-person">
-                    <img src="/images/profile/{{this}}.png">
-                    <span class="conversation-username">{{this}}</span>
+                    <img src="/images/profile/{{this.name}}.png">
+                    <div class="conversation-details">
+                        <div class="conversation-username">{{this.name}}</div>
+                        <div class="conversation-snippet">{{this.message}}</div>
+                    </div>
                 </div>
             </a>
         {{/each}}
@@ -30,7 +33,7 @@
         <div class="chat">
         {{#each chat}}
             <div class="bubble">
-                <span class="{{this.css}}-message">{{this.from}}: {{this.message}}</span>
+                <span class="{{this.css}}-message">{{this.message}}</span>
             </div>
         {{/each}}
         </div>

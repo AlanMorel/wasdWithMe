@@ -53,7 +53,7 @@ body {
 .chat {
   background-color: #fff;
   border-radius: 8px;
-  padding: 12px;
+  padding: 20px;
   border: 1px solid #ddd;
   color: #fff;
   height: 500px;
@@ -63,6 +63,7 @@ body {
 .bubble {
   width: 100%;
   display: inline-block;
+  overflow: hidden;
 }
 .other-message,
 .own-message {
@@ -70,6 +71,7 @@ body {
   border-radius: 10px;
   padding: 5px 10px 5px 10px;
   max-width: 60%;
+  overflow: hidden;
 }
 .other-message {
   color: #000;
@@ -117,6 +119,7 @@ body {
 .conversation-person {
   color: #000;
   padding: 10px 0 10px 10px;
+  overflow: hidden;
 }
 .conversation-person img {
   max-width: 50px;
@@ -126,9 +129,16 @@ body {
 .conversation-person:hover {
   background-color: #eee;
 }
+.conversation-details {
+  width: 175px;
+  float: right;
+}
 .conversation-username {
   font-size: 20px;
   font-weight: lighter;
   vertical-align: top;
-  padding-left: 10px;
+}
+.conversation-snippet {
+  font-size: 12px;
+  color: #a9a9a9;
 }

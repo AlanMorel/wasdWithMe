@@ -75,7 +75,7 @@ router.get('/:username', function (req, res, next) {
                 var own = message.from === req.user.username;
                 var otherUsername = own ? message.to : message.from;
 
-                updateMostRecentConversation(conversations, otherUsername);
+                updateMostRecentConversation(conversations, otherUsername, message.message);
 
                 //if it belongs in this chat, set css class and push to the chat array
                 if (otherUsername === username){
@@ -107,13 +107,25 @@ router.get('/:username', function (req, res, next) {
 });
 
 //sets the conversation as the current most recent conversation
-function updateMostRecentConversation(conversations, otherUsername){
-    var index = conversations.indexOf(otherUsername);
+function updateMostRecentConversation(conversations, username, message){
+    var index = arrayObjectIndexOf(conversations, username, "name");
     if (index >= 0){
         conversations.splice(index, 1);
     }
-    conversations.push(otherUsername);
+    //push a new conversation object onto the array
+    conversations.push({
+        name: username,
+        message: message
+    });
     return conversations;
+}
+
+//returns the index of an object inside an array
+function arrayObjectIndexOf(myArray, searchTerm, property) {
+    for(var i = 0, len = myArray.length; i < len; i++) {
+        if (myArray[i][property] === searchTerm) return i;
+    }
+    return -1;
 }
 
 //returns age of user in years
