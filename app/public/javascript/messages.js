@@ -100,7 +100,7 @@ function sendMessage(text){
 function addMessage(from, message){
     var other = from === to;
     var cssClass = other ? "other" : "own";
-    var append = "<div class='bubble'><span class='" + cssClass + "-message'>" + from + ": "  + message + "</span></div>";
+    var append = "<div class='bubble'><span class='" + cssClass + "-message'>" + message + "</span></div>";
     appendText(other, append);
     sendTitleBlink(other);
 }
