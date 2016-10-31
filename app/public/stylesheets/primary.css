@@ -5,6 +5,9 @@ html {
 body {
   margin: 0;
 }
+img {
+  vertical-align: top;
+}
 a {
   color: #fff;
   text-decoration: none;
@@ -152,7 +155,6 @@ form {
 .results-box img,
 .sub-results-box img {
   max-width: 100px;
-  vertical-align: top;
   margin: 0 10px 0 10px;
   display: inline-block;
 }
@@ -197,7 +199,6 @@ footer .bottom {
 .section {
   display: inline-block;
   width: 240px;
-  vertical-align: top;
 }
 .footer-header {
   margin: 20px 0 10px 0;

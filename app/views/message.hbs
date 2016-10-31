@@ -2,10 +2,12 @@
     <div class="all-messages">
         <div class="top-header">Messenger</div>
         {{#each history}}
-            <div class="history-person">
-                <img src="/images/profile/{{this}}.png">
-                <span class="history-name">{{this}}</span>
-            </div>
+            <a href="/messages/{{this}}">
+                <div class="history-person">
+                    <img src="/images/profile/{{this}}.png">
+                    <span class="history-name">{{this}}</span>
+                </div>
+            </a>
         {{/each}}
     </div>
     <div class="main">
