@@ -38,7 +38,6 @@ function run(io) {
         });
 
         socket.on('typing', function(data){
-            console.log(username + " is typing.");
             var toUsername = data.to.toLowerCase();
             broadcast(toUsername, "typing", data);
         });

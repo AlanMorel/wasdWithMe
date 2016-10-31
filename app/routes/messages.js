@@ -36,7 +36,6 @@ router.get('/:username', function (req, res, next) {
         return;
     }
 
-    //otherwise, find the person they're trying to message
     User.findByUsername(username, true, function(err, to) {
 
         //if error or user not found, return
@@ -45,19 +44,17 @@ router.get('/:username', function (req, res, next) {
             return;
         }
 
-        //query to search for sent messages
+        //query to search for sent messages to anybody
         var sent = {
-            from: req.user.username.toLowerCase(),
-            to: to.username
+            from: req.user.username.toLowerCase()
         };
 
-        //query to search for received messages
+        //query to search for received messages from anybody
         var received = {
-            from: to.username,
             to: req.user.username.toLowerCase()
         };
 
-        //query for all messages sent and received
+        //query for all messages sent by you or sent to you
         var query = {
             $or: [sent, received]
         };
@@ -70,13 +67,32 @@ router.get('/:username', function (req, res, next) {
                 return;
             }
 
-            //limit the number of messages we send to the user
-            messages = messages.slice(-config.max_messages);
+            var conversation = [];
+            var history = [];
 
             //set whether they are own or message from another person
             messages.forEach(function(message) {
-                message.css = message.from === req.user.username ? "own" : "other";
+                var own = message.from === req.user.username;
+                var otherUsername = own ? message.to : message.from;
+
+                var index = history.indexOf(otherUsername);
+
+                if (index >= 0){
+                    history.splice(index, 1);
+                }
+
+                history.push(otherUsername);
+
+                if (otherUsername === username){
+                    message.css = own ? "own" : "other";
+                    conversation.push(message);
+                }
             });
+
+            //limit the number of messages we send to the user
+            conversation = conversation.slice(-config.max_messages);
+
+            history = history.reverse();
 
             res.render('message', {
                 title: 'Messages with ' + username,
@@ -87,7 +103,8 @@ router.get('/:username', function (req, res, next) {
                 to: to,
                 gender: config.gender[to.gender],
                 age: getAge(to.birthday),
-                messages: messages
+                messages: conversation,
+                history: history
             });
         });
     });

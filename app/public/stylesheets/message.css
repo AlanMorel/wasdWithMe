@@ -112,3 +112,15 @@ body {
   margin-top: 10px;
   height: 1em;
 }
+.history-person {
+  color: #000;
+}
+.history-person img {
+  max-width: 50px;
+  max-height: 50px;
+}
+.history-name {
+  font-size: 20px;
+  font-weight: lighter;
+  vertical-align: top;
+}
