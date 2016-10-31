@@ -3,6 +3,7 @@ var socket = io.connect();
 var form = document.querySelector(".chat-form");
 var input = document.querySelector(".input");
 var chat = document.querySelector(".chat");
+var allConversations = document.querySelectorAll(".conversation-username");
 var typing = document.querySelector(".typing");
 var isTypingDisplayTime = 7000; //in milliseconds
 

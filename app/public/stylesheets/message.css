@@ -5,7 +5,7 @@ body {
   margin: auto;
   text-align: center;
 }
-.all-messages {
+.all-conversations {
   width: 250px;
   border-radius: 8px;
   border: 1px solid #ddd;
@@ -114,19 +114,19 @@ body {
   margin-top: 10px;
   height: 1em;
 }
-.history-person {
+.conversation-person {
   color: #000;
   padding: 10px 0 10px 10px;
 }
-.history-person img {
+.conversation-person img {
   max-width: 50px;
   max-height: 50px;
   border-radius: 50px;
 }
-.history-person:hover {
+.conversation-person:hover {
   background-color: #eee;
 }
-.history-name {
+.conversation-username {
   font-size: 20px;
   font-weight: lighter;
   vertical-align: top;

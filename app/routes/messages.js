@@ -67,32 +67,28 @@ router.get('/:username', function (req, res, next) {
                 return;
             }
 
-            var conversation = [];
-            var history = [];
+            var chat = []; //holds the messages to display in this chat
+            var conversations = []; //holds your most recent conversations
 
             //set whether they are own or message from another person
             messages.forEach(function(message) {
                 var own = message.from === req.user.username;
                 var otherUsername = own ? message.to : message.from;
 
-                var index = history.indexOf(otherUsername);
+                updateMostRecentConversation(conversations, otherUsername);
 
-                if (index >= 0){
-                    history.splice(index, 1);
-                }
-
-                history.push(otherUsername);
-
+                //if it belongs in this chat, set css class and push to the chat array
                 if (otherUsername === username){
                     message.css = own ? "own" : "other";
-                    conversation.push(message);
+                    chat.push(message);
                 }
             });
 
             //limit the number of messages we send to the user
-            conversation = conversation.slice(-config.max_messages);
+            chat = chat.slice(-config.max_messages);
 
-            history = history.reverse();
+            //reverse the conversations order so it can be displayed properly
+            conversations = conversations.reverse();
 
             res.render('message', {
                 title: 'Messages with ' + username,
@@ -103,12 +99,22 @@ router.get('/:username', function (req, res, next) {
                 to: to,
                 gender: config.gender[to.gender],
                 age: getAge(to.birthday),
-                messages: conversation,
-                history: history
+                chat: chat,
+                conversations: conversations
             });
         });
     });
 });
+
+//sets the conversation as the current most recent conversation
+function updateMostRecentConversation(conversations, otherUsername){
+    var index = conversations.indexOf(otherUsername);
+    if (index >= 0){
+        conversations.splice(index, 1);
+    }
+    conversations.push(otherUsername);
+    return conversations;
+}
 
 //returns age of user in years
 function getAge(birthday){

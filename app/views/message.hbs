@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="all-messages">
+    <div class="all-conversations">
         <div class="top-header">Messenger</div>
-        {{#each history}}
+        {{#each conversations}}
             <a href="/messages/{{this}}">
-                <div class="history-person">
+                <div class="conversation-person">
                     <img src="/images/profile/{{this}}.png">
-                    <span class="history-name">{{this}}</span>
+                    <span class="conversation-username">{{this}}</span>
                 </div>
             </a>
         {{/each}}
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="chat">
-        {{#each messages}}
+        {{#each chat}}
             <div class="bubble">
                 <span class="{{this.css}}-message">{{this.from}}: {{this.message}}</span>
             </div>

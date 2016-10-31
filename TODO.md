@@ -7,6 +7,7 @@
 
 # Messaging System Todo
 - [ ] "online now" for chat
+- [ ] reorder left chats if a new message is sent
 - [X] all previous chats on the left
 - [X] implement "is currently typing"
 - [X] only load last 100 or so messages
