@@ -1,5 +1,6 @@
 body {
   background-color: #e9ebee;
+  min-width: 350px;
 }
 .container {
   margin: auto;
@@ -38,7 +39,7 @@ body {
 }
 .input {
   width: 75%;
-  padding: 6px;
+  padding: 6px 0 6px 2px;
   margin-top: 14px;
   font-size: 16px;
   border-radius: 6px;
@@ -49,6 +50,8 @@ body {
   width: 20%;
   padding: 7px 0;
   margin-left: 10px;
+  float: right;
+  margin-top: 14px;
 }
 .chat {
   background-color: #fff;
@@ -145,4 +148,53 @@ a .username {
   color: #a9a9a9;
   max-height: 1.5em;
   overflow: hidden;
+}
+@media only screen and (max-width: 950px) {
+  .conversation-details,
+  .top-header {
+    display: none;
+  }
+  .all-conversations {
+    width: 75px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .all-conversations {
+    display: none;
+  }
+  .main {
+    width: 90%;
+    margin: auto;
+  }
+  .profile-pic {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  .chat {
+    height: 75vh;
+    padding: 14px;
+  }
+  .input {
+    width: 75%;
+  }
+  a .username {
+    font-size: 24px;
+  }
+  .extra-info {
+    font-size: 12px;
+    line-height: 30px;
+  }
+  .tagline {
+    font-size: 10px;
+  }
+  .user-info {
+    margin-left: 10px;
+    margin-top: 8px;
+  }
+  .bubble {
+    font-size: 14px;
+  }
+  .button {
+    margin-left: 0;
+  }
 }

@@ -29,6 +29,9 @@ input[type="image"] {
   border: 0;
   padding: 0;
 }
+body {
+  min-width: 350px;
+}
 .wasd-header {
   height: 75px;
   background-color: #6441a5;
@@ -159,7 +162,7 @@ form {
   display: inline-block;
 }
 footer {
-  margin-top: 100px;
+  margin-top: 10vh;
   background-color: #282828;
   text-align: center;
 }

@@ -8,7 +8,7 @@
 # Messaging System Todo
 - [X] refractor message/chat a bit more
 - [ ] handle /messages/ route
-- [ ] add mobile css
+- [X] add mobile css
 
 # Edgar's Todo
 - [ ] add credentials file for passport secret key (change when deployed)
