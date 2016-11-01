@@ -68,19 +68,19 @@ router.get('/:username', function (req, res, next) {
             }
 
             var chat = []; //holds the messages to display in this chat
-            var conversations = []; //holds your most recent conversations
+            var conversations = []; //holds all your conversations
 
-            //set whether they are own or message from another person
             messages.forEach(function(message) {
                 //true if it is your own message, false otherwise
                 var own = message.from === req.user.username;
 
-                //sets the username of the other person in the message
+                //sets the username of the other person in the conversation
                 var otherUsername = own ? message.to : message.from;
 
-                //true if this the message is from the active conversation
+                //true if this message is from the conversation you are trying to access
                 message.active = username === otherUsername;
 
+                //updates this message's conversation as the most recent conversation
                 updateMostRecentConversation(conversations, otherUsername, message);
 
                 //if it belongs in this chat, set css class and push to the chat array
@@ -114,6 +114,7 @@ router.get('/:username', function (req, res, next) {
 
 //sets the conversation as the current most recent conversation
 function updateMostRecentConversation(conversations, username, message){
+    //remove this conversation if it already exists
     var index = arrayObjectIndexOf(conversations, username, "name");
     if (index >= 0){
         conversations.splice(index, 1);
@@ -127,10 +128,12 @@ function updateMostRecentConversation(conversations, username, message){
     return conversations;
 }
 
-//returns the index of an object inside an array
+//returns the index of an object inside an array by the property
 function arrayObjectIndexOf(myArray, searchTerm, property) {
     for(var i = 0, len = myArray.length; i < len; i++) {
-        if (myArray[i][property] === searchTerm) return i;
+        if (myArray[i][property] === searchTerm){
+            return i;
+        }
     }
     return -1;
 }

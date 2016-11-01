@@ -6,7 +6,8 @@
 - [ ] add custom html when you're logged in on homepage
 
 # Messaging System Todo
-- [ ] refractor message/chat a bit more
+- [X] refractor message/chat a bit more
+- [ ] handle /messages/ route
 - [ ] add mobile css
 
 # Edgar's Todo

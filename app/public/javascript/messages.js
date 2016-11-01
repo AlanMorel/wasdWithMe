@@ -8,20 +8,27 @@ var to = title.split(" ")[2].toLowerCase();
 //set the form's onsubmit function
 document.querySelector(".chat-form").onsubmit = function(e) {
     e.preventDefault();
+
+    //ignore empty inputs
     if (input.value.length == 0) {
         return;
     }
+
     sendMessage(input.value);
 };
 
 //sends typing info to server when key is pressed
 input.onkeyup = function() {
+
+    //ignore empty inputs
     if (input.value.length == 0){
         return;
     }
+
     var data = {
         to: to
     };
+
     socket.emit('typing', data);
 };
 
@@ -53,6 +60,7 @@ socket.on('own message', function(data){
     addMessage(data.from, data.message);
 });
 
+//emits a message to the server and clears the input
 function sendMessage(text){
     var data = {
         to: to,
@@ -71,7 +79,7 @@ function addMessage(from, message){
     sendTitleBlink(other);
 }
 
-//sets the conversation of the last message as most recent
+//moves the conversation of the last message to the top
 function updateConversation(data, otherUsername){
     var toUpdate = getConversationByUsername(otherUsername);
     var conversations = document.querySelector(".conversations");
@@ -101,18 +109,15 @@ function appendText(append){
 
 //user is typing implementation below
 var typing = document.querySelector(".typing");
-var isTypingDisplayTime = 7000; //in milliseconds
+var isTypingDuration = 10; //how long to display "is typing" in seconds
 var typingInterval;
 
 socket.on('typing', function(data){
+
+    //if this refers to another conversation, do nothing
     if (data.from !== to){
         return;
     }
-    showTyping();
-});
-
-//shows that the other user is typing
-function showTyping(){
 
     //resets the countdown
     clearTimeout(typingInterval);
@@ -120,11 +125,11 @@ function showTyping(){
     //show the typing text
     typing.innerHTML = to + " is typing...";
 
-    //set the timeout to clear the message
+    //set the timeout to clear it
     typingInterval = setTimeout(function(){
         clearTyping();
-    }, isTypingDisplayTime);
-}
+    }, isTypingDuration * 1000);
+});
 
 function clearTyping(){
     clearTimeout(typingInterval);
