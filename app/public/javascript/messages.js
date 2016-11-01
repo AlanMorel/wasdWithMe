@@ -1,19 +1,11 @@
 var socket = io.connect();
 
-var form = document.querySelector(".chat-form");
 var input = document.querySelector(".input");
-var chat = document.querySelector(".chat");
-var typing = document.querySelector(".typing");
-
-var isTypingDisplayTime = 7000; //in milliseconds
 
 var title = document.title;
 var to = title.split(" ")[2].toLowerCase();
 
-//auto scroll chat down
-var originalHeight = chat.scrollHeight;
-chat.scrollTop = originalHeight;
-
+//sets the conversation of the last message as most recent
 function updateConversation(data, otherUsername){
     var toUpdate = getConversationByUsername(otherUsername);
     var conversations = document.querySelector(".conversations");
@@ -22,6 +14,7 @@ function updateConversation(data, otherUsername){
     conversations.insertBefore(toUpdate, conversations.firstChild);
 }
 
+//returns the conversation node given a username
 function getConversationByUsername(username){
     var conversations = document.querySelectorAll(".conversation-username");
     for (var i = 0; i < conversations.length; i++){
@@ -31,7 +24,8 @@ function getConversationByUsername(username){
     }
 }
 
-form.onsubmit = function(e) {
+//set the form's onsubmit function
+document.querySelector(".chat-form").onsubmit = function(e) {
     e.preventDefault();
     if (input.value.length == 0) {
         return;
@@ -81,11 +75,41 @@ socket.on('own message', function(data){
     addMessage(data.from, data.message);
 });
 
-//user is typing implementation below
+function sendMessage(text){
+    var data = {
+        to: to,
+        message: text
+    };
+    socket.emit('send message', data);
+    input.value = "";
+}
 
+function addMessage(from, message){
+    var other = from === to;
+    var cssClass = other ? "other" : "own";
+    var append = "<div class='bubble'><span class='" + cssClass + "-message'>" + message + "</span></div>";
+    appendText(append);
+    sendTitleBlink(other);
+}
+
+//auto scroll implementation below
+var chat = document.querySelector(".chat");
+chat.scrollTop = chat.scrollHeight;
+
+function appendText(append){
+    chat.innerHTML = chat.innerHTML + append;
+    chat.scrollTop = chat.scrollHeight;
+}
+
+//start of user is typing implementation below
+var typing = document.querySelector(".typing");
+var isTypingDisplayTime = 7000; //in milliseconds
 var typingInterval;
 
 socket.on('typing', function(data){
+    if (data.from !== to){
+        return;
+    }
     showTyping();
 });
 
@@ -109,37 +133,7 @@ function clearTyping(){
     typing.innerHTML = "";
 }
 
-function sendMessage(text){
-    var data = {
-        to: to,
-        message: text
-    };
-    socket.emit('send message', data);
-    input.value = "";
-}
-
-function addMessage(from, message){
-    var other = from === to;
-    var cssClass = other ? "other" : "own";
-    var append = "<div class='bubble'><span class='" + cssClass + "-message'>" + message + "</span></div>";
-    appendText(other, append);
-    sendTitleBlink(other);
-}
-
-function appendText(other, append){
-
-    //if you sent the message or you're already at the bottom, auto-scroll down
-    var scrollDown = !other || chat.scrollTop - chat.scrollHeight >= -originalHeight;
-
-    chat.innerHTML = chat.innerHTML + append;
-
-    if (scrollDown){
-        chat.scrollTop = chat.scrollHeight;
-    }
-}
-
-//title blink implementation below
-
+//start of title blink implementation below
 var blink = null;
 var blinkBoolean = true;
 

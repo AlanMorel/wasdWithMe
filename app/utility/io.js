@@ -38,8 +38,8 @@ function run(io) {
         });
 
         socket.on('typing', function(data){
-            var toUsername = data.to.toLowerCase();
-            broadcast(toUsername, "typing", data);
+            data.from = username;
+            broadcast(data.to.toLowerCase(), "typing", data);
         });
     });
 }
