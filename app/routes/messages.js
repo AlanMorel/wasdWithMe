@@ -72,10 +72,16 @@ router.get('/:username', function (req, res, next) {
 
             //set whether they are own or message from another person
             messages.forEach(function(message) {
+                //true if it is your own message, false otherwise
                 var own = message.from === req.user.username;
+
+                //sets the username of the other person in the message
                 var otherUsername = own ? message.to : message.from;
 
-                updateMostRecentConversation(conversations, otherUsername, message.message);
+                //true if this the message is from the active conversation
+                message.active = username === otherUsername;
+
+                updateMostRecentConversation(conversations, otherUsername, message);
 
                 //if it belongs in this chat, set css class and push to the chat array
                 if (otherUsername === username){
@@ -115,7 +121,8 @@ function updateMostRecentConversation(conversations, username, message){
     //push a new conversation object onto the array
     conversations.push({
         name: username,
-        message: message
+        message: message.message,
+        active: message.active
     });
     return conversations;
 }

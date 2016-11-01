@@ -7,7 +7,7 @@
 
 # Messaging System Todo
 - [ ] "online now" feature
-- [ ] update most recent conversation if a new message is sent
+- [X] update most recent conversation if a new message is sent
 - [X] add snippet of last sent message under each conversation
 - [X] all previous chats on the left
 - [X] implement "is currently typing"

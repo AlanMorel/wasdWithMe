@@ -3,8 +3,8 @@ var socket = io.connect();
 var form = document.querySelector(".chat-form");
 var input = document.querySelector(".input");
 var chat = document.querySelector(".chat");
-var allConversations = document.querySelectorAll(".conversation-username");
 var typing = document.querySelector(".typing");
+
 var isTypingDisplayTime = 7000; //in milliseconds
 
 var title = document.title;
@@ -13,6 +13,23 @@ var to = title.split(" ")[2].toLowerCase();
 //auto scroll chat down
 var originalHeight = chat.scrollHeight;
 chat.scrollTop = originalHeight;
+
+function updateConversation(data, otherUsername){
+    var toUpdate = getConversationByUsername(otherUsername);
+    var conversations = document.querySelector(".conversations");
+    toUpdate.querySelector(".conversation-snippet").innerHTML = data.message;
+    conversations.appendChild(toUpdate);
+    conversations.insertBefore(toUpdate, conversations.firstChild);
+}
+
+function getConversationByUsername(username){
+    var conversations = document.querySelectorAll(".conversation-username");
+    for (var i = 0; i < conversations.length; i++){
+        if (conversations[i].innerHTML === username){
+            return conversations[i].parentElement.parentElement.parentElement;
+        }
+    }
+}
 
 form.onsubmit = function(e) {
     e.preventDefault();
@@ -34,6 +51,8 @@ input.onkeyup = function() {
 
 socket.on('new message', function(data){
 
+    updateConversation(data, data.from);
+
     //if you're person A talking to person B,
     //but then person C messages you (person A),
     //we don't want to load C's message
@@ -48,6 +67,8 @@ socket.on('new message', function(data){
 });
 
 socket.on('own message', function(data){
+
+    updateConversation(data, data.to);
 
     //this prevents your own message from
     //appearing in your other chats

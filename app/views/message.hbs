@@ -1,9 +1,10 @@
 <div class="container">
     <div class="all-conversations">
         <div class="top-header">Conversations</div>
-        {{#each conversations}}
+        <div class="conversations">
+            {{#each conversations}}
             <a href="/messages/{{this.name}}">
-                <div class="conversation-person">
+                <div class="conversation-person {{#if this.active}}active{{/if}}">
                     <img src="/images/profile/{{this.name}}.png">
                     <div class="conversation-details">
                         <div class="conversation-username">{{this.name}}</div>
@@ -11,7 +12,8 @@
                     </div>
                 </div>
             </a>
-        {{/each}}
+            {{/each}}
+        </div>
     </div>
     <div class="main">
         <div class="header">
