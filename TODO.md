@@ -3,6 +3,11 @@
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play
 - [ ] fix search refinement checkbox submission
+- [ ] add custom html when you're logged in on homepage
+
+# Messaging System Todo
+- [ ] refractor message/chat a bit more
+- [ ] add mobile css
 
 # Edgar's Todo
 - [ ] add credentials file for passport secret key (change when deployed)
