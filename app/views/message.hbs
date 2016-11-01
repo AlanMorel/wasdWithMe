@@ -21,7 +21,9 @@
                 <img class="profile-pic" src="/images/profile/{{to.display_name}}.png">
             </div>
             <div class="user-info">
-                <div class="username">{{to.display_name}}<span class="status {{to.online_status}}"></span></div>
+                <a href="/user/{{to.display_name}}">
+                    <div class="username">{{to.display_name}}<span class="status {{to.online_status}}"></span></div>
+                </a>
                 <div class="extra-info">
                     <span class="age">{{age}}</span>
                     &bull;

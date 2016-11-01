@@ -3,22 +3,6 @@
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play
 - [ ] fix search refinement checkbox submission
-- [X] standardize 404 error page messages
-
-# Messaging System Todo
-- [ ] "online now" feature
-- [X] update most recent conversation if a new message is sent
-- [X] add snippet of last sent message under each conversation
-- [X] all previous chats on the left
-- [X] implement "is currently typing"
-- [X] only load last 100 or so messages
-- [X] make chatbox auto scroll to bottom at start
-- [X] load saved messages
-- [X] make chat auto scroll
-- [X] look into changing the title of the page upon new message when tab inactive
-- [X] save messages include from, to, timestamp
-- [X] handle offline user live chat attempt
-- [X] prevent own chat messaging
 
 # Edgar's Todo
 - [ ] add credentials file for passport secret key (change when deployed)

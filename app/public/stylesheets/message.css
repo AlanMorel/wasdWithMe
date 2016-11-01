@@ -98,7 +98,8 @@ body {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
-.username {
+a .username {
+  color: #000;
   display: inline;
   vertical-align: top;
   font-size: 40px;
