@@ -2,6 +2,7 @@ var router = require('express').Router();
 
 var User   = require('../models/user');
 var alert  = require('../utility/alert');
+var helper = require('../utility/helper');
 var config = require('../config');
 
 //You should not be able to access /user/ directly
@@ -30,10 +31,10 @@ router.get('/:username', function(req, res, next) {
             user : req.user,
             owner: owner,
             gender: config.gender[owner.gender],
-            age: getAge(owner.birthday),
+            age: helper.getAge(owner.birthday),
             all_games: getGames(owner.games, false),
             fav_games: getGames(owner.games, true),
-            is_owner: isOwner(req.user, owner)
+            is_owner: helper.isOwner(req.user, owner)
         });
     });
 });
@@ -64,18 +65,6 @@ function getGames(list, fav){
         });
     }
     return games;
-}
-
-//returns true if user is on own page
-function isOwner(user, owner){
-    return user && user.username === owner.username;
-}
-
-//returns age of user in years
-function getAge(birthday){
-    var difference = new Date() - new Date(birthday);
-    var year = 1000 * 60 * 60 * 24 * 365;
-    return Math.floor(difference / year);
 }
 
 module.exports = router;

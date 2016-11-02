@@ -4,6 +4,7 @@ var Game   = require('../models/game');
 var config = require('../config');
 var data   = require('../utility/data');
 var alert  = require('../utility/alert');
+var helper = require('../utility/helper');
 
 //You should not be able to access /game/ directly
 router.get('/', function(req, res, next) {
@@ -20,9 +21,7 @@ router.get('/:game', function(req, res, next) {
         return;
     }
 
-    query = getCleanedName(query);
-
-    console.log(query);
+    query = helper.getCleanedGameName(query);
 
     var gameQuery = {
         "name": {
@@ -43,7 +42,7 @@ router.get('/:game', function(req, res, next) {
     });
 });
 
-//displays the game given from api results
+//displays the game given from api results if found
 function displayApiGame(searchRequest, game){
     if (game){
         displayGame(searchRequest.req, searchRequest.res, game);
@@ -116,15 +115,6 @@ function getRatingColor(rating){
     } else {
         return "firebrick";
     }
-}
-
-//cleans up a game name of edge-case characters
-function getCleanedName(name){
-    var ret = name
-        .toLowerCase()
-        .replace('é', 'e')
-        .replace('&', 'and');
-    return ret;
 }
 
 module.exports = router;

@@ -1,5 +1,5 @@
 # Alan's Todo
-- [ ] create helper file for functions being duplicated
+- [X] create helper file for functions being duplicated
 - [ ] implement the one up system
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play

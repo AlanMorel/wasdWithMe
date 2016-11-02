@@ -1,6 +1,7 @@
 var unirest = require('unirest');
 var async   = require('async');
 var Logger  = require('../utility/logger');
+var helper  = require('../utility/helper');
 var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
@@ -186,7 +187,7 @@ function getFirstGame(results, response){
 function parseGame(game){
     var new_game = {
         id: game.id,
-        name: getCleanedGameName(game),
+        name: helper.getCleanedGameName(game),
         display_name: game.name,
         description : 'summary' in game ? game.summary : "",
         boxart: getBoxArt(game),
@@ -237,14 +238,6 @@ function addToDatabase(game){
             console.log("Added " + game.name + ".");
         }
     );
-}
-
-function getCleanedGameName(game){
-    var name = game.name
-        .toLowerCase()
-        .replace('é', 'e')
-        .replace('&', 'and');
-    return name;
 }
 
 function getBoxArt(game){
