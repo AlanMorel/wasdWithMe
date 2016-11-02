@@ -16,7 +16,7 @@ router.get('/', function (req, res, next) {
         layout: 'primary',
         file: 'message',
         user: req.user,
-        js: ["/socket.io/socket.io", "/javascript/messages"]
+        js: [config.socketio, "/javascript/messages"]
     });
 });
 
@@ -101,7 +101,7 @@ router.get('/:username', function (req, res, next) {
                 layout: 'primary',
                 file: 'message',
                 user: req.user,
-                js: ["/socket.io/socket.io", "/javascript/messages"],
+                js: [config.socketio, "/javascript/messages"],
                 to: to,
                 gender: config.gender[to.gender],
                 age: getAge(to.birthday),

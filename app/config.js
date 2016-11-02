@@ -71,4 +71,8 @@ config.results_per_page = 10;
 //max number of most recent messages to load for chat
 config.max_messages = 100;
 
+//socket.io
+config.socketio = "socket.io/socket.io";
+config.socketio_cdn = "https://cdn.socket.io/socket.io-1.4.5";
+
 module.exports = config;

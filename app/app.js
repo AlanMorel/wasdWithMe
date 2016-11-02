@@ -76,12 +76,13 @@ mongoose.Promise = bluebird;
 var mongoUri = config.mongooseUri;
 
 if(app.get('env')==='production'){
-  var port = app.get('port');
-  console.log(port);
-  app.listen(port);
+  app.listen(app.get('port'));
   //NOTE: You have to run heroku config first to set this environment variable
   //otherwise it defaults to the config file in config.mongooseUri
   mongoUri = process.env.MONGODB_URI;
+
+  //when in production, serve up socketio via cdn
+  config.socketio = config.socketio_cdn;
 }
 
 mongoose.connect(mongoUri);

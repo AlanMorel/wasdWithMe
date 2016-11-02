@@ -83,13 +83,16 @@ router.post('/', function (req, res) {
 
     User.register(user, password, function (err, user) {
         if (err) {
-            Logger.log("Registering user failed.", err);
-            res.render('signup', {
-              title: 'WASD With Me - Sign up!',
-              layout: 'secondary',
-              file: 'signup',
-              error: err.message
-            });
+            if(err.name === 'UserExistsError'){
+                res.render('signup', {
+                    title: 'Sign Up',
+                    layout: 'secondary',
+                    file: 'signup',
+                    error: "Sorry, a user with this username already exists."
+                });
+            } else {
+                Logger.log("Registering user failed.", err);
+            }
             return;
         }
         authentication(req, res, function () {
