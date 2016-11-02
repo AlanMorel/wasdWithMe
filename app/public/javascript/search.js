@@ -1,10 +1,24 @@
 var form = document.querySelector(".refinement > form");
+
 var query = document.querySelector(".search-box");
 var type = document.querySelector(".search select");
+var checkboxes = document.querySelectorAll("input[type=checkbox]");
 
 function sendRefinedQuery(){
     addData(form, "query", query.value);
     addData(form, "type", type.value);
+    addData(form, "availability", getAvailabilityValue());
+}
+
+function getAvailabilityValue(){
+    var value = 0;
+    for (var i = 0; i < checkboxes.length; i++){
+        var mask = 1 << i;
+        if (checkboxes[i].checked){
+            value |= mask;
+        }
+    }
+    return value;
 }
 
 function addData(form, key, value){

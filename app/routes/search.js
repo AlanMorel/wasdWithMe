@@ -14,6 +14,9 @@ router.get('/', function (req, res, next) {
     var ageMax = req.query.agemax;
     var gender = req.query.gender;
 
+    var availability = req.query.availability;
+    var availabilityObject = getAvailabilityObject(availability);
+
     //In any of these cases, we should return an alert
     if (page < 1 || !query || query.length < 3){
         alert.send(req, res, 'Empty search results', "We did not find any results for '" + query + "'.");
@@ -26,6 +29,24 @@ router.get('/', function (req, res, next) {
 
     data.search(searchRequest, sendResults);
 });
+
+function getAvailabilityObject(value){
+    var availability = {
+        weekdays: {
+            morning: (value & (1 << 0)) != 0,
+            day:     (value & (1 << 1)) != 0,
+            night:   (value & (1 << 2)) != 0,
+            never:   (value & (1 << 3)) != 0
+        },
+        weekends: {
+            morning: (value & (1 << 4)) != 0,
+            day:     (value & (1 << 5)) != 0,
+            night:   (value & (1 << 6)) != 0,
+            never:   (value & (1 << 7)) != 0
+        }
+    };
+    return availability;
+}
 
 //renders the search results
 var sendResults = function(searchRequest, results) {
