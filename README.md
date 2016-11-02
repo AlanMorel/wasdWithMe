@@ -30,6 +30,7 @@ You can also:
 * [Express](https://expressjs.com/) - fast node.js network app framework
 * [express-session](https://www.npmjs.com/package/express-session) - session middleware
 * [Handlebars](http://handlebarsjs.com/) - html view engine
+* [Helmet](http://handlebarsjs.com/) - helps secure express apps with various http headers
 * [Mongoose](http://mongoosejs.com/) - mongodb object modeling for node.js
 * [morgan](https://www.npmjs.com/package/morgan) - http request logger middleware
 * [multer](https://www.npmjs.com/package/multer) - multipart/form-data handling

@@ -5,7 +5,6 @@
 - [ ] add user filter searching by game, time of play
 - [ ] fix search refinement checkbox submission
 - [ ] add custom html when you're logged in on homepage
-- [X] fix duplicate user registration attempt
 
 # Messaging System Todo
 - [ ] handle /messages/ route
@@ -18,7 +17,6 @@
 
 # Before Launch
 - [ ] add credentials file for passport secret key (change when deployed)
-- [ ] https://expressjs.com/en/advanced/best-practice-security.html
 - [ ] add recatcha support to sign up page
 - [ ] add google analytics
 

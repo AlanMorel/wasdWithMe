@@ -15,6 +15,7 @@ var hbs          = require('hbs');
 var stylus       = require('express-stylus');
 var redis        = require("redis");
 var MongoStore   = require('connect-mongo')(session);
+var helmet       = require('helmet');
 
 var config       = require('./config');
 
@@ -39,8 +40,10 @@ var server = http.createServer(app);
 
 var public = path.join(__dirname, 'public');
 
-//Express
+//Favicon
 app.use(favicon(path.join(public, 'favicon.ico')));
+
+//Express
 app.use(express.static(public));
 app.set('port',(process.env.PORT || 3000));
 
@@ -69,6 +72,12 @@ app.use(cookieParser());
 
 //Flash
 app.use(flash());
+
+//Helmet
+app.use(helmet());
+
+//Trust first proxy
+app.set('trust proxy', 1);
 
 //Mongoose
 mongoose.Promise = bluebird;
