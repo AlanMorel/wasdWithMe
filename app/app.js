@@ -77,6 +77,7 @@ if(app.get('env')==='production'){
   //NOTE: You have to run heroku config first to set this environment variable
   //otherwise it defaults to the config file in config.mongooseUri
   mongoose.connect(process.env.MONGODB_URI);
+  console.log(process.env.MONGODB_URI);
 } else {
   mongoose.connect(config.mongooseUri);
 }
