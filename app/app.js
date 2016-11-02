@@ -72,24 +72,22 @@ app.use(flash());
 
 //Mongoose
 mongoose.Promise = bluebird;
-console.log("About to connect to mongo.");
+
+var mongoUri = config.mongooseUri;
+
 if(app.get('env')==='production'){
-  console.log("Port: " + app.get('port'));
   app.listen(app.get('port'));
-  console.log("Listening in production.");
   //NOTE: You have to run heroku config first to set this environment variable
   //otherwise it defaults to the config file in config.mongooseUri
-  console.log(process.env.MONGODB_URI);
-  mongoose.connect(process.env.MONGODB_URI);
-  console.log(process.env.MONGODB_URI);
-} else {
-  mongoose.connect(config.mongooseUri);
+  mongoUri = process.env.MONGODB_URI;
 }
+
+mongoose.connect(mongoUri);
 
 //Session
 var sessionMiddleware = session({
   store: new MongoStore({
-    url: config.mongooseUri
+    url: mongoUri
   }),
   secret: config.passportSecret,
   resave: false,
