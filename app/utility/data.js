@@ -48,6 +48,20 @@ function getAsyncFunctions(searchRequest){
                 $regex: query + ".*"
             }
         };
+        if (searchRequest.users.ageMin && searchRequest.users.ageMax){
+            var today = new Date();
+
+            var min = new Date(today);
+            min.setFullYear(today.getFullYear() - searchRequest.users.ageMin);
+
+            var max = new Date(today);
+            max.setFullYear(today.getFullYear() - searchRequest.users.ageMax);
+
+            userQuery.birthday = {
+                $gte: max,
+                $lt: min
+            }
+        }
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);
         };
