@@ -9,8 +9,12 @@ router.get('/search', function(req, res, next) {
     var type = req.query.type;
 
     var users = type === "all" || type === "users";
+    var userSearchRequest = users ? data.makeUserSearchRequest() : null;
+
     var games = type === "all" || type === "games";
-    var searchRequest = data.makeSearchRequest(req, res, query, 1, users, games);
+    var gameSearchRequest = games ? data.makeGameSearchRequest() : null;
+
+    var searchRequest = data.makeSearchRequest(req, res, query, 1, userSearchRequest, gameSearchRequest);
 
     data.search(searchRequest, sendResults);
 });

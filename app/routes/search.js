@@ -10,27 +10,30 @@ router.get('/', function (req, res, next) {
     var type = req.query.type;
     var page = req.query.page ? req.query.page : 1;
 
-    var ageMin = req.query.agemin;
-    var ageMax = req.query.agemax;
-    var gender = req.query.gender;
-
-    var availability = req.query.availability;
-    var availabilityObject = getAvailabilityObject(availability);
-
     //In any of these cases, we should return an alert
     if (page < 1 || !query || query.length < 3){
         alert.send(req, res, 'Empty search results', "We did not find any results for '" + query + "'.");
         return;
     }
 
+    var ageMin = req.query.agemin ? req.query.agemin : 13;
+    var ageMax = req.query.agemax ? req.query.agemax : 100;
+    var gender = req.query.gender;
+
+    var availability = getAvailability(req.query.availability);
+
     var users = type === "all" || type === "users";
+    var userSearchRequest = users ? data.makeUserSearchRequest(ageMin, ageMax, gender, availability) : null;
+
     var games = type === "all" || type === "games";
-    var searchRequest = data.makeSearchRequest(req, res, query, page, users, games);
+    var gameSearchRequest = games ? data.makeGameSearchRequest() : null;
+
+    var searchRequest = data.makeSearchRequest(req, res, query, page, userSearchRequest, gameSearchRequest);
 
     data.search(searchRequest, sendResults);
 });
 
-function getAvailabilityObject(value){
+function getAvailability(value){
     var availability = {
         weekdays: {
             morning: (value & (1 << 0)) != 0,

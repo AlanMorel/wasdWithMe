@@ -13,9 +13,8 @@ function sendRefinedQuery(){
 function getAvailabilityValue(){
     var value = 0;
     for (var i = 0; i < checkboxes.length; i++){
-        var mask = 1 << i;
         if (checkboxes[i].checked){
-            value |= mask;
+            value |= 1 << i;
         }
     }
     return value;

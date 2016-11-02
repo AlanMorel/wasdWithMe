@@ -6,6 +6,23 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
+function makeUserSearchRequest(ageMin, ageMax, gender, availability){
+    var userSearchRequest = {
+        ageMin: ageMin,
+        ageMax: ageMax,
+        gender: gender,
+        availability: availability
+    };
+    return userSearchRequest;
+}
+
+function makeGameSearchRequest(){
+    var gameSearchRequest = {
+        //empty for now
+    };
+    return gameSearchRequest;
+}
+
 //returns a search request object to be used in the search function
 function makeSearchRequest(req, res, query, page, users, games){
     var searchRequest = {
@@ -13,8 +30,8 @@ function makeSearchRequest(req, res, query, page, users, games){
         res: res,     //the response object
         query: query, //text that is being searched for
         page: page,   //what page number was requested
-        users: users, //boolean defining whether or not to include games
-        games: games  //boolean defining whether or not to include users
+        users: users, //search request for users
+        games: games  //search request for games
     };
     return searchRequest;
 }
@@ -27,7 +44,7 @@ function getAsyncFunctions(searchRequest){
 
     if (searchRequest.users) {
         var userQuery = {
-            "username": {
+            username: {
                 $regex: query + ".*"
             }
         };
@@ -304,6 +321,8 @@ function addToResults(results, type, name, image, description){
 module.exports = {
     callApi: callApi,
     search: search,
+    makeUserSearchRequest: makeUserSearchRequest,
+    makeGameSearchRequest: makeGameSearchRequest,
     makeSearchRequest: makeSearchRequest,
     getAllGames: getAllGames,
     getFirstGame: getFirstGame

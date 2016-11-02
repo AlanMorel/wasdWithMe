@@ -36,7 +36,8 @@ router.get('/:game', function(req, res, next) {
         if (game){
             displayGame(req, res, game);
         } else {
-            var searchRequest = data.makeSearchRequest(req, res, query, 0, false, true);
+            var gameSearchRequest = data.makeGameSearchRequest();
+            var searchRequest = data.makeSearchRequest(req, res, query, 0, null, gameSearchRequest);
             data.callApi(searchRequest, [], displayApiGame, data.getFirstGame);
         }
     });
