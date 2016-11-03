@@ -11,8 +11,8 @@ function getAge(birthday){
 }
 
 //cleans game name of edge case characters
-function getCleanedGameName(game){
-    var name = game.name
+function getCleanedGameName(name){
+    var name = name
         .toLowerCase()
         .replace('é', 'e')
         .replace('&', 'and');

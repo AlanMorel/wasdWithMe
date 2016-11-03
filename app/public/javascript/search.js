@@ -13,6 +13,8 @@ function sendRefinedQuery(){
     addData(form, "agemin", numbers[0].value);
     addData(form, "agemax", numbers[1].value);
     addData(form, "gender", gender.options[gender.selectedIndex].value);
+    addData(form, "releasemin", numbers[2].value);
+    addData(form, "releasemax", numbers[3].value);
 }
 
 function getAvailabilityValue(){

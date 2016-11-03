@@ -25,8 +25,11 @@ router.get('/', function (req, res, next) {
     var users = type === "all" || type === "users";
     var userSearchRequest = users ? data.makeUserSearchRequest(ageMin, ageMax, gender, availability) : null;
 
+    var releasemin = req.query.releasemin ? req.query.releasemin : 1970;
+    var releasemax = req.query.releasemax ? req.query.releasemax : 2020;
+
     var games = type === "all" || type === "games";
-    var gameSearchRequest = games ? data.makeGameSearchRequest() : null;
+    var gameSearchRequest = games ? data.makeGameSearchRequest(releasemin, releasemax) : null;
 
     var searchRequest = data.makeSearchRequest(req, res, query, page, userSearchRequest, gameSearchRequest);
 

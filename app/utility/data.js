@@ -16,9 +16,10 @@ function makeUserSearchRequest(ageMin, ageMax, gender, availability){
     return userSearchRequest;
 }
 
-function makeGameSearchRequest(){
+function makeGameSearchRequest(releasemin, releasemax){
     var gameSearchRequest = {
-        //empty for now
+        releasemin: releasemin,
+        releasemax: releasemax
     };
     return gameSearchRequest;
 }
@@ -76,6 +77,16 @@ function getAsyncFunctions(searchRequest){
                 $regex : query + ".*"
             }
         };
+        if (searchRequest.games.releasemin && searchRequest.games.releasemax){
+
+            var min = new Date(searchRequest.games.releasemin, 0, 1);
+            var max = new Date(searchRequest.games.releasemax, 11, 31);
+
+            gameQuery.release_date = {
+                $gte: min,
+                $lt: max
+            }
+        }
         asyncFunctions.games = function (cb){
             Game.find(gameQuery).exec(cb);
         };
@@ -221,7 +232,7 @@ function getFirstGame(results, response){
 function parseGame(game){
     var new_game = {
         id: game.id,
-        name: helper.getCleanedGameName(game),
+        name: helper.getCleanedGameName(game.name),
         display_name: game.name,
         description : 'summary' in game ? game.summary : "",
         boxart: getBoxArt(game),
