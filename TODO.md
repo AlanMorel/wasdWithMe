@@ -1,12 +1,9 @@
 # Alan's Todo
-- [X] create helper file for functions being duplicated
 - [ ] implement the one up system
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game, time of play
-- [X] fix search refinement checkbox submission
+- [ ] add game filter searching by release date
 - [ ] add custom html when you're logged in on homepage
-
-# Messaging System Todo
 - [ ] handle /messages/ route
 
 # General Todo
