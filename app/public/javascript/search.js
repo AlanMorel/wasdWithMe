@@ -3,11 +3,16 @@ var form = document.querySelector(".refinement > form");
 var query = document.querySelector(".search-box");
 var type = document.querySelector(".search select");
 var checkboxes = document.querySelectorAll("input[type=checkbox]");
+var numbers = document.querySelectorAll("input[type=number]");
+var gender = document.querySelector(".option select");
 
 function sendRefinedQuery(){
     addData(form, "query", query.value);
     addData(form, "type", type.value);
     addData(form, "availability", getAvailabilityValue());
+    addData(form, "agemin", numbers[0].value);
+    addData(form, "agemax", numbers[1].value);
+    addData(form, "gender", gender.options[gender.selectedIndex].value);
 }
 
 function getAvailabilityValue(){

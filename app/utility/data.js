@@ -62,6 +62,9 @@ function getAsyncFunctions(searchRequest){
                 $lt: min
             }
         }
+        if (searchRequest.users.gender && searchRequest.users.gender >= 0){
+            userQuery.gender = searchRequest.users.gender;
+        }
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);
         };
