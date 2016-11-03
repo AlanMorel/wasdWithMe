@@ -2,7 +2,6 @@
 - [ ] implement the one up system
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game owned
-- [X] add game filter searching by release date
 - [ ] add custom html when you're logged in on homepage
 - [ ] handle /messages/ route
 

@@ -1,7 +1,7 @@
 <div class="refinement">
     <form method="get" action="/search" onsubmit="return sendRefinedQuery()">
         <div class="type">
-            <div class="category">Users</div>
+            <div class="category">Filter Users</div>
             <div class="option">
                 <div class="option-header">Weekdays Availability</div>
                 <div><input type="checkbox" value="weekdaysmorning"> Morning</div>
@@ -31,9 +31,13 @@
                     <option value="2">Other</option>
                 </select>
             </div>
+            <div class="option">
+                <div class="option-header">Owns Game</div>
+                <input type="text" name="owns" placeholder="Enter a game...">
+            </div>
         </div>
         <div class="type">
-            <div class="category">Games</div>
+            <div class="category">Filter Games</div>
             <div class="option">
                 <div class="option-header">Release</div>
                 <input type="number" min="1970" max="2020" value="1980">

@@ -71,6 +71,7 @@ h1 {
 }
 img.screenshot {
   max-width: 340px;
+  margin-bottom: 4px;
 }
 .video-title {
   font-size: 22px;
@@ -95,7 +96,7 @@ img.screenshot {
 }
 .game-one-ups {
   float: right;
-  margin-right: 10px;
+  margin: 10px 10px 0 0;
 }
 @media only screen and (max-width: 750px) {
   .container {
