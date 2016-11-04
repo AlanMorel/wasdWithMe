@@ -6,12 +6,13 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-function makeUserSearchRequest(ageMin, ageMax, gender, availability){
+function makeUserSearchRequest(ageMin, ageMax, gender, availability, plays){
     var userSearchRequest = {
         ageMin: ageMin,
         ageMax: ageMax,
         gender: gender,
-        availability: availability
+        availability: availability,
+        plays: plays
     };
     return userSearchRequest;
 }
@@ -65,6 +66,11 @@ function getAsyncFunctions(searchRequest){
         }
         if (searchRequest.users.gender && searchRequest.users.gender >= 0){
             userQuery.gender = searchRequest.users.gender;
+        }
+        if(searchRequest.users.plays){
+            console.log(searchRequest.users.plays);
+            //TODO fix
+            //userQuery.games.name = searchRequest.users.plays;
         }
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);

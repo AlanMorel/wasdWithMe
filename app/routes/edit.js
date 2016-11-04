@@ -27,7 +27,7 @@ router.get('/:username/edit', function(req, res, next) {
         }
 
         //user tried to edit somebody else's profile
-        if(!isOwner(req.user, owner)){
+        if(!helper.isOwner(req.user, owner)){
             alert.send(req, res, 'Cannot edit profile', "You cannot edit somebody else's profile.");
             return;
         }

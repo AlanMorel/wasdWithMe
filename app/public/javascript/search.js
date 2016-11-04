@@ -6,6 +6,9 @@ var checkboxes = document.querySelectorAll("input[type=checkbox]");
 var numbers = document.querySelectorAll("input[type=number]");
 var gender = document.querySelector(".option select");
 
+var plays = document.querySelector(".plays");
+var subbox = document.querySelector(".sub-results-box");
+
 function sendRefinedQuery(){
     addData(form, "query", query.value);
     addData(form, "type", type.value);
@@ -15,6 +18,7 @@ function sendRefinedQuery(){
     addData(form, "gender", gender.options[gender.selectedIndex].value);
     addData(form, "releasemin", numbers[2].value);
     addData(form, "releasemax", numbers[3].value);
+    addData(form, "plays", plays.value);
 }
 
 function getAvailabilityValue(){
@@ -30,3 +34,57 @@ function getAvailabilityValue(){
 function addData(form, key, value){
     form.innerHTML = form.innerHTML + "<input type='hidden' name='" + key + "' value='" + value + "' />";
 }
+
+//returns true if box should be shown, false if not
+function shouldShow(query){
+    return query && query.length > 2;
+}
+
+//Searches for games whenever a key is pressed in any text input
+function searchGame(){
+
+    //Must have 3 or more characters to initiate a search
+    if (!shouldShow(plays.value)) {
+        subbox.style.visibility = "hidden";
+        subbox.style.display = "none";
+        return;
+    }
+
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function() {
+        if (request.readyState != 4 || request.status != 200 || request.responseText.length < 1){
+            //If something went wrong or no results returned, hide box
+            subbox.style.visibility = "hidden";
+            subbox.style.display = "none";
+            return;
+        }
+
+        //Display results to the user
+        subbox.innerHTML = request.responseText;
+        subbox.style.visibility = "visible";
+        subbox.style.display = "block";
+
+        //Give each game an onclick event
+        var children = subbox.childNodes;
+        for(var child in children) {
+            children[child].onclick = selectGame;
+        }
+    };
+
+    request.open("GET", "/api/search?q=" + plays.value + "&type=games", true);
+    request.send();
+}
+
+//Selects a game whenever it is clicked
+var selectGame = function(){
+    //Set the text input to the clicked game's name
+    var name = this.querySelector(".name").innerHTML;
+    plays.value = name;
+
+    //Hide the box since game selection was made
+    subbox.style.visibility = "hidden";
+    subbox.style.display = "none";
+
+    return false;
+};

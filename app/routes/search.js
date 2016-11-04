@@ -2,6 +2,7 @@ var router = require('express').Router();
 
 var data   = require('../utility/data');
 var alert  = require('../utility/alert');
+var helper = require('../utility/helper');
 var config = require('../config');
 
 //handles search results
@@ -18,12 +19,15 @@ router.get('/', function (req, res, next) {
 
     var ageMin = req.query.agemin ? req.query.agemin : 13;
     var ageMax = req.query.agemax ? req.query.agemax : 100;
-    var gender = req.query.gender;
+
+    var gender = req.query.gender ? req.query.gender : null;
 
     var availability = getAvailability(req.query.availability);
 
+    var plays = req.query.plays; //? helper.getCleanedGameName(req.query.plays) : null;
+
     var users = type === "all" || type === "users";
-    var userSearchRequest = users ? data.makeUserSearchRequest(ageMin, ageMax, gender, availability) : null;
+    var userSearchRequest = users ? data.makeUserSearchRequest(ageMin, ageMax, gender, availability, plays) : null;
 
     var releasemin = req.query.releasemin ? req.query.releasemin : 1970;
     var releasemax = req.query.releasemax ? req.query.releasemax : 2020;
