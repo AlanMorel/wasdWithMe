@@ -25,6 +25,7 @@ You can also:
 * [bluebird](https://www.npmjs.com/package/bluebird) - full featured Promises
 * [body-parser](https://www.npmjs.com/package/body-parser) - node.js body parsing middleware
 * [connect-flash](https://github.com/jaredhanson/connect-flash) - flash message middleware
+* [connect-mongo](https://www.npmjs.com/package/connect-mongo) - mongo session store for express
 * [cookie-parser](https://www.npmjs.com/package/cookie-parser) - cookie parsing with signatures
 * [express-debug](https://www.npmjs.com/package/express-debug) - debug toolbar middleware
 * [Express](https://expressjs.com/) - fast node.js network app framework
@@ -37,6 +38,7 @@ You can also:
 * [Passport](http://passportjs.org/) - node.js authentication
 * [passport-local](https://www.npmjs.com/package/passport-local) - local authentication strategy
 * [passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose) - simplifies building username and password login with Passport
+* [redis](https://www.npmjs.com/package/redis) - redis client library
 * [serve-favicon](https://www.npmjs.com/package/serve-favicon) - favicon serving middleware
 * [socket.io](https://www.npmjs.com/package/socket.io) - node.js realtime framework server
 * [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
@@ -78,7 +80,7 @@ View in browser at `http://localhost:3000`
 
 ## Live Demo
 
-Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/). Please note that the code uploaded on Heroku is usually slightly outdated compared to this repository and therefore not an accurate representation of the complete product.
+Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/). Please note that the code uploaded on Heroku is usually outdated compared to this repository and therefore not an accurate representation of the complete project.
 
 
 ## License
@@ -90,3 +92,4 @@ Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/). Pl
 ![alt tag](http://i.imgur.com/is0otGi.png)
 ![alt tag](http://i.imgur.com/CMNEQeD.png)
 ![alt tag](http://i.imgur.com/HL5aWSz.png)
+![alt tag](http://i.imgur.com/e4rwrHS.png)
