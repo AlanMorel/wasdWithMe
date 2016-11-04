@@ -67,9 +67,9 @@
             <a href="/user/{{display_name}}">
                 <div class="username">{{display_name}}</div>
             </a>
-            <div class="one-ups">
-                <span class="one-ups-value">{{one_up_count}}</span>
-                <span class="one-ups-button">1UP</span>
+            <div class="one-ups" data-one-up-id="{{_id}}" data-one-up-type="user">
+                <span class="one-ups-value">{{one_ups.length}}</span>
+                <span class="one-ups-button {{#if oneUpped}}one-upped{{/if}}">1UP</span>
             </div>
             <div class="platforms">
             {{#each platforms}}

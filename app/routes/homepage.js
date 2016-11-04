@@ -1,5 +1,6 @@
 var router = require('express').Router();
 
+var helper = require('../utility/helper');
 var Logger = require('../utility/logger');
 var User   = require('../models/user');
 
@@ -10,7 +11,7 @@ var platforms = ["steam", "xbox", "playstation", "twitch"];
 router.get('/', function (req, res, next) {
 
     var query = {
-        'one_up_count': -1
+        'one_ups': -1
     };
 
     User.find().sort(query).limit(5).exec(function (err, users) {
@@ -19,7 +20,7 @@ router.get('/', function (req, res, next) {
             Logger.log("Searching for live user profiles failed.", err);
         }
 
-        users = addTemporaryInfo(users);
+        users = addInfo(users, req.user);
 
         res.render('homepage', {
             title: 'WASD With Me - Connect with gamers.',
@@ -44,10 +45,11 @@ function getGames(list){
     return games;
 }
 
-//adds temporary information to users
-function addTemporaryInfo(users) {
+//adds information to users
+function addInfo(users, user) {
     for (var i = 0; i < users.length; i++) {
         users[i].platforms = platforms.sort(function () {return 0.5 - Math.random()}).slice(0, Math.floor(Math.random() * platforms.length) + 1);
+        users[i].oneUpped = helper.hasOneUpped(users[i].one_ups, user);
     }
     return users;
 }

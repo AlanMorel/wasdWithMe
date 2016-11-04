@@ -59,9 +59,6 @@ router.post('/', function (req, res) {
         return;
     }
 
-    var oneUps = getRandomOneUps(100);
-    var oneUpCount = oneUps.length;
-
     var user = new User({
         username: username,
         display_name: displayName,
@@ -74,10 +71,6 @@ router.post('/', function (req, res) {
             state: state,
             city: city
         },
-        //Randomly give newly registered users 1-100 one ups and 1-10 coins
-        //this is temporary and just for testing
-        one_ups: oneUps,
-        one_up_count: oneUpCount,
         coins: getRandomCoins(10)
     });
 
@@ -100,18 +93,6 @@ router.post('/', function (req, res) {
         });
     });
 });
-
-function getRandomOneUps(number) {
-    var oneUps = [];
-    var oneUp = {
-        oneUpper: "Testing"
-    };
-    var oneUpsRandom = Math.floor(Math.random() * number) + 1;
-    for (var i = 0; i < oneUpsRandom; i++) {
-        oneUps.push(oneUp);
-    }
-    return oneUps;
-}
 
 function getRandomCoins(number) {
     return Math.floor(Math.random() * number) + 1

@@ -22,7 +22,7 @@ router.get('/:username', function(req, res, next) {
             return;
         }
 
-        addTemporaryInfo(owner);
+        addInfo(owner, req.user);
 
         res.render('user', {
             title: owner.display_name,
@@ -39,14 +39,16 @@ router.get('/:username', function(req, res, next) {
     });
 });
 
-//adds temporary information to the owner
-function addTemporaryInfo(owner){
+//adds information to the owner object
+function addInfo(owner, user){
     owner.online_status = "online";
 
     owner.accounts.steam.steam_id = "Alan";
     owner.accounts.xbox.gamertag = "Alan";
     owner.accounts.playstation.psn_id = "Alan";
     owner.accounts.twitch.username = "Alan";
+
+    owner.oneUpped = helper.hasOneUpped(owner.one_ups, user);
 }
 
 //returns list of game names, uris and favorite boolean

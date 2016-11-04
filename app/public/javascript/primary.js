@@ -2,22 +2,21 @@ var screen = document.querySelector("html");
 var box = document.querySelector(".results-box");
 var search = document.querySelector(".search-box");
 var select = document.querySelector('select[name="type"]');
-var oneUps = document.querySelectorAll(".one-ups-button");
-
-//returns true if box should be shown, false if not
-function shouldShow(query){
-    return query && query.length > 2;
-}
 
 search.onkeyup = function() {
     updateResults();
 };
 
+//returns true if box should be shown
+function shouldShow(){
+    return search.value && search.value.length > 2;
+}
+
 //updates the search results
 function updateResults(){
 
     //Must have 3 or more characters to initiate a search
-    if (!shouldShow(search.value)) {
+    if (!shouldShow()) {
         box.style.visibility = "hidden";
         return;
     }
@@ -46,7 +45,7 @@ function updateResults(){
 screen.onclick = function(e) {
     if (e.target === search){
         //If the search bar was clicked
-        box.style.visibility = shouldShow(search.value) ? "visible" : "hidden";
+        box.style.visibility = shouldShow() ? "visible" : "hidden";
         if (box.innerHTML.length == 0){
             updateResults();
         }
@@ -56,21 +55,48 @@ screen.onclick = function(e) {
     }
 };
 
-//increment one up count when clicked, decrement if clicked again
-function oneUpOnClick(){
-    this.classList.toggle('one-upped');
+function sendOnUpRequest(element){
+    var parent = element.parentElement;
+    var id = parent.getAttribute("data-one-up-id");
+    var type = parent.getAttribute("data-one-up-type");
 
-    var label = this.previousElementSibling;
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function() {
+
+        if (request.readyState != 4 || request.status != 200 || request.responseText.length < 1){
+            return;
+        }
+
+        console.log(request.responseText);
+
+        //Display results to the user
+        flipOneUpState(element);
+    };
+
+    request.open("GET", "/api/oneup?type=" + type + "&id=" + id, true);
+    request.send();
+}
+
+//increment one up count when clicked, decrement if clicked again
+function flipOneUpState(element){
+    element.classList.toggle('one-upped');
+
+    var label = element.previousElementSibling;
     var value = parseInt(label.innerHTML);
 
-    if (this.classList.contains("one-upped")){
+    if (element.classList.contains("one-upped")){
         label.innerHTML = value + 1;
     } else {
         label.innerHTML = value - 1;
     }
 }
 
+var oneUps = document.querySelectorAll(".one-ups-button");
+
 //add an onclick handler to every oneup button on the page
 for (var i = 0; i < oneUps.length; i++) {
-    oneUps[i].onclick = oneUpOnClick;
+    oneUps[i].addEventListener('click', function(event){
+        sendOnUpRequest(this);
+    });
 }

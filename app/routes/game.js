@@ -58,7 +58,6 @@ function displayGame(req, res, game){
     var release = getReleaseDate(game.release_date);
     var banner = getBanner(game.screenshots);
     var rating = getRating(game.rating);
-    var oneUpCount = getOneUpCount(game);
 
     return res.render('game', {
         title: game.display_name,
@@ -69,13 +68,8 @@ function displayGame(req, res, game){
         release: release,
         banner: banner,
         rating: rating,
-        one_up_count: oneUpCount
+        oneUpped: helper.hasOneUpped(game.one_ups, req.user)
     });
-}
-
-//returns number of one ups game has
-function getOneUpCount(game){
-    return game.one_ups ? game.one_ups.length : 0;
 }
 
 //returns the game's release date if one exists

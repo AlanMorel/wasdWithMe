@@ -19,8 +19,28 @@ function getCleanedGameName(name){
     return name;
 }
 
+//returns the index that the one up exists in the array
+function getOneUppedIndex(oneUps, oneUpper){
+    if (!oneUps || !oneUpper){
+        return -1;
+    }
+    for (var i = 0; i < oneUps.length; i++){
+        if (oneUps[i].one_upper === oneUpper.username){
+            return i;
+        }
+    }
+    return -1;
+}
+
+//returns whether or not user has oneUpped this object
+function hasOneUpped(oneUps, oneUpper){
+    return getOneUppedIndex(oneUps, oneUpper) >= 0;
+}
+
 module.exports = {
     isOwner: isOwner,
     getAge: getAge,
-    getCleanedGameName: getCleanedGameName
+    getCleanedGameName: getCleanedGameName,
+    getOneUppedIndex: getOneUppedIndex,
+    hasOneUpped: hasOneUpped
 };

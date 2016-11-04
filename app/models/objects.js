@@ -1,5 +1,5 @@
 var oneUps = [{
-    oneUpper: {
+    one_upper: {
         type: String,
         required: true
     },
