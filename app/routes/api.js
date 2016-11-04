@@ -1,7 +1,6 @@
 var router = require('express').Router();
 
 var data   = require('../utility/data');
-var Logger = require('../utility/logger');
 var helper = require('../utility/helper');
 var config = require('../config');
 var User   = require('../models/user');
@@ -42,25 +41,24 @@ router.get('/oneup', function(req, res, next) {
 
     var model = getModelByType(type);
 
+    //if not logged in or null model, return nothing
     if(!req.user || !model){
-        res.setHeader('Content-Type', 'application/json');
         res.send();
         return;
     }
 
-    model.findById(id, function (err, object) {
+    model.findById(id, "one_ups", function (err, object) {
 
+        //if error or object not found, return nothing
         if (err || !object){
-            res.setHeader('Content-Type', 'application/json');
             res.send();
             return;
         }
 
-        var oneUps = object.one_ups;
-        var index = helper.getOneUppedIndex(oneUps, req.user);
-
+        var index = helper.getOneUppedIndex(object.one_ups, req.user);
         console.log(index >= 0 ? "one upped, removing" : "not one upped, adding");
 
+        //if oneUpped, remove it, otherwise push to array
         if (index >= 0){
             object.one_ups.splice(index, 1);
         } else {
@@ -70,19 +68,18 @@ router.get('/oneup', function(req, res, next) {
             object.one_ups.push(oneUp);
         }
 
+        //save the object back into the database and send response
         object.save(function(err) {
             if (err) {
-                res.setHeader('Content-Type', 'application/json');
                 res.send();
                 return;
             }
-            res.setHeader('Content-Type', 'application/json');
             res.send(JSON.stringify(index));
         });
     });
 });
 
-
+//get the model object by the type name
 function getModelByType(type){
     if (type === "user"){
         return User;

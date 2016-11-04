@@ -68,9 +68,6 @@ function sendOnUpRequest(element){
             return;
         }
 
-        console.log(request.responseText);
-
-        //Display results to the user
         flipOneUpState(element);
     };
 
@@ -78,7 +75,7 @@ function sendOnUpRequest(element){
     request.send();
 }
 
-//increment one up count when clicked, decrement if clicked again
+//flips the one upped state of the button
 function flipOneUpState(element){
     element.classList.toggle('one-upped');
 
