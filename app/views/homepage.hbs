@@ -1,4 +1,20 @@
 {{#if user}}
+    <div class="greeting">
+        <div class="left-greeting">
+            <img src="/images/profile/{{user.display_name}}.png">
+        </div>
+        <div class="right-greeting">
+            <div class="hello">Hello, {{user.display_name}}</div>
+            <div class="options">
+                <span class="option">
+                    <a href="/messages">Check messages</a>
+                </span>
+                <span class="option">
+                    <a href="/user/{{user.display_name}}">View your profile</a>
+                </span>
+            </div>
+        </div>
+    </div>
 {{else}}
     <div class="promo">
         <div class="left">
@@ -54,13 +70,11 @@
     </div>
 </div>
 <div class="live-profiles">
-    <div class="live-profiles-header">
     {{#if user}}
-        Connect with these gamers!
+    <div class="live-profiles-header">Connect with these gamers!</div>
     {{else}}
-        See who has already joined!
+    <div class="live-profiles-header">See who has already joined!</div>
     {{/if}}
-    </div>
     {{#each live_profile_users}}
         <div class="live-profile">
             <img src="/images/profile/{{display_name}}.png">

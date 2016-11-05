@@ -170,6 +170,37 @@ img.boxart:hover {
   -ms-animation: bannermove 60s linear infinite;
   animation: bannermove 60s linear infinite;
 }
+.greeting {
+  background-color: #282828;
+  margin: auto;
+  text-align: center;
+  padding: 50px 0;
+}
+.left-greeting {
+  width: 128px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+.left-greeting img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.right-greeting {
+  display: inline-block;
+  text-align: left;
+  padding-left: 20px;
+  line-height: 50px;
+}
+.hello {
+  font-size: 40px;
+  font-weight: 300;
+}
+.option {
+  margin-right: 32px;
+  font-weight: 300;
+  font-size: 16px;
+}
 @media only screen and (max-width: 800px) {
   .promo .left,
   .promo .right,
@@ -226,13 +257,30 @@ img.boxart:hover {
     padding-bottom: 25px;
   }
   .live-profiles-header {
-    font-size: 4vw;
+    font-size: 18px;
   }
   .live-profile {
     margin-bottom: 20px;
   }
   .popular-games-header {
-    font-size: 4vw;
+    font-size: 18px;
+  }
+  .right-greeting {
+    text-align: center;
+    padding-left: 10px;
+  }
+  .hello {
+    font-size: 25px;
+  }
+  .option {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  .greeting {
+    padding: 25px 0;
+  }
+  .left-greeting {
+    width: 100px;
   }
 }
 @-moz-keyframes bannermove {

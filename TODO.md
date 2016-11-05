@@ -1,9 +1,9 @@
 # Alan's Todo
 - [X] implement the one up system
+- [X] add custom html when you're logged in on homepage
 - [ ] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game owned
 - [ ] add user filter searching by availability
-- [ ] add custom html when you're logged in on homepage
 - [ ] handle /messages/ route
 
 # General Todo

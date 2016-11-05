@@ -30,7 +30,7 @@ input[type="image"] {
   padding: 0;
 }
 body {
-  min-width: 350px;
+  min-width: 320px;
 }
 .wasd-header {
   height: 75px;
