@@ -1,28 +1,52 @@
 <div class="refinement">
     <form method="get" action="/search" onsubmit="return sendRefinedQuery()">
         <div class="type">
-            <div class="category">Filter Users</div>
-            <div class="option">
-                <div class="option-header">Weekdays Availability</div>
-                <div><input type="checkbox" value="weekdaysmorning"> Morning</div>
-                <div><input type="checkbox" value="weekdaysday"> Day</div>
-                <div><input type="checkbox" value="weekdaysnight"> Night</div>
-                <div><input type="checkbox" value="weekdaysnever"> Never</div>
+            <div class="category">Users</div>
+            <div class="section">
+                <div class="option">
+                    <div class="option-header">Weekdays Availability</div>
+                    <div><input type="checkbox" value="weekdaysmorning"> Morning</div>
+                    <div><input type="checkbox" value="weekdaysday"> Day</div>
+                    <div><input type="checkbox" value="weekdaysnight"> Night</div>
+                    <div><input type="checkbox" value="weekdaysnever"> Never</div>
+                </div>
             </div>
-            <div class="option">
-                <div class="option-header">Weekends Availability</div>
-                <div><input type="checkbox" value="weekendsmorning"> Morning</div>
-                <div><input type="checkbox" value="weekendsday"> Day</div>
-                <div><input type="checkbox" value="weekendsnight"> Night</div>
-                <div><input type="checkbox" value="weekendsnever"> Never</div>
+            <div class="section">
+                <div class="option">
+                    <div class="option-header">Weekends Availability</div>
+                    <div><input type="checkbox" value="weekendsmorning"> Morning</div>
+                    <div><input type="checkbox" value="weekendsday"> Day</div>
+                    <div><input type="checkbox" value="weekendsnight"> Night</div>
+                    <div><input type="checkbox" value="weekendsnever"> Never</div>
+                </div>
             </div>
-            <div class="option">
+            <div class="section">
+                <div class="option">
+                    <div>
+                        <div class="option-header">Country</div>
+                        <select name="country" id="country"></select>
+                    </div>
+                    <div>
+                        <div class="option-header">State</div>
+                        <select name="state" id="state"></select>
+                    </div>
+                    <div>
+                        <div class="option-header">City</div>
+                        <select name="city" id="city"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="option sub-option">
+                <div class="option-header">Plays</div>
+                <input type="text" class="plays" placeholder="Enter a game..." onkeyup="searchGame()">
+            </div>
+            <div class="option sub-option">
                 <div class="option-header">Age</div>
                 <input type="number" min="13" max="100" value="18">
                 to
                 <input type="number" min="13" max="100" value="65">
             </div>
-            <div class="option">
+            <div class="option sub-option">
                 <div class="option-header">Gender</div>
                 <select>
                     <option value="-1">Any</option>
@@ -31,14 +55,10 @@
                     <option value="2">Other</option>
                 </select>
             </div>
-            <div class="option">
-                <div class="option-header">Plays Game</div>
-                <input type="text" class="plays" placeholder="Enter a game..." onkeyup="searchGame()">
-            </div>
             <span class="sub-results-box"></span>
         </div>
         <div class="type">
-            <div class="category">Filter Games</div>
+            <div class="category">Games</div>
             <div class="option">
                 <div class="option-header">Release</div>
                 <input type="number" min="1970" max="2020" value="1980">
@@ -47,7 +67,7 @@
             </div>
         </div>
         <div class="button-container">
-            <input type="submit" value="Refine Search" class="button">
+            <input type="submit" value="Filter Search" class="button">
         </div>
     </form>
 </div>

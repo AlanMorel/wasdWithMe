@@ -36,15 +36,15 @@ function addData(form, key, value){
 }
 
 //returns true if box should be shown, false if not
-function shouldShow(query){
-    return query && query.length > 2;
+function shouldSearch(search){
+    return search && search.length > 2;
 }
 
 //Searches for games whenever a key is pressed in any text input
 function searchGame(){
 
     //Must have 3 or more characters to initiate a search
-    if (!shouldShow(plays.value)) {
+    if (!shouldSearch(plays.value)) {
         subbox.style.visibility = "hidden";
         subbox.style.display = "none";
         return;

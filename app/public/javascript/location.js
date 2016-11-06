@@ -2,7 +2,7 @@ var country = document.querySelector("#country");
 var state = document.querySelector("#state");
 var city = document.querySelector("#city");
 
-//populate country right away
+//populate countries right away
 update("country");
 
 country.addEventListener("change", function() {

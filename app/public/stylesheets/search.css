@@ -6,7 +6,7 @@ body {
   text-align: left;
   width: 700px;
   margin: 32px auto 32px auto;
-  font-size: 24px;
+  font-size: 22px;
 }
 .search-results,
 .refinement {
@@ -15,7 +15,7 @@ body {
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: #fff;
-  padding: 10px 0 10px 0;
+  padding-bottom: 10px;
 }
 .search-results a,
 .refinement a {
@@ -76,36 +76,57 @@ body {
 }
 .option-header {
   margin-bottom: 4px;
+  margin-top: 6px;
+  display: inline-block;
 }
 .option {
-  width: 40%;
   display: inline-block;
-  margin-bottom: 10px;
   font-size: 15px;
+  vertical-align: top;
+}
+.option select {
+  width: 70%;
+  float: right;
+  margin-top: 2px;
 }
 .type {
   margin-left: 20px;
 }
 .category {
   font-size: 22px;
-  margin-bottom: 12px;
+  padding-top: 6px;
 }
 .button-container {
-  text-align: right;
+  float: right;
+  margin-top: 36px;
 }
 .button {
   padding: 10px 20px;
   font-size: 14px;
-  margin-right: 20px;
-  margin-bottom: 8px;
+}
+.section {
+  display: inline-block;
+  vertical-align: top;
+  width: 32%;
+  margin-bottom: 10px;
 }
 span.sub-results-box {
-  top: 280px;
+  top: 190px;
   left: 110px;
   min-height: 300px;
 }
-.plays {
-  width: 100%;
+.sub-option {
+  width: 32%;
+}
+.sub-option select {
+  width: 50%;
+  float: inherit;
+}
+.sub-option input[type="number"] {
+  width: 25%;
+}
+.sub-option input[type="text"] {
+  width: 65%;
 }
 @media only screen and (max-width: 750px) {
   .search-results {

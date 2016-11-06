@@ -82,7 +82,7 @@ var sendResults = function(searchRequest, results) {
         type: getType(searchRequest),
         results: results,
         pages: pagination,
-        js: ["/javascript/search"]
+        js: ["/javascript/search", "/javascript/location"]
     });
 };
 
