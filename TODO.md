@@ -2,7 +2,7 @@
 - [X] implement the one up system
 - [X] add custom html when you're logged in on homepage
 - [X] add full support for country/state/city in sign up page
-- [ ] add user filter searching by game owned
+- [X] add user filter searching by game owned
 - [ ] add user filter searching by availability
 - [X] add user filter searching by location
 - [ ] handle /messages/ route

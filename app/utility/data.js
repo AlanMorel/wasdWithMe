@@ -71,9 +71,11 @@ function getAsyncFunctions(searchRequest){
             userQuery.gender = searchRequest.users.gender;
         }
         if(searchRequest.users.plays){
-            console.log(searchRequest.users.plays);
-            //TODO fix
-            //userQuery.games.name = searchRequest.users.plays;
+            userQuery.games = {
+                $elemMatch: {
+                    name: searchRequest.users.plays
+                }
+            };
         }
         if (searchRequest.users.country && searchRequest.users.state && searchRequest.users.city) {
             userQuery.location = {
@@ -82,6 +84,7 @@ function getAsyncFunctions(searchRequest){
                 city: searchRequest.users.city
             };
         }
+
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);
         };

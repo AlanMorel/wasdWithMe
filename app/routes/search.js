@@ -25,7 +25,8 @@ router.get('/', function (req, res, next) {
 
         var gender = req.query.gender ? req.query.gender : null;
 
-        var availability = getAvailability(req.query.availability);
+        var availabilityNumber = req.query.availability ? req.query.availability : 0;
+        var availability = getAvailability(availabilityNumber);
 
         var plays = req.query.plays; //? helper.getCleanedGameName(req.query.plays) : null;
 
