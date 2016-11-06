@@ -5,6 +5,14 @@ var helper = require('../utility/helper');
 var config = require('../config');
 var User   = require('../models/user');
 var Game   = require('../models/game');
+var fs     = require("fs");
+
+function loadJson(file){
+    var json = fs.readFileSync(__dirname + file, 'utf8');
+    return JSON.parse(json);
+}
+
+var locations = loadJson('/../data/locations.json');
 
 //returns back html of search results
 router.get('/search', function(req, res, next) {
@@ -89,5 +97,25 @@ function getModelByType(type){
         return null;
     }
 }
+
+//returns back select html of locations
+router.get('/locations', function(req, res, next) {
+    var type = req.query.type;
+    var country = req.query.country;
+    var state = req.query.state;
+
+    if (country === "undefined"){
+        var results = Object.keys(locations);
+    } else if (state === "undefined"){
+        var results = Object.keys(locations[country]);
+    } else {
+        var results = locations[country][state];
+    }
+
+    res.render('partials/locations', {
+        type: type,
+        locations: results
+    });
+});
 
 module.exports = router;

@@ -1,5 +1,3 @@
-var api = "http://ganeshlore.com/projects/country_state_city_select_box/country_state_city_api.php";
-
 var country = document.querySelector("#country");
 var state = document.querySelector("#state");
 var city = document.querySelector("#city");
@@ -19,36 +17,12 @@ state.addEventListener("change", function() {
 });
 
 //updates country, state and city dropdowns dynamically
-function update(area, country, state){
-
-    if (!country){
-        country = '';
-    }
-
-    if (!state){
-        state = '';
-    }
-
-    var data = new FormData();
-    data.append('area', area);
-    data.append('country_id', country);
-    data.append('state_id', state);
-
+function update(type, country, state){
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', api, true);
+    xhr.open('GET', "/api/locations?type=" + type+ "&country=" + country + "&state=" + state, true);
     xhr.onload = function () {
-        var xml = new DOMParser().parseFromString(this.responseText, "text/xml");
-        var objects = xml.getElementsByTagName('object');
-
-        //populate results
-        var results = '<option value="none" disabled selected>Select your ' + area + '</option>';
-        for (var i = 0; i < objects.length ;i++) {
-            results += '<option value="' + objects[i].childNodes[0].textContent + '">' + objects[i].childNodes[1].textContent + '</option>';
-        }
-
-        //set results and clear city value
         city.innerHTML = '';
-        document.querySelector("#" + area).innerHTML = results;
+        document.querySelector("#" + type).innerHTML = this.responseText;
     };
-    xhr.send(data);
+    xhr.send();
 }
