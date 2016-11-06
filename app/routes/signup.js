@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
         title: 'Sign Up',
         layout: 'secondary',
         file: 'signup',
-        js: ['validation', 'signup']
+        js: ['validation', 'signup', 'location']
     });
 });
 
@@ -54,8 +54,9 @@ router.post('/', function (req, res) {
             title: 'Sign Up',
             layout: 'secondary',
             file: 'signup',
-            error: error
-         });
+            error: error,
+            js: ['validation', 'signup', 'location']
+        });
         return;
     }
 
@@ -81,7 +82,8 @@ router.post('/', function (req, res) {
                     title: 'Sign Up',
                     layout: 'secondary',
                     file: 'signup',
-                    error: "Sorry, a user with this username already exists."
+                    error: "Sorry, a user with this username already exists.",
+                    js: ['validation', 'signup', 'location']
                 });
             } else {
                 Logger.log("Registering user failed.", err);
