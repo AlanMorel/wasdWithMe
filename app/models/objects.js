@@ -21,10 +21,6 @@ var availabilityTimes = {
     night: {
         type: Boolean,
         default: true
-    },
-    never: {
-        type: Boolean,
-        default: false
     }
 };
 

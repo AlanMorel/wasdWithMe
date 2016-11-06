@@ -90,14 +90,12 @@ router.post('/:username/edit', type, function(req, res) {
         weekdays: {
             morning: req.body.weekdaysmorning !== undefined,
             day: req.body.weekdaysday !== undefined,
-            night: req.body.weekdaysnight !== undefined,
-            never: req.body.weekdaysnever !== undefined
+            night: req.body.weekdaysnight !== undefined
         },
         weekends: {
             morning: req.body.weekendsmorning !== undefined,
             day: req.body.weekendsday !== undefined,
-            night: req.body.weekendsnight !== undefined,
-            never: req.body.weekendsnever !== undefined
+            night: req.body.weekendsnight !== undefined
         }
     };
 

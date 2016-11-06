@@ -84,7 +84,12 @@ function getAsyncFunctions(searchRequest){
                 city: searchRequest.users.city
             };
         }
-
+        if (searchRequest.availability.weekends){ //TODO
+            userQuery.availability.weekends.or([
+                { color: 'blue' },
+                { color: 'red' }
+            ]);
+        }
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);
         };

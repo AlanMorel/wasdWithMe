@@ -58,14 +58,12 @@ function getAvailability(value){
         weekdays: {
             morning: (value & (1 << 0)) != 0,
             day:     (value & (1 << 1)) != 0,
-            night:   (value & (1 << 2)) != 0,
-            never:   (value & (1 << 3)) != 0
+            night:   (value & (1 << 2)) != 0
         },
         weekends: {
-            morning: (value & (1 << 4)) != 0,
-            day:     (value & (1 << 5)) != 0,
-            night:   (value & (1 << 6)) != 0,
-            never:   (value & (1 << 7)) != 0
+            morning: (value & (1 << 3)) != 0,
+            day:     (value & (1 << 4)) != 0,
+            night:   (value & (1 << 5)) != 0
         }
     };
     return availability;
