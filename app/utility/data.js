@@ -6,13 +6,16 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-function makeUserSearchRequest(ageMin, ageMax, gender, availability, plays){
+function makeUserSearchRequest(ageMin, ageMax, gender, availability, plays, country, state, city){
     var userSearchRequest = {
         ageMin: ageMin,
         ageMax: ageMax,
         gender: gender,
         availability: availability,
-        plays: plays
+        plays: plays,
+        country: country,
+        state: state,
+        city: city
     };
     return userSearchRequest;
 }
@@ -71,6 +74,13 @@ function getAsyncFunctions(searchRequest){
             console.log(searchRequest.users.plays);
             //TODO fix
             //userQuery.games.name = searchRequest.users.plays;
+        }
+        if (searchRequest.users.country && searchRequest.users.state && searchRequest.users.city) {
+            userQuery.location = {
+                country: searchRequest.users.country,
+                state: searchRequest.users.state,
+                city: searchRequest.users.city
+            };
         }
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);

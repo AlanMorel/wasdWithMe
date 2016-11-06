@@ -17,23 +17,35 @@ router.get('/', function (req, res, next) {
         return;
     }
 
-    var ageMin = req.query.agemin ? req.query.agemin : 13;
-    var ageMax = req.query.agemax ? req.query.agemax : 100;
-
-    var gender = req.query.gender ? req.query.gender : null;
-
-    var availability = getAvailability(req.query.availability);
-
-    var plays = req.query.plays; //? helper.getCleanedGameName(req.query.plays) : null;
-
     var users = type === "all" || type === "users";
-    var userSearchRequest = users ? data.makeUserSearchRequest(ageMin, ageMax, gender, availability, plays) : null;
 
-    var releasemin = req.query.releasemin ? req.query.releasemin : 1970;
-    var releasemax = req.query.releasemax ? req.query.releasemax : 2020;
+    if (users) {
+        var ageMin = req.query.agemin ? req.query.agemin : 13;
+        var ageMax = req.query.agemax ? req.query.agemax : 100;
+
+        var gender = req.query.gender ? req.query.gender : null;
+
+        var availability = getAvailability(req.query.availability);
+
+        var plays = req.query.plays; //? helper.getCleanedGameName(req.query.plays) : null;
+
+        var country = req.query.country;
+        var state = req.query.state;
+        var city = req.query.city;
+
+        console.log(country + " " +  state + " " + city);
+
+        var userSearchRequest = data.makeUserSearchRequest(ageMin, ageMax, gender, availability, plays, country, state, city);
+    }
 
     var games = type === "all" || type === "games";
-    var gameSearchRequest = games ? data.makeGameSearchRequest(releasemin, releasemax) : null;
+
+    if (games){
+        var releasemin = req.query.releasemin ? req.query.releasemin : 1970;
+        var releasemax = req.query.releasemax ? req.query.releasemax : 2020;
+
+        var gameSearchRequest = data.makeGameSearchRequest(releasemin, releasemax);
+    }
 
     var searchRequest = data.makeSearchRequest(req, res, query, page, userSearchRequest, gameSearchRequest);
 

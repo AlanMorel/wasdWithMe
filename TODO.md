@@ -4,7 +4,7 @@
 - [X] add full support for country/state/city in sign up page
 - [ ] add user filter searching by game owned
 - [ ] add user filter searching by availability
-- [ ] add user filter searching by location
+- [X] add user filter searching by location
 - [ ] handle /messages/ route
 
 # General Todo

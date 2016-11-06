@@ -4,10 +4,14 @@ var query = document.querySelector(".search-box");
 var type = document.querySelector(".search select");
 var checkboxes = document.querySelectorAll("input[type=checkbox]");
 var numbers = document.querySelectorAll("input[type=number]");
-var gender = document.querySelector(".option select");
+var gender = document.querySelector("#gender");
 
 var plays = document.querySelector(".plays");
 var subbox = document.querySelector(".sub-results-box");
+
+var country = document.querySelector("#country");
+var state = document.querySelector("#state");
+var city = document.querySelector("#city");
 
 function sendRefinedQuery(){
     addData(form, "query", query.value);
@@ -19,6 +23,9 @@ function sendRefinedQuery(){
     addData(form, "releasemin", numbers[2].value);
     addData(form, "releasemax", numbers[3].value);
     addData(form, "plays", plays.value);
+    addData(form, "country", country.options[country.selectedIndex].value);
+    addData(form, "state", state.options[state.selectedIndex].value);
+    addData(form, "city", city.options[city.selectedIndex].value);
 }
 
 function getAvailabilityValue(){
