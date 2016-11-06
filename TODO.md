@@ -5,7 +5,7 @@
 - [X] add user filter searching by game owned
 - [ ] add user filter searching by availability
 - [X] add user filter searching by location
-- [ ] handle /messages/ route
+- [X] handle /messages/ route
 
 # General Todo
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs

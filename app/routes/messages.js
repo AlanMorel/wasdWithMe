@@ -6,17 +6,43 @@ var User    = require('../models/user');
 var Message = require('../models/message');
 var config  = require('../config');
 
-//handles get request for all messages
+//redirects to messages with the last person they talked to
 router.get('/', function (req, res, next) {
 
-    //redirect to last chat
+    //query to search for sent messages to anybody
+    var sent = {
+        from: req.user.username
+    };
 
-    res.render('message', {
-        title: 'All Messages',
-        layout: 'primary',
-        file: 'message',
-        user: req.user,
-        js: [config.socketio, "/javascript/messages"]
+    //query to search for received messages from anybody
+    var received = {
+        to: req.user.username
+    };
+
+    //query for all messages sent by you or sent to you
+    var query = {
+        $or: [sent, received]
+    };
+
+    Message.find(query).sort('-created_at').exec(function(err, messages) {
+
+        if (err || !messages){
+            Logger.log("Getting messages between " + req.user.username + " and " + to.username + " failed.", err);
+            alert.send(req, res, "Messaging error!", "We could not find retrieve your messages.");
+            return;
+        }
+
+        //if you have never messaged anybody
+        if (messages.length == 0){
+            alert.send(req, res, "No messages found.", "You don't have any messages yet. Head on over to somebody's page and message them! Any messages sent or received will be displayed here.");
+            return;
+        }
+
+        var lastMessage = messages[0];
+        var own = lastMessage.from === req.user.username;
+        var otherUsername = own ? lastMessage.to : lastMessage.from;
+
+        res.redirect('/messages/' + otherUsername);
     });
 });
 
@@ -46,12 +72,12 @@ router.get('/:username', function (req, res, next) {
 
         //query to search for sent messages to anybody
         var sent = {
-            from: req.user.username.toLowerCase()
+            from: req.user.username
         };
 
         //query to search for received messages from anybody
         var received = {
-            to: req.user.username.toLowerCase()
+            to: req.user.username
         };
 
         //query for all messages sent by you or sent to you

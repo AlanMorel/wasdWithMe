@@ -13,7 +13,7 @@ var country = document.querySelector("#country");
 var state = document.querySelector("#state");
 var city = document.querySelector("#city");
 
-function sendRefinedQuery(){
+function sendQuery(){
     addData(form, "query", query.value);
     addData(form, "type", type.value);
     addData(form, "availability", getAvailabilityValue());
