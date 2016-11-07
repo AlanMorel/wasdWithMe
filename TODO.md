@@ -1,15 +1,11 @@
 # Alan's Todo
-- [X] implement the one up system
-- [X] add custom html when you're logged in on homepage
-- [X] add full support for country/state/city in sign up page
-- [X] add user filter searching by game owned
-- [X] add user filter searching by location
-- [X] handle /messages/ route
-- [X] add location changing in edit profile
 - [ ] add user filter searching by availability
+- [ ] Implement Twitch API
+- [ ] Implement PSN API
+- [ ] Implement Xbox API
+- [ ] Implement Steam API
 
 # General Todo
-- [ ] begin work on Steam, Xbox, PSN, Twitch APIs
 - [ ] create leaderboards page
 - [ ] create about page
 - [ ] create team page

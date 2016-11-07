@@ -126,8 +126,6 @@ router.post('/:username/edit', type, function(req, res) {
     User.findOneAndUpdate(query, update, options, function(err, doc){
         if (err) {
             Logger.log("Updating user profile failed.", err);
-        } else {
-            console.log("Edited user profile successfully.");
         }
         res.redirect("/user/" + username);
     });

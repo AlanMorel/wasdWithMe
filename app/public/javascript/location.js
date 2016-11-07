@@ -2,7 +2,7 @@ var country = document.querySelector("#country");
 var state = document.querySelector("#state");
 var city = document.querySelector("#city");
 
-//if it already has a value, populate the rest, otherwise, just populate the country
+//if they all already have a value, populate the rest, otherwise, just populate the countries
 if (country.options[country.selectedIndex] && state.options[state.selectedIndex] && city.options[city.selectedIndex]){
     var selectedCountry = country.options[country.selectedIndex].value;
     var selectedState = state.options[state.selectedIndex].value;
