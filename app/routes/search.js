@@ -34,8 +34,6 @@ router.get('/', function (req, res, next) {
         var state = req.query.state;
         var city = req.query.city;
 
-        console.log(country + " " +  state + " " + city);
-
         var userSearchRequest = data.makeUserSearchRequest(ageMin, ageMax, gender, availability, plays, country, state, city);
     }
 

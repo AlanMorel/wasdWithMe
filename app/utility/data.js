@@ -84,11 +84,42 @@ function getAsyncFunctions(searchRequest){
                 city: searchRequest.users.city
             };
         }
-        if (searchRequest.availability.weekends){ //TODO
-            userQuery.availability.weekends.or([
-                { color: 'blue' },
-                { color: 'red' }
-            ]);
+        var availability = searchRequest.users.availability;
+        console.log(availability);
+        if (availability){ //TODO
+            var weekdaysArray = [];
+
+            if (availability.weekdays.morning){
+                weekdaysArray.push({morning: availability.weekdays.morning});
+            }
+            if (availability.weekdays.day){
+                weekdaysArray.push({day: availability.weekdays.day});
+            }
+            if (availability.weekdays.night){
+                weekdaysArray.push({night: availability.weekdays.night});
+            }
+
+            var weekendArray = [];
+
+            if (availability.weekends.morning){
+                weekendArray.push({morning: availability.weekends.morning});
+            }
+            if (availability.weekends.day){
+                weekendArray.push({day: availability.weekends.day});
+            }
+            if (availability.weekends.night){
+                weekendArray.push({night: availability.weekends.night});
+            }
+            console.log(weekdaysArray);
+            console.log(weekendArray);
+            userQuery.availability = {
+                weekdays: {
+                    $or: [weekdaysArray]
+                },
+                weekends: {
+                    $or: [weekendArray]
+                }
+            };
         }
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);

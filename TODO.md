@@ -3,9 +3,10 @@
 - [X] add custom html when you're logged in on homepage
 - [X] add full support for country/state/city in sign up page
 - [X] add user filter searching by game owned
-- [ ] add user filter searching by availability
 - [X] add user filter searching by location
 - [X] handle /messages/ route
+- [ ] add location changing in edit profile
+- [ ] add user filter searching by availability
 
 # General Todo
 - [ ] begin work on Steam, Xbox, PSN, Twitch APIs
