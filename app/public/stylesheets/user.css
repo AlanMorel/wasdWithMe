@@ -90,10 +90,10 @@ body {
 .bio {
     padding-bottom: 10px;
 }
-.about div,
-.fav-games div,
-.platform div,
-.all-games div {
+.about > div,
+.fav-games > div,
+.platform > div,
+.all-games > div {
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -169,6 +169,7 @@ img.boxart:hover {
 }
 .availability-header {
     font-size: 20px;
+    margin: 10px 0;
 }
 .availability-header img {
     max-height: 16px;
@@ -307,10 +308,10 @@ ul {
     .games-list {
         text-align: center;
     }
-    .about div,
-    .fav-games div,
-    .platform div,
-    .all-games div {
+    .about > div,
+    .fav-games > div,
+    .platform > div,
+    .all-games > div {
         padding-left: 10px;
         padding-right: 10px;
     }

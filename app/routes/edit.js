@@ -38,7 +38,7 @@ router.get('/:username/edit', function(req, res, next) {
             title: owner.display_name,
             layout: 'primary',
             file: 'edit',
-            js: ['/javascript/edit'],
+            js: ['/javascript/edit', '/javascript/location'],
             user : req.user,
             owner: owner,
             gender: config.gender[owner.gender],
@@ -86,6 +86,12 @@ router.post('/:username/edit', type, function(req, res) {
 
     var games = populateGames(req.body.games, req.body.favorite);
 
+    var location = {
+        country: req.body.country,
+        state: req.body.state,
+        city: req.body.city
+    };
+
     var availability = {
         weekdays: {
             morning: req.body.weekdaysmorning !== undefined,
@@ -108,6 +114,7 @@ router.post('/:username/edit', type, function(req, res) {
         first_name: firstname,
         last_name: lastname,
         bio: bio,
+        location: location,
         availability: availability,
         games: games
     };

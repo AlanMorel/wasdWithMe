@@ -28,15 +28,38 @@
             <div class="user-name">First Name: <input name="firstname" type="text" class="input-name" value="{{owner.first_name}}" maxlength="{{config "nameMaxLength"}}"></div>
             <div class="user-name">Last Name: <input name="lastname" type="text" class="input-name" value="{{owner.last_name}}" maxlength="{{config "nameMaxLength"}}"></div>
             <textarea name="bio" class="input-bio" maxlength="{{config "bioMaxLength"}}" rows="7">{{owner.bio}}</textarea>
-            <div class="availability-header">Availability</div>
-            <div class="availability-type">Weekdays</div>
-            <div class="checkbox"><input type="checkbox" name="weekdaysmorning"{{#if owner.availability.weekdays.morning}}checked{{/if}}> Morning</div>
-            <div class="checkbox"><input type="checkbox" name="weekdaysday"{{#if owner.availability.weekdays.day}}checked{{/if}}> Day</div>
-            <div class="checkbox"><input type="checkbox" name="weekdaysnight"{{#if owner.availability.weekdays.night}}checked{{/if}}> Night</div>
-            <div class="availability-type">Weekends</div>
-            <div class="checkbox"><input type="checkbox" name="weekendsmorning"{{#if owner.availability.weekends.morning}}checked{{/if}}> Morning</div>
-            <div class="checkbox"><input type="checkbox" name="weekendsday"{{#if owner.availability.weekends.day}}checked{{/if}}> Day</div>
-            <div class="checkbox"><input type="checkbox" name="weekendsnight"{{#if owner.availability.weekends.night}}checked{{/if}}> Night</div>
+            <div class="sub-section">
+                <div class="availability-type">Weekdays Availability</div>
+                <div class="checkbox"><input type="checkbox" name="weekdaysmorning"{{#if owner.availability.weekdays.morning}}checked{{/if}}> Morning</div>
+                <div class="checkbox"><input type="checkbox" name="weekdaysday"{{#if owner.availability.weekdays.day}}checked{{/if}}> Day</div>
+                <div class="checkbox"><input type="checkbox" name="weekdaysnight"{{#if owner.availability.weekdays.night}}checked{{/if}}> Night</div>
+            </div>
+            <div class="sub-section">
+                <div class="availability-type">Weekends Availability</div>
+                <div class="checkbox"><input type="checkbox" name="weekendsmorning"{{#if owner.availability.weekends.morning}}checked{{/if}}> Morning</div>
+                <div class="checkbox"><input type="checkbox" name="weekendsday"{{#if owner.availability.weekends.day}}checked{{/if}}> Day</div>
+                <div class="checkbox"><input type="checkbox" name="weekendsnight"{{#if owner.availability.weekends.night}}checked{{/if}}> Night</div>
+            </div>
+            <div class="sub-section">
+                <div>
+                    <label>Country:</label>
+                    <select name="country" id="country">
+                        <option value="{{owner.location.country}}">{{owner.location.country}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label>State:</label>
+                    <select name="state" id="state">
+                        <option value="{{owner.location.state}}">{{owner.location.state}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label>City:</label>
+                    <select name="city" id="city">
+                        <option value="{{owner.location.city}}">{{owner.location.city}}</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="platform steam">
             <div class="header">Steam</div>

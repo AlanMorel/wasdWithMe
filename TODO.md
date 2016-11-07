@@ -5,7 +5,7 @@
 - [X] add user filter searching by game owned
 - [X] add user filter searching by location
 - [X] handle /messages/ route
-- [ ] add location changing in edit profile
+- [X] add location changing in edit profile
 - [ ] add user filter searching by availability
 
 # General Todo
