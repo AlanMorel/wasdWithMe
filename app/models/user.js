@@ -94,9 +94,19 @@ var User = new mongoose.Schema({
         name: {
             type: String
         },
-        favorite: {
-            type: Boolean,
-            default: 0
+        source: {
+            type: String
+        },
+        steam: {
+            appid: {
+                type: Number
+            },
+            img_logo_url:{
+                type: String
+            },
+            playtime_forever: {
+                type: Number
+            }
         }
     }],
     coins: {

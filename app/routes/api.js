@@ -2,6 +2,7 @@ var router = require('express').Router();
 
 var data   = require('../utility/data');
 var helper = require('../utility/helper');
+var steam  = require('../utility/steam');
 var config = require('../config');
 var User   = require('../models/user');
 var Game   = require('../models/game');
@@ -64,7 +65,6 @@ router.get('/oneup', function(req, res, next) {
         }
 
         var index = helper.getOneUppedIndex(object.one_ups, req.user);
-        console.log(index >= 0 ? "one upped, removing" : "not one upped, adding");
 
         //if oneUpped, remove it, otherwise push to array
         if (index >= 0){
@@ -115,6 +115,36 @@ router.get('/locations', function(req, res, next) {
     res.render('partials/locations', {
         type: type,
         locations: results
+    });
+});
+
+
+router.get('/steam', function(req, res, next) {
+    var id = req.query.id;
+
+    steam.loadUser(id, function(steamUser){
+
+        if(!steamUser){
+            //return an error message
+            return;
+        }
+
+        console.log(steamUser);
+
+        steam.loadGames(id, function(steamGames){
+
+            if(!steamGames){
+                //return an error message
+                return;
+            }
+
+            console.log(steamGames);
+
+            res.render('partials/steam', {
+                user: steamUser,
+                games: steamGames
+            });
+        });
     });
 });
 

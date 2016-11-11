@@ -112,14 +112,14 @@ function getAsyncFunctions(searchRequest){
             }
             console.log(weekdaysArray);
             console.log(weekendArray);
-            userQuery.availability = {
+/*            userQuery.availability = {
                 weekdays: {
                     $or: [weekdaysArray]
                 },
                 weekends: {
                     $or: [weekendArray]
                 }
-            };
+            };*/
         }
         asyncFunctions.users = function (cb){
             User.find(userQuery).exec(cb);
@@ -225,19 +225,19 @@ function callApi(searchRequest, results, callback, handler){
 
     var api = {
         fields: "?fields=" + getFields(),
-        limit:  "&limit="  + config.api_max_per_query,
+        limit:  "&limit="  + config.igdb_max_per_query,
         offset: "&offset=" + 0,
         query:  "&search=" + searchRequest.query,
         filter: "&filter[category][eq]=0"
     };
 
-    var request = config.api_url + api.fields + api.limit + api.offset + api.query + api.filter;
+    var request = config.igdb_url + api.fields + api.limit + api.offset + api.query + api.filter;
 
     unirest
         .get(request)
-        .header("X-Mashape-Key", config.api_key)
+        .header("X-Mashape-Key", config.igdb_key)
         .header("Accept", "application/json")
-        .timeout(config.api_timeout)
+        .timeout(config.timeout)
         .end(function (response) {
 
             //if something went wrong, call callback

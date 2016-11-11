@@ -1,0 +1,16 @@
+<a href="{{user.profileurl}}" class="steam-name">{{user.personaname}}</a>
+<img class="steam-avatar" src="{{user.avatarfull}}">
+<div>
+{{#each games.games}}
+    <div class="steam-game">
+        <a href="http://store.steampowered.com/app/{{this.appid}}/">
+            <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{this.appid}}/{{this.img_logo_url}}.jpg">
+        </a>
+        <div class="steam-game-name">{{this.name}}</div>
+        <input type="hidden" name="steamgames" value="{{this.name}}">
+        <input type="hidden" name="appid" value="{{this.appid}}">
+        <input type="hidden" name="img_logo_url" value="{{this.img_logo_url}}">
+        <input type="hidden" name="playtime_forever" value="{{this.playtime_forever}}">
+    </div>
+{{/each}}
+</div>

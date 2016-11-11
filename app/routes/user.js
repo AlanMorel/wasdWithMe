@@ -32,8 +32,8 @@ router.get('/:username', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: helper.getAge(owner.birthday),
-            all_games: getGames(owner.games, false),
-            fav_games: getGames(owner.games, true),
+            all_games: getGames(owner.games),
+            fav_games: getGames(owner.games),
             is_owner: helper.isOwner(req.user, owner)
         });
     });
@@ -52,18 +52,12 @@ function addInfo(owner, user){
 }
 
 //returns list of game names, uris and favorite boolean
-function getGames(list, fav){
+function getGames(list){
     var games = [];
     for (var i = 0; i < list.length; i++) {
-        if (fav){
-            if (!list[i].favorite){
-                continue;
-            }
-        }
         games.push({
             name: list[i].name,
-            uri: encodeURI(list[i].name),
-            favorite: list[i].favorite
+            uri: encodeURI(list[i].name)
         });
     }
     return games;

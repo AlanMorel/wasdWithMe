@@ -38,13 +38,13 @@ router.get('/:username/edit', function(req, res, next) {
             title: owner.display_name,
             layout: 'primary',
             file: 'edit',
-            js: ['/javascript/edit', '/javascript/location'],
+            js: ['/javascript/edit', '/javascript/location', '/javascript/steam'],
             user : req.user,
             owner: owner,
             gender: config.gender[owner.gender],
             age: helper.getAge(owner.birthday),
-            all_games: getGames(owner.games, false),
-            fav_games: getGames(owner.games, true),
+            all_games: getGames(owner.games),
+            fav_games: getGames(owner.games),
             is_owner: helper.isOwner(req.user, owner)
         });
     });
@@ -84,7 +84,20 @@ router.post('/:username/edit', type, function(req, res) {
 
     var bio = req.body.bio.substring(0, config.bioMaxLength);
 
-    var games = populateGames(req.body.games, req.body.favorite);
+    var otherGames = req.body.games;
+
+    var games = populateOtherGames(otherGames);
+    games = populateSteamGames(games, req.body);
+
+    var steamId = req.body.steamid;
+
+    var accounts = {};
+
+    if (steamId) {
+        accounts.steam = {
+            steam_id: steamId
+        }
+    }
 
     var location = {
         country: req.body.country,
@@ -116,7 +129,8 @@ router.post('/:username/edit', type, function(req, res) {
         bio: bio,
         location: location,
         availability: availability,
-        games: games
+        games: games,
+        accounts: accounts
     };
 
     var options = {
@@ -132,38 +146,62 @@ router.post('/:username/edit', type, function(req, res) {
 });
 
 //populates games to insert into database
-function populateGames(games, favorite){
+function populateOtherGames(games){
     var populated = [];
     for (var i = 0; i < games.length; i++){
         populated.push({
             name: games[i],
-            favorite: favorite === undefined ? false : favorite[i]
+            source: "other"
         });
     }
     return populated;
+}
+
+//populates steam games to games array
+function populateSteamGames(games, body){
+    var steamGames = body.steamgames;
+
+    if (!steamGames){
+        return games;
+    }
+
+    var steamAppids = body.appid;
+    var imgLogoUrls = body.img_logo_url;
+    var playtimeForever = body.playtime_forever;
+
+    for (var i = 0; i < steamGames.length; i++){
+        games.push({
+            name: steamGames[i],
+            source: "steam",
+            steam: {
+                appid: steamAppids[i],
+                img_logo_url: imgLogoUrls[i],
+                playtime_forever: playtimeForever[i]
+            }
+        });
+    }
+    return games;
 }
 
 //adds temporary data to the owner object
 function addTemporaryInfo(owner){
     owner.online_status = "online";
 
-    owner.accounts.steam.steam_id = "Alan";
     owner.accounts.xbox.gamertag = "Alan";
     owner.accounts.playstation.psn_id = "Alan";
     owner.accounts.twitch.username = "Alan";
 }
 
-//returns list of game names, encoded uri and favorite boolean
-function getGames(list, fav){
+//returns list of game names, encoded uri
+function getGames(list){
     var games = [];
     for (var i = 0; i < list.length; i++) {
-        if (fav && !list[i].favorite){
+        if (list[i].source !== "other"){
             continue;
         }
         games.push({
             name: list[i].name,
-            uri: encodeURI(list[i].name),
-            favorite: list[i].favorite
+            uri: encodeURI(list[i].name)
         });
     }
     return games;

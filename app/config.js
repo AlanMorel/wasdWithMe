@@ -55,14 +55,18 @@ config.psnIdMaxLength = 0;
 config.twitchNameMinLength = 0;
 config.twitchNameMaxLength = 0;
 
-//IGDB Api
-config.api_url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
-config.api_max_per_query = 50;
-config.api_timeout = 1000;
+//For all Apis
+config.timeout = 1000;
 
-//Usually cause for concern to have this open to the public but given that the key
-//is free to obtain, I'm not concerned about unauthorized usage for now
-config.api_key = "JhLqNbheBFmshilJrKIbRedqpI2Ap1J6HWbjsnUI5CoGpvRbJg";
+//IGDB Api
+config.igdb_url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
+config.igdb_max_per_query = 50;
+config.igdb_key = "JhLqNbheBFmshilJrKIbRedqpI2Ap1J6HWbjsnUI5CoGpvRbJg";
+
+//Steam Api
+config.steam_key = "CB0CD5EC671AEC6F5302974F52B3E9C1";
+config.steam_games = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/";
+config.steam_user = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/";
 
 //Other
 config.game_not_found_boxart = "https://static-cdn.jtvnw.net/ttv-static/404_boxart-136x190.jpg";

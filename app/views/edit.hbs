@@ -63,7 +63,12 @@
         </div>
         <div class="platform steam">
             <div class="header">Steam</div>
-            <div class="platform-name">{{owner.accounts.steam.steam_id}}</div>
+            <div class="platform-name">
+                Enter your Steam ID 64: <input type="text" name="steamid" class="steam-id" value="{{owner.accounts.steam.steam_id}}">
+                <button type="button" class="button import" onclick="importSteam()">Import</button>
+                <div class="help">Don't know yours? Click <a target="_blank" href="http://steamid.co/">here</a>.</div>
+                <div class="steam-profile"></div>
+            </div>
         </div>
         <div class="platform xbox">
             <div class="header">Xbox</div>
@@ -84,7 +89,6 @@
                 <div>
                     <input readonly type="text" name="games" class="input-game" value="{{name}}">
                     <img src="/images/remove.png" class="remove" onclick="deleteGame(this)">
-                    <input type="checkbox" name="favorite[{{@index}}]" {{#if favorite}}checked{{/if}}> Favorite
                 </div>
             {{/each}}
                 <span class="sub-results-box"></span>

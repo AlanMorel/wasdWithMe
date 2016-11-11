@@ -1,10 +1,9 @@
 var currentInput = null; //the current text input user typed into
 var subbox = document.querySelector("span.sub-results-box");
 var gamesList = document.querySelector(".games-list");
-var favorites = document.querySelectorAll('.games-list input[type="checkbox"]').length;
 
 //returns true if box should be shown, false if not
-function shouldShow(query){
+function shouldSearch(query){
     return query && query.length > 2;
 }
 
@@ -12,7 +11,7 @@ function shouldShow(query){
 var searchGame = function(){
 
     //Must have 3 or more characters to initiate a search
-    if (!shouldShow(this.value)) {
+    if (!shouldSearch(this.value)) {
         subbox.style.visibility = "hidden";
         subbox.style.display = "none";
         return;
@@ -70,7 +69,6 @@ var deleteGame = function(button){
 
     //delete the entire parent div
     gamesList.removeChild(button.parentNode);
-    favorites--;
 };
 
 //Add a new game input when the button is clicked
@@ -92,19 +90,9 @@ document.querySelector(".add-another").onclick = function() {
     remove.className = "remove";
     remove.onclick = deleteGame;
 
-    //create new checkbox
-    var checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.name = "favorite[" + (favorites++) + "]";
-
-    //create favorite text label
-    var favorite = document.createTextNode("Favorite");
-
     //append the elements
     div.appendChild(input);
     div.appendChild(remove);
-    div.appendChild(checkbox);
-    div.appendChild(favorite);
 
     //append div to games list
     gamesList.appendChild(div);

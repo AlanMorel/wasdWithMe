@@ -199,8 +199,10 @@ ul {
   margin-top: 0;
 }
 .platform-name {
-  font-size: 28px;
-  padding-bottom: 16px;
+  font-size: 18px;
+}
+.platform {
+  padding-bottom: 14px;
 }
 .steam {
   background: #fffffe;
@@ -384,6 +386,7 @@ span.sub-results-box {
   display: block;
   position: absolute;
   height: 500px;
+  margin-left: 0;
 }
 span.sub-results-box a {
   color: #000;
@@ -406,6 +409,41 @@ input[type='checkbox'] {
   width: 25%;
   display: inline-block;
   vertical-align: top;
+}
+.import {
+  width: 81px;
+  font-size: 14px;
+  padding: 4px 0;
+  height: inherit;
+}
+.help {
+  font-size: 12px;
+}
+.help a {
+  color: #000;
+}
+.steam-profile a {
+  color: #000;
+  width: 100%;
+  display: inline-block;
+}
+.steam-profile .steam-game {
+  display: inline-block;
+  width: 180px;
+  vertical-align: top;
+  margin-right: 32px;
+  text-align: center;
+}
+.steam-profile .steam-game img {
+  height: 69px;
+}
+.steam-profile .steam-game-name {
+  font-size: 14px;
+  padding: 6px 0 10px 0px;
+}
+.steam-avatar {
+  padding: 8px 0 20px 0;
+  width: 100px;
 }
 @media only screen and (max-width: 700px) {
   .input-name {
