@@ -72,6 +72,15 @@ var User = new mongoose.Schema({
         steam: {
             steam_id: {
                 type: String
+            },
+            profileurl: {
+                type: String
+            },
+            personaname: {
+                type: String
+            },
+            avatarfull: {
+                type: String
             }
         },
         xbox: {

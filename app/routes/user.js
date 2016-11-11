@@ -32,8 +32,8 @@ router.get('/:username', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: helper.getAge(owner.birthday),
-            all_games: getGames(owner.games),
-            fav_games: getGames(owner.games),
+            steam_games: helper.getGames(owner.games, "steam"),
+            other_games: helper.getGames(owner.games, "other"),
             is_owner: helper.isOwner(req.user, owner)
         });
     });
@@ -43,24 +43,11 @@ router.get('/:username', function(req, res, next) {
 function addInfo(owner, user){
     owner.online_status = "online";
 
-    owner.accounts.steam.steam_id = "Alan";
     owner.accounts.xbox.gamertag = "Alan";
     owner.accounts.playstation.psn_id = "Alan";
     owner.accounts.twitch.username = "Alan";
 
     owner.oneUpped = helper.hasOneUpped(owner.one_ups, user);
-}
-
-//returns list of game names, uris and favorite boolean
-function getGames(list){
-    var games = [];
-    for (var i = 0; i < list.length; i++) {
-        games.push({
-            name: list[i].name,
-            uri: encodeURI(list[i].name)
-        });
-    }
-    return games;
 }
 
 module.exports = router;

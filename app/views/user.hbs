@@ -64,7 +64,7 @@
     <div class="fav-games">
         <div class="fav-games-header">Favorite Games</div>
         <div class="games">
-        {{#each fav_games}}
+        {{#each other_games}}
             <div class="game">
                 <a href="/game/{{name}}">
                     <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{uri}}-136x190.jpg" class="boxart">
@@ -76,7 +76,20 @@
     </div>
     <div class="platform steam">
         <div class="header">Steam</div>
-        <div class="platform-name">{{owner.accounts.steam.steam_id}}</div>
+        <div class="steam-profile">
+            <a href="{{owner.accounts.steam.profileurl}}" class="steam-name">{{owner.accounts.steam.personaname}}</a>
+            <img class="steam-avatar" src="{{owner.accounts.steam.avatarfull}}">
+            <div>
+                {{#each steam_games}}
+                <div class="steam-game">
+                    <a href="http://store.steampowered.com/app/{{this.appid}}/">
+                        <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{this.appid}}/{{this.img_logo_url}}.jpg">
+                    </a>
+                    <div class="steam-game-name">{{this.name}}</div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
     <div class="platform xbox">
         <div class="header">Xbox</div>
@@ -90,10 +103,10 @@
         <div class="header">Twitch</div>
         <div class="platform-name">{{owner.accounts.twitch.username}}</div>
     </div>
-    <div class="all-games">
-        <div class="fav-games-header">Games Library</div>
+    <div class="other-games">
+        <div class="other-games-header">Other Games</div>
         <div class="games">
-        {{#each all_games}}
+        {{#each other_games}}
             <div class="game">
                 <a href="/game/{{name}}">
                     <img src="https://static-cdn.jtvnw.net/ttv-boxart/{{uri}}-136x190.jpg" class="boxart">

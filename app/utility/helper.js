@@ -37,10 +37,32 @@ function hasOneUpped(oneUps, oneUpper){
     return getOneUppedIndex(oneUps, oneUpper) >= 0;
 }
 
+//returns list of game filtered by source
+function getGames(list, source){
+    var games = [];
+    for (var i = 0; i < list.length; i++) {
+        if (source !== list[i].source){
+            continue;
+        }
+        var game = {
+            name: list[i].name,
+            uri: encodeURI(list[i].name)
+        };
+        if (source === "steam"){
+            game.appid = list[i].steam.appid;
+            game.img_logo_url = list[i].steam.img_logo_url;
+            game.playtime_forever = list[i].playtime_forever;
+        }
+        games.push(game);
+    }
+    return games;
+}
+
 module.exports = {
     isOwner: isOwner,
     getAge: getAge,
     getCleanedGameName: getCleanedGameName,
     getOneUppedIndex: getOneUppedIndex,
-    hasOneUpped: hasOneUpped
+    hasOneUpped: hasOneUpped,
+    getGames: getGames
 };

@@ -1,5 +1,8 @@
 <a href="{{user.profileurl}}" class="steam-name">{{user.personaname}}</a>
 <img class="steam-avatar" src="{{user.avatarfull}}">
+<input type="hidden" name="profileurl" value="{{user.profileurl}}">
+<input type="hidden" name="personaname" value="{{user.personaname}}">
+<input type="hidden" name="avatarfull" value="{{user.avatarfull}}">
 <div>
 {{#each games.games}}
     <div class="steam-game">

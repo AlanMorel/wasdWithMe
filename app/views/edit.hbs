@@ -65,9 +65,22 @@
             <div class="header">Steam</div>
             <div class="platform-name">
                 Enter your Steam ID 64: <input type="text" name="steamid" class="steam-id" value="{{owner.accounts.steam.steam_id}}">
-                <button type="button" class="button import" onclick="importSteam()">Import</button>
+                <button type="button" class="button import" onclick="importSteam()">Import/Refresh</button>
                 <div class="help">Don't know yours? Click <a target="_blank" href="http://steamid.co/">here</a>.</div>
-                <div class="steam-profile"></div>
+                <div class="steam-profile">
+                    <a href="{{owner.accounts.steam.profileurl}}" class="steam-name">{{owner.accounts.steam.personaname}}</a>
+                    <img class="steam-avatar" src="{{owner.accounts.steam.avatarfull}}">
+                    <div>
+                        {{#each steam_games}}
+                            <div class="steam-game">
+                                <a href="http://store.steampowered.com/app/{{this.appid}}/">
+                                    <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{this.appid}}/{{this.img_logo_url}}.jpg">
+                                </a>
+                                <div class="steam-game-name">{{this.name}}</div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
             </div>
         </div>
         <div class="platform xbox">
@@ -82,8 +95,8 @@
             <div class="header">Twitch</div>
             <div class="platform-name">{{owner.accounts.twitch.username}}</div>
         </div>
-        <div class="all-games">
-            <div class="fav-games-header">Games Library</div>
+        <div class="other-games">
+            <div class="other-games-header">Other Games</div>
             <div class="games-list">
             {{#each all_games}}
                 <div>

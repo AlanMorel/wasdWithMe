@@ -43,8 +43,8 @@ router.get('/:username/edit', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: helper.getAge(owner.birthday),
-            all_games: getGames(owner.games),
-            fav_games: getGames(owner.games),
+            steam_games: helper.getGames(owner.games, "steam"),
+            other_games: helper.getGames(owner.games, "other"),
             is_owner: helper.isOwner(req.user, owner)
         });
     });
@@ -89,13 +89,14 @@ router.post('/:username/edit', type, function(req, res) {
     var games = populateOtherGames(otherGames);
     games = populateSteamGames(games, req.body);
 
-    var steamId = req.body.steamid;
-
     var accounts = {};
 
-    if (steamId) {
+    if (req.body.steamid) {
         accounts.steam = {
-            steam_id: steamId
+            steam_id: req.body.steamid,
+            profileurl: req.body.profileurl,
+            personaname: req.body.personaname,
+            avatarfull: req.body.avatarfull
         }
     }
 
@@ -190,21 +191,6 @@ function addTemporaryInfo(owner){
     owner.accounts.xbox.gamertag = "Alan";
     owner.accounts.playstation.psn_id = "Alan";
     owner.accounts.twitch.username = "Alan";
-}
-
-//returns list of game names, encoded uri
-function getGames(list){
-    var games = [];
-    for (var i = 0; i < list.length; i++) {
-        if (list[i].source !== "other"){
-            continue;
-        }
-        games.push({
-            name: list[i].name,
-            uri: encodeURI(list[i].name)
-        });
-    }
-    return games;
 }
 
 module.exports = router;
