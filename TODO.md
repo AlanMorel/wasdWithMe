@@ -4,6 +4,7 @@
 - [ ] Implement PSN API
 - [ ] Implement Xbox API
 - [ ] Implement Steam API
+- [ ] Collect lastlogoff time and display it of steam user
 
 # General Todo
 - [ ] create leaderboards page

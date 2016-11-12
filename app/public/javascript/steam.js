@@ -7,10 +7,10 @@ function importSteam(){
     }
     var request = new XMLHttpRequest();
 
-    request.onreadystatechange = function() {
+    request.onload = function() {
 
         if (request.readyState != 4 || request.status != 200 || request.responseText.length < 1){
-            //Something went wrong
+            steamProfile.innerHTML = "Something went wrong loading your Steam account.";
             return;
         }
 
