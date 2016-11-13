@@ -64,7 +64,7 @@
         <div class="fav-games">
             <div class="fav-games-header">Favorite Games</div>
             <div class="fav-list">
-            {{#each owner.favorite_games}}
+            {{#each favorite_games}}
                 <div>
                     <input readonly type="text" name="fav" class="input-game" value="{{name}}">
                     <img src="/images/remove.png" class="remove" onclick="deleteGame(this)">

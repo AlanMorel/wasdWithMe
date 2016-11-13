@@ -2,7 +2,7 @@
 - [ ] add user filter searching by availability
 - [ ] Implement Xbox API
 - [ ] Implement PSN API
-- [ ] Make fav games completely separate
+- [X] Make fav games completely separate
 - [X] Don't show blank/unfilled platform names
 - [ ] Custom profile backgrounds
 - [ ] Ensure live profiles only show platforms users have connected

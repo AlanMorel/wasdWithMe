@@ -43,6 +43,7 @@ router.get('/:username/edit', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: helper.getAge(owner.birthday),
+            favorite_games: helper.getGames(owner.games, "fav"),
             steam_games: helper.getGames(owner.games, "steam"),
             other_games: helper.getGames(owner.games, "other"),
             is_owner: helper.isOwner(req.user, owner)
@@ -88,6 +89,7 @@ router.post('/:username/edit', type, function(req, res) {
 
     var games = populateOtherGames(otherGames);
     games = populateSteamGames(games, req.body);
+    games = populateFavGames(games, req.body.fav);
 
     var accounts = {};
 
@@ -151,6 +153,17 @@ router.post('/:username/edit', type, function(req, res) {
         res.redirect("/user/" + username);
     });
 });
+
+//populates games to insert into database
+function populateFavGames(games, favs){
+    for (var i = 0; i < favs.length; i++){
+        games.push({
+            name: favs[i],
+            source: "fav"
+        });
+    }
+    return games;
+}
 
 //populates games to insert into database
 function populateOtherGames(games){

@@ -33,6 +33,7 @@ router.get('/:username', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: helper.getAge(owner.birthday),
+            favorite_games: helper.getGames(owner.games, "fav"),
             steam_games: helper.getGames(owner.games, "steam"),
             other_games: helper.getGames(owner.games, "other"),
             is_owner: helper.isOwner(req.user, owner)

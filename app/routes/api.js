@@ -159,7 +159,7 @@ router.get('/twitch', function(req, res, next) {
             return;
         }
 
-        console.log(channel);
+        //console.log(channel);
         res.render('partials/twitch', {
             channel: channel
         });
