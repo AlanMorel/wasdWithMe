@@ -5,7 +5,7 @@
 - [X] Make fav games completely separate
 - [X] Don't show blank/unfilled platform names
 - [ ] Custom profile backgrounds
-- [ ] Ensure live profiles only show platforms users have connected
+- [X] Ensure live profiles only show platforms users have connected
 
 # General Todo
 - [ ] create leaderboards page

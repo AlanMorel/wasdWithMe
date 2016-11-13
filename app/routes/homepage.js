@@ -5,7 +5,6 @@ var Logger = require('../utility/logger');
 var User   = require('../models/user');
 
 var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
-var platforms = ["steam", "xbox", "playstation", "twitch"];
 
 //handles GET requests to the root
 router.get('/', function (req, res, next) {
@@ -48,7 +47,20 @@ function getGames(list){
 //adds information to users
 function addInfo(users, user) {
     for (var i = 0; i < users.length; i++) {
-        users[i].platforms = platforms.sort(function () {return 0.5 - Math.random()}).slice(0, Math.floor(Math.random() * platforms.length) + 1);
+        var platforms = [];
+        if (users[i].accounts.steam.steam_id){
+            platforms.push("steam");
+        }
+        if (users[i].accounts.xbox.gamertag){
+            platforms.push("xbox");
+        }
+        if(users[i].accounts.playstation.psn_id){
+            platforms.push("playstation");
+        }
+        if(users[i].accounts.twitch.username){
+            platforms.push("twitch");
+        }
+        users[i].platforms = platforms;
         users[i].oneUpped = helper.hasOneUpped(users[i].one_ups, user);
     }
     return users;
