@@ -5,7 +5,7 @@ config.name = "WASD With Me";
 config.description = "WASD With Me is the online destination to meet and play with gamers.";
 config.siteUrl = "http://wasdwithme.com";
 config.favicon = "/favicon.ico";
-config.keywords = "WASD, with, me, gaming";
+config.keywords = "WASD, with, me, gaming, steam, xbox, psn, twitch";
 
 //jQuery
 config.jQueryUrl = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js";

@@ -2,8 +2,10 @@
 - [ ] add user filter searching by availability
 - [ ] Implement Xbox API
 - [ ] Implement PSN API
-- [X] Implement Twitch API
-- [X] Implement Steam API
+- [ ] Make fav games completely separate
+- [ ] Don't show blank/unfilled platform names
+- [ ] Custom profile backgrounds
+- [ ] Ensure live profiles only show platforms users have connected
 
 # General Todo
 - [ ] create leaderboards page

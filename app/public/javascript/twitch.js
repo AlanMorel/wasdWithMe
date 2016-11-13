@@ -2,7 +2,7 @@ var twitchUsername = document.querySelector(".twitch-username");
 var twitchProfile = document.querySelector(".twitch-profile");
 
 function loadTwitch(){
-    if (twitchUsername.length == 0){
+    if (twitchUsername.value.length == 0){
         return;
     }
 

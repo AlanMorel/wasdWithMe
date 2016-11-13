@@ -172,8 +172,9 @@ img.boxart:hover {
     margin: 10px 0;
 }
 .availability-header img {
-    max-height: 16px;
-    margin-right: 5px;
+    max-height: 20px;
+    margin-right: 10px;
+    margin-top: 2px;
 }
 .availability {
     font-size: 16px;
@@ -282,7 +283,7 @@ iframe {
 }
 .twitch-profile .name {
     font-size: 24px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 .twitch-profile img {
     max-width: 100%;
@@ -344,10 +345,12 @@ iframe {
         margin-bottom: 15px;
     }
     .message-button,
-    .discard-button {
+    .discard-button,
+    .edit-profile-button {
         margin: auto;
         margin-top: 25px;
         margin-bottom: 18px;
+        display: inline-block;
     }
     .status {
         margin-top: 10px;

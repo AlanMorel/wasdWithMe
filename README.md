@@ -11,6 +11,11 @@ You can also:
   - Deck out your profile with your games, achievements and game clips
   - Connect your Twitch account to tell your inner circle when you are live
 
+## APIs
+* [IGDB](https://www.igdb.com/api) - video Game database api
+* [Steam](https://steamcommunity.com/dev) - steam web api
+* [Twitch](https://dev.twitch.tv/) - twitch developers api
+
 ## Requirements
 
 - [Node.js](http://nodejs.org/) - event-driven, non-blocking I/O for the backend
