@@ -28,6 +28,7 @@ router.get('/:username', function(req, res, next) {
             title: owner.display_name,
             layout: 'primary',
             file: 'user',
+            js: ["/javascript/twitch"],
             user : req.user,
             owner: owner,
             gender: config.gender[owner.gender],

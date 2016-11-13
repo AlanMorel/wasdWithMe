@@ -1,10 +1,9 @@
 # Alan's Todo
 - [ ] add user filter searching by availability
-- [ ] Implement Twitch API
-- [ ] Implement PSN API
 - [ ] Implement Xbox API
-- [ ] Implement Steam API
-- [ ] Collect lastlogoff time and display it of steam user
+- [ ] Implement PSN API
+- [X] Implement Twitch API
+- [X] Implement Steam API
 
 # General Todo
 - [ ] create leaderboards page
