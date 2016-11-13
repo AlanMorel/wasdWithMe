@@ -1,7 +1,6 @@
 # WASD With Me
 
 **WASD With Me** is the online destination to meet and play with gamers.
-
   - Discover and connect with gamers
   - Set up gaming sessions
   - Browse other gamers' libraries
@@ -12,9 +11,9 @@ You can also:
   - Connect your Twitch account to tell your inner circle when you are live
 
 ## APIs
-* [IGDB](https://www.igdb.com/api) - video Game database api
-* [Steam](https://steamcommunity.com/dev) - steam web api
-* [Twitch](https://dev.twitch.tv/) - twitch developers api
+* [IGDB API](https://www.igdb.com/api) - video game database api
+* [Steam API](https://steamcommunity.com/dev) - steam web api
+* [Twitch API](https://dev.twitch.tv/) - twitch developers api
 
 ## Requirements
 
@@ -52,7 +51,7 @@ You can also:
 ## Other Technologies
 
 * [jQuery](https://jquery.com/) - client-side JavaScript (CDN provided by [Google](https://developers.google.com/speed/libraries/))
-* [Google Fonts](https://fonts.google.com/) - source of all our fonts
+* [Google Fonts](https://fonts.google.com/) - source of the fonts
 
 ## Installation
 
