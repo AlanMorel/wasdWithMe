@@ -3,10 +3,22 @@ body {
 }
 .profile {
     color: #000;
-    width: 700px;
-    margin: auto;
     margin-top: 35px;
     margin-bottom: 35px;
+}
+.header,
+.about,
+.fav-games,
+.other-games,
+.platform-header,
+.platform > div,
+.save-changes {
+    width: 700px;
+    margin: auto;
+}
+.platform-header {
+    font-size: 20px;
+    line-height: 40px;
 }
 .header {
     overflow: hidden;
@@ -23,7 +35,6 @@ body {
 .header,
 .about,
 .fav-games,
-.platform,
 .other-games {
     border-radius: 8px;
     border: 1px solid #ddd;
@@ -84,7 +95,7 @@ body {
     background-color: #2ecc71;
 }
 .tagline {
-    font-size: 17px;
+    font-size: 14px;
 }
 .user-name,
 .bio {
@@ -92,7 +103,6 @@ body {
 }
 .about > div,
 .fav-games > div,
-.platform > div,
 .other-games > div {
     padding-left: 25px;
     padding-right: 25px;
@@ -203,45 +213,28 @@ ul {
     font-size: 18px;
 }
 .platform {
-    padding-bottom: 14px;
+    padding-bottom: 20px;
+    padding-top: 4px;
+    color: #fff;
 }
 .steam {
-    background: #fffffe;
-}
-.steam .header {
-    background: #171a21;
-    border-color: #171a21;
-    color: #fff;
+    background: #182835;
 }
 .xbox {
-    background: #f3ffed;
-}
-.xbox .header {
     background: #107c10;
-    border-color: #107c10;
-    color: #fff;
 }
 .playstation {
-    background: #edf4ff;
-}
-.playstation .header {
     background: #003791;
-    border-color: #003791;
-    color: #fff;
 }
 .twitch {
-    background: #f9ebff;
-}
-.twitch .header {
     background: #6441a5;
-    border-color: #6441a5;
-    color: #fff;
 }
 .button {
-    width: 300px;
-    height: 75px;
-    font-size: 28px;
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
     border: 1px solid #ddd;
+    padding: 0;
 }
 .profile-pic {
     position: relative;
@@ -250,7 +243,6 @@ ul {
     width: 100%;
 }
 .steam-profile a {
-    color: #000;
     width: 100%;
     display: inline-block;
 }
@@ -258,19 +250,22 @@ ul {
     display: inline-block;
     width: 180px;
     vertical-align: top;
-    margin-right: 32px;
+    margin-right: 50px;
     text-align: center;
 }
 .steam-profile .steam-game img {
     height: 69px;
+    width: 184px;
+    border: #000 solid 2px;
 }
 .steam-profile .steam-game-name {
     font-size: 14px;
     padding: 6px 0 10px 0px;
 }
 .steam-avatar {
-    padding: 8px 0 20px 0;
+    margin: 8px 0 20px 0;
     width: 100px;
+    border-radius: 4px;
 }
 iframe {
     width: 100%;
@@ -298,6 +293,9 @@ iframe {
 }
 .twitch-profile .desc {
     font-size: 14px;
+}
+.other-games {
+    margin-top: 24px;
 }
 @media only screen and (max-width: 700px) {
     .profile {
@@ -363,7 +361,8 @@ iframe {
         font-size: 5vw;
     }
     .games,
-    .games-list {
+    .game-list,
+    .fav-list {
         text-align: center;
     }
     .about > div,

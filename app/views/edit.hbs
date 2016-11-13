@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="platform steam">
-            <div class="header">Steam</div>
+            <div class="platform-header">Steam</div>
             <div>
                 Enter your Steam ID 64: <input type="text" name="steamid" class="steam-id" value="{{owner.accounts.steam.steam_id}}">
                 <button type="button" class="button import" onclick="importSteam()">Import/Refresh</button>
@@ -99,15 +99,23 @@
             </div>
         </div>
         <div class="platform xbox">
-            <div class="header">Xbox</div>
-            <div>{{owner.accounts.xbox.gamertag}}</div>
+            <div class="platform-header">Xbox</div>
+            <div>
+                Enter your Xbox Gamertag: <input type="text" name="xbox" class="xbox-gamertag" value="{{owner.accounts.xbox.gamertag}}">
+                <button type="button" class="button import">Connect</button>
+                <div class="xbox-profile"></div>
+            </div>
         </div>
         <div class="platform playstation">
-            <div class="header">PlayStation Network</div>
-            <div class="platform-name">{{owner.accounts.playstation.psn_id}}</div>
+            <div class="platform-header">PlayStation Network</div>
+            <div>
+                Enter your PSN ID: <input type="text" name="psn" class="psn-username" value="{{owner.accounts.playstation.psn_id}}">
+                <button type="button" class="button import">Connect</button>
+                <div class="psn-profile"></div>
+            </div>
         </div>
         <div class="platform twitch">
-            <div class="header">Twitch</div>
+            <div class="platform-header">Twitch</div>
             <div>
                 Enter your Twitch Username: <input type="text" name="twitch" class="twitch-username" value="{{owner.accounts.twitch.username}}">
                 <button type="button" class="button import" onclick="loadTwitch()">Connect</button>
@@ -129,6 +137,8 @@
                 <button type="button" class="button add-another">Add another</button>
             </div>
         </div>
-        <input type="submit" value="Save Changes" class="button">
+        <div class="save-changes">
+            <input type="submit" value="Save Changes" class="button">
+        </div>
     </form>
 </div>
