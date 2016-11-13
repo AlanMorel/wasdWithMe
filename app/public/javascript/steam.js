@@ -5,6 +5,7 @@ function importSteam(){
     if (steamId.value.length == 0){
         return;
     }
+    steamProfile.innerHTML = "Loading your Steam account...";
     var request = new XMLHttpRequest();
 
     request.onload = function() {

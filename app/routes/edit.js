@@ -38,7 +38,7 @@ router.get('/:username/edit', function(req, res, next) {
             title: owner.display_name,
             layout: 'primary',
             file: 'edit',
-            js: ['/javascript/edit', '/javascript/location', '/javascript/steam'],
+            js: ['/javascript/edit', '/javascript/location', '/javascript/steam', '/javascript/twitch'],
             user : req.user,
             owner: owner,
             gender: config.gender[owner.gender],
@@ -97,6 +97,12 @@ router.post('/:username/edit', type, function(req, res) {
             profileurl: req.body.profileurl,
             personaname: req.body.personaname,
             avatarfull: req.body.avatarfull
+        }
+    }
+
+    if (req.body.twitch){
+        accounts.twitch = {
+            username: req.body.twitch
         }
     }
 
@@ -190,7 +196,6 @@ function addTemporaryInfo(owner){
 
     owner.accounts.xbox.gamertag = "Alan";
     owner.accounts.playstation.psn_id = "Alan";
-    owner.accounts.twitch.username = "Alan";
 }
 
 module.exports = router;

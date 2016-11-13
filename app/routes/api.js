@@ -3,6 +3,7 @@ var router = require('express').Router();
 var data   = require('../utility/data');
 var helper = require('../utility/helper');
 var steam  = require('../utility/steam');
+var twitch = require('../utility/twitch');
 var config = require('../config');
 var User   = require('../models/user');
 var Game   = require('../models/game');
@@ -144,6 +145,23 @@ router.get('/steam', function(req, res, next) {
                 user: steamUser,
                 games: steamGames
             });
+        });
+    });
+});
+
+router.get('/twitch', function(req, res, next) {
+    var username = req.query.username;
+
+    twitch.loadChannel(username, function(channel){
+
+        if(!channel){
+            //return an error message
+            return;
+        }
+
+        console.log(channel);
+        res.render('partials/twitch', {
+            channel: channel
         });
     });
 });

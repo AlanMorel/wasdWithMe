@@ -63,10 +63,10 @@
         </div>
         <div class="platform steam">
             <div class="header">Steam</div>
-            <div class="platform-name">
+            <div>
                 Enter your Steam ID 64: <input type="text" name="steamid" class="steam-id" value="{{owner.accounts.steam.steam_id}}">
                 <button type="button" class="button import" onclick="importSteam()">Import/Refresh</button>
-                <div class="help">Don't know yours? Click <a target="_blank" href="http://steamid.co/">here</a>.</div>
+                <div class="help">Don't know yours? <a target="_blank" href="http://steamid.co/">Click here</a>.</div>
                 <div class="steam-profile">
                     <a href="{{owner.accounts.steam.profileurl}}" class="steam-name">{{owner.accounts.steam.personaname}}</a>
                     <img class="steam-avatar" src="{{owner.accounts.steam.avatarfull}}">
@@ -85,7 +85,7 @@
         </div>
         <div class="platform xbox">
             <div class="header">Xbox</div>
-            <div class="platform-name">{{owner.accounts.xbox.gamertag}}</div>
+            <div>{{owner.accounts.xbox.gamertag}}</div>
         </div>
         <div class="platform playstation">
             <div class="header">PlayStation Network</div>
@@ -93,7 +93,11 @@
         </div>
         <div class="platform twitch">
             <div class="header">Twitch</div>
-            <div class="platform-name">{{owner.accounts.twitch.username}}</div>
+            <div>
+                Enter your Twitch Username: <input type="text" name="twitch" class="twitch-username" value="{{owner.accounts.twitch.username}}">
+                <button type="button" class="button import" onclick="loadTwitch()">Connect</button>
+                <div class="twitch-profile"></div>
+            </div>
         </div>
         <div class="other-games">
             <div class="other-games-header">Other Games</div>

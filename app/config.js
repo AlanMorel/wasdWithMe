@@ -55,7 +55,7 @@ config.psnIdMaxLength = 0;
 config.twitchNameMinLength = 0;
 config.twitchNameMaxLength = 0;
 
-//For all Apis
+//For all APIs
 config.timeout = 1000;
 
 //IGDB Api
@@ -67,6 +67,10 @@ config.igdb_key = "JhLqNbheBFmshilJrKIbRedqpI2Ap1J6HWbjsnUI5CoGpvRbJg";
 config.steam_key = "CB0CD5EC671AEC6F5302974F52B3E9C1";
 config.steam_games = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/";
 config.steam_user = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/";
+
+//Twitch Api
+config.twitch_key = "igcito337l7dfhoy6vgvc5tt3yaxsza";
+config.twitch_channels = "https://api.twitch.tv/kraken/channels/";
 
 //Other
 config.game_not_found_boxart = "https://static-cdn.jtvnw.net/ttv-static/404_boxart-136x190.jpg";
