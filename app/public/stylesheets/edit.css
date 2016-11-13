@@ -363,7 +363,8 @@ iframe {
     font-size: 5vw;
   }
   .games,
-  .games-list {
+  .game-list,
+  .fav-list {
     text-align: center;
   }
   .about > div,

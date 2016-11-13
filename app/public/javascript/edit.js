@@ -1,6 +1,5 @@
 var currentInput = null; //the current text input user typed into
 var subbox = document.querySelector("span.sub-results-box");
-var gamesList = document.querySelector(".games-list");
 
 //returns true if box should be shown, false if not
 function shouldSearch(query){
@@ -68,12 +67,18 @@ var deleteGame = function(button){
     }
 
     //delete the entire parent div
-    gamesList.removeChild(button.parentNode);
+    button.parentNode.parentNode.removeChild(button.parentNode);
 };
 
 //Add a new game input when the button is clicked
-document.querySelector(".add-another").onclick = function() {
+document.querySelector(".add-another").addEventListener("click", function(){
+    addNewGame("game");
+});
+document.querySelector(".add-another-fav").addEventListener("click", function(){
+    addNewGame("fav");
+});
 
+function addNewGame(type) {
     //create new div
     var div = document.createElement("div");
 
@@ -81,7 +86,7 @@ document.querySelector(".add-another").onclick = function() {
     var input = document.createElement("input");
     input.type = "text";
     input.className = "input-game";
-    input.name = "games";
+    input.name = type;
     input.onkeyup = searchGame;
 
     //create new remove image
@@ -94,9 +99,10 @@ document.querySelector(".add-another").onclick = function() {
     div.appendChild(input);
     div.appendChild(remove);
 
-    //append div to games list
-    gamesList.appendChild(div);
-};
+    //append div to list
+    var list = document.querySelector("." + type + "-list");
+    list.appendChild(div);
+}
 
 //Start the upload process when the pic is clicked
 document.querySelector(".pic").onclick = function() {

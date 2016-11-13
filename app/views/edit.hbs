@@ -61,6 +61,21 @@
                 </div>
             </div>
         </div>
+        <div class="fav-games">
+            <div class="fav-games-header">Favorite Games</div>
+            <div class="fav-list">
+            {{#each owner.favorite_games}}
+                <div>
+                    <input readonly type="text" name="fav" class="input-game" value="{{name}}">
+                    <img src="/images/remove.png" class="remove" onclick="deleteGame(this)">
+                </div>
+            {{/each}}
+                <span class="sub-results-box"></span>
+            </div>
+            <div>
+                <button type="button" class="button add-another-fav">Add another</button>
+            </div>
+        </div>
         <div class="platform steam">
             <div class="header">Steam</div>
             <div>
@@ -71,14 +86,14 @@
                     <a href="{{owner.accounts.steam.profileurl}}" class="steam-name">{{owner.accounts.steam.personaname}}</a>
                     <img class="steam-avatar" src="{{owner.accounts.steam.avatarfull}}">
                     <div>
-                        {{#each steam_games}}
-                            <div class="steam-game">
-                                <a href="http://store.steampowered.com/app/{{this.appid}}/">
-                                    <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{this.appid}}/{{this.img_logo_url}}.jpg">
-                                </a>
-                                <div class="steam-game-name">{{this.name}}</div>
-                            </div>
-                        {{/each}}
+                    {{#each steam_games}}
+                        <div class="steam-game">
+                            <a href="http://store.steampowered.com/app/{{this.appid}}/">
+                                <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{this.appid}}/{{this.img_logo_url}}.jpg">
+                            </a>
+                            <div class="steam-game-name">{{this.name}}</div>
+                        </div>
+                    {{/each}}
                     </div>
                 </div>
             </div>
@@ -101,7 +116,7 @@
         </div>
         <div class="other-games">
             <div class="other-games-header">Other Games</div>
-            <div class="games-list">
+            <div class="game-list">
             {{#each other_games}}
                 <div>
                     <input readonly type="text" name="games" class="input-game" value="{{name}}">

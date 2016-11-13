@@ -193,9 +193,6 @@ function populateSteamGames(games, body){
 //adds temporary data to the owner object
 function addTemporaryInfo(owner){
     owner.online_status = "online";
-
-    owner.accounts.xbox.gamertag = "Alan";
-    owner.accounts.playstation.psn_id = "Alan";
 }
 
 module.exports = router;

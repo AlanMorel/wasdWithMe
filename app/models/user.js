@@ -118,6 +118,11 @@ var User = new mongoose.Schema({
             }
         }
     }],
+    favorite_games: [{
+        name: {
+            type: String
+        }
+    }],
     coins: {
         type: Number,
         default: 0

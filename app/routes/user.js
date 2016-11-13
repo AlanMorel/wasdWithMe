@@ -43,10 +43,6 @@ router.get('/:username', function(req, res, next) {
 //adds information to the owner object
 function addInfo(owner, user){
     owner.online_status = "online";
-
-    owner.accounts.xbox.gamertag = "Alan";
-    owner.accounts.playstation.psn_id = "Alan";
-
     owner.oneUpped = helper.hasOneUpped(owner.one_ups, user);
 }
 

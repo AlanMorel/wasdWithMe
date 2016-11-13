@@ -74,6 +74,7 @@
         {{/each}}
         </div>
     </div>
+    {{#if owner.accounts.steam.steam_id}}
     <div class="platform steam">
         <div class="header">Steam</div>
         <div class="steam-profile">
@@ -91,19 +92,26 @@
             </div>
         </div>
     </div>
+    {{/if}}
+    {{#if owner.accounts.xbox.gamertag}}
     <div class="platform xbox">
         <div class="header">Xbox</div>
         <div class="platform-name">{{owner.accounts.xbox.gamertag}}</div>
     </div>
+    {{/if}}
+    {{#if owner.accounts.playstation.psn_id}}
     <div class="platform playstation">
         <div class="header">PlayStation Network</div>
         <div class="platform-name">{{owner.accounts.playstation.psn_id}}</div>
     </div>
+    {{/if}}
+    {{#if owner.accounts.twitch.username}}
     <div class="platform twitch">
         <div class="header">Twitch</div>
         <input type="hidden" class="twitch-username" value="{{owner.accounts.twitch.username}}">
         <div class="twitch-profile"></div>
     </div>
+    {{/if}}
     <div class="other-games">
         <div class="other-games-header">Other Games</div>
         <div class="games">
