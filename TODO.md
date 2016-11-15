@@ -4,7 +4,7 @@
 - [ ] Implement PSN API
 - [X] Make fav games completely separate
 - [X] Don't show blank/unfilled platform names
-- [ ] Custom profile backgrounds
+- [X] Custom profile backgrounds
 - [X] Redesign platforms in user profile
 - [X] Ensure live profiles only show platforms users have connected
 

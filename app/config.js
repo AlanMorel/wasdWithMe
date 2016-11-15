@@ -26,6 +26,9 @@ config.gender = {
     2: "Other"
 };
 
+//Profile backgrounds
+config.backgrounds = ["Default"];
+
 //Validation constants
 config.usernameMinLength = 4;
 config.usernameMaxLength = 16;

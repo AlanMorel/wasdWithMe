@@ -122,6 +122,10 @@ var User = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    background: {
+        type: String,
+        default: "default"
+    },
     created_at: {
         type: Date,
         default: Date.now

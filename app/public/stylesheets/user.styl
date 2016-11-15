@@ -23,6 +23,18 @@ body {
     vertical-align: bottom;
   }
 }
+.background {
+  max-height: 500px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  img {
+    width: 100%;
+    -webkit-filter: blur(3px) brightness(50%);
+    filter: blur(3px) brightness(50%);
+    transform: scale(1.1);
+  }
+}
 .pic {
   display: inline-block;
   min-height: 128px;

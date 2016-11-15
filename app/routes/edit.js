@@ -43,6 +43,7 @@ router.get('/:username/edit', function(req, res, next) {
             owner: owner,
             gender: config.gender[owner.gender],
             age: helper.getAge(owner.birthday),
+            backgrounds: config.backgrounds,
             favorite_games: helper.getGames(owner.games, "fav"),
             steam_games: helper.getGames(owner.games, "steam"),
             other_games: helper.getGames(owner.games, "other"),
@@ -84,6 +85,8 @@ router.post('/:username/edit', type, function(req, res) {
     var lastname = req.body.lastname.substring(0, config.nameMaxLength);
 
     var bio = req.body.bio.substring(0, config.bioMaxLength);
+
+    var background = req.body.background;
 
     var otherGames = req.body.games;
 
@@ -138,6 +141,7 @@ router.post('/:username/edit', type, function(req, res) {
         bio: bio,
         location: location,
         availability: availability,
+        background: background,
         games: games,
         accounts: accounts
     };

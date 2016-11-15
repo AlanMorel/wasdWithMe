@@ -1,3 +1,6 @@
+<div class="background">
+    <img src="/images/backgrounds/{{owner.background}}.png">
+</div>
 <div class="profile">
     <form method="post" enctype="multipart/form-data" action="/user/{{owner.display_name}}/edit">
         <div class="header">
@@ -59,6 +62,14 @@
                         <option value="{{owner.location.city}}">{{owner.location.city}}</option>
                     </select>
                 </div>
+            </div>
+            <div class="sub-section">
+                <label>Background Image:</label>
+                <select name="background" id="background">
+                {{#each backgrounds}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+                </select>
             </div>
         </div>
         <div class="fav-games">
