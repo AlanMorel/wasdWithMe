@@ -17,8 +17,24 @@ body {
     margin: auto;
 }
 .platform-header {
+    line-height: 50px;
+    font-family: "Roboto";
+    font-weight: 800;
+    letter-spacing: 6px;
     font-size: 20px;
-    line-height: 40px;
+    text-transform: uppercase;
+}
+.platform-header img {
+    width: 24px;
+    margin-top: 14px;
+    margin-right: 4px;
+}
+hr {
+    width: 700px;
+    border: none;
+    height: 1px;
+    background-color: #fff;
+    margin-bottom: 20px;
 }
 .header {
     overflow: hidden;
@@ -29,10 +45,11 @@ body {
     vertical-align: bottom;
 }
 .background {
-    max-height: 400px;
+    max-height: 500px;
     overflow: hidden;
     position: absolute;
     width: 100%;
+    z-index: -1;
 }
 .background img {
     width: 100%;
@@ -310,6 +327,35 @@ iframe {
     margin-top: 24px;
 }
 @media only screen and (max-width: 700px) {
+    .header,
+    .about,
+    .fav-games,
+    .other-games,
+    .platform-header,
+    .platform > div,
+    .save-changes {
+        width: 95%;
+    }
+    hr {
+        width: 100%;
+    }
+    .steam-games {
+        text-align: center;
+    }
+    iframe {
+        width: 95%;
+    }
+    .steam-profile .steam-game {
+        margin-right: 0;
+        width: 90px;
+    }
+    .steam-profile .steam-game img {
+        height: 30px;
+        width: initial;
+    }
+    .steam-profile .steam-game-name {
+        font-size: 12px;
+    }
     .profile {
         width: 95%;
         padding: 0 1vw 0 1vw;

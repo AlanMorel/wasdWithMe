@@ -79,11 +79,15 @@
     </div>
     {{#if owner.accounts.steam.steam_id}}
     <div class="platform steam">
-        <div class="platform-header">Steam</div>
+        <div class="platform-header">
+            <img src="/images/steam.png">
+            Steam
+        </div>
+        <hr>
         <div class="steam-profile">
             <a href="{{owner.accounts.steam.profileurl}}" class="steam-name">{{owner.accounts.steam.personaname}}</a>
             <img class="steam-avatar" src="{{owner.accounts.steam.avatarfull}}">
-            <div>
+            <div class="steam-games">
                 {{#each steam_games}}
                 <div class="steam-game">
                     <a href="http://store.steampowered.com/app/{{this.appid}}/">
@@ -98,19 +102,31 @@
     {{/if}}
     {{#if owner.accounts.xbox.gamertag}}
     <div class="platform xbox">
-        <div class="platform-header">Xbox</div>
+        <div class="platform-header">
+            <img src="/images/xbox.png">
+            Xbox Live
+        </div>
+        <hr>
         <div class="platform-name">{{owner.accounts.xbox.gamertag}}</div>
     </div>
     {{/if}}
     {{#if owner.accounts.playstation.psn_id}}
     <div class="platform playstation">
-        <div class="platform-header">PlayStation Network</div>
+        <div class="platform-header">
+            <img src="/images/playstation.png">
+            Playstation Network
+        </div>
+        <hr>
         <div class="platform-name">{{owner.accounts.playstation.psn_id}}</div>
     </div>
     {{/if}}
     {{#if owner.accounts.twitch.username}}
     <div class="platform twitch">
-        <div class="platform-header">Twitch</div>
+        <div class="platform-header">
+            <img src="/images/twitch.png">
+            Twitch
+        </div>
+        <hr>
         <input type="hidden" class="twitch-username" value="{{owner.accounts.twitch.username}}">
         <div class="twitch-profile"></div>
     </div>
