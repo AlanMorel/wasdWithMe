@@ -33,6 +33,7 @@ var edit         = require('./routes/edit');
 var search       = require('./routes/search');
 var game         = require('./routes/game');
 var messages     = require('./routes/messages');
+var about        = require('./routes/about');
 
 var app = express();
 
@@ -136,6 +137,7 @@ app.use('/user', edit);
 app.use('/search', search);
 app.use('/game', game);
 app.use('/messages', messages);
+app.use('/about', about);
 
 //Stylus
 app.use(stylus({
