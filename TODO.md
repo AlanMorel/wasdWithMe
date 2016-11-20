@@ -10,7 +10,7 @@
 
 # General Todo
 - [ ] create leaderboards page
-- [ ] create about page
+- [X] create about page
 - [ ] create team page
 
 # Before Launch
@@ -23,3 +23,4 @@
 - [ ] real current gaming news on homepage
 - [ ] site-wide notification system
 - [ ] implement blocking system
+- [ ] support twitch's new v5 api
