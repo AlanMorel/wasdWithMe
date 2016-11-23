@@ -9,7 +9,7 @@
 - [X] Ensure live profiles only show platforms users have connected
 
 # General Todo
-- [ ] create leaderboards page
+- [X] create leaderboards page
 - [X] create about page
 - [ ] create team page
 

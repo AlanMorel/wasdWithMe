@@ -1,0 +1,55 @@
+.banner {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+.banner img {
+  width: 100%;
+}
+.container {
+  color: #000;
+  width: 600px;
+  margin: auto;
+}
+.leaderboards {
+  margin-top: 24px;
+}
+.user {
+  padding: 18px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.ranking {
+  display: inline-block;
+  font-size: 24px;
+  vertical-align: top;
+  line-height: 50px;
+  margin-right: 20px;
+}
+.profile-pic {
+  display: inline-block;
+}
+.profile-pic img {
+  vertical-align: top;
+  border-radius: 64px;
+  max-width: 64px;
+  max-height: 64px;
+}
+.other-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 24px;
+}
+.username {
+  font-size: 24px;
+  font-weight: lighter;
+}
+.gold {
+  background-color: #fff5bd;
+}
+.silver {
+  background-color: #ececec;
+}
+.bronze {
+  background-color: #ffd1ab;
+}

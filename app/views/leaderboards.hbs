@@ -1,0 +1,21 @@
+<div class="banner">
+    <img src="/images/leaderboards.png">
+</div>
+<div class="container">
+    <h1>Leaderboards</h1>
+    <hr>
+    <div class="leaderboards">
+    {{#each users}}
+        <div class="user {{this.rank_type}}">
+            <div class="ranking">{{this.rank}}</div>
+            <div class="profile-pic">
+                <img src="/images/profile/{{this.display_name}}">
+            </div>
+            <div class="other-info">
+                <div class="username">{{this.display_name}}</div>
+                <div class="tagline">{{this.tagline}}</div>
+            </div>
+        </div>
+    {{/each}}
+    </div>
+</div>
