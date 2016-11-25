@@ -3,8 +3,10 @@ var router = require('express').Router();
 var helper = require('../utility/helper');
 var Logger = require('../utility/logger');
 var User   = require('../models/user');
+var Game   = require('../models/game');
 
-var games = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
+var popularGames = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
+var featuredGames = ["Watch Dogs 2", "Rocket League", "Destiny"];
 
 //handles GET requests to the root
 router.get('/', function (req, res, next) {
@@ -21,13 +23,29 @@ router.get('/', function (req, res, next) {
 
         users = addInfo(users, req.user);
 
-        res.render('homepage', {
-            title: 'WASD With Me - Connect with gamers.',
-            layout: 'primary',
-            file: 'homepage',
-            user: req.user,
-            popular_games: getGames(games).concat(getGames(games)),
-            live_profile_users: users
+        var featuredQuery = {
+            $or:[
+                {'name': featuredGames[0].toLowerCase()},
+                {'name': featuredGames[1].toLowerCase()},
+                {'name': featuredGames[2].toLowerCase()}
+            ]
+        };
+
+        Game.find(featuredQuery).exec(function (err, featuredGames){
+
+            if (err || !featuredGames){
+                Logger.log("Searching for featured games failed.", err);
+            }
+
+            res.render('homepage', {
+                title: 'WASD With Me - Connect with gamers.',
+                layout: 'primary',
+                file: 'homepage',
+                user: req.user,
+                featured_games: featuredGames,
+                popular_games: getGames(popularGames).concat(getGames(popularGames)),
+                live_profile_users: users
+            });
         });
     });
 });

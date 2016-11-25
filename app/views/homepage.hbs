@@ -33,7 +33,7 @@
             <h1>Seize the moment.</h1>
             <h2>Don't miss out on all the fun. Sign up to get in on the action!</h2>
             <div class="sign-up-button">
-                <a class="button" href="/signup">Sign Up!</a>
+                <a class="button" href="/signup">Sign Up</a>
             </div>
         </div>
     </div>
@@ -67,6 +67,17 @@
             <div class="game-title">{{name}}</div>
         </div>
     {{/each}}
+    </div>
+</div>
+<div class="featured-games-container">
+    <div class="featured-games-header">Featured Games</div>
+    <div class="featured-games">
+        {{#each featured_games}}
+            <div class="featured-game">
+                <img src="https://res.cloudinary.com/igdb/image/upload/t_screenshot_huge/{{this.screenshots.[0]}}.jpg" class="screenshot"/>
+                <div class="featured-game-name">{{this.display_name}}</div>
+            </div>
+        {{/each}}
     </div>
 </div>
 <div class="live-profiles">

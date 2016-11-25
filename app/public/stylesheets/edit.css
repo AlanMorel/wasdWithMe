@@ -203,8 +203,8 @@ img.boxart {
   border: 1px solid #ddd;
 }
 img.boxart:hover {
-  border: 1px solid #6441a5;
-  box-shadow: 0 0 25px #6441a5;
+  border: 1px solid #5a26a5;
+  box-shadow: 0 0 25px #5a26a5;
 }
 .availability-header {
   font-size: 20px;
@@ -489,7 +489,7 @@ h2 {
   cursor: pointer;
 }
 .pic:hover h2 {
-  background-color: #6441a5;
+  background-color: #5a26a5;
   color: #fff;
 }
 span.sub-results-box {

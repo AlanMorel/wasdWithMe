@@ -5,6 +5,9 @@ html {
 body {
   margin: 0;
 }
+img {
+  vertical-align: top;
+}
 a {
   color: #fff;
   text-decoration: none;
@@ -17,17 +20,17 @@ select {
 }
 input:focus,
 textarea:focus {
-  border-color: #6441a5;
+  border-color: #5a26a5;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #6441a5;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #6441a5;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #5a26a5;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px #5a26a5;
 }
 input[type="image"] {
   border: 0;
   padding: 0;
 }
 html {
-  background: #6441a5;
+  background: #5a26a5;
 }
 body {
   text-align: center;
@@ -35,8 +38,6 @@ body {
   color: #000;
 }
 .button {
-  font-family: 'Source Sans Pro', sans-serif;
-  letter-spacing: 1px;
   cursor: pointer;
   background: #fff;
   -webkit-transition: all 0.1s ease-in-out;
@@ -44,14 +45,18 @@ body {
   -o-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border-radius: 4px;
-  font-weight: lighter;
-  padding: 2% 6%;
-  font-size: 24px;
+  color: #000;
+  padding: 3% 7%;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 .button:hover {
-  background: #6441a5;
+  background: #5a26a5;
   color: #fff;
-  border: 1px solid #55378c;
+  border: 1px solid #5a26a5;
 }
 .container {
   text-align: center;
