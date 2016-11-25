@@ -35,6 +35,7 @@ var game         = require('./routes/game');
 var messages     = require('./routes/messages');
 var about        = require('./routes/about');
 var leaderboards = require('./routes/leaderboards');
+var privacy      = require('./routes/privacy');
 
 var app = express();
 
@@ -140,6 +141,7 @@ app.use('/game', game);
 app.use('/messages', messages);
 app.use('/about', about);
 app.use('/leaderboards', leaderboards);
+app.use('/privacy', privacy);
 
 //Stylus
 app.use(stylus({

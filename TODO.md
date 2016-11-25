@@ -3,7 +3,7 @@
 - [ ] Implement Xbox API
 - [ ] Implement PSN API
 - [X] finish leaderboards page (improve visuals, mobile css, description)
-- [ ] create team page
+- [X] create privacy policy page
 - [X] add featured games to homepage
 - [X] add mobile css to featured games
 
