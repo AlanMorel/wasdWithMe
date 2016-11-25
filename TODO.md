@@ -1,17 +1,11 @@
-# Alan's Todo
+# Todo
 - [ ] add user filter searching by availability
 - [ ] Implement Xbox API
 - [ ] Implement PSN API
-- [X] Make fav games completely separate
-- [X] Don't show blank/unfilled platform names
-- [X] Custom profile backgrounds
-- [X] Redesign platforms in user profile
-- [X] Ensure live profiles only show platforms users have connected
-
-# General Todo
-- [X] create leaderboards page
-- [X] create about page
+- [ ] finish leaderboards page (improve visuals, mobile css, description)
 - [ ] create team page
+- [X] add featured games to homepage
+- [ ] add mobile css to featured games
 
 # Before Launch
 - [ ] add credentials file for passport secret key (change when deployed)
