@@ -5,7 +5,7 @@
 - [ ] finish leaderboards page (improve visuals, mobile css, description)
 - [ ] create team page
 - [X] add featured games to homepage
-- [ ] add mobile css to featured games
+- [X] add mobile css to featured games
 
 # Before Launch
 - [ ] add credentials file for passport secret key (change when deployed)

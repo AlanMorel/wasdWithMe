@@ -149,7 +149,7 @@ img.couple {
   padding: 32px 0;
 }
 .featured-game:first-child {
-  width: 60%;
+  width: 65%;
   float: left;
 }
 .featured-game:first-child .featured-game-name {
@@ -157,7 +157,7 @@ img.couple {
   font-size: 28px;
 }
 .featured-game {
-  width: 29%;
+  width: 31.5%;
   display: inline-block;
   padding-right: 1%;
   padding-bottom: 1%;
@@ -175,6 +175,27 @@ img.couple {
 }
 .screenshot {
   width: 100%;
+}
+@media only screen and (max-width: 1000px) {
+  .featured-games {
+    width: inherit;
+  }
+  .featured-games-container {
+    padding: 0 5%;
+  }
+  .featured-game {
+    width: 100%;
+  }
+  .featured-game .featured-game-name {
+    font-size: 4vw;
+  }
+  .featured-game:first-child {
+    width: 100%;
+  }
+  .featured-game:first-child .featured-game-name {
+    top: 70%;
+    font-size: 4vw;
+  }
 }
 .popular-games {
   background-color: #5a26a5;
