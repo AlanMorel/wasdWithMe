@@ -72,12 +72,14 @@
 <div class="featured-games-container">
     <div class="featured-games-header">Featured Games</div>
     <div class="featured-games">
-        {{#each featured_games}}
-            <div class="featured-game">
+    {{#each featured_games}}
+        <div class="featured-game">
+            <a href="/game/{{this.display_name}}">
                 <img src="https://res.cloudinary.com/igdb/image/upload/t_screenshot_huge/{{this.screenshots.[0]}}.jpg" class="screenshot"/>
-                <div class="featured-game-name">{{this.display_name}}</div>
-            </div>
-        {{/each}}
+            </a>
+            <div class="featured-game-name">{{this.display_name}}</div>
+        </div>
+    {{/each}}
     </div>
 </div>
 <div class="live-profiles">
