@@ -1,21 +1,28 @@
 <div class="banner">
     <img src="/images/leaderboards.png">
 </div>
-<div class="container">
+<div class="leaderboards-header">
     <h1>Leaderboards</h1>
-    <hr>
+    <p>The leaderboards ranks users in order of the number of One Ups they have recieved from the community.</p>
+</div>
+<div class="container">
     <div class="leaderboards">
     {{#each users}}
-        <div class="user {{this.rank_type}}">
-            <div class="ranking">{{this.rank}}</div>
-            <div class="profile-pic">
-                <img src="/images/profile/{{this.display_name}}.png">
+        <a href="/user/{{this.display_name}}">
+            <div class="user {{this.rank_type}}">
+                <div class="left-info">
+                    <div class="ranking">{{this.rank}}</div>
+                    <div class="one-ups-count">{{this.one_ups.length}}</div>
+                </div>
+                <div class="profile-pic">
+                    <img src="/images/profile/{{this.display_name}}.png">
+                </div>
+                <div class="right-info">
+                    <div class="username">{{this.display_name}}</div>
+                    <div class="tagline">{{this.tagline}}</div>
+                </div>
             </div>
-            <div class="other-info">
-                <div class="username">{{this.display_name}}</div>
-                <div class="tagline">{{this.tagline}}</div>
-            </div>
-        </div>
+        </a>
     {{/each}}
     </div>
 </div>

@@ -1,3 +1,23 @@
+body {
+  background-color: #e9ebee;
+}
+h1 {
+  padding: 14px 0;
+  font-family: Roboto;
+  margin: auto;
+  width: 600px;
+  letter-spacing: 2px;
+}
+.leaderboards-header {
+  background-color: #111018;
+  padding: 18px 0;
+}
+.leaderboards-header p {
+  margin: auto;
+  width: 600px;
+  color: #9290a0;
+  padding: 16px 0;
+}
 .banner {
   width: 100%;
   max-height: 400px;
@@ -14,17 +34,26 @@
 .leaderboards {
   margin-top: 24px;
 }
+.leaderboards a {
+  color: #000;
+}
 .user {
   padding: 18px;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 10px;
+  border: 1px solid #d8d8d8;
+  background-color: #fff;
+  box-shadow: 0 0px 0px 0 rgba(0,0,0,0.1), 0 0px 4px 0 rgba(0,0,0,0.1);
+}
+.user:hover {
+  box-shadow: 0 0px 0px 0 #5a26a5, 0 0px 4px 0 #5a26a5;
 }
 .ranking {
   display: inline-block;
   font-size: 24px;
   vertical-align: top;
-  line-height: 50px;
-  margin-right: 20px;
+  width: 100%;
+  font-family: roboto;
 }
 .profile-pic {
   display: inline-block;
@@ -35,10 +64,20 @@
   max-width: 64px;
   max-height: 64px;
 }
-.other-info {
+.right-info {
   display: inline-block;
   vertical-align: top;
   margin-left: 24px;
+}
+.one-ups-count {
+  display: inline-block;
+}
+.left-info {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  vertical-align: top;
+  margin-right: 20px;
 }
 .username {
   font-size: 24px;
@@ -48,8 +87,51 @@
   background-color: #fff5bd;
 }
 .silver {
-  background-color: #ececec;
+  background-color: #f9f9f9;
 }
 .bronze {
-  background-color: #ffd1ab;
+  background-color: #dac1ac;
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+  h1 {
+    width: 100%;
+  }
+  .leaderboards-header p {
+    width: 100%;
+  }
+  .user {
+    width: 85%;
+    margin: 0 5% 10px 5%;
+  }
+  .tagline {
+    font-size: 2.25vw;
+  }
+  .username {
+    font-size: 18px;
+  }
+  .profile-pic img {
+    vertical-align: top;
+    border-radius: 48px;
+    max-width: 48px;
+    max-height: 48px;
+  }
+  .user {
+    padding: 10px;
+  }
+  .right-info {
+    margin-left: 4px;
+  }
+  .left-info {
+    width: initial;
+    margin-right: 4px;
+  }
+  .ranking {
+    font-size: 18px;
+  }
+  .one-ups-count {
+    font-size: 12px;
+  }
 }
