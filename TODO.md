@@ -10,7 +10,7 @@
 # Before Launch
 - [ ] add credentials file for passport secret key (change when deployed)
 - [X] add recaptcha support to sign up page
-- [ ] add google analytics
+- [X] add google analytics
 
 # Possibilities / After Launch
 - [ ] add developers and publishers to games page
