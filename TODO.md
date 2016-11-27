@@ -9,7 +9,7 @@
 
 # Before Launch
 - [ ] add credentials file for passport secret key (change when deployed)
-- [ ] add recatcha support to sign up page
+- [X] add recaptcha support to sign up page
 - [ ] add google analytics
 
 # Possibilities / After Launch

@@ -58,6 +58,12 @@ config.psnIdMaxLength = 0;
 config.twitchNameMinLength = 0;
 config.twitchNameMaxLength = 0;
 
+//Google reCAPTCHA keys
+
+config.recaptcha_url = "https://www.google.com/recaptcha/api/siteverify";
+config.recaptcha_client = "6Lc0DA0UAAAAAEb4pF1KpW2m-qcgrNAWt7SAuqCh";
+config.recaptcha_server = "6Lc0DA0UAAAAAIgkapv5J4wRakuC70TLLTaKN5zm";
+
 //For all APIs
 config.timeout = 1000;
 

@@ -1,3 +1,4 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <a href="/">
     <img src="/images/logo.png"/>
 </a>
@@ -45,6 +46,7 @@
             <select name="city" id="city"></select>
         </div>
         <p class="feedback">{{#if error}}{{error}}{{/if}}</p>
+        <div class="g-recaptcha" data-sitekey="{{config "recaptcha_client"}}"></div>
         <div class="action-button">
             <input type="submit" value="Sign Up" class="button">
         </div>
