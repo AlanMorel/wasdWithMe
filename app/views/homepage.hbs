@@ -82,6 +82,21 @@
     {{/each}}
     </div>
 </div>
+<div class="news-container">
+    <div class="news-header">In the News</div>
+    <div class="news">
+    {{#each news}}
+        <div class="article">
+            <a href="{{this.url}}" target="_blank">
+                <div class="news-image-container">
+                    <img src="{{this.urlToImage}}">
+                </div>
+                <div class="news-title">{{this.title}}</div>
+            </a>
+        </div>
+    {{/each}}
+    </div>
+</div>
 <div class="live-profiles">
     {{#if user}}
     <div class="live-profiles-header">Connect with these gamers!</div>

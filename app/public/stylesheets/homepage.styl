@@ -133,7 +133,7 @@ img.couple {
   margin: auto;
   padding-bottom: 48px;
 }
-.featured-games-header{
+.featured-games-header, .news-header {
   width: 1000px;
   margin: auto;
   text-transform: uppercase;
@@ -141,7 +141,7 @@ img.couple {
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 3px;
-  padding: 32px 0;
+  padding: 40px 0;
 }
 .featured-game:first-child {
   width: 65%;
@@ -176,27 +176,6 @@ img.couple {
 }
 .screenshot {
   width: 100%;
-}
-@media only screen and (max-width: 1000px) {
-  .featured-games{
-    width: inherit;
-  }
-  .featured-games-container {
-    padding: 0 5%;
-  }
-  .featured-game{
-    width:100%;
-    .featured-game-name {
-      font-size: 4vw;
-    }
-  }
-  .featured-game:first-child {
-    width:100%;
-    .featured-game-name {
-      top: 70%;
-      font-size: 4vw;
-    }
-  }
 }
 .popular-games {
   background-color: wasdWithMePurple;
@@ -240,6 +219,42 @@ img.boxart:hover {
   -ms-animation: bannermove 60s linear infinite;
   animation: bannermove 60s linear infinite;
 }
+.news-container {
+  background-color: wasdWithMePurple;
+}
+.news {
+  width: 1000px;
+  margin: auto;
+  padding-bottom: 50px;
+  img{
+    width: 100%;
+  }
+}
+.article {
+  position: relative;
+  display: inline-block;
+  width: 49%;
+  margin-bottom: 6px;
+  margin-right: 6px;
+  max-height: 260px;
+  overflow: hidden;
+}
+.news-title {
+  position: absolute;
+  left: 0;
+  top: 65%;
+  font-size: 16px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 8px;
+  font-weight: lighter;
+  display: inline-block;
+}
+  .article:hover {
+    .news-title {
+      color: black;
+      background-color: rgba(255,255,255,0.75);
+    }
+  }
 @keyframes bannermove {
   0% {
     margin-left: 0;
@@ -278,6 +293,27 @@ img.boxart:hover {
   margin-right: 32px;
   font-weight: 300;
   font-size: 16px;
+}
+@media only screen and (max-width: 1000px) {
+  .featured-games, .news{
+    width: inherit;
+  }
+  .featured-games-container, .news-container {
+    padding: 0 5%;
+  }
+  .featured-game, .article{
+    width:100%;
+    .featured-game-name {
+      font-size: 4vw;
+    }
+  }
+  .featured-game:first-child {
+    width:100%;
+    .featured-game-name {
+      top: 70%;
+      font-size: 4vw;
+    }
+  }
 }
 @media only screen and (max-width: 800px) {
   .promo .left, .promo .right, .promo2 .left, .promo2 .right {

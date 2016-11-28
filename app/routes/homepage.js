@@ -1,9 +1,11 @@
-var router = require('express').Router();
+var router  = require('express').Router();
 
-var helper = require('../utility/helper');
-var Logger = require('../utility/logger');
-var User   = require('../models/user');
-var Game   = require('../models/game');
+var unirest = require('unirest');
+var helper  = require('../utility/helper');
+var Logger  = require('../utility/logger');
+var User    = require('../models/user');
+var Game    = require('../models/game');
+var config  = require('../config');
 
 var popularGames = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
 var featuredGames = ["Watch Dogs 2", "Rocket League", "Destiny"];
@@ -37,15 +39,39 @@ router.get('/', function (req, res, next) {
                 Logger.log("Searching for featured games failed.", err);
             }
 
-            res.render('homepage', {
-                title: 'WASD With Me - Connect with gamers.',
-                layout: 'primary',
-                file: 'homepage',
-                user: req.user,
-                featured_games: featuredGames,
-                popular_games: getGames(popularGames).concat(getGames(popularGames)),
-                live_profile_users: users
-            });
+            var newsapi = {
+                source: "?source=" + config.newsapi_source,
+                sortBy: "&sortBy=top",
+                apiKey: "&apiKey=" + config.newsapi_key
+            };
+
+            var request = config.newsapi_url + newsapi.source + newsapi.sortBy + newsapi.apiKey;
+
+            unirest
+                .get(request)
+                .header("Accept", "application/json")
+                .timeout(config.timeout)
+                .end(function (response) {
+                        //console.log(response);
+                        //if something went wrong
+                        if (response.status != 200){
+                            return;
+                        }
+
+                        console.log(response.body);
+
+                        res.render('homepage', {
+                            title: 'WASD With Me - Connect with gamers.',
+                            layout: 'primary',
+                            file: 'homepage',
+                            user: req.user,
+                            featured_games: featuredGames,
+                            popular_games: getGames(popularGames).concat(getGames(popularGames)),
+                            news: response.body.articles,
+                            live_profile_users: users
+                        });
+                    }
+                );
         });
     });
 });

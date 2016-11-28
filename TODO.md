@@ -14,7 +14,7 @@
 
 # Possibilities / After Launch
 - [ ] add developers and publishers to games page
-- [ ] real current gaming news on homepage
+- [X] add real current gaming news on homepage
 - [ ] site-wide notification system
 - [ ] implement blocking system
 - [ ] support twitch's new v5 api

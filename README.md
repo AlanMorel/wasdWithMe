@@ -11,7 +11,9 @@ You can also:
   - Connect your Twitch account to tell your inner circle when you are live
 
 ## APIs
+
 * [IGDB API](https://www.igdb.com/api) - video game database api
+* [News API](https://newsapi.org/) - live news headlines api (source: [Polygon](https://polygon.com/))
 * [Steam API](https://steamcommunity.com/dev) - steam web api
 * [Twitch API](https://dev.twitch.tv/) - twitch developers api
 

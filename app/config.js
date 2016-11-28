@@ -67,6 +67,11 @@ config.recaptcha_server = "6Lc0DA0UAAAAAIgkapv5J4wRakuC70TLLTaKN5zm";
 //For all APIs
 config.timeout = 1000;
 
+//NewsAPI
+config.newsapi_url = "https://newsapi.org/v1/articles";
+config.newsapi_source = "polygon";
+config.newsapi_key = "93eee0eb325d4e41aed95d186bbd1249";
+
 //IGDB Api
 config.igdb_url = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/";
 config.igdb_max_per_query = 50;
