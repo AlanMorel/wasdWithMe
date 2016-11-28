@@ -1,20 +1,13 @@
 # Todo
 - [ ] add user filter searching by availability
-- [ ] Implement Xbox API
-- [ ] Implement PSN API
-- [X] finish leaderboards page (improve visuals, mobile css, description)
-- [X] create privacy policy page
-- [X] add featured games to homepage
-- [X] add mobile css to featured games
+- [ ] add developers and publishers to games page
 
 # Before Launch
 - [ ] add credentials file for passport secret key (change when deployed)
-- [X] add recaptcha support to sign up page
-- [X] add google analytics
+- [ ] support twitch's new v5 api
 
-# Possibilities / After Launch
-- [ ] add developers and publishers to games page
-- [X] add real current gaming news on homepage
+# After Launch
+- [ ] Implement Xbox API
+- [ ] Implement PSN API
 - [ ] site-wide notification system
 - [ ] implement blocking system
-- [ ] support twitch's new v5 api

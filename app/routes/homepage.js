@@ -58,8 +58,6 @@ router.get('/', function (req, res, next) {
                             return;
                         }
 
-                        console.log(response.body);
-
                         res.render('homepage', {
                             title: 'WASD With Me - Connect with gamers.',
                             layout: 'primary',
