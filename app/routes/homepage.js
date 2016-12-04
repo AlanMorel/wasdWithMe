@@ -7,8 +7,51 @@ var User    = require('../models/user');
 var Game    = require('../models/game');
 var config  = require('../config');
 
-var popularGames = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
-var featuredGames = ["Watch Dogs 2", "Rocket League", "Destiny"];
+var popularGamesList = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
+var featuredGamesList = ["Watch Dogs 2", "Rocket League", "Destiny"];
+
+//the following variables are all initialized at start up
+//and cached for performance
+var featuredGames;
+var popularGames = getGames(popularGamesList).concat(getGames(popularGamesList));
+var news;
+
+function initialize(){
+    var featuredQuery = {
+        $or:[
+            {'name': featuredGamesList[0].toLowerCase()},
+            {'name': featuredGamesList[1].toLowerCase()},
+            {'name': featuredGamesList[2].toLowerCase()}
+        ]
+    };
+
+    Game.find(featuredQuery).exec(function (err, results){
+        featuredGames = results;
+    });
+
+    var newsapi = {
+        source: "?source=" + config.newsapi_source,
+        sortBy: "&sortBy=top",
+        apiKey: "&apiKey=" + config.newsapi_key
+    };
+
+    var request = config.newsapi_url + newsapi.source + newsapi.sortBy + newsapi.apiKey;
+
+    unirest
+        .get(request)
+        .header("Accept", "application/json")
+        .timeout(config.timeout)
+        .end(function (response) {
+
+                //if something went wrong
+                if (response.status != 200){
+                    return;
+                }
+
+                news = response.body.articles;
+            }
+        );
+}
 
 //handles GET requests to the root
 router.get('/', function (req, res, next) {
@@ -19,59 +62,24 @@ router.get('/', function (req, res, next) {
 
     User.find().sort(query).limit(5).exec(function (err, users) {
 
-        if (err || !users){
-            Logger.log("Searching for live user profiles failed.", err);
-        }
-
-        users = addInfo(users, req.user);
-
-        var featuredQuery = {
-            $or:[
-                {'name': featuredGames[0].toLowerCase()},
-                {'name': featuredGames[1].toLowerCase()},
-                {'name': featuredGames[2].toLowerCase()}
-            ]
-        };
-
-        Game.find(featuredQuery).exec(function (err, featuredGames){
-
-            if (err || !featuredGames){
-                Logger.log("Searching for featured games failed.", err);
+            if (err || !users){
+                Logger.log("Searching for live user profiles failed.", err);
             }
 
-            var newsapi = {
-                source: "?source=" + config.newsapi_source,
-                sortBy: "&sortBy=top",
-                apiKey: "&apiKey=" + config.newsapi_key
-            };
+            users = addInfo(users, req.user);
 
-            var request = config.newsapi_url + newsapi.source + newsapi.sortBy + newsapi.apiKey;
-
-            unirest
-                .get(request)
-                .header("Accept", "application/json")
-                .timeout(config.timeout)
-                .end(function (response) {
-                        //console.log(response);
-                        //if something went wrong
-                        if (response.status != 200){
-                            return;
-                        }
-
-                        res.render('homepage', {
-                            title: 'WASD With Me - Connect with gamers.',
-                            layout: 'primary',
-                            file: 'homepage',
-                            user: req.user,
-                            featured_games: featuredGames,
-                            popular_games: getGames(popularGames).concat(getGames(popularGames)),
-                            news: response.body.articles,
-                            live_profile_users: users
-                        });
-                    }
-                );
-        });
-    });
+            res.render('homepage', {
+                title: 'WASD With Me - Connect with gamers.',
+                layout: 'primary',
+                file: 'homepage',
+                user: req.user,
+                featured_games: featuredGames,
+                popular_games: popularGames,
+                news: news,
+                live_profile_users: users
+            });
+        }
+    );
 });
 
 //returns list of game names and uris
@@ -107,5 +115,7 @@ function addInfo(users, user) {
     }
     return users;
 }
+
+initialize();
 
 module.exports = router;
