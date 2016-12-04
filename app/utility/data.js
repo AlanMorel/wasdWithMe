@@ -342,7 +342,7 @@ function addToDatabase(game){
 
 function getBoxArt(game){
     if ('cover' in game){
-        return "https://res.cloudinary.com/igdb/image/upload/t_cover_big/" + game.cover.cloudinary_id + ".jpg";
+        return "https://images.igdb.com/igdb/image/upload/t_cover_big/" + game.cover.cloudinary_id + ".jpg";
     } else {
         return config.game_not_found_boxart;
     }
