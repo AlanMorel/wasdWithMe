@@ -1,15 +1,13 @@
-# Todo
-- [ ] add user filter searching by availability
-- [ ] add developers and publishers to games page
-
 # Before Launch
+- [ ] add user filter searching by availability
 - [ ] add credentials file for passport secret key (change when deployed)
 - [ ] support twitch's new v5 api
-- [X] update IGDB's image api
-- [X] add start up caching of news, homepage games
 
 # After Launch
 - [ ] Implement Xbox API
 - [ ] Implement PSN API
-- [ ] site-wide notification system
 - [ ] implement blocking system
+
+# Possibility
+- [ ] add developers and publishers to games page
+- [ ] site-wide notification system
