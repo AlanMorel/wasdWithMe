@@ -4,8 +4,8 @@
 - [ ] support twitch's new v5 api
 
 # After Launch
-- [ ] Implement Xbox API
-- [ ] Implement PSN API
+- [ ] implement Xbox API
+- [ ] implement PSN API
 - [ ] implement blocking system
 
 # Possibility

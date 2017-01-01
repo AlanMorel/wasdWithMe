@@ -8,7 +8,7 @@ var Game    = require('../models/game');
 var config  = require('../config');
 
 var popularGamesList = ["Rocket League", "Rust", "Overwatch", "Destiny", "Dead by Daylight", "Minecraft", "World of Warcraft", "FIFA 16", "Call of Duty: Black Ops III", "Smite", "Grand Theft Auto V", "StarCraft II", "DayZ", "Battlefield 4", "RuneScape"];
-var featuredGamesList = ["Watch Dogs 2", "Rocket League", "Destiny"];
+var featuredGamesList = ["Smite", "Rocket League", "Counter-Strike: Global Offensive"];
 
 //the following variables are all initialized at start up
 //and cached for performance
