@@ -95,7 +95,9 @@ Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/). Pl
 
 ## Screenshots
 
-![alt tag](http://i.imgur.com/is0otGi.png)
-![alt tag](http://i.imgur.com/CMNEQeD.png)
+![alt tag](http://i.imgur.com/mnFNTV0.png)
+![alt tag](http://i.imgur.com/wn3NRH9.png)
 ![alt tag](http://i.imgur.com/HL5aWSz.png)
 ![alt tag](http://i.imgur.com/e4rwrHS.png)
+![alt tag](http://i.imgur.com/AszYs1W.png)
+![alt tag](http://i.imgur.com/7aUUbCw.png)
