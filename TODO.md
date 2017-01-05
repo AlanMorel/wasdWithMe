@@ -2,6 +2,7 @@
 - [ ] add user filter searching by availability
 - [ ] add credentials file for passport secret key (change when deployed)
 - [ ] support twitch's new v5 api
+- [ ] address and patch XSS vulnerabilities
 
 # After Launch
 - [ ] implement Xbox API
