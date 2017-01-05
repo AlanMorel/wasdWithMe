@@ -86,7 +86,11 @@ View in browser at `http://localhost:3000`
 
 ## Live Demo
 
-Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/). Please note that the code uploaded on Heroku is usually outdated compared to this repository and therefore not an accurate representation of the complete project.
+Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/).
+```sh
+http://wasdwithme.herokuapp.com/
+```
+Please note that the code uploaded on Heroku is usually outdated compared to this repository. In addition, there are certain features of this project that don't yet fully work on Heroku due to their policies on free plans. Therefore, the demo on Heroku is a close but not completely accurate representation of this project.
 
 
 ## License
