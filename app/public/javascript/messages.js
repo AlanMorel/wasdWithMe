@@ -1,4 +1,4 @@
-var socket = io.connect();
+var socket = io();
 
 var input = document.querySelector(".input");
 
