@@ -53,7 +53,7 @@ router.get('/oneup', function(req, res, next) {
 
     //if not logged in or null model, return nothing
     if(!req.user || !model){
-        res.send();
+        res.status(500).send("User not logged in or model not found.");
         return;
     }
 
@@ -61,7 +61,7 @@ router.get('/oneup', function(req, res, next) {
 
         //if error or object not found, return nothing
         if (err || !object){
-            res.send();
+            res.status(500).send("Loading from database error.");
             return;
         }
 
@@ -80,7 +80,7 @@ router.get('/oneup', function(req, res, next) {
         //save the object back into the database and send response
         object.save(function(err) {
             if (err) {
-                res.send();
+                res.status(500).send("Saving to database error.");
                 return;
             }
             res.send(JSON.stringify(index));
