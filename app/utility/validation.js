@@ -31,7 +31,7 @@ exports.checkAccount = function(username, password, confirmation, email) {
 
     //check password validity
     if(!passwordIsValid(password)){
-      return "Your password must contain at least one letter and one number.";
+        return "Your password must contain at least one letter and one number.";
     }
 
     //ensure both passwords entered match
@@ -69,6 +69,6 @@ function emailIsValid(email) {
 }
 
 //regex operation ensures at least 1 alpha and 1 numeric character
-function passwordIsValid(password){
-  return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
+function passwordIsValid(password) {
+    return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{8,}$/.test(password);
 }
