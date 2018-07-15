@@ -19,7 +19,7 @@ You can also:
 
 ## Requirements
 
-- [Node.js](http://nodejs.org/) - event-driven, non-blocking I/O for the backend
+- [Node.js](https://nodejs.org/) - event-driven, non-blocking I/O for the backend
 - [npm](https://www.npmjs.com/) - node package manager
 - [MongoDB](https://www.mongodb.com/) - document-oriented database
 
@@ -36,18 +36,18 @@ You can also:
 * [express-debug](https://www.npmjs.com/package/express-debug) - debug toolbar middleware
 * [Express](https://expressjs.com/) - fast node.js network app framework
 * [express-session](https://www.npmjs.com/package/express-session) - session middleware
-* [Handlebars](http://handlebarsjs.com/) - html view engine
-* [Helmet](http://handlebarsjs.com/) - helps secure express apps with various http headers
-* [Mongoose](http://mongoosejs.com/) - mongodb object modeling for node.js
+* [Handlebars](https://handlebarsjs.com/) - html view engine
+* [Helmet](https://handlebarsjs.com/) - helps secure express apps with various http headers
+* [Mongoose](https://mongoosejs.com/) - mongodb object modeling for node.js
 * [morgan](https://www.npmjs.com/package/morgan) - http request logger middleware
 * [multer](https://www.npmjs.com/package/multer) - multipart/form-data handling
-* [Passport](http://passportjs.org/) - node.js authentication
+* [Passport](https://passportjs.org/) - node.js authentication
 * [passport-local](https://www.npmjs.com/package/passport-local) - local authentication strategy
 * [passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose) - simplifies building username and password login with Passport
 * [redis](https://www.npmjs.com/package/redis) - redis client library
 * [serve-favicon](https://www.npmjs.com/package/serve-favicon) - favicon serving middleware
 * [socket.io](https://www.npmjs.com/package/socket.io) - node.js realtime framework server
-* [Stylus](http://stylus-lang.com/) - node.js CSS preprocessor
+* [Stylus](https://stylus-lang.com/) - node.js CSS preprocessor
 * [unirest](https://www.npmjs.com/package/unirest) - lightweight http client library
 
 ## Other Technologies
@@ -86,9 +86,9 @@ View in browser at `http://localhost:3000`
 
 ## Live Demo
 
-Check out our live demo hosted on [Heroku](http://wasdwithme.herokuapp.com/).
+Check out our live demo hosted on [Heroku](https://wasdwithme.herokuapp.com/).
 ```sh
-http://wasdwithme.herokuapp.com/
+https://wasdwithme.herokuapp.com/
 ```
 Please note that the code uploaded on Heroku is usually outdated compared to this repository. In addition, there are certain features of this project that don't yet fully work on Heroku due to their policies on free plans. Therefore, the demo on Heroku is a close but not completely accurate representation of this project.
 
@@ -99,9 +99,9 @@ Please note that the code uploaded on Heroku is usually outdated compared to thi
 
 ## Screenshots
 
-![alt tag](http://i.imgur.com/mnFNTV0.png)
-![alt tag](http://i.imgur.com/wn3NRH9.png)
-![alt tag](http://i.imgur.com/HL5aWSz.png)
-![alt tag](http://i.imgur.com/e4rwrHS.png)
-![alt tag](http://i.imgur.com/AszYs1W.png)
-![alt tag](http://i.imgur.com/7aUUbCw.png)
+![alt tag](https://i.imgur.com/mnFNTV0.png)
+![alt tag](https://i.imgur.com/wn3NRH9.png)
+![alt tag](https://i.imgur.com/HL5aWSz.png)
+![alt tag](https://i.imgur.com/e4rwrHS.png)
+![alt tag](https://i.imgur.com/AszYs1W.png)
+![alt tag](https://i.imgur.com/7aUUbCw.png)
