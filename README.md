@@ -84,15 +84,6 @@ $ npm start
 
 View in browser at `http://localhost:3000`
 
-## Live Demo
-
-Check out our live demo hosted on [Heroku](https://wasdwithme.herokuapp.com/).
-```sh
-https://wasdwithme.herokuapp.com/
-```
-Please note that the code uploaded on Heroku is usually outdated compared to this repository. In addition, there are certain features of this project that don't yet fully work on Heroku due to their policies on free plans. Therefore, the demo on Heroku is a close but not completely accurate representation of this project.
-
-
 ## License
 
 **WASD With Me** is licensed under the [MIT license](LICENSE).
